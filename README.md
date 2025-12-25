@@ -12,12 +12,14 @@ FINLITE is for people who don’t have time for complex apps. They want quick, s
  • Phone number + PIN login
  • Basic data backup
 
- ##Tech Stack-
- HTML
- Vanilla CSS
- Tailwind CSS
- JavaScript
+ ##Tech Stack
+ 
+ ### Front-End
+- HTML
+- Vanilla CSS
+- Tailwind CSS
+- JavaScript
 
- ## Status-
+ ## Status
 MVP in development.
 

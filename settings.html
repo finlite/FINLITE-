@@ -65,15 +65,51 @@
             </div>
         </div>
         
-     <div class="settings__preferences-section">
-        <h2 class="preferences__title">Preferences</h2>
-        <div class="preferences__item">
-            <label for="notifications">Notifications</label>
-            <input type="checkbox" id="notifications" name="notifications">
+        <div class="settings__account-section">
+            <h3 class="account__title">Account</h3>
+            <div class="account__items">
+            <!--Profile Settings Section-->
+                <button class="account__item profile-settings">
+                   <div class="account__item__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                            <path d="M19.3744 21.4147V19.3754C19.3744 18.2937 18.9447 17.2563 18.1798 16.4914C17.415 15.7266 16.3776 15.2969 15.2959 15.2969H9.17813C8.09644 15.2969 7.05905 15.7266 6.29418 16.4914C5.52931 17.2563 5.09961 18.2937 5.09961 19.3754V21.4147" stroke="#D98A54" stroke-width="2.03926" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12.2357 11.2176C14.4882 11.2176 16.3143 9.39157 16.3143 7.13906C16.3143 4.88656 14.4882 3.06055 12.2357 3.06055C9.98324 3.06055 8.15723 4.88656 8.15723 7.13906C8.15723 9.39157 9.98324 11.2176 12.2357 11.2176Z" stroke="#D98A54" stroke-width="2.03926" stroke-linecap="round" stroke-linejoin="round"/>
+                          </svg>
+                    </div>
+                    <div class="account__item__text">
+                        <p class="account__item__title">Profile Settings</p> 
+                        <p class="account__item__subtitle">Name, email, photo</p>
+                    </div>  
+                </button>
+
+            <!--Business Info Section-->
+                <button class="account__item">
+                    <div class="account__item__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                            <path d="M15.2945 21.4107V16.3126C15.2945 16.0422 15.1871 15.7828 14.9959 15.5916C14.8047 15.4004 14.5453 15.293 14.2749 15.293H10.1964C9.92596 15.293 9.66662 15.4004 9.4754 15.5916C9.28418 15.7828 9.17676 16.0422 9.17676 16.3126V21.4107" stroke="#6C8C3B" stroke-width="2.03926" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M18.1246 10.5102C17.9121 10.3067 17.6292 10.1932 17.3349 10.1932C17.0407 10.1932 16.7578 10.3067 16.5452 10.5102C16.0711 10.9625 15.441 11.2147 14.7858 11.2147C14.1306 11.2147 13.5006 10.9625 13.0265 10.5102C12.814 10.307 12.5313 10.1937 12.2373 10.1937C11.9433 10.1937 11.6606 10.307 11.4481 10.5102C10.9739 10.9627 10.3437 11.2152 9.68821 11.2152C9.03276 11.2152 8.4025 10.9627 7.92833 10.5102C7.71577 10.3067 7.43287 10.1932 7.13862 10.1932C6.84437 10.1932 6.56148 10.3067 6.34892 10.5102C5.89095 10.9473 5.28674 11.1982 4.65391 11.2143C4.02109 11.2304 3.40491 11.0105 2.92532 10.5973C2.44572 10.1841 2.13703 9.60724 2.05932 8.97899C1.98162 8.35075 2.14045 7.71606 2.50492 7.19847L5.45063 2.93234C5.63753 2.65655 5.88916 2.43074 6.18351 2.27468C6.47786 2.11862 6.80597 2.03705 7.13913 2.03711H17.3354C17.6676 2.03698 17.9948 2.11801 18.2885 2.27314C18.5823 2.42827 18.8337 2.65282 19.0209 2.92725L21.9727 7.20153C22.3372 7.71953 22.4959 8.3547 22.4177 8.98327C22.3395 9.61184 22.0301 10.1888 21.5497 10.6017C21.0694 11.0146 20.4525 11.2338 19.8193 11.2167C19.1861 11.1996 18.582 10.9474 18.1246 10.5092" stroke="#6C8C3B" stroke-width="2.03926" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M4.07812 11.1641V19.3721C4.07813 19.9129 4.29297 20.4316 4.67541 20.8141C5.05785 21.1965 5.57654 21.4113 6.11738 21.4113H18.3529C18.8938 21.4113 19.4125 21.1965 19.7949 20.8141C20.1773 20.4316 20.3922 19.9129 20.3922 19.3721V11.1641" stroke="#6C8C3B" stroke-width="2.03926" stroke-linecap="round" stroke-linejoin="round"/>
+                          </svg>
+                    </div>
+                    <div class="account__item__text">
+                        <p class="account__item__title">Business Info</p> 
+                        <p class="account__item__subtitle">Shop details & hours</p>
+                    </div>  
+                </button>
+            </div> 
         </div>
-        <div class="preferences__item">
-            <label for="dark-mode">Dark Mode</label>
-            <input type="checkbox" id="dark-mode" name="dark-mode">
+
+
+        <div class="settings__preferences-section">
+            <h2 class="preferences__title">Preferences</h2>
+            <div class="preferences__item">
+                <label for="notifications">Notifications</label>
+                <input type="checkbox" id="notifications" name="notifications">
+            </div>
+            <div class="preferences__item">
+                <label for="dark-mode">Dark Mode</label>
+                <input type="checkbox" id="dark-mode" name="dark-mode">
+            </div>
         </div>
     </div> 
 </body>

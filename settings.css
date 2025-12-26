@@ -1,0 +1,43 @@
+
+:root {
+    --primary-color: #D98A54;
+    --secondary-color: #6C8C3B;
+    --neutral-color: #F3C650;
+    --primary-background-color: #F1EDE4;
+    --secondary-background-color: #EFEFEF;
+    --primary-text-color: #2c2c2c;
+    --secondary-text-color: #9E9E9E;
+    --primary-font: 'Nunito', sans-serif;
+    --secondary-font: 'Poppins', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: var(--primary-font);
+    background-color: var(--primary-background-color);
+}
+
+.settings__avatar-section {
+    display: flex;
+    padding: 0 22.246px;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 22.246px;
+    background: #FFFFFF;
+}
+
+.avatar {
+    display: flex;
+    align-items: center;
+    gap: 16.685px;
+}
+
+.avatar__edit-button {
+    padding: 10px 20px;
+    background-color: #FFFFFF;
+    color: var(--primary-color);
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 400;
+}

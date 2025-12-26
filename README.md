@@ -1,4 +1,4 @@
-# FINLITE-
+# FINLITE
 FINLITE is for people who don’t have time for complex apps. They want quick, simple and reliable money tracking methods. Finlite is a simple and human-friendly digital notebook that helps small business owners record sales and expenses quickly, see daily profit instantly and export a clean rreport at the day's end. 
 
 ## Core Features

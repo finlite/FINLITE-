@@ -3,6 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css"
+    />
     <link rel="stylesheet" href="settings.css">
     <title>Document</title>
 </head>
@@ -18,11 +28,11 @@
         <div class="settings__avatar-section">
             <div class="avatar">
                 <div class="avatar__image__container">
-                    <p class="avatar__image"></p>
+                    <p class="avatar__image">BM</p>
                 </div>
                 <div class="avatar__text">
                     <h3 class="avatar__name">Avatar</h3>
-                    <p class="avatar__email"></p>
+                    <p class="avatar__email">chidinduoguejiofor@gmail.com</p>
                 </div>               
             </div>
             <button class="avatar__edit-button">Edit</button>
@@ -30,17 +40,26 @@
 
         <h4 class="settings__quick-actions__header">Quick Actions</h4>
         <div class="settings__quick-actions">
-            <div class="settings__quick-actions-card analytics">
-                <span class="quick-actions__icon analytics__icon"></span>
+            <div class="settings__quick-actions-card analytics-card">
+                <div class="quick-actions-card__icon--primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M3 3V19C3 19.5304 3.21071 20.0391 3.58579 20.4142C3.96086 20.7893 4.46957 21 5 21H21" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M18 17V9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M13 17V5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8 17V14" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg> 
+                </div>
                 <div class="quick-actions__text">
-                    <h3 class="quick-actions__title">Analytics</h3>
+                    <p class="quick-actions__title">Analytics</p>
                     <p class="quick-actions__subtitle">View insights</p>
                 </div>
             </div>
 
             <!--This is the share quick-action section-->
-            <div class="settings__quick-actions-card share">
-                <span class="quick-actions__icon share__icon"></span>
+            <div class="settings__quick-actions-card share-card">
+                <div class="quick-actions-card__icon--primary">
+                    <i class="ph ph-share-network"></i>
+                </div>
                 <div class="quick-actions__text">
                     <h3 class="quick-actions__title">Share Data</h3>
                     <p class="quick-actions__subtitle">Send to email</p>
@@ -48,8 +67,10 @@
             </div>
 
             <!--This is the reminder quick-action section-->
-            <div class="settings__quick-actions-card reminder">
-                <span class="quick-actions__icon reminder__icon"></span>
+            <div class="settings__quick-actions-card reminder-card">
+                <div class="quick-actions-card__icon--primary">
+                    <i class="ph ph-share-network"></i>
+                </div>
                 <div class="quick-actions__text">
                     <h3 class="quick-actions__title">Set Reminder</h3>
                     <p class="quick-actions__subtitle">Daily alerts</p>
@@ -57,11 +78,23 @@
             </div>
 
             <!--This is the 2nd analytics quick-action section-->
-            <div class="settings__quick-actions-card analytics2">
-                <span class="quick-actions__icon analytics2__icon"></span>
+            <div class="settings__quick-actions-card analytics2-card">
+                <div class="quick-actions-card__icon--secondary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23" fill="none">
+                        <g clip-path="url(#clip0_551_1649)">
+                          <path d="M14.7588 6.45508H20.2931V11.9894" stroke="#6C8C3B" stroke-width="1.84478" stroke-linecap="round" stroke-linejoin="round"/>
+                          <path d="M20.2926 6.45508L12.4522 14.2954L7.84027 9.68345L1.84473 15.679" stroke="#6C8C3B" stroke-width="1.84478" stroke-linecap="round" stroke-linejoin="round"/>
+                        </g>
+                        <defs>
+                          <clipPath id="clip0_551_1649">
+                            <rect width="22.1374" height="22.1374" fill="white"/>
+                          </clipPath>
+                        </defs>
+                    </svg>
+                </div>
                 <div class="quick-actions__text">
-                    <h3 class="quick-actions__title">Analytics</h3>
-                    <p class="quick-actions__subtitle">View trends</p>
+                    <h3 class="quick-actions__title analytics2">Analytics</h3>
+                    <p class="quick-actions__subtitle analytics2-sub">View trends</p>
                 </div>
             </div>
         </div>
@@ -78,7 +111,7 @@
                           </svg>
                     </div>
                     <div class="account__item__text">
-                        <p class="account__item__title">Profile Settings</p> 
+                        <h4 class="account__item__title">Profile Settings</h4> 
                         <p class="account__item__subtitle">Name, email, photo</p>
                     </div>  
                 </button>

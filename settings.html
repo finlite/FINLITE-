@@ -38,7 +38,7 @@
             <button class="avatar__edit-button">Edit</button>
         </div>
 
-        <h4 class="settings__quick-actions__header">Quick Actions</h4>
+        <h4 class="settings__header">Quick Actions</h4>
         <div class="settings__quick-actions">
             <div class="settings__quick-actions-card analytics-card">
                 <div class="quick-actions-card__icon--primary">
@@ -69,7 +69,12 @@
             <!--This is the reminder quick-action section-->
             <div class="settings__quick-actions-card reminder-card">
                 <div class="quick-actions-card__icon--primary">
-                    <i class="ph ph-share-network"></i>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23" fill="none">
+                        <path d="M7.37793 1.84375V5.53332" stroke="white" stroke-width="1.84478" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M14.7598 1.84375V5.53332" stroke="white" stroke-width="1.84478" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M17.5249 3.68945H4.61139C3.59254 3.68945 2.7666 4.51539 2.7666 5.53424V18.4477C2.7666 19.4666 3.59254 20.2925 4.61139 20.2925H17.5249C18.5437 20.2925 19.3697 19.4666 19.3697 18.4477V5.53424C19.3697 4.51539 18.5437 3.68945 17.5249 3.68945Z" stroke="white" stroke-width="1.84478" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2.7666 9.22266H19.3697" stroke="white" stroke-width="1.84478" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
                 </div>
                 <div class="quick-actions__text">
                     <h3 class="quick-actions__title">Set Reminder</h3>
@@ -100,9 +105,9 @@
         </div>
         
         <div class="settings__account-section">
-            <h3 class="account__title">Account</h3>
+            <h3 class="settings__header">Account</h3>
             <div class="account__items">
-            <!--Profile Settings Section-->
+             <!--Profile Settings Section-->
                 <button class="account__item profile-settings">
                    <div class="account__item__icon--primary">
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
@@ -111,12 +116,12 @@
                           </svg>
                     </div>
                     <div class="account__item__text">
-                        <h4 class="account__item__title neutral-title">Profile Settings</h4> 
+                        <p class="account__item__title neutral-title">Profile Settings</p> 
                         <p class="account__item__subtitle neutral-subtitle">Name, email, photo</p>
                     </div>  
                 </button>
 
-            <!--Business Info Section-->
+             <!--Business Info Section-->
                 <button class="account__item">
                     <div class="account__item__icon--secondary">
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
@@ -131,20 +136,91 @@
                     </div>  
                 </button>
             </div> 
-        </div>
 
 
-        <div class="settings__preferences-section">
-            <h2 class="preferences__title">Preferences</h2>
-            <div class="preferences__item">
-                <label for="notifications">Notifications</label>
-                <input type="checkbox" id="notifications" name="notifications">
+            <h3 class="settings__header">Preferences</h3>
+            <div class="account__items">
+             <!--Language Settings Section-->
+                <button class="account__item button--profile-settings">
+                   <div class="account__item__icon--neutral">
+                    <i class="ph ph-globe"></i>
+                    </div>
+                    <div class="account__item__text">
+                        <p class="account__item__title neutral-title">Language</p> 
+                    </div>
+                    <i class="ph ph-caret-right"></i>  
+                </button>
+
+             <!--Notifications Section-->
+                <button class="account__item button--notifications">
+                    <div class="account__item__icon--neutral">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                            <path d="M10.4717 21.416C10.6507 21.726 10.9081 21.9835 11.2182 22.1624C11.5282 22.3414 11.8799 22.4357 12.2378 22.4357C12.5958 22.4357 12.9475 22.3414 13.2575 22.1624C13.5676 21.9835 13.825 21.726 14.004 21.416" stroke="#F3C650" stroke-width="2.03945" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M3.32599 15.6299C3.19278 15.7759 3.10487 15.9575 3.07295 16.1525C3.04104 16.3476 3.06649 16.5477 3.14622 16.7286C3.22595 16.9094 3.35652 17.0632 3.52204 17.1712C3.68756 17.2792 3.88091 17.3368 4.07855 17.3369H20.3942C20.5918 17.337 20.7852 17.2796 20.9508 17.1718C21.1165 17.064 21.2472 16.9104 21.3271 16.7297C21.4071 16.549 21.4328 16.3489 21.4011 16.1538C21.3694 15.9588 21.2818 15.7771 21.1488 15.6309C19.7926 14.2329 18.3547 12.7471 18.3547 8.15938C18.3547 6.53669 17.7101 4.98046 16.5627 3.83304C15.4153 2.68563 13.8591 2.04102 12.2364 2.04102C10.6137 2.04102 9.05745 2.68563 7.91003 3.83304C6.76262 4.98046 6.11801 6.53669 6.11801 8.15938C6.11801 12.7471 4.67917 14.2329 3.32599 15.6299Z" stroke="#F3C650" stroke-width="2.03945" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="account__item__text">
+                        <p class="account__item__title neutral-title">Notifications</p> 
+                        <p class="account__item__subtitle neutral-subtitle">Alarms & reminders</p>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider"></span>
+                    </label>  
+                </button>
+
+                <!--Appearances Section-->
+                <button class="account__item button--appearances">
+                    <div class="account__item__icon--primary">
+                        <i class="ph ph-palette"></i>
+                    </div>
+                    <div class="account__item__text">
+                        <p class="account__item__title neutral-title">Appearances</p> 
+                        <p class="account__item__subtitle neutral-subtitle">Theme & display</p>
+                    </div>  
+                </button>
             </div>
-            <div class="preferences__item">
-                <label for="dark-mode">Dark Mode</label>
-                <input type="checkbox" id="dark-mode" name="dark-mode">
+
+
+            <h3 class="settings__header">Data & Privacy</h3>
+            <div class="account__items">
+             <!--Help & Support Section-->
+                <button class="account__item button--help">
+                   <div class="account__item__icon--secondary">
+                     <i class="ph ph-question"></i>
+                   </div>
+                    <div class="account__item__text">
+                        <p class="account__item__title neutral-title">Help & Support</p> 
+                        <p class="account__item__subtitle neutral-subtitle">Get help anytime</p>
+                    </div>  
+                </button>
+
+             <!--Privacy Section-->
+                <button class="account__item button--privacy">
+                    <div class="account__item__icon--primary">
+                        <i class="ph ph-lock-simple"></i>
+                    </div>
+                    <div class="account__item__text">
+                        <p class="account__item__title neutral-title">Privacy & Security</p> 
+                    </div>
+                    <i class="ph ph-caret-right"></i>  
+                </button>
+
+                <!--About Section-->
+                <button class="account__item button--about">
+                    <div class="account__item__icon--secondary">
+                        <i class="ph ph-info"></i>
+                    </div>
+                    <div class="account__item__text">
+                        <p class="account__item__title neutral-title">About Finlite</p> 
+                    </div>
+                    <i class="ph ph-caret-right"></i>  
+                </button>
             </div>
         </div>
-    </div> 
+
+        <button class="settings__logout-button"><i class="ph ph-sign-out"></i>Logout</button>
+    </div>
+    <p class="version-type">Version 1.0.0</p>
 </body>
 </html>

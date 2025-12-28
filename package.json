@@ -1,0 +1,17 @@
+{
+  "name": "finlite-",
+  "version": "1.0.0",
+  "description": "FINLITE is for people who don’t have time for complex apps. They want quick, simple and reliable money tracking methods. Finlite is a simple and human-friendly digital notebook that helps small business owners record sales and expenses quickly, see daily profit instantly and export a clean rreport at the day's end.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "tailwindcss -i ./src/input.css -o ./src/output.css --watch",
+    "prettier": "npx prettier --write **/*.html"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.18",
+    "tailwindcss": "^4.1.18"
+  }
+}

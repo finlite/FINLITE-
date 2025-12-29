@@ -6,7 +6,9 @@
     --primary-background-color: #F1EDE4;
     --secondary-background-color: #EFEFEF;
     --primary-text-color: #2c2c2c;
+    --primary-text-color-light: #FFFFFF;
     --secondary-text-color: #9E9E9E;
+    --secondary-text-color-dark: #4b4b4b;
     --primary-font: 'Nunito', monospace;
     --secondary-font: 'Poppins', sans-serif;
 }
@@ -24,10 +26,11 @@ body {
 
 .settings__avatar-section {
     display: flex;
-    padding: 0 22.246px;
+    padding: 0 55.616px;
+    height: 200px;
     justify-content: space-between;
     align-items: center;
-    border-radius: 22.246px;
+    border-radius: 55.616px;
     background: #FFFFFF;
 }
 
@@ -47,25 +50,52 @@ body {
     justify-content: center;
     align-items: center;
     color: #FFFFFF;
-    font-size: 32px;
+    font-family: var(--secondary-font);
+    font-size: 30px;
     font-weight: 700;
+}
+
+.avatar__text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.avatar__name {
+    margin: 0;
+    line-height: 1.2;
+    font-family: var(--secondary-font);
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--primary-text-color);
+}
+
+.avatar__email {
+    margin: 0;
+    line-height: 1.2;
+    font-size: 20px;
+    font-family: var(--secondary-font);
+    color: var(--secondary-text-color);
 }
 
 .avatar__edit-button {
     padding: 10px 20px;
     background-color: #FFFFFF;
     color: var(--primary-color);
+    font-family: var(--secondary-font);
     border: none;
     cursor: pointer;
-    font-size: 20px;
-    font-weight: 500;
+    font-size: 22px;
+    font-weight: 600;
 }
 
 .settings__header {
-    font-size: 20px;
+    font-size: 28px;
     font-weight: 600;
-    color: #4b4b4b;
-    margin-top: 50px;
+    color: var(--secondary-text-color-dark);
+    margin-top: 46px;
+    line-height: 1.2;
 }
 
 .settings__quick-actions {
@@ -295,4 +325,17 @@ input:checked + .slider:before {
     text-align: center;
     color: var(--secondary-text-color);
     font-size: 16px;
+}
+
+.about__content {
+    display: flex;
+    width: 100%;
+    padding: 26.696px 26.696px 0 26.696px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    border-radius: 26.696px;
+    box-shadow: 0 1.112px 3.337px 0 rgba(0, 0, 0, 0.10), 0 1.112px 2.225px -1.112px rgba(0, 0, 0, 0.10);
+    background-color: #FFFFFF;
+    color: var(--primary-text-color);
 }

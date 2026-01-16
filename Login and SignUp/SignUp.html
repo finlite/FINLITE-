@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signup</title>
+    <link rel="stylesheet" href="../src/input.css" />
+    <link rel="stylesheet" href="../src/output.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css"
+    />
+  </head>
+  <body>
+    <main>
+      <section
+        class="overflow-x-hidden w-full max-w-full bg-bg-primary min-h-screen flex justify-center items-center"
+      >
+        <form
+          id="login"
+          class="w-xl md:p-6 p-4 mx-5 md:mx-auto md:my-14 my-5 bg-white shadow-xl rounded-xl"
+        >
+          <h1 class="text-center text-black font-bold text-2xl my-3">
+            Create Your Account
+          </h1>
+          <p class="text-center font-medium">
+            Your Journey to a better wealth starts here.
+          </p>
+          <div class="flex flex-col gap-1 my-3">
+            <label for="text" class="text-left">Full Name</label>
+            <input
+              type="text"
+              class="outline-none border border-primary rounded-xl px-4 py-2 block w-full placeholder::text-black"
+              placeholder="Full Name"
+            />
+          </div>
+          <div class="flex flex-col gap-1 my-3">
+            <label for="email" class="text-left">Password</label>
+            <input
+              type="email"
+              class="outline-none border border-primary rounded-xl px-4 py-2 block w-full placeholder::text-black"
+              placeholder="Email Address"
+            />
+          </div>
+          <div class="flex flex-col gap-1 my-3">
+            <label for="password" class="text-left">Password</label>
+            <div class="relative">
+              <input
+                id="password"
+                type="password"
+                placeholder="Password"
+                class="w-full border border-primary outline-none rounded-xl px-4 py-2"
+              />
+
+              <i
+                class="ph ph-eye absolute right-3 top-1/2 -translate-y-1/2"
+              ></i>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-1 my-3">
+            <label for="confirm-password" class="text-left">
+              Confirm Password
+            </label>
+
+            <div class="relative">
+              <input
+                id="confirm-password"
+                type="password"
+                placeholder="Confirm Password"
+                class="w-full border border-primary outline-none rounded-xl px-4 py-2"
+              />
+
+              <i
+                class="ph ph-eye absolute right-3 top-1/2 -translate-y-1/2"
+              ></i>
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            class="py-2 w-full bg-primary my-3 text-white font-semibold text-[16px] rounded-xl"
+          >
+            Sign Up
+          </button>
+
+          <p class="text-center text-black font-normal">Or Continue With</p>
+          <div class="flex flex-row gap-2 mt-1 mb-2">
+            <button
+              type="submit"
+              class="py-2 w-full border border-gray-300 my-3 text-black font-semibold rounded-xl md:text-[16px] text-[14px] flex justify-center items-center md:gap-2 gap-1"
+            >
+              <img
+                src="Images and Logo/devicon_google.png"
+                alt="Google"
+                class="md:w-8 md:h-8 w-6 h-6"
+              />
+              Google
+            </button>
+            <button
+              type="submit"
+              class="py-2 w-full border border-gray-300 my-3 text-black font-semibold rounded-xl md:text-[16px] text-[14px] flex justify-center items-center md:gap-2 gap-1"
+            >
+              <img
+                src="Images and Logo/fontisto_facebook.png"
+                alt="facebook"
+                class="md:w-8 md:h-8 w-6 h-6"
+              />
+              Facebook
+            </button>
+            <button
+              type="submit"
+              class="py-2 w-full border border-gray-300 my-3 text-black font-semibold rounded-xl md:text-[16px] text-[14px] flex justify-center items-center md:gap-2 gap-1"
+            >
+              <img
+                src="Images and Logo/streamline-logos_apple-logo-solid.png"
+                alt="Apple"
+                class="md:w-8 md:h-8 w-6 h-6"
+              />
+              Apple
+            </button>
+          </div>
+          <p class="text-center text-black font-normal">
+            By clicking on the Sign Up button, you accept our
+            <a href="#" class="text-black font-bold"
+              >Terms and Privacy Policy.</a
+            >
+          </p>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>

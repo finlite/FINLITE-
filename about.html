@@ -13,11 +13,41 @@
       type="text/css"
       href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="settings.css">
     <title>About</title>
 </head>
 <body>
-    <div>
+    <nav class="nav-bar">
+        <div class="nav-bar__brand">
+            <img src="Assets/FINLITE logo.png" alt="Finlite Logo" class="nav-bar__logo">
+            <h2 class="nav-bar__logo-text">FINLITE</h2>
+        </div>
+    
+        <ul class="nav-bar__items">
+            <li class="nav-bar__item">
+                <a href="dashboard.html">Dashboard</a>
+            </li>
+            <li class="nav-bar__item">
+                <a href="transactions.html">Transactions</a>
+            </li>
+            <li class="nav-bar__item">
+                <a href="settings.html">Settings</a>
+            </li>
+            <li class="nav-bar__item">
+                <a href="about.html" class="active">About Us</a>
+            </li>
+            <li class="nav-bar__item">
+                <a href="report.html">Report</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="about__content about-header">
         <svg width="68" height="76" viewBox="0 0 68 76" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
             <rect width="68" height="76" fill="url(#pattern0_703_2025)"/>
             <defs>
@@ -26,21 +56,22 @@
             </pattern>
             <image id="image0_703_2025" width="280" height="205" preserveAspectRatio="none" xlink:href="data:image/png;base64,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"/>
             </defs>
-            </svg>
-            <h1>About Us</h1>       
+        </svg>
+        <h1>About Us</h1>       
     </div>
 
     <div class="about__content">
         <h3 class="settings__header">Who We Are</h3>
         <h3 class="settings__header">A Digital Notebook for Everyday Business Owners</h3>
-        <p>FinLite is a people-first financial tool built for African small businesses to easily track 
+        <p class="about__content-text">
+            FinLite is a people-first financial tool built for African small businesses to easily track 
             daily sales, expenses, and profit. Designed around real shop owners, market traders, and POS
             operators, it reflects how local businesses actually work. By removing complex fintech                 interfaces, 
             FinLite delivers a clear, familiar, and practical experience that helps everyday business 
             owners stay organized, make better decisions, and run their businesses with 
             confidence.
          </p>
-        <p>
+        <p class="about__content-text">
             FinLite was built with them in mind. Real people. Real businesses. Real solutions.
         </p>
     </div>
@@ -48,7 +79,7 @@
     <div>
         <h3 class="settings__header">Our Mission</h3>
         <div class="about__content">
-            <p>
+            <p class="about__content-text">
                 At FinLite, our mission is to empower African small business owners with simple, effective 
                 financial tools that help them thrive. We believe that by providing accessible solutions 
                 tailored to their unique needs, we can support entrepreneurs in managing their finances, 
@@ -66,7 +97,7 @@
     <div>
         <h3 class="settings__header">Our Vision</h3>
         <div class="about__content">
-            <p>
+            <p class="about__content-text">
                 Our vision is to be the leading financial management solution for small business owners in 
                 Africa, recognized for our commitment to simplicity, accessibility, and user-centric design. 
                 We aspire to create a world where every small business owner has the tools and resources they 
@@ -89,7 +120,7 @@
     <div>
         <h3 class="settings__header">Our Story</h3>
         <div class="about__content">
-            <p>
+            <p class="about__content-text">
                 FinLite was born out of a deep understanding of the challenges faced by small business owners 
                 in Africa. Our journey began when our founders, who have firsthand experience in the local 
                 business landscape, recognized the need for a simple and effective financial management tool 

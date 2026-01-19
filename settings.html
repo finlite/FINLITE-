@@ -13,11 +13,42 @@
       type="text/css"
       href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="settings.css">
     <title>Settings</title>
 </head>
 <body>
    <div class="settings__container">
+
+    <nav class="nav-bar">
+        <div class="nav-bar__brand">
+            <img src="Assets/FINLITE logo.png" alt="Finlite Logo" class="nav-bar__logo">
+            <h2 class="nav-bar__logo-text">FINLITE</h2>
+        </div>
+    
+        <ul class="nav-bar__items">
+            <li class="nav-bar__item">
+                <a href="dashboard.html">Dashboard</a>
+            </li>
+            <li class="nav-bar__item">
+                <a href="transactions.html">Transactions</a>
+            </li>
+            <li class="nav-bar__item">
+                <a href="settings.html" class="active">Settings</a>
+            </li>
+            <li class="nav-bar__item">
+                <a href="about.html">About Us</a>
+            </li>
+            <li class="nav-bar__item">
+                <a href="report.html">Report</a>
+            </li>
+        </ul>
+    </nav>
+
     <!--This is the settings header-->
     <div class="settings__header">
         <h1 class="settings__title">Settings</h1>
@@ -207,7 +238,7 @@
                 </button>
 
                 <!--About Section-->
-                <button class="account__item button--about">
+                <button class="account__item button--about" onclick="window.location.href='about.html'">
                     <div class="account__item__icon--secondary">
                         <i class="ph ph-info"></i>
                     </div>
@@ -219,7 +250,7 @@
             </div>
         </div>
 
-        <button class="settings__logout-button"><i class="ph ph-sign-out"></i>Logout</button>
+        <button class="settings__logout-button" onclick="window.location.href='Login and Signup/Signup.html'"><i class="ph ph-sign-out"></i>Logout</button>
     </div>
     <p class="version-type">Version 1.0.0</p>
 </body>

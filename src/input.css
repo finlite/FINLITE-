@@ -1,18 +1,21 @@
 @import "tailwindcss";
 
 :root {
-  --primary-color: #D98A54;
-  --secondary-color: #6C8C3B;
-  --notifications-cta: #F3C650;
+  --primary-color: #d98a54;
+  --secondary-color: #6c8c3b;
+  --notifications-cta: #f3c650;
 
-  --primary-background-color: #F1EDE4;
-  --secondary-background-color: #EFEFEF;
+  --primary-background-color: #f1ede4;
+  --secondary-background-color: #efefef;
 
   --primary-text-color: #2c2c2c;
-  --secondary-text-color: #9E9E9E;
+  --secondary-text-color: #9e9e9e;
 
-  --primary-font: 'Nunito', monospace;
-  --secondary-font: 'Poppins', sans-serif;
+  --primary-font: "Nunito", monospace;
+  --secondary-font: "Poppins", sans-serif;
+
+  --custom-shadow:
+    0px 2.78px 5.56px -2.78px #0000001a, 0px 2.78px 8.34px 0px #0000001a;
 }
 
 @theme {
@@ -28,4 +31,12 @@
 
   --font-primary: var(--primary-font);
   --font-secondary: var(--secondary-font);
+
+  --drop-shadow: var(--custom-shadow);
+}
+
+@layer components {
+  .active-tab {
+    color: var(--color-primary);
+  }
 }

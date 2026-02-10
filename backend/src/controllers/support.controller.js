@@ -1,8 +1,8 @@
-const db = require('../db');
+const db = require('../config/database');
 
 exports.createSupportTicket = async (req, res) => {
     const { full_name, email, subject, message } = req.body;
-    const user_id = req.user.user_id; 
+    const user_id = req.user.user_id;
 
     try {
         const [result] = await db.execute(

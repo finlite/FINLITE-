@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+html {
+  font-size: 80%;
+}
+
 :root {
   --primary-color: #d98a54;
   --secondary-color: #6c8c3b;
@@ -16,6 +20,16 @@
 
   --custom-shadow:
     0px 2.78px 5.56px -2.78px #0000001a, 0px 2.78px 8.34px 0px #0000001a;
+
+  --card-bg: #ffffff;
+}
+
+[data-theme="dark"] {
+  --primary-background-color: #1a1a2e;
+  --secondary-background-color: #16213e;
+  --primary-text-color: #e0e0e0;
+  --secondary-text-color: #8a8a9a;
+  --card-bg: #1e2a3a;
 }
 
 @theme {
@@ -33,6 +47,38 @@
   --font-secondary: var(--secondary-font);
 
   --drop-shadow: var(--custom-shadow);
+}
+
+body {
+  color: var(--primary-text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+[data-theme="dark"] .bg-white,
+[data-theme="dark"] .bg-bg-primary {
+  background-color: var(--primary-background-color) !important;
+}
+
+[data-theme="dark"] .shadow-xl {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+}
+
+[data-theme="dark"] .text-black {
+  color: var(--primary-text-color) !important;
+}
+
+[data-theme="dark"] input,
+[data-theme="dark"] label {
+  color: var(--primary-text-color);
+}
+
+[data-theme="dark"] input {
+  background-color: var(--card-bg);
+  border-color: var(--primary-color) !important;
+}
+
+[data-theme="dark"] form {
+  background-color: var(--card-bg) !important;
 }
 
 @layer components {

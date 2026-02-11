@@ -236,8 +236,8 @@
                         </label>
                     </button>
 
-                    <!--Appearances Section-->
-                    <button class="account__item button--appearances">
+                    <!--Appearances Section with Theme Toggle-->
+                    <div class="account__item button--appearances">
                         <div class="account__item__icon--primary">
                             <i class="ph ph-palette"></i>
                         </div>
@@ -245,7 +245,15 @@
                             <p class="account__item__title neutral-title">Appearances</p>
                             <p class="account__item__subtitle neutral-subtitle">Theme & display</p>
                         </div>
-                    </button>
+                        <div class="theme-toggle-container">
+                            <button id="theme-light" class="theme-btn active" type="button">
+                                <i class="ph ph-sun"></i> Light
+                            </button>
+                            <button id="theme-dark" class="theme-btn" type="button">
+                                <i class="ph ph-moon"></i> Dark
+                            </button>
+                        </div>
+                    </div>
                 </div>
 
 
@@ -290,6 +298,7 @@
         </div>
         <p class="version-type">Version 1.0.0</p>
 
+        <script src="../src/scripts/theme.js"></script>
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
         <script type="module" src="../src/scripts/settings.js"></script>
 </body>

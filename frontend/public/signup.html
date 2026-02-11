@@ -19,121 +19,119 @@
     <section
       class="overflow-x-hidden w-full max-w-full bg-bg-primary min-h-screen flex justify-center items-center relative px-4">
       <!-- Back arrow -->
-      <a id="back-icon" href="login.html" class="absolute top-6 left-6 text-black hover:text-primary transition-colors">
-        <i class="ph ph-arrow-left text-4xl"></i>
+      <a id="back-icon" href="login.html" class="absolute top-4 left-4 text-black hover:text-primary transition-colors">
+        <i class="ph ph-arrow-left text-2xl"></i>
       </a>
 
       <!-- Form container -->
-      <form id="signup-form" class="w-xl md:p-6 p-4 mx-5 md:mx-auto md:my-14 my-5 bg-white shadow-xl rounded-xl">
+      <form id="signup-form"
+        class="w-full max-w-md md:p-5 p-4 mx-4 md:mx-auto md:my-8 my-4 bg-white shadow-xl rounded-xl">
         <!-- Finlite's Logo -->
-        <div class="mx-auto w-14 h-16 mb-8">
+        <div class="mx-auto w-10 h-12 mb-4">
           <img src="../src/assets/logo.png" alt="finite logo" class="w-full h-full">
         </div>
 
         <!-- Create Account heading -->
-        <h1 id="create-accountHeading" class="text-center text-black font-semibold text-2xl my-3">
+        <h1 id="create-accountHeading" class="text-center text-black font-semibold text-lg my-1">
           Create Your Account
         </h1>
 
         <!-- Create Account description -->
-        <p id="create-accountSlogan" class="text-center font-normal">
+        <p id="create-accountSlogan" class="text-center font-normal text-sm mb-3">
           Your Journey to a better wealth starts here.
         </p>
 
         <!-- User's full name -->
-        <div class="flex flex-col gap-1 my-3">
-          <label for="fullName" class="text-left">Full Name</label>
+        <div class="flex flex-col gap-1 my-2">
+          <label for="fullName" class="text-left text-sm">Full Name</label>
           <input id="fullName" type="text"
-            class="outline-none border border-primary rounded-xl px-4 py-2 block w-full placeholder::text-black"
+            class="outline-none border border-primary rounded-lg px-3 py-1.5 block w-full text-sm placeholder::text-black"
             placeholder="Full Name" />
         </div>
 
         <!-- User's email -->
-        <div class="flex flex-col gap-1 my-3">
-          <label for="email" class="text-left">Email</label>
+        <div class="flex flex-col gap-1 my-2">
+          <label for="email" class="text-left text-sm">Email</label>
           <input id="email" type="email"
-            class="outline-none border border-primary rounded-xl px-4 py-2 block w-full placeholder::text-black"
+            class="outline-none border border-primary rounded-lg px-3 py-1.5 block w-full text-sm placeholder::text-black"
             placeholder="Email Address" />
         </div>
 
         <!-- User's phone number -->
-        <div class="flex flex-col gap-1 my-3">
-          <label for="phone" class="text-left">Phone Number</label>
+        <div class="flex flex-col gap-1 my-2">
+          <label for="phone" class="text-left text-sm">Phone Number</label>
           <input id="phone" type="tel"
-            class="outline-none border border-primary rounded-xl px-4 py-2 block w-full placeholder::text-black"
+            class="outline-none border border-primary rounded-lg px-3 py-1.5 block w-full text-sm placeholder::text-black"
             placeholder="Phone Number" />
         </div>
 
         <!-- User's new password -->
-        <div class="flex flex-col gap-1 my-3">
-          <label for="signup-password" class="text-left">Password</label>
+        <div class="flex flex-col gap-1 my-2">
+          <label for="signup-password" class="text-left text-sm">Password</label>
           <div class="relative">
             <input id="signup-password" type="password" placeholder="Password"
-              class="w-full border border-primary outline-none rounded-xl px-4 py-2" />
-
-            <!-- Visibility icon for toggling -->
+              class="w-full border border-primary outline-none rounded-lg px-3 py-1.5 text-sm" />
             <!-- Visibility icon for toggling -->
             <i id="toggle-signup-password"
-              class="ph ph-eye absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer"></i>
+              class="ph ph-eye absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-sm"></i>
           </div>
         </div>
 
         <!-- Password confirmation -->
-        <div class="flex flex-col gap-1 my-3">
-          <label for="confirm-password" class="text-left">
+        <div class="flex flex-col gap-1 my-2">
+          <label for="confirm-password" class="text-left text-sm">
             Confirm Password
           </label>
 
           <div class="relative">
             <input id="confirm-password" type="password" placeholder="Confirm Password"
-              class="w-full border border-primary outline-none rounded-xl px-4 py-2" />
-            <!-- Visibility icon for toggling -->
+              class="w-full border border-primary outline-none rounded-lg px-3 py-1.5 text-sm" />
             <!-- Visibility icon for toggling -->
             <i id="toggle-confirm-password"
-              class="ph ph-eye absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer"></i>
+              class="ph ph-eye absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-sm"></i>
           </div>
         </div>
 
         <!-- Sign Up Button -->
         <button id="signup-button" type="submit"
-          class="cursor-pointer py-2 w-full bg-primary my-3 text-white font-semibold text-[16px] rounded-xl hover:bg-opacity-90 active:scale-95 transition-all duration-300 shadow-md hover:shadow-lg">
+          class="cursor-pointer py-1.5 w-full bg-primary my-2 text-white font-semibold text-sm rounded-lg hover:bg-opacity-90 active:scale-95 transition-all duration-300 shadow-md hover:shadow-lg">
           Sign Up
         </button>
 
-        <p class="text-center text-black font-normal">Or Continue With</p>
+        <p class="text-center text-black font-normal text-xs">Or Continue With</p>
         <!-- Container that holds the three other options -->
-        <div class="flex flex-row gap-2 mt-1 mb-2">
+        <div class="flex flex-row gap-2 mt-1 mb-1">
           <!-- Google option -->
           <button type="submit" id="google"
-            class="cursor-pointer py-2 w-full bg-[#D9D9D9] my-3 text-black font-semibold rounded-xl md:text-[16px] text-[14px] flex justify-center items-center md:gap-2 gap-1">
-            <img src="../src/assets/icons/devicon_google.png" alt="Google" class="md:w-8 md:h-8 w-6 h-6">
+            class="cursor-pointer py-1.5 w-full bg-[#D9D9D9] my-1 text-black font-semibold rounded-lg text-xs flex justify-center items-center gap-1">
+            <img src="../src/assets/icons/devicon_google.png" alt="Google" class="w-5 h-5">
             Google
           </button>
 
           <!-- Facebook option -->
           <button type="submit" id="facebook"
-            class="cursor-pointer py-2 w-full  my-3 text-white bg-[#0101AB] font-semibold rounded-xl md:text-[16px] text-[14px] flex justify-center items-center md:gap-2 gap-1">
-            <img src="../src/assets/icons/fontisto_facebook.png" alt="facebook" class="md:w-8 md:h-8 w-6 h-6">
+            class="cursor-pointer py-1.5 w-full my-1 text-white bg-[#0101AB] font-semibold rounded-lg text-xs flex justify-center items-center gap-1">
+            <img src="../src/assets/icons/fontisto_facebook.png" alt="facebook" class="w-5 h-5">
             Facebook
           </button>
 
           <!-- Apple Option -->
           <button type="submit" id="apple"
-            class="cursor-pointer py-2 w-full bg-black  my-3 text-white font-semibold rounded-xl md:text-[16px] text-[14px] flex justify-center items-center md:gap-2 gap-1">
-            <img src="../src/assets/icons/streamline-logos_apple-logo-solid.png" alt="Apple"
-              class="md:w-8 md:h-8 w-6 h-6">
+            class="cursor-pointer py-1.5 w-full bg-black my-1 text-white font-semibold rounded-lg text-xs flex justify-center items-center gap-1">
+            <img src="../src/assets/icons/streamline-logos_apple-logo-solid.png" alt="Apple" class="w-5 h-5">
             Apple
           </button>
         </div>
 
         <!-- Agreeing to privacy policy and signing up -->
-        <p id="terms-privacy" class="text-center text-black font-normal">
+        <p id="terms-privacy" class="text-center text-black font-normal text-xs mt-2">
           By clicking on the Sign Up button, you accept our
           <a id="policy-link" href="#" class="text-black font-bold">Terms and Privacy Policy.</a>
         </p>
       </form>
     </section>
   </main>
+  <script src="../src/scripts/theme.js"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <script type="module" src="../src/scripts/auth.js"></script>
 </body>

@@ -5,21 +5,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Signup</title>
-  <link rel="stylesheet" href="../src/styles/input.css" />
+
   <link rel="stylesheet" href="../src/styles/output.css" />
   <link rel="stylesheet" type="text/css"
     href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css" />
   <link rel="stylesheet" type="text/css"
     href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css" />
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 </head>
 
 <body>
   <main>
     <section
-      class="overflow-x-hidden w-full max-w-full bg-bg-primary min-h-screen flex justify-center items-center relative">
+      class="overflow-x-hidden w-full max-w-full bg-bg-primary min-h-screen flex justify-center items-center relative px-4">
       <!-- Back arrow -->
-      <a id="back-icon" href="login.html">
-        <i class="ph ph-arrow-left absolute text-5xl left-[85%] top-[5%]"></i>
+      <a id="back-icon" href="login.html" class="absolute top-6 left-6 text-black hover:text-primary transition-colors">
+        <i class="ph ph-arrow-left text-4xl"></i>
       </a>
 
       <!-- Form container -->
@@ -50,9 +51,17 @@
         <!-- User's email -->
         <div class="flex flex-col gap-1 my-3">
           <label for="email" class="text-left">Email</label>
-          <input type="email"
+          <input id="email" type="email"
             class="outline-none border border-primary rounded-xl px-4 py-2 block w-full placeholder::text-black"
             placeholder="Email Address" />
+        </div>
+
+        <!-- User's phone number -->
+        <div class="flex flex-col gap-1 my-3">
+          <label for="phone" class="text-left">Phone Number</label>
+          <input id="phone" type="tel"
+            class="outline-none border border-primary rounded-xl px-4 py-2 block w-full placeholder::text-black"
+            placeholder="Phone Number" />
         </div>
 
         <!-- User's new password -->
@@ -63,7 +72,9 @@
               class="w-full border border-primary outline-none rounded-xl px-4 py-2" />
 
             <!-- Visibility icon for toggling -->
-            <i id="view-password" class="ph ph-eye absolute right-3 top-1/2 -translate-y-1/2"></i>
+            <!-- Visibility icon for toggling -->
+            <i id="toggle-signup-password"
+              class="ph ph-eye absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer"></i>
           </div>
         </div>
 
@@ -77,13 +88,15 @@
             <input id="confirm-password" type="password" placeholder="Confirm Password"
               class="w-full border border-primary outline-none rounded-xl px-4 py-2" />
             <!-- Visibility icon for toggling -->
-            <i id="view-password" class="ph ph-eye absolute right-3 top-1/2 -translate-y-1/2"></i>
+            <!-- Visibility icon for toggling -->
+            <i id="toggle-confirm-password"
+              class="ph ph-eye absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer"></i>
           </div>
         </div>
 
         <!-- Sign Up Button -->
         <button id="signup-button" type="submit"
-          class="py-2 w-full bg-primary my-3 text-white font-semibold text-[16px] rounded-xl">
+          class="cursor-pointer py-2 w-full bg-primary my-3 text-white font-semibold text-[16px] rounded-xl hover:bg-opacity-90 active:scale-95 transition-all duration-300 shadow-md hover:shadow-lg">
           Sign Up
         </button>
 
@@ -92,21 +105,21 @@
         <div class="flex flex-row gap-2 mt-1 mb-2">
           <!-- Google option -->
           <button type="submit" id="google"
-            class=" py-2 w-full bg-[#D9D9D9] my-3 text-black font-semibold rounded-xl md:text-[16px] text-[14px] flex justify-center items-center md:gap-2 gap-1">
+            class="cursor-pointer py-2 w-full bg-[#D9D9D9] my-3 text-black font-semibold rounded-xl md:text-[16px] text-[14px] flex justify-center items-center md:gap-2 gap-1">
             <img src="../src/assets/icons/devicon_google.png" alt="Google" class="md:w-8 md:h-8 w-6 h-6">
             Google
           </button>
 
           <!-- Facebook option -->
           <button type="submit" id="facebook"
-            class=" py-2 w-full  my-3 text-white bg-[#0101AB] font-semibold rounded-xl md:text-[16px] text-[14px] flex justify-center items-center md:gap-2 gap-1">
+            class="cursor-pointer py-2 w-full  my-3 text-white bg-[#0101AB] font-semibold rounded-xl md:text-[16px] text-[14px] flex justify-center items-center md:gap-2 gap-1">
             <img src="../src/assets/icons/fontisto_facebook.png" alt="facebook" class="md:w-8 md:h-8 w-6 h-6">
             Facebook
           </button>
 
           <!-- Apple Option -->
           <button type="submit" id="apple"
-            class="py-2 w-full bg-black  my-3 text-white font-semibold rounded-xl md:text-[16px] text-[14px] flex justify-center items-center md:gap-2 gap-1">
+            class="cursor-pointer py-2 w-full bg-black  my-3 text-white font-semibold rounded-xl md:text-[16px] text-[14px] flex justify-center items-center md:gap-2 gap-1">
             <img src="../src/assets/icons/streamline-logos_apple-logo-solid.png" alt="Apple"
               class="md:w-8 md:h-8 w-6 h-6">
             Apple
@@ -121,6 +134,8 @@
       </form>
     </section>
   </main>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <script type="module" src="../src/scripts/auth.js"></script>
 </body>
 
 </html>

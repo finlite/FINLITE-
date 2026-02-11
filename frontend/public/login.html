@@ -5,12 +5,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Signup</title>
-  <link rel="stylesheet" href="../src/styles/input.css" />
+
   <link rel="stylesheet" href="../src/styles/output.css" />
   <link rel="stylesheet" type="text/css"
     href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css" />
   <link rel="stylesheet" type="text/css"
     href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css" />
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 </head>
 
 <body>
@@ -48,16 +49,21 @@
         <!-- Password input -->
         <div class="flex flex-col gap-1 my-3">
           <label for="login-password" class="text-left">Password</label>
-          <input type="password" id="login-password"
-            class="outline-none border border-primary rounded-xl px-4 py-2 block w-full placeholder::text-black"
-            placeholder="Password" />
+          <div class="relative">
+            <input type="password" id="login-password"
+              class="outline-none border border-primary rounded-xl px-4 py-2 block w-full placeholder::text-black"
+              placeholder="Password" />
+            <i id="toggle-login-password"
+              class="ph ph-eye absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer"></i>
+          </div>
         </div>
 
         <!-- Link to reset password in case it is forgotten -->
         <a id="forgot-password" href="#" class="font-normal">Forgot Password?</a>
 
         <!-- Login Button -->
-        <button type="submit" class=" py-2 w-full bg-primary  my-3 text-white font-semibold text-[16px] rounded-xl">Log
+        <button type="submit"
+          class="cursor-pointer py-2 w-full bg-primary my-3 text-white font-semibold text-[16px] rounded-xl hover:bg-opacity-90 active:scale-95 transition-all duration-300 shadow-md hover:shadow-lg">Log
           In</button>
 
         <!-- Other options users can use to login -->
@@ -67,21 +73,21 @@
         <div class="flex flex-row gap-2 mt-1 mb-2">
           <!-- Google option -->
           <button id="google" type="submit"
-            class=" py-2 w-full bg-[#D9D9D9] my-3 text-black font-semibold rounded-xl md:text-[16px] text-[14px] flex justify-center items-center md:gap-2 gap-1">
+            class="cursor-pointer py-2 w-full bg-[#D9D9D9] my-3 text-black font-semibold rounded-xl md:text-[16px] text-[14px] flex justify-center items-center md:gap-2 gap-1">
             <img src="../src/assets/icons/devicon_google.png" alt="Google" class="md:w-8 md:h-8 w-6 h-6">
             Google
           </button>
 
           <!-- Facebook option -->
           <button type="submit" id="facebook"
-            class=" py-2 w-full  my-3 text-white bg-[#0101AB] font-semibold rounded-xl md:text-[16px] text-[14px] flex justify-center items-center md:gap-2 gap-1">
+            class="cursor-pointer py-2 w-full  my-3 text-white bg-[#0101AB] font-semibold rounded-xl md:text-[16px] text-[14px] flex justify-center items-center md:gap-2 gap-1">
             <img src="../src/assets/icons/fontisto_facebook.png" alt="facebook" class="md:w-8 md:h-8 w-6 h-6">
             Facebook
           </button>
 
           <!-- Apple Option -->
           <button type="submit" id="apple"
-            class="py-2 w-full bg-black  my-3 text-white font-semibold rounded-xl md:text-[16px] text-[14px] flex justify-center items-center md:gap-2 gap-1">
+            class="cursor-pointer py-2 w-full bg-black  my-3 text-white font-semibold rounded-xl md:text-[16px] text-[14px] flex justify-center items-center md:gap-2 gap-1">
             <img src="../src/assets/icons/streamline-logos_apple-logo-solid.png" alt="Apple"
               class="md:w-8 md:h-8 w-6 h-6">
             Apple
@@ -89,11 +95,17 @@
         </div>
 
         <!-- Call to signup for new users that don't information on the database -->
-        <p class="text-center text-black font-normal">Don't have an account?</p>
-        <a id="signup-link" class="text-center font-bold text-primary" href="signup.html">Sign Up</a>
+        <div class="flex flex-col items-center justify-center mt-4">
+          <p class="text-black font-normal">Don't have an account?</p>
+          <center>
+            <a id="signup-link" class="font-bold text-primary mt-1" href="signup.html">Sign Up</a>
+          </center>
+        </div>
       </form>
     </section>
   </main>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <script type="module" src="../src/scripts/auth.js"></script>
 </body>
 
 </html>

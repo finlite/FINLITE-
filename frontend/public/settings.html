@@ -14,6 +14,7 @@
         href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="../src/styles/settings.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <title>Settings</title>
 </head>
 
@@ -52,17 +53,18 @@
         </div>
 
         <div class="settings__content">
+            <!-- Avatar Section — populated dynamically from backend -->
             <div class="settings__avatar-section">
                 <div class="avatar">
                     <div class="avatar__image__container">
-                        <p class="avatar__image">BA</p>
+                        <p id="avatar-initials" class="avatar__image">--</p>
                     </div>
                     <div class="avatar__text">
-                        <h3 class="avatar__name">Blessing Adebayo</h3>
-                        <p class="avatar__email">blessingadebayo@salon.com</p>
+                        <h3 id="avatar-name" class="avatar__name">Loading...</h3>
+                        <p id="avatar-email" class="avatar__email">Loading...</p>
                     </div>
                 </div>
-                <button class="avatar__edit-button">Edit</button>
+                <button class="avatar__edit-button" onclick="window.location.href='profile-settings.html'">Edit</button>
             </div>
 
             <h4 class="settings__header">Quick Actions</h4>
@@ -148,7 +150,8 @@
                 <h3 class="settings__header">Account</h3>
                 <div class="account__items">
                     <!--Profile Settings Section-->
-                    <button class="account__item profile-settings">
+                    <button class="account__item profile-settings"
+                        onclick="window.location.href='profile-settings.html'">
                         <div class="account__item__icon--primary">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25"
                                 fill="none">
@@ -283,10 +286,12 @@
                 </div>
             </div>
 
-            <button class="settings__logout-button" onclick="window.location.href='login.html'"><i
-                    class="ph ph-sign-out"></i>Logout</button>
+            <button id="logout-btn" class="settings__logout-button"><i class="ph ph-sign-out"></i>Logout</button>
         </div>
         <p class="version-type">Version 1.0.0</p>
+
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+        <script type="module" src="../src/scripts/settings.js"></script>
 </body>
 
 </html>

@@ -5,8 +5,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Signup</title>
-  <link rel="stylesheet" href="../src/input.css" />
-  <link rel="stylesheet" href="../src/output.css" />
+  <link rel="stylesheet" href="../src/styles/input.css" />
+  <link rel="stylesheet" href="../src/styles/output.css" />
   <link rel="stylesheet" type="text/css"
     href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css" />
   <link rel="stylesheet" type="text/css"
@@ -18,7 +18,7 @@
     <section
       class="overflow-x-hidden w-full max-w-full bg-bg-primary min-h-screen flex justify-center items-center relative">
       <!-- Back arrow -->
-      <a id="back-icon" href="Index.html">
+      <a id="back-icon" href="login.html">
         <i class="ph ph-arrow-left absolute text-5xl left-[85%] top-[5%]"></i>
       </a>
 
@@ -26,7 +26,7 @@
       <form id="signup-form" class="w-xl md:p-6 p-4 mx-5 md:mx-auto md:my-14 my-5 bg-white shadow-xl rounded-xl">
         <!-- Finlite's Logo -->
         <div class="mx-auto w-14 h-16 mb-8">
-          <img src="../Assets/FINLITE logo.png" alt="finite logo" class="w-full h-full">
+          <img src="../src/assets/logo.png" alt="finite logo" class="w-full h-full">
         </div>
 
         <!-- Create Account heading -->
@@ -82,7 +82,8 @@
         </div>
 
         <!-- Sign Up Button -->
-        <button id="signup-button" type="submit" class="py-2 w-full bg-primary my-3 text-white font-semibold text-[16px] rounded-xl">
+        <button id="signup-button" type="submit"
+          class="py-2 w-full bg-primary my-3 text-white font-semibold text-[16px] rounded-xl">
           Sign Up
         </button>
 
@@ -92,27 +93,28 @@
           <!-- Google option -->
           <button type="submit" id="google"
             class=" py-2 w-full bg-[#D9D9D9] my-3 text-black font-semibold rounded-xl md:text-[16px] text-[14px] flex justify-center items-center md:gap-2 gap-1">
-            <img src="Images and Logo/devicon_google.png" alt="Google" class="md:w-8 md:h-8 w-6 h-6">
+            <img src="../src/assets/icons/devicon_google.png" alt="Google" class="md:w-8 md:h-8 w-6 h-6">
             Google
           </button>
 
           <!-- Facebook option -->
           <button type="submit" id="facebook"
             class=" py-2 w-full  my-3 text-white bg-[#0101AB] font-semibold rounded-xl md:text-[16px] text-[14px] flex justify-center items-center md:gap-2 gap-1">
-            <img src="Images and Logo/fontisto_facebook.png" alt="facebook" class="md:w-8 md:h-8 w-6 h-6">
+            <img src="../src/assets/icons/fontisto_facebook.png" alt="facebook" class="md:w-8 md:h-8 w-6 h-6">
             Facebook
           </button>
 
           <!-- Apple Option -->
           <button type="submit" id="apple"
             class="py-2 w-full bg-black  my-3 text-white font-semibold rounded-xl md:text-[16px] text-[14px] flex justify-center items-center md:gap-2 gap-1">
-            <img src="Images and Logo/streamline-logos_apple-logo-solid.png" alt="Apple" class="md:w-8 md:h-8 w-6 h-6">
+            <img src="../src/assets/icons/streamline-logos_apple-logo-solid.png" alt="Apple"
+              class="md:w-8 md:h-8 w-6 h-6">
             Apple
           </button>
         </div>
 
         <!-- Agreeing to privacy policy and signing up -->
-        <p id="terms-privacy"  class="text-center text-black font-normal">
+        <p id="terms-privacy" class="text-center text-black font-normal">
           By clicking on the Sign Up button, you accept our
           <a id="policy-link" href="#" class="text-black font-bold">Terms and Privacy Policy.</a>
         </p>

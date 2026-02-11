@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../src/styles/settings.css">
+    <title>Settings</title>
+</head>
+
+<body>
+    <div class="settings__container">
+
+        <nav class="nav-bar">
+            <div class="nav-bar__brand">
+                <img src="../src/assets/logo.png" alt="Finlite Logo" class="nav-bar__logo">
+                <h2 class="nav-bar__logo-text">FINLITE</h2>
+            </div>
+
+            <ul class="nav-bar__items">
+                <li class="nav-bar__item">
+                    <a href="dashboard.html">Dashboard</a>
+                </li>
+                <li class="nav-bar__item">
+                    <a href="transactions.html">Transactions</a>
+                </li>
+                <li class="nav-bar__item">
+                    <a href="settings.html" class="active">Settings</a>
+                </li>
+                <li class="nav-bar__item">
+                    <a href="about.html">About Us</a>
+                </li>
+                <li class="nav-bar__item">
+                    <a href="report.html">Report</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!--This is the settings header-->
+        <div class="settings__header">
+            <h1 class="settings__title">Settings</h1>
+            <p class="settings__subtitle">Manage your account & preferences</p>
+        </div>
+
+        <div class="settings__content">
+            <div class="settings__avatar-section">
+                <div class="avatar">
+                    <div class="avatar__image__container">
+                        <p class="avatar__image">BA</p>
+                    </div>
+                    <div class="avatar__text">
+                        <h3 class="avatar__name">Blessing Adebayo</h3>
+                        <p class="avatar__email">blessingadebayo@salon.com</p>
+                    </div>
+                </div>
+                <button class="avatar__edit-button">Edit</button>
+            </div>
+
+            <h4 class="settings__header">Quick Actions</h4>
+            <div class="settings__quick-actions">
+                <div class="settings__quick-actions-card analytics-card">
+                    <div class="quick-actions-card__icon--primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path
+                                d="M3 3V19C3 19.5304 3.21071 20.0391 3.58579 20.4142C3.96086 20.7893 4.46957 21 5 21H21"
+                                stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M18 17V9" stroke="white" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M13 17V5" stroke="white" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M8 17V14" stroke="white" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <div class="quick-actions__text">
+                        <p class="quick-actions__title">Analytics</p>
+                        <p class="quick-actions__subtitle">View insights</p>
+                    </div>
+                </div>
+
+                <!--This is the share quick-action section-->
+                <div class="settings__quick-actions-card share-card">
+                    <div class="quick-actions-card__icon--primary">
+                        <i class="ph ph-share-network"></i>
+                    </div>
+                    <div class="quick-actions__text">
+                        <h3 class="quick-actions__title">Share Data</h3>
+                        <p class="quick-actions__subtitle">Send to email</p>
+                    </div>
+                </div>
+
+                <!--This is the reminder quick-action section-->
+                <div class="settings__quick-actions-card reminder-card">
+                    <div class="quick-actions-card__icon--primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23" fill="none">
+                            <path d="M7.37793 1.84375V5.53332" stroke="white" stroke-width="1.84478"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M14.7598 1.84375V5.53332" stroke="white" stroke-width="1.84478"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                            <path
+                                d="M17.5249 3.68945H4.61139C3.59254 3.68945 2.7666 4.51539 2.7666 5.53424V18.4477C2.7666 19.4666 3.59254 20.2925 4.61139 20.2925H17.5249C18.5437 20.2925 19.3697 19.4666 19.3697 18.4477V5.53424C19.3697 4.51539 18.5437 3.68945 17.5249 3.68945Z"
+                                stroke="white" stroke-width="1.84478" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M2.7666 9.22266H19.3697" stroke="white" stroke-width="1.84478"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <div class="quick-actions__text">
+                        <h3 class="quick-actions__title">Set Reminder</h3>
+                        <p class="quick-actions__subtitle">Daily alerts</p>
+                    </div>
+                </div>
+
+                <!--This is the 2nd analytics quick-action section-->
+                <div class="settings__quick-actions-card analytics2-card">
+                    <div class="quick-actions-card__icon--secondary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23" fill="none">
+                            <g clip-path="url(#clip0_551_1649)">
+                                <path d="M14.7588 6.45508H20.2931V11.9894" stroke="#6C8C3B" stroke-width="1.84478"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M20.2926 6.45508L12.4522 14.2954L7.84027 9.68345L1.84473 15.679"
+                                    stroke="#6C8C3B" stroke-width="1.84478" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_551_1649">
+                                    <rect width="22.1374" height="22.1374" fill="white" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+                    </div>
+                    <div class="quick-actions__text">
+                        <h3 class="quick-actions__title neutral-title">Analytics</h3>
+                        <p class="quick-actions__subtitle neutral-subtitle">View trends</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="settings__account-section">
+                <h3 class="settings__header">Account</h3>
+                <div class="account__items">
+                    <!--Profile Settings Section-->
+                    <button class="account__item profile-settings">
+                        <div class="account__item__icon--primary">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25"
+                                fill="none">
+                                <path
+                                    d="M19.3744 21.4147V19.3754C19.3744 18.2937 18.9447 17.2563 18.1798 16.4914C17.415 15.7266 16.3776 15.2969 15.2959 15.2969H9.17813C8.09644 15.2969 7.05905 15.7266 6.29418 16.4914C5.52931 17.2563 5.09961 18.2937 5.09961 19.3754V21.4147"
+                                    stroke="#D98A54" stroke-width="2.03926" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path
+                                    d="M12.2357 11.2176C14.4882 11.2176 16.3143 9.39157 16.3143 7.13906C16.3143 4.88656 14.4882 3.06055 12.2357 3.06055C9.98324 3.06055 8.15723 4.88656 8.15723 7.13906C8.15723 9.39157 9.98324 11.2176 12.2357 11.2176Z"
+                                    stroke="#D98A54" stroke-width="2.03926" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="account__item__text">
+                            <p class="account__item__title neutral-title">Profile Settings</p>
+                            <p class="account__item__subtitle neutral-subtitle">Name, email, photo</p>
+                        </div>
+                    </button>
+
+                    <!--Business Info Section-->
+                    <button class="account__item">
+                        <div class="account__item__icon--secondary">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25"
+                                fill="none">
+                                <path
+                                    d="M15.2945 21.4107V16.3126C15.2945 16.0422 15.1871 15.7828 14.9959 15.5916C14.8047 15.4004 14.5453 15.293 14.2749 15.293H10.1964C9.92596 15.293 9.66662 15.4004 9.4754 15.5916C9.28418 15.7828 9.17676 16.0422 9.17676 16.3126V21.4107"
+                                    stroke="#6C8C3B" stroke-width="2.03926" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path
+                                    d="M18.1246 10.5102C17.9121 10.3067 17.6292 10.1932 17.3349 10.1932C17.0407 10.1932 16.7578 10.3067 16.5452 10.5102C16.0711 10.9625 15.441 11.2147 14.7858 11.2147C14.1306 11.2147 13.5006 10.9625 13.0265 10.5102C12.814 10.307 12.5313 10.1937 12.2373 10.1937C11.9433 10.1937 11.6606 10.307 11.4481 10.5102C10.9739 10.9627 10.3437 11.2152 9.68821 11.2152C9.03276 11.2152 8.4025 10.9627 7.92833 10.5102C7.71577 10.3067 7.43287 10.1932 7.13862 10.1932C6.84437 10.1932 6.56148 10.3067 6.34892 10.5102C5.89095 10.9473 5.28674 11.1982 4.65391 11.2143C4.02109 11.2304 3.40491 11.0105 2.92532 10.5973C2.44572 10.1841 2.13703 9.60724 2.05932 8.97899C1.98162 8.35075 2.14045 7.71606 2.50492 7.19847L5.45063 2.93234C5.63753 2.65655 5.88916 2.43074 6.18351 2.27468C6.47786 2.11862 6.80597 2.03705 7.13913 2.03711H17.3354C17.6676 2.03698 17.9948 2.11801 18.2885 2.27314C18.5823 2.42827 18.8337 2.65282 19.0209 2.92725L21.9727 7.20153C22.3372 7.71953 22.4959 8.3547 22.4177 8.98327C22.3395 9.61184 22.0301 10.1888 21.5497 10.6017C21.0694 11.0146 20.4525 11.2338 19.8193 11.2167C19.1861 11.1996 18.582 10.9474 18.1246 10.5092"
+                                    stroke="#6C8C3B" stroke-width="2.03926" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path
+                                    d="M4.07812 11.1641V19.3721C4.07813 19.9129 4.29297 20.4316 4.67541 20.8141C5.05785 21.1965 5.57654 21.4113 6.11738 21.4113H18.3529C18.8938 21.4113 19.4125 21.1965 19.7949 20.8141C20.1773 20.4316 20.3922 19.9129 20.3922 19.3721V11.1641"
+                                    stroke="#6C8C3B" stroke-width="2.03926" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="account__item__text">
+                            <p class="account__item__title neutral-title">Business Info</p>
+                            <p class="account__item__subtitle neutral-subtitle">Shop details & hours</p>
+                        </div>
+                    </button>
+                </div>
+
+
+                <h3 class="settings__header">Preferences</h3>
+                <div class="account__items">
+                    <!--Language Settings Section-->
+                    <button class="account__item button--profile-settings">
+                        <div class="account__item__icon--neutral">
+                            <i class="ph ph-globe"></i>
+                        </div>
+                        <div class="account__item__text">
+                            <p class="account__item__title neutral-title">Language</p>
+                        </div>
+                        <i class="ph ph-caret-right"></i>
+                    </button>
+
+                    <!--Notifications Section-->
+                    <button class="account__item button--notifications">
+                        <div class="account__item__icon--neutral">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25"
+                                fill="none">
+                                <path
+                                    d="M10.4717 21.416C10.6507 21.726 10.9081 21.9835 11.2182 22.1624C11.5282 22.3414 11.8799 22.4357 12.2378 22.4357C12.5958 22.4357 12.9475 22.3414 13.2575 22.1624C13.5676 21.9835 13.825 21.726 14.004 21.416"
+                                    stroke="#F3C650" stroke-width="2.03945" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path
+                                    d="M3.32599 15.6299C3.19278 15.7759 3.10487 15.9575 3.07295 16.1525C3.04104 16.3476 3.06649 16.5477 3.14622 16.7286C3.22595 16.9094 3.35652 17.0632 3.52204 17.1712C3.68756 17.2792 3.88091 17.3368 4.07855 17.3369H20.3942C20.5918 17.337 20.7852 17.2796 20.9508 17.1718C21.1165 17.064 21.2472 16.9104 21.3271 16.7297C21.4071 16.549 21.4328 16.3489 21.4011 16.1538C21.3694 15.9588 21.2818 15.7771 21.1488 15.6309C19.7926 14.2329 18.3547 12.7471 18.3547 8.15938C18.3547 6.53669 17.7101 4.98046 16.5627 3.83304C15.4153 2.68563 13.8591 2.04102 12.2364 2.04102C10.6137 2.04102 9.05745 2.68563 7.91003 3.83304C6.76262 4.98046 6.11801 6.53669 6.11801 8.15938C6.11801 12.7471 4.67917 14.2329 3.32599 15.6299Z"
+                                    stroke="#F3C650" stroke-width="2.03945" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="account__item__text">
+                            <p class="account__item__title neutral-title">Notifications</p>
+                            <p class="account__item__subtitle neutral-subtitle">Alarms & reminders</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider"></span>
+                        </label>
+                    </button>
+
+                    <!--Appearances Section-->
+                    <button class="account__item button--appearances">
+                        <div class="account__item__icon--primary">
+                            <i class="ph ph-palette"></i>
+                        </div>
+                        <div class="account__item__text">
+                            <p class="account__item__title neutral-title">Appearances</p>
+                            <p class="account__item__subtitle neutral-subtitle">Theme & display</p>
+                        </div>
+                    </button>
+                </div>
+
+
+                <h3 class="settings__header">Data & Privacy</h3>
+                <div class="account__items">
+                    <!--Help & Support Section-->
+                    <button class="account__item button--help">
+                        <div class="account__item__icon--secondary">
+                            <i class="ph ph-question"></i>
+                        </div>
+                        <div class="account__item__text">
+                            <p class="account__item__title neutral-title">Help & Support</p>
+                            <p class="account__item__subtitle neutral-subtitle">Get help anytime</p>
+                        </div>
+                    </button>
+
+                    <!--Privacy Section-->
+                    <button class="account__item button--privacy">
+                        <div class="account__item__icon--primary">
+                            <i class="ph ph-lock-simple"></i>
+                        </div>
+                        <div class="account__item__text">
+                            <p class="account__item__title neutral-title">Privacy & Security</p>
+                        </div>
+                        <i class="ph ph-caret-right"></i>
+                    </button>
+
+                    <!--About Section-->
+                    <button class="account__item button--about" onclick="window.location.href='about.html'">
+                        <div class="account__item__icon--secondary">
+                            <i class="ph ph-info"></i>
+                        </div>
+                        <div class="account__item__text">
+                            <p class="account__item__title neutral-title">About Finlite</p>
+                        </div>
+                        <i class="ph ph-caret-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <button class="settings__logout-button" onclick="window.location.href='login.html'"><i
+                    class="ph ph-sign-out"></i>Logout</button>
+        </div>
+        <p class="version-type">Version 1.0.0</p>
+</body>
+
+</html>

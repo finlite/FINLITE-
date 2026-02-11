@@ -5,8 +5,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Signup</title>
-    <link rel="stylesheet" href="../src/input.css" />
-    <link rel="stylesheet" href="../src/output.css" />
+    <link rel="stylesheet" href="../src/styles/input.css" />
+    <link rel="stylesheet" href="../src/styles/output.css" />
     <link rel="stylesheet" href="sales.css">
     <link rel="stylesheet" type="text/css"
         href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css" />
@@ -21,7 +21,7 @@
         <!-- Brand's Logo and Name -->
         <a href="#" class="flex items-center">
             <div class="lg:w-14 lg:h-16 w-11 h-14">
-                <img src="../Assets/FINLITE logo.png" alt="finite logo" class="w-full h-full">
+                <img src="../src/assets/logo.png" alt="finite logo" class="w-full h-full">
             </div>
             <h2 class="font-secondary lg:text-[26px] text-[20px]  font-semibold text-secondary ml-2">FINLITE</h2>
         </a>
@@ -148,19 +148,21 @@
             </div>
 
             <!-- Add sales button -->
-            <button id="save-sale"  class="bg-secondary w-full py-8  rounded-3xl text-white text-2xl shadow-md mt-14">
+            <button id="save-sale" class="bg-secondary w-full py-8  rounded-3xl text-white text-2xl shadow-md mt-14">
                 <!-- Check icon -->
                 <i class="ph ph-check"></i>
                 <span>Save Sale</span>
             </button>
 
             <!-- Cancel link -->
-            <a id="cancel-sale"  href="#" class="text-text-secondary text-2xl mt-10 mb-11 font-semibold block text-center">Cancel</a>
+            <a id="cancel-sale" href="#"
+                class="text-text-secondary text-2xl mt-10 mb-11 font-semibold block text-center">Cancel</a>
         </form>
     </main>
 
     <!-- Confirmation Modal -->
-    <div id="salesConfirmation-modal" class="max-w-6xl h-full px-20 py-10 bg-black/3 hidden mx-auto flex-col items-center justify-center">
+    <div id="salesConfirmation-modal"
+        class="max-w-6xl h-full px-20 py-10 bg-black/3 hidden mx-auto flex-col items-center justify-center">
         <!-- Modal content would go here -->
 
         <!-- Confirmation mark with its container -->
@@ -219,7 +221,8 @@
         </div>
 
         <!-- Add another sale button -->
-        <button id="another-saleBtn" class="bg-secondary w-full py-8  rounded-3xl text-white text-[42px] shadow-md mt-5">
+        <button id="another-saleBtn"
+            class="bg-secondary w-full py-8  rounded-3xl text-white text-[42px] shadow-md mt-5">
             <i class="ph ph-plus"></i>
             <span>Add Another Sale<span>
         </button>
@@ -230,4 +233,5 @@
         </button>
     </div>
 </body>
+
 </html>

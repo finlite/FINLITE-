@@ -5,8 +5,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Signup</title>
-  <link rel="stylesheet" href="../src/input.css" />
-  <link rel="stylesheet" href="../src/output.css" />
+  <link rel="stylesheet" href="../src/styles/input.css" />
+  <link rel="stylesheet" href="../src/styles/output.css" />
   <link rel="stylesheet" type="text/css"
     href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css" />
   <link rel="stylesheet" type="text/css"
@@ -24,16 +24,16 @@
 
         <!-- Finlite's Logo -->
         <div class="mx-auto w-14 h-16 mb-8">
-          <img src="../Assets/FINLITE logo.png" alt="finite logo" class="w-full h-full">
+          <img src="../src/assets/logo.png" alt="finite logo" class="w-full h-full">
         </div>
 
         <!-- The heading to greet the users -->
-        <h1 id="welcome"  class="text-center text-black font-semibold text-2xl my-3">
+        <h1 id="welcome" class="text-center text-black font-semibold text-2xl my-3">
           Welcome Back!
         </h1>
 
         <!-- Brand's slogan -->
-        <p id="slogan"  class="text-center font-normal text-black">
+        <p id="slogan" class="text-center font-normal text-black">
           "Record Sales, See Profit, Stay in Control."
         </p>
 
@@ -54,7 +54,7 @@
         </div>
 
         <!-- Link to reset password in case it is forgotten -->
-        <a id="forgot-password"  href="#" class="font-normal">Forgot Password?</a>
+        <a id="forgot-password" href="#" class="font-normal">Forgot Password?</a>
 
         <!-- Login Button -->
         <button type="submit" class=" py-2 w-full bg-primary  my-3 text-white font-semibold text-[16px] rounded-xl">Log
@@ -66,30 +66,31 @@
         <!-- Container that holds the three other options -->
         <div class="flex flex-row gap-2 mt-1 mb-2">
           <!-- Google option -->
-          <button id="google"  type="submit"
+          <button id="google" type="submit"
             class=" py-2 w-full bg-[#D9D9D9] my-3 text-black font-semibold rounded-xl md:text-[16px] text-[14px] flex justify-center items-center md:gap-2 gap-1">
-            <img src="Images and Logo/devicon_google.png" alt="Google" class="md:w-8 md:h-8 w-6 h-6">
+            <img src="../src/assets/icons/devicon_google.png" alt="Google" class="md:w-8 md:h-8 w-6 h-6">
             Google
           </button>
 
           <!-- Facebook option -->
           <button type="submit" id="facebook"
             class=" py-2 w-full  my-3 text-white bg-[#0101AB] font-semibold rounded-xl md:text-[16px] text-[14px] flex justify-center items-center md:gap-2 gap-1">
-            <img src="Images and Logo/fontisto_facebook.png" alt="facebook" class="md:w-8 md:h-8 w-6 h-6">
+            <img src="../src/assets/icons/fontisto_facebook.png" alt="facebook" class="md:w-8 md:h-8 w-6 h-6">
             Facebook
           </button>
 
           <!-- Apple Option -->
           <button type="submit" id="apple"
             class="py-2 w-full bg-black  my-3 text-white font-semibold rounded-xl md:text-[16px] text-[14px] flex justify-center items-center md:gap-2 gap-1">
-            <img src="Images and Logo/streamline-logos_apple-logo-solid.png" alt="Apple" class="md:w-8 md:h-8 w-6 h-6">
+            <img src="../src/assets/icons/streamline-logos_apple-logo-solid.png" alt="Apple"
+              class="md:w-8 md:h-8 w-6 h-6">
             Apple
           </button>
         </div>
 
         <!-- Call to signup for new users that don't information on the database -->
         <p class="text-center text-black font-normal">Don't have an account?</p>
-        <a id="signup-link" class="text-center font-bold text-primary" href="SignUp.html">Sign Up</a>
+        <a id="signup-link" class="text-center font-bold text-primary" href="signup.html">Sign Up</a>
       </form>
     </section>
   </main>

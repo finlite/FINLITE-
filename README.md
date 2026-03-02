@@ -1,7 +1,7 @@
-# FINLITE-
+# FINLITE
 FINLITE is for people who don’t have time for complex apps. They want quick, simple, reliable money tracking.
 
-## Core Features-
+## Core Features
  • Add sales (with timestamp)
  • Add expenses
  • Auto-calculate profit/loss
@@ -12,12 +12,12 @@ FINLITE is for people who don’t have time for complex apps. They want quick, s
  • Phone number + PIN login
  • Basic data backup
 
- ##Tech Stack-
+ ##Tech Stack
  HTML
  Vanilla CSS
  Tailwind CSS
  JavaScript
 
- ## Status-
+ ## Status
 MVP in development.
 

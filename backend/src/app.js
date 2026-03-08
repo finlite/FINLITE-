@@ -1,6 +1,10 @@
 const express = require('express');
 const cors = require('cors');
-require('dotenv').config();
+const dotenv = require('dotenv');
+
+dotenv.config({
+    path: process.env.NODE_ENV === 'production' ? '.env.production' : '.env'
+});
 
 const userRoutes = require('./routes/user.routes');
 const transactionRoutes = require('./routes/transaction.routes');

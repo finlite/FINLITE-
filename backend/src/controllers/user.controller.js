@@ -2,6 +2,9 @@ const db = require('../config/database');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
+const isDatabaseUnavailableError = (err) =>
+    ['ETIMEDOUT', 'ECONNREFUSED', 'ENOTFOUND'].includes(err?.code);
+
 exports.register = async (req, res) => {
     const { full_name, email, phone, password } = req.body;
     try {
@@ -28,6 +31,9 @@ exports.register = async (req, res) => {
         res.status(201).json({ message: 'User registered successfully' });
     } catch (err) {
         console.error(err);
+        if (isDatabaseUnavailableError(err)) {
+            return res.status(503).json({ message: 'Database is currently unreachable. Please try again.' });
+        }
         res.status(500).json({ message: 'Error registering user' });
     }
 };
@@ -55,6 +61,9 @@ exports.login = async (req, res) => {
         });
     } catch (err) {
         console.error(err);
+        if (isDatabaseUnavailableError(err)) {
+            return res.status(503).json({ message: 'Database is currently unreachable. Please try again.' });
+        }
         res.status(500).json({ message: 'Error logging in' });
     }
 };
@@ -66,6 +75,9 @@ exports.getProfile = async (req, res) => {
         res.json(rows[0]);
     } catch (err) {
         console.error(err);
+        if (isDatabaseUnavailableError(err)) {
+            return res.status(503).json({ message: 'Database is currently unreachable. Please try again.' });
+        }
         res.status(500).json({ message: 'Error fetching profile' });
     }
 };

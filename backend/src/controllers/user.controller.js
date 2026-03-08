@@ -5,6 +5,15 @@ const jwt = require('jsonwebtoken');
 exports.register = async (req, res) => {
     const { full_name, email, phone, password } = req.body;
     try {
+        if (!full_name || !email || !password || !phone) {
+            return res.status(400).json({ message: 'full_name, email, phone and password are required' });
+        }
+
+        const normalizedPhone = String(phone).replace(/\D/g, '');
+        if (!normalizedPhone) {
+            return res.status(400).json({ message: 'Phone number must contain digits' });
+        }
+
         // Check if user exists
         const [existing] = await db.execute('SELECT email FROM users WHERE email = ?', [email]);
         if (existing.length > 0) {
@@ -12,7 +21,10 @@ exports.register = async (req, res) => {
         }
 
         const hashedPassword = await bcrypt.hash(password, 10);
-        await db.execute('INSERT INTO users (full_name, email, phone, password) VALUES (?, ?, ?, ?)', [full_name, email, phone, hashedPassword]);
+        await db.execute(
+            'INSERT INTO users (full_name, email, phone, password, photo) VALUES (?, ?, ?, ?, ?)',
+            [full_name, email, normalizedPhone, hashedPassword, Buffer.alloc(0)]
+        );
         res.status(201).json({ message: 'User registered successfully' });
     } catch (err) {
         console.error(err);

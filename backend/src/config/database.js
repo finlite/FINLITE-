@@ -1,5 +1,4 @@
 const mysql = require('mysql2');
-require('dotenv').config();
 
 const useSsl = process.env.DB_SSL === 'true';
 const dbPort = Number(process.env.DB_PORT || 3306);

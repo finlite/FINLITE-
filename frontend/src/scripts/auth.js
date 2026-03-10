@@ -1,8 +1,5 @@
 import { API_URL } from './config.js';
 
-// Temporary: disable backend auth while production DB connectivity is being fixed.
-const USE_BACKEND_AUTH = false;
-
 // Helper for consistent toasts
 const showToast = (message, type = 'info') => {
     let backgroundColor;
@@ -33,19 +30,6 @@ const showToast = (message, type = 'info') => {
 
 const loginForm = document.getElementById('login-form');
 const signupForm = document.getElementById('signup-form');
-const MOCK_USERS_KEY = 'finlite_mock_users';
-
-const getMockUsers = () => {
-    try {
-        return JSON.parse(localStorage.getItem(MOCK_USERS_KEY)) || [];
-    } catch {
-        return [];
-    }
-};
-
-const setMockUsers = (users) => {
-    localStorage.setItem(MOCK_USERS_KEY, JSON.stringify(users));
-};
 
 // Password Visibility Toggle Logic
 function setupPasswordToggle(toggleId, inputId) {
@@ -92,31 +76,6 @@ if (loginForm) {
             const originalButtonText = submitButton.innerText;
             submitButton.innerText = 'Logging in...';
             submitButton.disabled = true;
-
-            if (!USE_BACKEND_AUTH) {
-                const mockUsers = getMockUsers();
-                const matchedUser = mockUsers.find((u) => u.email === email && u.password === password);
-
-                if (!matchedUser) {
-                    showToast('Invalid email or password', 'error');
-                    return;
-                }
-
-                localStorage.setItem('token', `mock-token-${Date.now()}`);
-                localStorage.setItem('user', JSON.stringify({
-                    user_id: matchedUser.user_id,
-                    full_name: matchedUser.full_name,
-                    email: matchedUser.email,
-                    phone: matchedUser.phone,
-                    is_premium_member: false
-                }));
-
-                showToast('Login successful! (Offline mode)', 'success');
-                setTimeout(() => {
-                    window.location.href = 'sales.html';
-                }, 1000);
-                return;
-            }
 
             const response = await fetch(`${API_URL}/users/login`, {
                 method: 'POST',
@@ -173,31 +132,6 @@ if (signupForm) {
             const originalButtonText = submitButton.innerText;
             submitButton.innerText = 'Signing Up...';
             submitButton.disabled = true;
-
-            if (!USE_BACKEND_AUTH) {
-                const mockUsers = getMockUsers();
-                const existingUser = mockUsers.find((u) => u.email === email);
-
-                if (existingUser) {
-                    showToast('User already exists', 'error');
-                    return;
-                }
-
-                mockUsers.push({
-                    user_id: Date.now(),
-                    full_name: fullName,
-                    email,
-                    phone,
-                    password
-                });
-                setMockUsers(mockUsers);
-
-                showToast('Registration successful! (Offline mode)', 'success');
-                setTimeout(() => {
-                    window.location.href = 'login.html';
-                }, 1500);
-                return;
-            }
 
             const response = await fetch(`${API_URL}/users/register`, {
                 method: 'POST',

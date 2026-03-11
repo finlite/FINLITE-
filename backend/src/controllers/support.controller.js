@@ -5,11 +5,11 @@ exports.createSupportTicket = async (req, res) => {
     const user_id = req.user.user_id;
 
     try {
-        const [result] = await db.execute(
-            'INSERT INTO support (user_id, full_name, email, subject, message) VALUES (?, ?, ?, ?, ?)',
+        const result = await db.query(
+            'INSERT INTO support (user_id, full_name, email, subject, message) VALUES ($1, $2, $3, $4, $5) RETURNING support_id',
             [user_id, full_name, email, subject, message]
         );
-        res.status(201).json({ message: 'Support ticket created successfully', ticketId: result.insertId });
+        res.status(201).json({ message: 'Support ticket created successfully', ticketId: result.rows[0].support_id });
     } catch (err) {
         console.error(err);
         res.status(500).json({ message: 'Error creating support ticket' });
@@ -19,8 +19,8 @@ exports.createSupportTicket = async (req, res) => {
 exports.getUserTickets = async (req, res) => {
     const user_id = req.user.user_id;
     try {
-        const [rows] = await db.execute('SELECT * FROM support WHERE user_id = ?', [user_id]);
-        res.json(rows);
+        const result = await db.query('SELECT * FROM support WHERE user_id = $1', [user_id]);
+        res.json(result.rows);
     } catch (err) {
         console.error(err);
         res.status(500).json({ message: 'Error fetching support tickets' });

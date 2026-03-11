@@ -3,12 +3,12 @@ const db = require('../config/database');
 exports.getBusinessInfo = async (req, res) => {
     const user_id = req.user.user_id;
     try {
-        const [rows] = await db.execute('SELECT * FROM business_info WHERE user_id = ?', [user_id]);
-        if (rows.length === 0) {
+        const result = await db.query('SELECT * FROM business_info WHERE user_id = $1', [user_id]);
+        if (result.rows.length === 0) {
             return res.status(404).json({ message: 'Business info not found' });
         }
 
-        const businessInfo = rows[0];
+        const businessInfo = result.rows[0];
         // Parse JSON fields if they are strings
         try {
             if (typeof businessInfo.open_hours === 'string') {
@@ -39,22 +39,22 @@ exports.upsertBusinessInfo = async (req, res) => {
 
     try {
         // Check if exists
-        const [existing] = await db.execute('SELECT business_id FROM business_info WHERE user_id = ?', [user_id]);
+        const existing = await db.query('SELECT business_id FROM business_info WHERE user_id = $1', [user_id]);
 
-        if (existing.length > 0) {
+        if (existing.rows.length > 0) {
             // Update
-            await db.execute(
+            await db.query(
                 `UPDATE business_info 
-                 SET address = ?, business_type = ?, business_phone = ?, business_email = ?, open_hours = ?, online_prescence = ? 
-                 WHERE user_id = ?`,
+                 SET address = $1, business_type = $2, business_phone = $3, business_email = $4, open_hours = $5, online_prescence = $6 
+                 WHERE user_id = $7`,
                 [address, business_type, business_phone, business_email, openHoursJson, onlinePresenceJson, user_id]
             );
             res.json({ message: 'Business info updated successfully' });
         } else {
             // Create
-            await db.execute(
+            await db.query(
                 `INSERT INTO business_info (user_id, address, business_type, business_phone, business_email, open_hours, online_prescence) 
-                 VALUES (?, ?, ?, ?, ?, ?, ?)`,
+                 VALUES ($1, $2, $3, $4, $5, $6, $7)`,
                 [user_id, address, business_type, business_phone, business_email, openHoursJson, onlinePresenceJson]
             );
             res.status(201).json({ message: 'Business info created successfully' });

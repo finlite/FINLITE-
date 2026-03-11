@@ -47,13 +47,7 @@
     <nav class="nav" role="navigation" aria-label="Main navigation">
       <!-- Brand -->
       <a class="nav__brand" href="dashboard.html" aria-label="Finlite home">
-        <img
-          src="../src/assets/logo.png"
-          width="36px"
-          height="42px"
-          alt="Finlite Logo"
-          class="nav-bar__logo"
-        />
+        <img src="../src/assets/logo.png" width="36px" height="42px" alt="Finlite Logo" class="nav-bar__logo"/>
         <h2 class="nav__brand-text">FINLITE</h2>
       </a>
 
@@ -297,7 +291,7 @@
             </div>
             <div class="account__item__text">
               <p class="account__item__title">Business Info</p>
-              <p class="account__item__subtitle">Shop details &amp; hours</p>
+              <p class="account__item__subtitle">Shop details & hours</p>
             </div>
           </button>
         </div>
@@ -307,7 +301,10 @@
         <h3 class="section-header">Preferences</h3>
         <div class="account__items">
           <!-- Language -->
-          <button class="account__item">
+          <button
+            class="account__item"
+            onclick="window.location.href = 'language-settings.html'"
+          >
             <div class="account__item__icon--neutral" aria-hidden="true">
               <i class="ph ph-globe"></i>
             </div>
@@ -324,7 +321,7 @@
             </div>
             <div class="account__item__text">
               <p class="account__item__title">Notifications</p>
-              <p class="account__item__subtitle">Alarms &amp; reminders</p>
+              <p class="account__item__subtitle">Alarms & reminders</p>
             </div>
             <label class="switch" aria-label="Toggle notifications">
               <input type="checkbox" />
@@ -339,7 +336,7 @@
             </div>
             <div class="account__item__text">
               <p class="account__item__title">Appearances</p>
-              <p class="account__item__subtitle">Theme &amp; display</p>
+              <p class="account__item__subtitle">Theme & display</p>
             </div>
             <div class="theme-toggle-container">
               <button
@@ -364,7 +361,7 @@
         <!-- /preferences items -->
 
         <!-- ── Data & Privacy ── -->
-        <h3 class="section-header">Data &amp; Privacy</h3>
+        <h3 class="section-header">Data & Privacy</h3>
         <div class="account__items">
           <!-- Help & Support -->
           <button class="account__item">
@@ -372,7 +369,7 @@
               <i class="ph ph-question"></i>
             </div>
             <div class="account__item__text">
-              <p class="account__item__title">Help &amp; Support</p>
+              <p class="account__item__title">Help & Support</p>
               <p class="account__item__subtitle">Get help anytime</p>
             </div>
           </button>

@@ -119,3 +119,116 @@ document.addEventListener('DOMContentLoaded', () => {
     loadProfile();
     setupLogout();
 });
+
+
+'use strict';
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    /* ─────────────────────────────────────────
+       1  HAMBURGER / MOBILE MENU
+    ───────────────────────────────────────── */
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileMenu   = document.getElementById('mobileMenu');
+    const backdrop     = document.getElementById('backdrop');
+    let menuOpen = false;
+
+    function openMenu() {
+        menuOpen = true;
+        hamburgerBtn.classList.add('open');
+        hamburgerBtn.setAttribute('aria-expanded', 'true');
+        hamburgerBtn.setAttribute('aria-label', 'Close navigation menu');
+        mobileMenu.classList.add('open');
+        mobileMenu.setAttribute('aria-hidden', 'false');
+        backdrop.classList.add('visible');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeMenu() {
+        menuOpen = false;
+        hamburgerBtn.classList.remove('open');
+        hamburgerBtn.setAttribute('aria-expanded', 'false');
+        hamburgerBtn.setAttribute('aria-label', 'Open navigation menu');
+        mobileMenu.classList.remove('open');
+        mobileMenu.setAttribute('aria-hidden', 'true');
+        backdrop.classList.remove('visible');
+        document.body.style.overflow = '';
+    }
+
+    // Toggle on button click
+    hamburgerBtn.addEventListener('click', e => {
+        e.stopPropagation();
+        menuOpen ? closeMenu() : openMenu();
+    });
+
+    // Close on backdrop tap
+    backdrop.addEventListener('click', closeMenu);
+
+    // Close on Escape key
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && menuOpen) closeMenu();
+    });
+
+    // Close when a mobile link is tapped
+    mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => setTimeout(closeMenu, 120));
+    });
+
+    // Close when resized back to desktop
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 769 && menuOpen) closeMenu();
+    });
+
+
+    /* ─────────────────────────────────────────
+      THEME TOGGLE  (Light / Dark)
+    ───────────────────────────────────────── */
+    const btnLight = document.getElementById('btnLight');
+    const btnDark  = document.getElementById('btnDark');
+
+    function applyTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('finlite_theme', theme);
+        btnLight.classList.toggle('active', theme === 'light');
+        btnDark.classList.toggle('active',  theme === 'dark');
+    }
+
+    // Restore saved preference on load
+    const savedTheme = localStorage.getItem('finlite_theme') || 'light';
+    applyTheme(savedTheme);
+
+    btnLight.addEventListener('click', () => applyTheme('light'));
+    btnDark.addEventListener('click',  () => applyTheme('dark'));
+
+
+    /* ─────────────────────────────────────────
+       AVATAR SYNC
+       Mirrors initials from the main avatar card
+       into the mobile menu user row
+    ───────────────────────────────────────── */
+    function syncMobileAvatar() {
+        const initEl  = document.getElementById('avatar-initials');
+        const nameEl  = document.getElementById('avatar-name');
+        const mobAvt  = document.getElementById('mobile-avatar');
+        const mobName = document.getElementById('mobile-user-name');
+
+        const initials = initEl && initEl.textContent.trim() !== '--'
+            ? initEl.textContent.trim()
+            : null;
+
+        const name = nameEl && nameEl.textContent.trim() !== 'Loading...'
+            ? nameEl.textContent.trim()
+            : null;
+
+        if (initials && mobAvt)  mobAvt.textContent  = initials;
+        if (name     && mobName) mobName.textContent = name;
+    }
+
+    // Run immediately, then again after async profile load
+    syncMobileAvatar();
+    setTimeout(syncMobileAvatar, 800);
+    setTimeout(syncMobileAvatar, 2000);
+
+});
+
+

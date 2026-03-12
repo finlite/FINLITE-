@@ -34,7 +34,6 @@
 /* ── Base reset ── */
 *, *::before, *::after {
     box-sizing: border-box;
-    font-family: var(--primary-font);
 }
 
 @keyframes fadeInUp {
@@ -505,31 +504,40 @@ body {
 }
 
 .account__item__icon--primary {
-    width: 52px; height: 52px;
+    width: 52px; 
+    height: 52px;
     border-radius: 50%;
     flex-shrink: 0;
     background: rgba(217, 138, 84, 0.10);
-    display: flex; align-items: center; justify-content: center;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
     font-size: 24px;
     color: var(--primary-color);
 }
 
 .account__item__icon--secondary {
-    width: 52px; height: 52px;
+    width: 52px; 
+    height: 52px;
     border-radius: 50%;
     flex-shrink: 0;
     background: rgba(108, 140, 59, 0.10);
-    display: flex; align-items: center; justify-content: center;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
     font-size: 24px;
     color: var(--secondary-color);
 }
 
 .account__item__icon--neutral {
-    width: 52px; height: 52px;
+    width: 52px; 
+    height: 52px;
     border-radius: 50%;
     flex-shrink: 0;
     background: rgba(243, 198, 80, 0.09);
-    display: flex; align-items: center; justify-content: center;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
     font-size: 24px;
     color: var(--notificationscta);
 }
@@ -538,7 +546,8 @@ body {
 
 .account__item__title {
     font-family: var(--secondary-font);
-    font-size: 16px; font-weight: 600;
+    font-size: 16px; 
+    font-weight: 600;
     color: var(--secondary-text-color-dark);
     margin: 0 0 4px;
 }
@@ -564,10 +573,15 @@ body {
     margin-left: auto;
     position: relative;
     display: inline-block;
-    width: 46px; height: 26px;
+    width: 46px; 
+    height: 26px;
 }
 
-.switch input { opacity: 0; width: 0; height: 0; }
+.switch input { 
+    opacity: 0; 
+    width: 0; 
+    height: 0; 
+}
 
 .slider {
     position: absolute;
@@ -581,8 +595,10 @@ body {
 .slider::before {
     position: absolute;
     content: "";
-    height: 18px; width: 18px;
-    left: 4px; bottom: 4px;
+    height: 18px; 
+    width: 18px;
+    left: 4px; 
+    bottom: 4px;
     background: white;
     border-radius: 50%;
     transition: 0.35s;
@@ -613,7 +629,8 @@ input:checked + .slider::before { transform: translateX(20px); }
     background: transparent;
     color: var(--secondary-text-color);
     font-family: var(--secondary-font);
-    font-size: 13px; font-weight: 500;
+    font-size: 13px; 
+    font-weight: 500;
     cursor: pointer;
     transition: all 0.25s ease;
 }

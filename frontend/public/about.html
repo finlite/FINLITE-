@@ -10,7 +10,8 @@
     href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css" />
 <link rel="stylesheet" type="text/css"
     href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css" /> -->
-<script src="https://unpkg.com/@phosphor-icons/web/src/regular"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css"/>
     
 <!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,7 +32,7 @@
 <nav class="nav" role="navigation" aria-label="Main navigation">
       <!-- Brand -->
       <a class="nav__brand" href="dashboard.html" aria-label="Finlite home">
-        <img src="../src/assets/logo.png" width="40px" height="40px" alt="Finlite Logo" class="nav-bar__logo"/>
+        <img src="../src/assets/logo.png" width="36px" height="42px" alt="Finlite Logo" class="nav-bar__logo"/>
         <h2 class="nav__brand-text">FINLITE</h2>
       </a>
 
@@ -55,14 +56,14 @@
 <!-- Mobile menu -->
 <div class="nav__mobile" id="mobileMenu" role="dialog" aria-label="Navigation menu" aria-hidden="true">
     <div class="nav__mobile-inner">
-        <a href="#" class="nav__m-link"><i class="ph ph-squares-four"></i> Dashboard</a>
-        <a href="#" class="nav__m-link"><i class="ph ph-arrows-left-right"></i> Transactions</a>
+        <a href="dashboard.html" class="nav__m-link"><i class="ph ph-squares-four"></i> Dashboard</a>
+        <a href="transactions.html" class="nav__m-link"><i class="ph ph-arrows-left-right"></i> Transactions</a>
         <a href="settings.html" class="nav__m-link"><i class="ph ph-gear"></i> Settings</a>
-        <a href="#" class="nav__m-link active">
+        <a href="about.html" class="nav__m-link active">
             <i class="ph ph-info"></i> About Us
             <span class="nav__m-badge">Active</span>
         </a>
-        <a href="#" class="nav__m-link"><i class="ph ph-chart-bar"></i> Report</a>
+        <a href="report.html" class="nav__m-link"><i class="ph ph-chart-bar"></i> Report</a>
         <div class="nav__m-divider" role="separator"></div>
         <!-- User row -->
         <div class="nav__m-user">
@@ -84,8 +85,9 @@
     <!-- Hero -->
     <div class="about__hero">
         <div class="about__hero-logo">
-            <img src="../src/assets/logo.png" width="60px" height="80px" alt="Finlite Logo" class="about__hero-logo"/>
-        <h1 class="about__hero-title">About Us</h1>
+            <img src="../src/assets/logo.png" width="60px" height="80px" alt="Finlite Logo" class="about__hero-logo-img"/>
+        </div>
+            <h1 class="about__hero-title">About Us</h1>
     </div>
 
     <!-- Who We Are -->

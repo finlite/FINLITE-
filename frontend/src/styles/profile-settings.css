@@ -10,7 +10,8 @@
     --r:20px; --nav-h:64px;
 }
 [data-theme="dark"]{
-    --bg:#1a1a2e;--card:#1e2a3a;
+    --bg:#1a1a2e;
+    --card:#1e2a3a;
     --text:#e0e0e0;
     --text-mid:#c0c0d0;
     --text-muted:#8a8a9a;

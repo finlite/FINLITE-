@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -322,7 +322,8 @@
           </button>
 
           <!-- Appearances / Theme -->
-          <div class="account__item">
+          <button class="account__item"
+          onclick="window.location.href = 'theme-settings.html'">
             <div class="account__item__icon--primary" aria-hidden="true">
               <i class="ph ph-palette"></i>
             </div>
@@ -331,7 +332,8 @@
               <p class="account__item__subtitle">Theme & display</p>
             </div>
             <div class="theme-toggle-container">
-              <button
+              <i class="ph ph-caret-right" aria-hidden="true"></i>
+              <!-- <button
                 class="theme-btn active"
                 id="btnLight"
                 type="button"
@@ -346,9 +348,9 @@
                 aria-pressed="false"
               >
                 <i class="ph ph-moon" aria-hidden="true"></i> Dark
-              </button>
+              </button> -->
             </div>
-          </div>
+          </button>
         </div>
         <!-- /preferences items -->
 

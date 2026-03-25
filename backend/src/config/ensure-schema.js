@@ -33,6 +33,12 @@ async function ensureAppSchema() {
       `);
 
       await db.query(`
+        ALTER TABLE users
+        ALTER COLUMN phone TYPE varchar(20)
+        USING phone::text;
+      `);
+
+      await db.query(`
         ALTER TABLE business_info
         ADD COLUMN IF NOT EXISTS business_name varchar(255),
         ADD COLUMN IF NOT EXISTS registration_date date;

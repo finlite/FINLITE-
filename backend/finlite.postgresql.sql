@@ -17,7 +17,7 @@ CREATE TABLE users (
   user_id integer GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   full_name text NOT NULL,
   email varchar(255) NOT NULL,
-  phone integer NOT NULL,
+  phone varchar(20) NOT NULL,
   password varchar(255) NOT NULL,
   photo bytea NOT NULL,
   is_premium_member boolean NOT NULL DEFAULT false,

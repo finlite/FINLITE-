@@ -39,6 +39,7 @@ const serializePhoto = (photoBuffer) => {
 exports.register = async (req, res) => {
     const { full_name, email, phone, password } = req.body;
     try {
+        await ensureAppSchema();
         if (!full_name || !email || !password || !phone) {
             return res.status(400).json({ message: 'full_name, email, phone and password are required' });
         }
@@ -72,6 +73,7 @@ exports.register = async (req, res) => {
 exports.login = async (req, res) => {
     const { email, password } = req.body;
     try {
+        await ensureAppSchema();
         const result = await db.query('SELECT * FROM users WHERE email = $1', [email]);
         if (result.rows.length === 0) return res.status(401).json({ message: 'User not found' });
 
@@ -104,6 +106,7 @@ exports.login = async (req, res) => {
 
 exports.getProfile = async (req, res) => {
     try {
+        await ensureAppSchema();
         const result = await db.query(
             'SELECT user_id, full_name, email, phone, is_premium_member, premium_start_date, created_at, photo FROM users WHERE user_id = $1',
             [req.user.user_id]
@@ -140,6 +143,7 @@ exports.updateProfile = async (req, res) => {
     }
 
     try {
+        await ensureAppSchema();
         const emailOwner = await db.query(
             'SELECT user_id FROM users WHERE email = $1 AND user_id <> $2',
             [email, req.user.user_id]

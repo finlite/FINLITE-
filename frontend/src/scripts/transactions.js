@@ -1,5 +1,7 @@
 'use strict';
 
+const API_URL = (window.FINLITE_API_URL || 'https://finlite-nizr.onrender.com/api').replace(/\/+$/, '');
+
 /* ════════════════════════════════════════
    FINLITE — Transactions Page JavaScript
    ════════════════════════════════════════ */
@@ -8,6 +10,21 @@
 const now = new Date();
 
 const pad = n => String(n).padStart(2, '0');
+const getToken = () => localStorage.getItem('token');
+
+function redirectToLogin() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    window.location.href = 'login.html';
+}
+
+function requireAuth() {
+    if (!getToken()) {
+        redirectToLogin();
+        return false;
+    }
+    return true;
+}
 
 /* ── NAV ── */
 const hb = document.getElementById('hamburgerBtn');
@@ -175,11 +192,7 @@ monthLabel.textContent = `${MONTH_NAMES[selMonth]} ${selYear}`;
 
 /* ── DATA STORE ── */
 // { id, type:'sale'|'expense', desc, amount, time, date:'YYYY-MM-DD', note }
-let transactions = JSON.parse(localStorage.getItem('finlite_tx') || '[]');
-
-function saveTx() {
-    localStorage.setItem('finlite_tx', JSON.stringify(transactions));
-}
+let transactions = [];
 
 /* ── STATE ── */
 let activeFilter = 'all';   // 'all' | 'sales' | 'expenses'
@@ -194,6 +207,54 @@ function fmt(n) {
 function todayStr() {
     const d = new Date();
     return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+}
+
+function normalizeTransaction(row) {
+    const txDate = row.transaction_date ? new Date(row.transaction_date) : new Date();
+    const safeDate = Number.isNaN(txDate.getTime()) ? new Date() : txDate;
+
+    return {
+        id: row.id,
+        backendId: row.id,
+        transactionId: row.transaction_id,
+        type: row.category,
+        desc: row.service || 'General transaction',
+        amount: Number(row.amount || 0),
+        time: safeDate.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }),
+        date: `${safeDate.getFullYear()}-${pad(safeDate.getMonth() + 1)}-${pad(safeDate.getDate())}`,
+        note: row.notes || ''
+    };
+}
+
+async function loadTransactions() {
+    const token = getToken();
+    if (!token) return;
+
+    try {
+        const response = await fetch(`${API_URL}/transactions`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+
+        if (response.status === 401 || response.status === 403) {
+            redirectToLogin();
+            return;
+        }
+
+        const rows = await response.json().catch(() => []);
+        if (!response.ok) {
+            throw new Error(rows.message || 'Unable to load transactions');
+        }
+
+        transactions = Array.isArray(rows) ? rows.map(normalizeTransaction) : [];
+        renderAll();
+    } catch (error) {
+        console.error('Error loading transactions:', error);
+        showToast(error.message || 'Unable to load transactions');
+        transactions = [];
+        renderAll();
+    }
 }
 
 function groupByDate(list) {
@@ -426,4 +487,6 @@ function showToast(msg) {
 }
 
 /* ── INIT ── */
-renderAll();
+if (requireAuth()) {
+    loadTransactions();
+}

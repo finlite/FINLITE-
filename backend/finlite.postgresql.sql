@@ -41,10 +41,12 @@ CREATE TABLE support (
 CREATE TABLE business_info (
   business_id integer GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   user_id integer NOT NULL,
+  business_name varchar(255) DEFAULT NULL,
   address varchar(255) NOT NULL,
   business_type varchar(255) DEFAULT NULL,
   business_phone varchar(11) DEFAULT NULL,
   business_email varchar(255) DEFAULT NULL,
+  registration_date date DEFAULT NULL,
   open_hours jsonb NOT NULL,
   online_prescence jsonb NOT NULL,
   created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -68,6 +70,21 @@ CREATE TABLE transactions (
   CONSTRAINT transactions_ibfk_1 FOREIGN KEY (user_id) REFERENCES users (user_id) ON DELETE CASCADE
 );
 
+CREATE TABLE user_settings (
+  settings_id integer GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  user_id integer NOT NULL,
+  preferred_language varchar(10) NOT NULL DEFAULT 'en',
+  date_format varchar(32) NOT NULL DEFAULT 'DD/MM/YYYY',
+  currency_display varchar(64) NOT NULL DEFAULT '₦ (Nigerian Naira)',
+  number_format varchar(32) NOT NULL DEFAULT '1,234.56',
+  auto_translate boolean NOT NULL DEFAULT true,
+  show_original_text boolean NOT NULL DEFAULT false,
+  created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  CONSTRAINT user_settings_user_id_unique UNIQUE (user_id),
+  CONSTRAINT fk_user_settings_user FOREIGN KEY (user_id) REFERENCES users (user_id) ON DELETE CASCADE
+);
+
 CREATE INDEX transactions_user_id_idx ON transactions (user_id);
 
 -- Trigger to emulate MySQL "ON UPDATE CURRENT_TIMESTAMP"
@@ -88,6 +105,11 @@ EXECUTE FUNCTION set_updated_at();
 
 CREATE TRIGGER transactions_set_updated_at
 BEFORE UPDATE ON transactions
+FOR EACH ROW
+EXECUTE FUNCTION set_updated_at();
+
+CREATE TRIGGER user_settings_set_updated_at
+BEFORE UPDATE ON user_settings
 FOR EACH ROW
 EXECUTE FUNCTION set_updated_at();
 

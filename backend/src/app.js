@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const ensureAppSchema = require('./config/ensure-schema');
 
 const userRoutes = require('./routes/user.routes');
 const transactionRoutes = require('./routes/transaction.routes');
@@ -7,6 +8,10 @@ const businessRoutes = require('./routes/business.routes');
 const supportRoutes = require('./routes/support.routes');
 
 const app = express();
+
+ensureAppSchema().catch((error) => {
+    console.error('Failed to ensure application schema:', error);
+});
 
 // Middleware
 app.use(cors());

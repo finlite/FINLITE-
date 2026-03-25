@@ -5,6 +5,7 @@ const DAYS = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'
 
 let navOpen = false;
 let toastTimer;
+let currentPhotoDataUrl = null;
 
 function getToken() {
     return localStorage.getItem('token');
@@ -105,6 +106,29 @@ function updateHeroName(name) {
     }
 }
 
+function updateAvatar(photoDataUrl, fallbackName = '') {
+    const avatarInitials = document.getElementById('avatarInitials');
+    const avatarImg = document.getElementById('avatarImg');
+    currentPhotoDataUrl = photoDataUrl || null;
+
+    if (photoDataUrl) {
+        avatarImg.src = photoDataUrl;
+        avatarImg.style.display = 'block';
+        avatarInitials.style.display = 'none';
+        return;
+    }
+
+    avatarImg.removeAttribute('src');
+    avatarImg.style.display = 'none';
+    avatarInitials.style.display = 'block';
+    if (fallbackName) {
+        avatarInitials.textContent = getInitials(fallbackName);
+        avatarInitials.style.color = '#fff';
+        avatarInitials.style.fontStyle = 'normal';
+        avatarInitials.style.fontSize = '28px';
+    }
+}
+
 function updateHeroBusinessName(name) {
     const heroBiz = document.getElementById('heroBiz');
     heroBiz.textContent = name || 'Business name';
@@ -166,6 +190,58 @@ function applyProfileData(profile) {
     document.getElementById('fieldEmail').value = profile.email || '';
     document.getElementById('fieldPhone').value = profile.phone || '';
     updateHeroName(profile.full_name || '');
+    updateAvatar(profile.photo_data_url, profile.full_name || '');
+    applyMembership(profile);
+}
+
+function applyMembership(profile) {
+    const badge = document.querySelector('.hero__badge');
+    const premiumTitle = document.querySelector('.premium-banner__title');
+    const premiumSub = document.querySelector('.premium-banner__sub');
+    const premiumDesc = document.querySelector('.premium-banner__desc');
+    const statValues = document.querySelectorAll('.stat__val');
+
+    const isPremium = Boolean(profile.is_premium_member);
+    const startDate = profile.premium_start_date || profile.created_at;
+    const start = startDate ? new Date(startDate) : null;
+    const daysActive = start && !Number.isNaN(start.getTime())
+        ? Math.max(1, Math.ceil((Date.now() - start.getTime()) / (1000 * 60 * 60 * 24)))
+        : '—';
+
+    badge.innerHTML = `<i class="ph-fill ph-star"></i> ${isPremium ? 'Premium Member' : 'Standard Member'}`;
+    premiumTitle.textContent = isPremium ? 'Premium Member' : 'Finlite Account';
+    premiumSub.textContent = start && !Number.isNaN(start.getTime())
+        ? `Active since ${start.toLocaleDateString([], { month: 'short', year: 'numeric' })}`
+        : 'Activation date unavailable';
+    premiumDesc.textContent = isPremium
+        ? 'Enjoy unlimited transactions, advanced analytics, and priority support.'
+        : 'Upgrade to premium for advanced analytics, unlimited transactions, and priority support.';
+
+    if (statValues[2]) {
+        statValues[2].textContent = daysActive;
+    }
+}
+
+function applyTransactionStats(rows = []) {
+    const statValues = document.querySelectorAll('.stat__val');
+    const salesTotal = rows
+        .filter((row) => row.category === 'sale')
+        .reduce((sum, row) => sum + Number(row.amount || 0), 0);
+
+    if (statValues[0]) {
+        statValues[0].textContent = rows.length ? formatCurrency(salesTotal) : '—';
+    }
+    if (statValues[1]) {
+        statValues[1].textContent = rows.length ? String(rows.length) : '—';
+    }
+}
+
+function formatCurrency(amount) {
+    return new Intl.NumberFormat('en-NG', {
+        style: 'currency',
+        currency: 'NGN',
+        maximumFractionDigits: 0
+    }).format(Number(amount || 0));
 }
 
 function applyBusinessData(business = {}) {
@@ -217,6 +293,13 @@ async function loadData() {
         } else {
             applyOpenHours();
         }
+
+        try {
+            const rows = await apiRequest('/transactions', { headers: getAuthHeaders() });
+            applyTransactionStats(Array.isArray(rows) ? rows : []);
+        } catch (statsError) {
+            console.error('Error loading profile stats:', statsError);
+        }
     } catch (error) {
         console.error('Error loading settings:', error);
         showToast(error.message || 'Unable to load profile settings');
@@ -241,7 +324,8 @@ async function saveAll() {
                 body: JSON.stringify({
                     full_name: name,
                     email,
-                    phone
+                    phone,
+                    photo_data_url: currentPhotoDataUrl
                 })
             }),
             apiRequest('/business', {
@@ -263,11 +347,16 @@ async function saveAll() {
             ...(profile || {}),
             full_name: name,
             email,
-            phone
+            phone,
+            photo_data_url: currentPhotoDataUrl
         }));
 
         updateHeroName(name);
+        updateAvatar(currentPhotoDataUrl, name);
         updateHeroBusinessName(document.getElementById('fieldBizName').value.trim());
+        if (profile) {
+            applyMembership(profile);
+        }
         showToast('Profile details saved');
     } catch (error) {
         console.error('Error saving profile:', error);
@@ -333,10 +422,7 @@ function setupAvatarPreview() {
 
         const reader = new FileReader();
         reader.onload = (e) => {
-            const img = document.getElementById('avatarImg');
-            document.getElementById('avatarInitials').style.display = 'none';
-            img.src = e.target.result;
-            img.style.display = 'block';
+            updateAvatar(e.target.result, document.getElementById('fieldName').value.trim());
         };
         reader.readAsDataURL(file);
     });

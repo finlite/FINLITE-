@@ -24,6 +24,18 @@ const normalizePhone = (phone) => {
     return normalizedPhone || null;
 };
 
+const serializePhoto = (photoBuffer) => {
+    if (!photoBuffer || !photoBuffer.length) {
+        return null;
+    }
+
+    const rawValue = Buffer.isBuffer(photoBuffer)
+        ? photoBuffer.toString('utf8')
+        : String(photoBuffer);
+
+    return rawValue.startsWith('data:') ? rawValue : null;
+};
+
 exports.register = async (req, res) => {
     const { full_name, email, phone, password } = req.body;
     try {
@@ -75,7 +87,10 @@ exports.login = async (req, res) => {
                 full_name: user.full_name,
                 email: user.email,
                 phone: user.phone,
-                is_premium_member: user.is_premium_member
+                is_premium_member: user.is_premium_member,
+                premium_start_date: user.premium_start_date,
+                created_at: user.created_at,
+                photo_data_url: serializePhoto(user.photo)
             }
         });
     } catch (err) {
@@ -90,11 +105,15 @@ exports.login = async (req, res) => {
 exports.getProfile = async (req, res) => {
     try {
         const result = await db.query(
-            'SELECT user_id, full_name, email, phone, is_premium_member, premium_start_date FROM users WHERE user_id = $1',
+            'SELECT user_id, full_name, email, phone, is_premium_member, premium_start_date, created_at, photo FROM users WHERE user_id = $1',
             [req.user.user_id]
         );
         if (result.rows.length === 0) return res.status(404).json({ message: 'User not found' });
-        res.json(result.rows[0]);
+        const profile = result.rows[0];
+        res.json({
+            ...profile,
+            photo_data_url: serializePhoto(profile.photo)
+        });
     } catch (err) {
         console.error(err);
         if (isDatabaseUnavailableError(err)) {
@@ -105,7 +124,7 @@ exports.getProfile = async (req, res) => {
 };
 
 exports.updateProfile = async (req, res) => {
-    const { full_name, email, phone } = req.body;
+    const { full_name, email, phone, photo_data_url } = req.body;
 
     if (!full_name || !email) {
         return res.status(400).json({ message: 'full_name and email are required' });
@@ -114,6 +133,10 @@ exports.updateProfile = async (req, res) => {
     const normalizedPhone = normalizePhone(phone);
     if (phone !== undefined && !normalizedPhone) {
         return res.status(400).json({ message: 'Phone number must contain digits' });
+    }
+
+    if (photo_data_url !== undefined && photo_data_url !== null && photo_data_url !== '' && !String(photo_data_url).startsWith('data:image/')) {
+        return res.status(400).json({ message: 'Photo must be a valid image data URL' });
     }
 
     try {
@@ -128,17 +151,30 @@ exports.updateProfile = async (req, res) => {
 
         const result = await db.query(
             `UPDATE users
-             SET full_name = $1, email = $2, phone = COALESCE($3, phone)
-             WHERE user_id = $4
-             RETURNING user_id, full_name, email, phone, is_premium_member, premium_start_date`,
-            [full_name, email, normalizedPhone, req.user.user_id]
+             SET full_name = $1,
+                 email = $2,
+                 phone = COALESCE($3, phone),
+                 photo = COALESCE($4, photo)
+             WHERE user_id = $5
+             RETURNING user_id, full_name, email, phone, is_premium_member, premium_start_date, created_at, photo`,
+            [
+                full_name,
+                email,
+                normalizedPhone,
+                photo_data_url ? Buffer.from(String(photo_data_url), 'utf8') : null,
+                req.user.user_id
+            ]
         );
 
         if (result.rows.length === 0) {
             return res.status(404).json({ message: 'User not found' });
         }
 
-        res.json(result.rows[0]);
+        const profile = result.rows[0];
+        res.json({
+            ...profile,
+            photo_data_url: serializePhoto(profile.photo)
+        });
     } catch (err) {
         console.error(err);
         if (isDatabaseUnavailableError(err)) {

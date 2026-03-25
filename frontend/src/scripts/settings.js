@@ -105,9 +105,10 @@ function setupLogout() {
         logoutBtn.addEventListener('click', () => {
             localStorage.removeItem('token');
             localStorage.removeItem('user');
+            localStorage.removeItem('finlite_tx');
             showToast('Logged out successfully', 'success');
             setTimeout(() => {
-                window.location.href = 'login.html';
+                window.location.href = '../index.html';
             }, 1000);
         });
     }

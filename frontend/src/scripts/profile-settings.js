@@ -408,9 +408,10 @@ function confirmLogout() {
     if (confirm('Are you sure you want to log out?')) {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
+        localStorage.removeItem('finlite_tx');
         showToast('Logging out...');
         setTimeout(() => {
-            window.location.href = 'index.html';
+            window.location.href = '../index.html';
         }, 800);
     }
 }

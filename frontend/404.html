@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page Not Found - Finlite</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./src/styles/output.css" />
+    <style>
+        :root {
+            --error-glow: rgba(217, 138, 84, 0.24);
+            --error-glow-strong: rgba(108, 140, 59, 0.22);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: var(--secondary-font, "Poppins", sans-serif);
+            background:
+                radial-gradient(circle at top left, var(--error-glow), transparent 34%),
+                radial-gradient(circle at bottom right, var(--error-glow-strong), transparent 30%),
+                linear-gradient(135deg, var(--primary-background-color), var(--secondary-background-color));
+            color: var(--primary-text-color);
+        }
+
+        .error-shell {
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            padding: 24px;
+        }
+
+        .error-card {
+            width: min(720px, 100%);
+            background: color-mix(in srgb, var(--card-bg) 88%, transparent);
+            border: 1px solid color-mix(in srgb, var(--primary-color) 20%, transparent);
+            border-radius: 32px;
+            box-shadow: 0 28px 80px rgba(0, 0, 0, 0.14);
+            overflow: hidden;
+            position: relative;
+            backdrop-filter: blur(18px);
+        }
+
+        .error-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(120deg, rgba(217, 138, 84, 0.09), transparent 35%),
+                linear-gradient(300deg, rgba(108, 140, 59, 0.1), transparent 40%);
+            pointer-events: none;
+        }
+
+        .error-topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 22px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .brand img {
+            width: 36px;
+            height: 42px;
+        }
+
+        .brand span {
+            font-family: var(--primary-font, "Nunito", sans-serif);
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+        }
+
+        .theme-toggle {
+            display: inline-flex;
+            gap: 8px;
+            padding: 6px;
+            border-radius: 999px;
+            background: color-mix(in srgb, var(--secondary-background-color) 80%, transparent);
+        }
+
+        .theme-toggle button {
+            border: 0;
+            border-radius: 999px;
+            padding: 10px 14px;
+            background: transparent;
+            color: var(--secondary-text-color);
+            font: inherit;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .theme-toggle button.active {
+            background: var(--card-bg);
+            color: var(--primary-text-color);
+            box-shadow: 0 10px 18px rgba(0, 0, 0, 0.08);
+        }
+
+        .error-content {
+            position: relative;
+            z-index: 1;
+            padding: 28px 28px 34px;
+        }
+
+        .error-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 14px;
+            border-radius: 999px;
+            background: color-mix(in srgb, var(--notifications-cta) 18%, transparent);
+            color: var(--primary-text-color);
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .error-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 24px;
+            align-items: end;
+            margin-top: 18px;
+        }
+
+        .error-title {
+            margin: 0;
+            font-family: var(--primary-font, "Nunito", sans-serif);
+            font-size: clamp(3.4rem, 10vw, 6.4rem);
+            line-height: 0.92;
+            letter-spacing: -0.04em;
+        }
+
+        .error-title span {
+            display: block;
+            font-size: clamp(1.25rem, 3vw, 1.7rem);
+            letter-spacing: 0;
+            margin-top: 18px;
+            color: var(--secondary-color);
+        }
+
+        .error-copy {
+            margin: 18px 0 0;
+            max-width: 420px;
+            color: var(--secondary-text-color);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .signal-card {
+            min-height: 220px;
+            padding: 20px;
+            border-radius: 28px;
+            background:
+                linear-gradient(180deg, color-mix(in srgb, var(--primary-color) 14%, transparent), transparent 55%),
+                color-mix(in srgb, var(--secondary-background-color) 78%, transparent);
+            border: 1px solid color-mix(in srgb, var(--primary-color) 16%, transparent);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .signal-bars {
+            display: flex;
+            align-items: end;
+            gap: 10px;
+            height: 112px;
+        }
+
+        .signal-bars span {
+            flex: 1;
+            border-radius: 999px 999px 10px 10px;
+            background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
+            animation: rise 1.4s ease-in-out infinite alternate;
+        }
+
+        .signal-bars span:nth-child(1) { height: 32%; animation-delay: 0s; }
+        .signal-bars span:nth-child(2) { height: 52%; animation-delay: 0.15s; }
+        .signal-bars span:nth-child(3) { height: 74%; animation-delay: 0.3s; }
+        .signal-bars span:nth-child(4) { height: 96%; animation-delay: 0.45s; }
+
+        .signal-card p {
+            margin: 0;
+            color: var(--secondary-text-color);
+            line-height: 1.6;
+        }
+
+        .error-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            appearance: none;
+            border: 0;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            min-height: 52px;
+            padding: 0 20px;
+            border-radius: 16px;
+            font-weight: 700;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: #fff;
+            box-shadow: 0 18px 30px rgba(217, 138, 84, 0.26);
+        }
+
+        .btn-secondary {
+            background: color-mix(in srgb, var(--secondary-background-color) 85%, transparent);
+            color: var(--primary-text-color);
+            border: 1px solid color-mix(in srgb, var(--secondary-text-color) 18%, transparent);
+        }
+
+        .helper-text {
+            margin-top: 18px;
+            color: var(--secondary-text-color);
+            font-size: 0.95rem;
+        }
+
+        .helper-text strong {
+            color: var(--primary-text-color);
+        }
+
+        @keyframes rise {
+            from { transform: scaleY(0.95); filter: saturate(0.96); }
+            to { transform: scaleY(1.04); filter: saturate(1.08); }
+        }
+
+        @media (max-width: 720px) {
+            .error-card {
+                border-radius: 24px;
+            }
+
+            .error-topbar,
+            .error-content {
+                padding-inline: 18px;
+            }
+
+            .error-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .signal-card {
+                min-height: 180px;
+            }
+
+            .theme-toggle {
+                display: none;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="error-shell">
+        <section class="error-card" aria-labelledby="error-title">
+            <div class="error-topbar">
+                <a class="brand" href="./index.html">
+                    <img src="./src/assets/logo.png" alt="Finlite logo" />
+                    <span>FINLITE</span>
+                </a>
+                <div class="theme-toggle" aria-label="Theme switcher">
+                    <button id="theme-light" type="button">Light</button>
+                    <button id="theme-dark" type="button">Dark</button>
+                </div>
+            </div>
+
+            <div class="error-content">
+                <div class="error-badge">404 · Lost, but still on brand</div>
+
+                <div class="error-grid">
+                    <div>
+                        <h1 class="error-title" id="error-title">
+                            404
+                            <span>This page missed its market.</span>
+                        </h1>
+                        <p class="error-copy">
+                            The page you asked for does not exist, may have moved, or never made it into this build.
+                            We kept the detour clean so you can get back to work fast.
+                        </p>
+                    </div>
+
+                    <aside class="signal-card" aria-label="Status illustration">
+                        <div class="signal-bars" aria-hidden="true">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <p>
+                            We could not find the route, but your account state is still available locally.
+                            The action below adapts automatically.
+                        </p>
+                    </aside>
+                </div>
+
+                <div class="error-actions">
+                    <a class="btn btn-primary" id="primaryLink" href="./public/login.html">Go to Login</a>
+                    <a class="btn btn-secondary" href="./index.html">Back to Welcome</a>
+                </div>
+
+                <p class="helper-text" id="helperText">
+                    Checking session state to decide your fastest way back in.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <script src="./src/scripts/theme.js"></script>
+    <script>
+        (function () {
+            'use strict';
+
+            const token = localStorage.getItem('token');
+            const primaryLink = document.getElementById('primaryLink');
+            const helperText = document.getElementById('helperText');
+
+            if (token) {
+                primaryLink.href = './public/settings.html';
+                primaryLink.textContent = 'Go to Settings';
+                helperText.innerHTML = 'You appear to be <strong>logged in</strong>, so we are sending you back into the app.';
+            } else {
+                primaryLink.href = './public/login.html';
+                primaryLink.textContent = 'Go to Login';
+                helperText.innerHTML = 'You appear to be <strong>logged out</strong>, so the fastest path is back through sign in.';
+            }
+        })();
+    </script>
+</body>
+</html>

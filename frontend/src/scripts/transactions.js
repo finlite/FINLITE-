@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 /* ════════════════════════════════════════
    FINLITE — Transactions Page JavaScript
@@ -9,7 +9,7 @@ import { API_URL } from "./config.js";
 /* ── SHARED UTILITIES ── */
 const now = new Date();
 
-const pad = (n) => String(n).padStart(2, "0");
+const pad = n => String(n).padStart(2, '0');
 
 /* ── NAV ── */
 const hb = document.getElementById("hamburgerBtn");
@@ -207,57 +207,11 @@ document.getElementById("mPickerNext").addEventListener("click", () => {
 monthLabel.textContent = `${MONTH_NAMES[selMonth]} ${selYear}`;
 
 /* ── DATA STORE ── */
-// Transactions fetched from backend API
-// Format: { id, type:'sale'|'expense', desc, amount, time, date:'YYYY-MM-DD', note }
-let transactions = [];
-
-// Transform API transaction to frontend format
-function transformTransaction(apiTx) {
-  const txDate = new Date(apiTx.transaction_date);
-  return {
-    id: apiTx.id || apiTx.transaction_id,
-    type: apiTx.category === "sale" ? "sale" : "expense",
-    desc: apiTx.service || "Transaction",
-    amount: Number(apiTx.amount) || 0,
-    time: txDate.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" }),
-    date: `${txDate.getFullYear()}-${pad(txDate.getMonth() + 1)}-${pad(txDate.getDate())}`,
-    note: apiTx.notes || "",
-    isoDate: apiTx.transaction_date, // Store original ISO date for editing
-  };
-}
-
-// Fetch transactions from API
-async function fetchTransactions() {
-  const token = localStorage.getItem("token");
-  if (!token) {
-    window.location.href = "login.html";
-    return;
-  }
-
-  try {
-    const response = await fetch(`${API_URL}/transactions`, {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-      },
-    });
-
-    if (!response.ok) {
-      console.error("Failed to fetch transactions:", response.status);
-      return;
-    }
-
-    const data = await response.json();
-    transactions = Array.isArray(data) ? data.map(transformTransaction) : [];
-    renderAll();
-  } catch (error) {
-    console.error("Error fetching transactions:", error);
-  }
-}
+// { id, type:'sale'|'expense', desc, amount, time, date:'YYYY-MM-DD', note }
+let transactions = JSON.parse(localStorage.getItem('finlite_tx') || '[]');
 
 function saveTx() {
-  // No longer saving to localStorage - data is persisted in the backend
+    localStorage.setItem('finlite_tx', JSON.stringify(transactions));
 }
 
 /* ── STATE ── */
@@ -273,6 +227,54 @@ function fmt(n) {
 function todayStr() {
   const d = new Date();
   return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+}
+
+function normalizeTransaction(row) {
+    const txDate = row.transaction_date ? new Date(row.transaction_date) : new Date();
+    const safeDate = Number.isNaN(txDate.getTime()) ? new Date() : txDate;
+
+    return {
+        id: row.id,
+        backendId: row.id,
+        transactionId: row.transaction_id,
+        type: row.category,
+        desc: row.service || 'General transaction',
+        amount: Number(row.amount || 0),
+        time: safeDate.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }),
+        date: `${safeDate.getFullYear()}-${pad(safeDate.getMonth() + 1)}-${pad(safeDate.getDate())}`,
+        note: row.notes || ''
+    };
+}
+
+async function loadTransactions() {
+    const token = getToken();
+    if (!token) return;
+
+    try {
+        const response = await fetch(`${API_URL}/transactions`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+
+        if (response.status === 401 || response.status === 403) {
+            redirectToLogin();
+            return;
+        }
+
+        const rows = await response.json().catch(() => []);
+        if (!response.ok) {
+            throw new Error(rows.message || 'Unable to load transactions');
+        }
+
+        transactions = Array.isArray(rows) ? rows.map(normalizeTransaction) : [];
+        renderAll();
+    } catch (error) {
+        console.error('Error loading transactions:', error);
+        showToast(error.message || 'Unable to load transactions');
+        transactions = [];
+        renderAll();
+    }
 }
 
 function groupByDate(list) {
@@ -727,5 +729,4 @@ function showToast(msg) {
 }
 
 /* ── INIT ── */
-// Fetch transactions from API on page load
-fetchTransactions();
+renderAll();

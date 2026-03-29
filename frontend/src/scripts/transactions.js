@@ -1,7 +1,5 @@
 "use strict";
 
-const API_URL = (window.FINLITE_API_URL || 'https://finlite-nizr.onrender.com/api').replace(/\/+$/, '');
-
 /* ════════════════════════════════════════
    FINLITE — Transactions Page JavaScript
    ════════════════════════════════════════ */
@@ -11,7 +9,17 @@ import { API_URL } from "./config.js";
 /* ── SHARED UTILITIES ── */
 const now = new Date();
 
-const pad = n => String(n).padStart(2, '0');
+const pad = (n) => String(n).padStart(2, "0");
+
+function getToken() {
+  return localStorage.getItem("token");
+}
+
+function redirectToLogin() {
+  localStorage.removeItem("token");
+  localStorage.removeItem("user");
+  window.location.href = "login.html";
+}
 
 /* ── NAV ── */
 const hb = document.getElementById("hamburgerBtn");
@@ -210,10 +218,10 @@ monthLabel.textContent = `${MONTH_NAMES[selMonth]} ${selYear}`;
 
 /* ── DATA STORE ── */
 // { id, type:'sale'|'expense', desc, amount, time, date:'YYYY-MM-DD', note }
-let transactions = JSON.parse(localStorage.getItem('finlite_tx') || '[]');
+let transactions = JSON.parse(localStorage.getItem("finlite_tx") || "[]");
 
 function saveTx() {
-    localStorage.setItem('finlite_tx', JSON.stringify(transactions));
+  localStorage.setItem("finlite_tx", JSON.stringify(transactions));
 }
 
 /* ── STATE ── */
@@ -232,51 +240,62 @@ function todayStr() {
 }
 
 function normalizeTransaction(row) {
-    const txDate = row.transaction_date ? new Date(row.transaction_date) : new Date();
-    const safeDate = Number.isNaN(txDate.getTime()) ? new Date() : txDate;
+  const txDate = row.transaction_date
+    ? new Date(row.transaction_date)
+    : new Date();
+  const safeDate = Number.isNaN(txDate.getTime()) ? new Date() : txDate;
 
-    return {
-        id: row.id,
-        backendId: row.id,
-        transactionId: row.transaction_id,
-        type: row.category,
-        desc: row.service || 'General transaction',
-        amount: Number(row.amount || 0),
-        time: safeDate.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }),
-        date: `${safeDate.getFullYear()}-${pad(safeDate.getMonth() + 1)}-${pad(safeDate.getDate())}`,
-        note: row.notes || ''
-    };
+  return {
+    id: row.id,
+    backendId: row.id,
+    transactionId: row.transaction_id,
+    type: row.category,
+    desc: row.service || "General transaction",
+    amount: Number(row.amount || 0),
+    time: safeDate.toLocaleTimeString([], {
+      hour: "numeric",
+      minute: "2-digit",
+    }),
+    date: `${safeDate.getFullYear()}-${pad(safeDate.getMonth() + 1)}-${pad(safeDate.getDate())}`,
+    note: row.notes || "",
+    isoDate: safeDate.toISOString(),
+    backendId: row.id,
+    transactionId: row.transaction_id,
+  };
 }
 
-async function loadTransactions() {
-    const token = getToken();
-    if (!token) return;
+async function fetchTransactions() {
+  const token = getToken();
+  if (!token) {
+    redirectToLogin();
+    return;
+  }
 
-    try {
-        const response = await fetch(`${API_URL}/transactions`, {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        });
+  try {
+    const response = await fetch(`${API_URL}/transactions`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
-        if (response.status === 401 || response.status === 403) {
-            redirectToLogin();
-            return;
-        }
-
-        const rows = await response.json().catch(() => []);
-        if (!response.ok) {
-            throw new Error(rows.message || 'Unable to load transactions');
-        }
-
-        transactions = Array.isArray(rows) ? rows.map(normalizeTransaction) : [];
-        renderAll();
-    } catch (error) {
-        console.error('Error loading transactions:', error);
-        showToast(error.message || 'Unable to load transactions');
-        transactions = [];
-        renderAll();
+    if (response.status === 401 || response.status === 403) {
+      redirectToLogin();
+      return;
     }
+
+    const rows = await response.json().catch(() => []);
+    if (!response.ok) {
+      throw new Error(rows.message || "Unable to load transactions");
+    }
+
+    transactions = Array.isArray(rows) ? rows.map(normalizeTransaction) : [];
+    renderAll();
+  } catch (error) {
+    console.error("Error loading transactions:", error);
+    showToast(error.message || "Unable to load transactions");
+    transactions = [];
+    renderAll();
+  }
 }
 
 function groupByDate(list) {
@@ -731,4 +750,6 @@ function showToast(msg) {
 }
 
 /* ── INIT ── */
-renderAll();
+(async function init() {
+  await fetchTransactions();
+})();

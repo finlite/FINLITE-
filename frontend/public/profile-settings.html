@@ -1,186 +1,290 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css"/>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <title>Profile Settings — Finlite</title>
-    <link rel="stylesheet" href="../src/styles/profile-settings.css">
-</head>
-<body>
+    <link rel="stylesheet" href="../src/styles/profile-settings.css" />
+  </head>
+  <body>
+    <div class="nav__backdrop" id="backdrop"></div>
 
-<div class="nav__backdrop" id="backdrop"></div>
-
-<nav class="nav">
-    <a class="nav__brand" href="settings.html">
-        <img src="../src/assets/logo.png" width="36px" height="42px" alt="Finlite Logo" class="nav-bar__logo"/>
+    <nav class="nav">
+      <a class="nav__brand" href="settings.html">
+        <img
+          src="../src/assets/logo.png"
+          width="36px"
+          height="42px"
+          alt="Finlite Logo"
+          class="nav-bar__logo"
+        />
         <h2 class="nav__brand-text">FINLITE</h2>
-    </a>
-    <ul class="nav__links">
+      </a>
+      <ul class="nav__links">
         <li><a href="dashboard.html">Dashboard</a></li>
         <li><a href="transactions.html">Transactions</a></li>
         <li><a href="settings.html" class="active">Settings</a></li>
         <li><a href="about.html">About Us</a></li>
         <li><a href="report.html">Report</a></li>
-    </ul>
-    <button class="nav__hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
+      </ul>
+      <button
+        class="nav__hamburger"
+        id="hamburgerBtn"
+        aria-label="Open menu"
+        aria-expanded="false"
+      >
         <span class="nav__hb"></span>
         <span class="nav__hb"></span>
         <span class="nav__hb"></span>
-    </button>
-</nav>
-<div class="nav__mobile" id="mobileMenu" aria-hidden="true">
-    <div class="nav__mobile-inner">
-        <a href="dashboard.html"    class="nav__m-link"><i class="ph ph-squares-four"></i> Dashboard</a>
-        <a href="transactions.html" class="nav__m-link"><i class="ph ph-arrows-left-right"></i> Transactions</a>
-        <a href="settings.html"     class="nav__m-link active"><i class="ph ph-gear"></i> Settings <span class="nav__m-badge">Active</span></a>
-        <a href="about.html"        class="nav__m-link"><i class="ph ph-info"></i> About Us</a>
-        <a href="report.html"       class="nav__m-link"><i class="ph ph-chart-bar"></i> Report</a>
+      </button>
+    </nav>
+    <div class="nav__mobile" id="mobileMenu" aria-hidden="true">
+      <div class="nav__mobile-inner">
+        <a href="dashboard.html" class="nav__m-link"
+          ><i class="ph ph-squares-four"></i> Dashboard</a
+        >
+        <a href="transactions.html" class="nav__m-link"
+          ><i class="ph ph-arrows-left-right"></i> Transactions</a
+        >
+        <a href="settings.html" class="nav__m-link active"
+          ><i class="ph ph-gear"></i> Settings
+          <span class="nav__m-badge">Active</span></a
+        >
+        <a href="about.html" class="nav__m-link"
+          ><i class="ph ph-info"></i> About Us</a
+        >
+        <a href="report.html" class="nav__m-link"
+          ><i class="ph ph-chart-bar"></i> Report</a
+        >
         <div class="nav__m-divider"></div>
-        
+
         <div class="nav__m-user">
-          <div class="nav__m-avatar" id="mobile-avatar" aria-hidden="true">--</div>
+          <div class="nav__m-avatar" id="mobile-avatar" aria-hidden="true">
+            --
+          </div>
           <div>
-              <p class="nav__m-name" id="mobile-user-name">Loading…</p>
-              <p class="nav__m-role">Business Owner</p>
+            <p class="nav__m-name" id="mobile-user-name">Loading…</p>
+            <p class="nav__m-role">Business Owner</p>
           </div>
         </div>
+      </div>
     </div>
-</div>
 
-<div class="page">
-
-    <!-- TOPBAR -->
-    <div class="topbar">
-        <a href="settings.html" class="topbar__back"><i class="ph ph-arrow-left"></i></a>
+    <div class="page">
+      <!-- TOPBAR -->
+      <div class="topbar">
+        <a href="settings.html" class="topbar__back"
+          ><i class="ph ph-arrow-left"></i
+        ></a>
         <h1 class="topbar__title">Profile Settings</h1>
-    </div>
+      </div>
 
-    <!-- HERO CARD -->
-    <div class="hero-card">
+      <!-- HERO CARD -->
+      <div class="hero-card">
         <div class="avatar-wrap">
-            <div class="avatar" id="avatarCircle">
-                <span id="avatarInitials" style="color:rgba(255,255,255,.5);font-size:14px;font-style:italic;">Photo</span>
-                <img id="avatarImg" src="" alt="" style="display:none;">
-            </div>
-            <label class="avatar-cam" for="avatar-input" title="Change photo">
-                <i class="ph-fill ph-camera"></i>
-            </label>
-            <input type="file" id="avatar-input" accept="image/*">
+          <div class="avatar" id="avatarCircle">
+            <span
+              id="avatarInitials"
+              style="
+                color: rgba(255, 255, 255, 0.5);
+                font-size: 14px;
+                font-style: italic;
+              "
+              >Photo</span
+            >
+            <img id="avatarImg" src="" alt="" style="display: none" />
+          </div>
+          <label class="avatar-cam" for="avatar-input" title="Change photo">
+            <i class="ph-fill ph-camera"></i>
+          </label>
+          <input type="file" id="avatar-input" accept="image/*" />
         </div>
-        <p class="hero__name placeholder" id="heroName">Your name will appear here</p>
-        <p class="hero__biz"><i class="ph-fill ph-storefront"></i><span id="heroBiz" style="color:rgba(255,255,255,.55);font-style:italic;">Business name</span></p>
-        <div class="hero__badge"><i class="ph-fill ph-star"></i> Premium Member</div>
+        <p class="hero__name placeholder" id="heroName">
+          Your name will appear here
+        </p>
+        <div>
+          <p class="hero__biz">
+          <i class="ph-fill ph-storefront"></i
+          ><span
+            id="heroBiz"
+            style="color: rgba(255, 255, 255, 0.55); font-style: italic"
+            >Business name</span>
+        </p>
+        </div>
+        <div class="hero__badge">
+          <i class="ph-fill ph-star"></i> Premium Member
+        </div>
+        
         <div class="stats">
-            <div class="stat">
-                <div class="stat__icon">📈</div>
-                <span class="stat__val">—</span>
-                <span class="stat__lbl">Revenue</span>
-            </div>
-            <div class="stat">
-                <div class="stat__icon">👥</div>
-                <span class="stat__val">—</span>
-                <span class="stat__lbl">Customers</span>
-            </div>
-            <div class="stat">
-                <div class="stat__icon">📅</div>
-                <span class="stat__val">—</span>
-                <span class="stat__lbl">Days Active</span>
-            </div>
+          <div class="stat">
+            <div class="stat__icon">📈</div>
+            <span class="stat__val">—</span>
+            <span class="stat__lbl">Revenue</span>
+          </div>
+          <div class="stat">
+            <div class="stat__icon">👥</div>
+            <span class="stat__val">—</span>
+            <span class="stat__lbl">Customers</span>
+          </div>
+          <div class="stat">
+            <div class="stat__icon">📅</div>
+            <span class="stat__val">—</span>
+            <span class="stat__lbl">Days Active</span>
+          </div>
         </div>
-    </div>
+      </div>
 
-    <!-- OWNER INFORMATION -->
-    <div class="s-card">
+      <!-- OWNER INFORMATION -->
+      <div class="s-card">
         <p class="s-card__title">Owner Information</p>
         <div class="field">
-            <label class="field__label">Full Name</label>
-            <input class="field__input" id="fieldName" type="text" placeholder="e.g. Blessing Adebayo">
+          <label class="field__label">Full Name</label>
+          <input
+            class="field__input"
+            id="fieldName"
+            type="text"
+            placeholder="e.g. Blessing Adebayo"
+          />
         </div>
         <div class="field">
-            <label class="field__label">Email Address</label>
-            <div class="field__icon-wrap">
-                <i class="ph ph-envelope field__icon"></i>
-                <input class="field__input" id="fieldEmail" type="email" placeholder="e.g. blessing@salon.com">
-            </div>
+          <label class="field__label">Email Address</label>
+          <div class="field__icon-wrap">
+            <i class="ph ph-envelope field__icon"></i>
+            <input
+              class="field__input"
+              id="fieldEmail"
+              type="email"
+              placeholder="e.g. blessing@salon.com"
+            />
+          </div>
         </div>
         <div class="field">
-            <label class="field__label">Phone Number</label>
-            <div class="field__icon-wrap">
-                <i class="ph ph-phone field__icon"></i>
-                <input class="field__input" id="fieldPhone" type="tel" placeholder="e.g. +234 803 456 7890">
-            </div>
+          <label class="field__label">Phone Number</label>
+          <div class="field__icon-wrap">
+            <i class="ph ph-phone field__icon"></i>
+            <input
+              class="field__input"
+              id="fieldPhone"
+              type="tel"
+              placeholder="e.g. +234 803 456 7890"
+            />
+          </div>
         </div>
-    </div>
+      </div>
 
-    <!-- BUSINESS DETAILS -->
-    <div class="s-card">
+      <!-- BUSINESS DETAILS -->
+      <div class="s-card">
         <p class="s-card__title">Business Details</p>
         <div class="field">
-            <label class="field__label">Business Name</label>
-            <div class="field__icon-wrap">
-                <i class="ph ph-storefront field__icon"></i>
-                <input class="field__input" id="fieldBizName" type="text" placeholder="e.g. Blessing's Hair Salon" oninput="document.getElementById('heroBiz').textContent=this.value||'Business name'">
-            </div>
+          <label class="field__label">Business Name</label>
+          <div class="field__icon-wrap">
+            <i class="ph ph-storefront field__icon"></i>
+            <input
+              class="field__input"
+              id="fieldBizName"
+              type="text"
+              placeholder="e.g. Blessing's Hair Salon"
+              oninput="
+                document.getElementById('heroBiz').textContent =
+                  this.value || 'Business name'
+              "
+            />
+          </div>
         </div>
         <div class="field">
-            <label class="field__label">Business Address</label>
-            <div class="field__icon-wrap">
-                <i class="ph ph-map-pin field__icon"></i>
-                <input class="field__input" id="fieldAddress" type="text" placeholder="e.g. 15 Adeniyi Jones Avenue, Ikeja, Lagos">
-            </div>
+          <label class="field__label">Business Address</label>
+          <div class="field__icon-wrap">
+            <i class="ph ph-map-pin field__icon"></i>
+            <input
+              class="field__input"
+              id="fieldAddress"
+              type="text"
+              placeholder="e.g. 15 Adeniyi Jones Avenue, Ikeja, Lagos"
+            />
+          </div>
         </div>
         <div class="field">
-            <label class="field__label">Business Type</label>
-            <select class="field__input" id="fieldBizType">
-                <option value="" disabled selected>Select business type</option>
-                <option>Hair &amp; Beauty Services</option>
-                <option>Food &amp; Beverages</option>
-                <option>Retail &amp; Trading</option>
-                <option>Logistics &amp; Delivery</option>
-                <option>Fashion &amp; Tailoring</option>
-                <option>Electronics &amp; Repairs</option>
-                <option>Other</option>
-            </select>
+          <label class="field__label">Business Type</label>
+          <select class="field__input" id="fieldBizType">
+            <option value="" disabled selected>Select business type</option>
+            <option>Hair &amp; Beauty Services</option>
+            <option>Food &amp; Beverages</option>
+            <option>Retail &amp; Trading</option>
+            <option>Logistics &amp; Delivery</option>
+            <option>Fashion &amp; Tailoring</option>
+            <option>Electronics &amp; Repairs</option>
+            <option>Other</option>
+          </select>
         </div>
         <div class="field">
-            <label class="field__label">Registration Date</label>
-            <div class="field__icon-wrap">
-                <i class="ph ph-calendar-blank field__icon"></i>
-                <input class="field__input" id="fieldRegDate" type="date" placeholder="Select date">
-            </div>
+          <label class="field__label">Registration Date</label>
+          <div class="field__icon-wrap">
+            <i class="ph ph-calendar-blank field__icon"></i>
+            <input
+              class="field__input"
+              id="fieldRegDate"
+              type="date"
+              placeholder="Select date"
+            />
+          </div>
         </div>
-    </div>
+      </div>
 
-    <!-- BUSINESS HOURS -->
-    <div class="s-card">
+      <!-- BUSINESS HOURS -->
+      <div class="s-card">
         <p class="s-card__title">Business Hours</p>
-        <p class="s-card__subtitle">Toggle each day open and set opening &amp; closing times</p>
-        
+        <p class="s-card__subtitle">
+          Toggle each day open and set opening &amp; closing times
+        </p>
+
         <div class="hours-row" id="row-monday">
           <div class="hours-row__head">
             <label class="hours-row__toggle">
-              <input type="checkbox" id="chk-monday" onchange="toggleDay('monday')">
+              <input
+                type="checkbox"
+                id="chk-monday"
+                onchange="toggleDay('monday')"
+              />
               <span class="tog__track"></span>
               <span class="tog__thumb"></span>
             </label>
             <span class="hours-row__day">Monday</span>
             <span class="hours-row__closed" id="closed-monday">Closed</span>
           </div>
-          <div class="hours-row__times" id="times-monday" style="display:none;">
+          <div class="hours-row__times" id="times-monday" style="display: none">
             <div class="time-pair">
               <div class="time-field">
                 <label class="time-field__lbl">Opens</label>
-                <input type="time" class="field__input time-input" id="open-monday" placeholder="08:00">
+                <input
+                  type="time"
+                  class="field__input time-input"
+                  id="open-monday"
+                  placeholder="08:00"
+                />
               </div>
               <span class="time-sep">—</span>
               <div class="time-field">
                 <label class="time-field__lbl">Closes</label>
-                <input type="time" class="field__input time-input" id="close-monday" placeholder="18:00">
+                <input
+                  type="time"
+                  class="field__input time-input"
+                  id="close-monday"
+                  placeholder="18:00"
+                />
               </div>
             </div>
           </div>
@@ -189,23 +293,41 @@
         <div class="hours-row" id="row-tuesday">
           <div class="hours-row__head">
             <label class="hours-row__toggle">
-              <input type="checkbox" id="chk-tuesday" onchange="toggleDay('tuesday')">
+              <input
+                type="checkbox"
+                id="chk-tuesday"
+                onchange="toggleDay('tuesday')"
+              />
               <span class="tog__track"></span>
               <span class="tog__thumb"></span>
             </label>
             <span class="hours-row__day">Tuesday</span>
             <span class="hours-row__closed" id="closed-tuesday">Closed</span>
           </div>
-          <div class="hours-row__times" id="times-tuesday" style="display:none;">
+          <div
+            class="hours-row__times"
+            id="times-tuesday"
+            style="display: none"
+          >
             <div class="time-pair">
               <div class="time-field">
                 <label class="time-field__lbl">Opens</label>
-                <input type="time" class="field__input time-input" id="open-tuesday" placeholder="08:00">
+                <input
+                  type="time"
+                  class="field__input time-input"
+                  id="open-tuesday"
+                  placeholder="08:00"
+                />
               </div>
               <span class="time-sep">—</span>
               <div class="time-field">
                 <label class="time-field__lbl">Closes</label>
-                <input type="time" class="field__input time-input" id="close-tuesday" placeholder="18:00">
+                <input
+                  type="time"
+                  class="field__input time-input"
+                  id="close-tuesday"
+                  placeholder="18:00"
+                />
               </div>
             </div>
           </div>
@@ -214,23 +336,41 @@
         <div class="hours-row" id="row-wednesday">
           <div class="hours-row__head">
             <label class="hours-row__toggle">
-              <input type="checkbox" id="chk-wednesday" onchange="toggleDay('wednesday')">
+              <input
+                type="checkbox"
+                id="chk-wednesday"
+                onchange="toggleDay('wednesday')"
+              />
               <span class="tog__track"></span>
               <span class="tog__thumb"></span>
             </label>
             <span class="hours-row__day">Wednesday</span>
             <span class="hours-row__closed" id="closed-wednesday">Closed</span>
           </div>
-          <div class="hours-row__times" id="times-wednesday" style="display:none;">
+          <div
+            class="hours-row__times"
+            id="times-wednesday"
+            style="display: none"
+          >
             <div class="time-pair">
               <div class="time-field">
                 <label class="time-field__lbl">Opens</label>
-                <input type="time" class="field__input time-input" id="open-wednesday" placeholder="08:00">
+                <input
+                  type="time"
+                  class="field__input time-input"
+                  id="open-wednesday"
+                  placeholder="08:00"
+                />
               </div>
               <span class="time-sep">—</span>
               <div class="time-field">
                 <label class="time-field__lbl">Closes</label>
-                <input type="time" class="field__input time-input" id="close-wednesday" placeholder="18:00">
+                <input
+                  type="time"
+                  class="field__input time-input"
+                  id="close-wednesday"
+                  placeholder="18:00"
+                />
               </div>
             </div>
           </div>
@@ -239,23 +379,41 @@
         <div class="hours-row" id="row-thursday">
           <div class="hours-row__head">
             <label class="hours-row__toggle">
-              <input type="checkbox" id="chk-thursday" onchange="toggleDay('thursday')">
+              <input
+                type="checkbox"
+                id="chk-thursday"
+                onchange="toggleDay('thursday')"
+              />
               <span class="tog__track"></span>
               <span class="tog__thumb"></span>
             </label>
             <span class="hours-row__day">Thursday</span>
             <span class="hours-row__closed" id="closed-thursday">Closed</span>
           </div>
-          <div class="hours-row__times" id="times-thursday" style="display:none;">
+          <div
+            class="hours-row__times"
+            id="times-thursday"
+            style="display: none"
+          >
             <div class="time-pair">
               <div class="time-field">
                 <label class="time-field__lbl">Opens</label>
-                <input type="time" class="field__input time-input" id="open-thursday" placeholder="08:00">
+                <input
+                  type="time"
+                  class="field__input time-input"
+                  id="open-thursday"
+                  placeholder="08:00"
+                />
               </div>
               <span class="time-sep">—</span>
               <div class="time-field">
                 <label class="time-field__lbl">Closes</label>
-                <input type="time" class="field__input time-input" id="close-thursday" placeholder="18:00">
+                <input
+                  type="time"
+                  class="field__input time-input"
+                  id="close-thursday"
+                  placeholder="18:00"
+                />
               </div>
             </div>
           </div>
@@ -264,23 +422,37 @@
         <div class="hours-row" id="row-friday">
           <div class="hours-row__head">
             <label class="hours-row__toggle">
-              <input type="checkbox" id="chk-friday" onchange="toggleDay('friday')">
+              <input
+                type="checkbox"
+                id="chk-friday"
+                onchange="toggleDay('friday')"
+              />
               <span class="tog__track"></span>
               <span class="tog__thumb"></span>
             </label>
             <span class="hours-row__day">Friday</span>
             <span class="hours-row__closed" id="closed-friday">Closed</span>
           </div>
-          <div class="hours-row__times" id="times-friday" style="display:none;">
+          <div class="hours-row__times" id="times-friday" style="display: none">
             <div class="time-pair">
               <div class="time-field">
                 <label class="time-field__lbl">Opens</label>
-                <input type="time" class="field__input time-input" id="open-friday" placeholder="08:00">
+                <input
+                  type="time"
+                  class="field__input time-input"
+                  id="open-friday"
+                  placeholder="08:00"
+                />
               </div>
               <span class="time-sep">—</span>
               <div class="time-field">
                 <label class="time-field__lbl">Closes</label>
-                <input type="time" class="field__input time-input" id="close-friday" placeholder="18:00">
+                <input
+                  type="time"
+                  class="field__input time-input"
+                  id="close-friday"
+                  placeholder="18:00"
+                />
               </div>
             </div>
           </div>
@@ -289,23 +461,41 @@
         <div class="hours-row" id="row-saturday">
           <div class="hours-row__head">
             <label class="hours-row__toggle">
-              <input type="checkbox" id="chk-saturday" onchange="toggleDay('saturday')">
+              <input
+                type="checkbox"
+                id="chk-saturday"
+                onchange="toggleDay('saturday')"
+              />
               <span class="tog__track"></span>
               <span class="tog__thumb"></span>
             </label>
             <span class="hours-row__day">Saturday</span>
             <span class="hours-row__closed" id="closed-saturday">Closed</span>
           </div>
-          <div class="hours-row__times" id="times-saturday" style="display:none;">
+          <div
+            class="hours-row__times"
+            id="times-saturday"
+            style="display: none"
+          >
             <div class="time-pair">
               <div class="time-field">
                 <label class="time-field__lbl">Opens</label>
-                <input type="time" class="field__input time-input" id="open-saturday" placeholder="08:00">
+                <input
+                  type="time"
+                  class="field__input time-input"
+                  id="open-saturday"
+                  placeholder="08:00"
+                />
               </div>
               <span class="time-sep">—</span>
               <div class="time-field">
                 <label class="time-field__lbl">Closes</label>
-                <input type="time" class="field__input time-input" id="close-saturday" placeholder="18:00">
+                <input
+                  type="time"
+                  class="field__input time-input"
+                  id="close-saturday"
+                  placeholder="18:00"
+                />
               </div>
             </div>
           </div>
@@ -314,118 +504,156 @@
         <div class="hours-row" id="row-sunday">
           <div class="hours-row__head">
             <label class="hours-row__toggle">
-              <input type="checkbox" id="chk-sunday" onchange="toggleDay('sunday')">
+              <input
+                type="checkbox"
+                id="chk-sunday"
+                onchange="toggleDay('sunday')"
+              />
               <span class="tog__track"></span>
               <span class="tog__thumb"></span>
             </label>
             <span class="hours-row__day">Sunday</span>
             <span class="hours-row__closed" id="closed-sunday">Closed</span>
           </div>
-          <div class="hours-row__times" id="times-sunday" style="display:none;">
+          <div class="hours-row__times" id="times-sunday" style="display: none">
             <div class="time-pair">
               <div class="time-field">
                 <label class="time-field__lbl">Opens</label>
-                <input type="time" class="field__input time-input" id="open-sunday" placeholder="08:00">
+                <input
+                  type="time"
+                  class="field__input time-input"
+                  id="open-sunday"
+                  placeholder="08:00"
+                />
               </div>
               <span class="time-sep">—</span>
               <div class="time-field">
                 <label class="time-field__lbl">Closes</label>
-                <input type="time" class="field__input time-input" id="close-sunday" placeholder="18:00">
+                <input
+                  type="time"
+                  class="field__input time-input"
+                  id="close-sunday"
+                  placeholder="18:00"
+                />
               </div>
             </div>
           </div>
         </div>
-    </div>
+      </div>
 
-    <!-- ACHIEVEMENTS -->
-    <div class="achievements">
+      <!-- ACHIEVEMENTS -->
+      <div class="achievements">
         <p class="achievements__title">Achievements</p>
         <div class="achievements__row">
-            <div class="ach-badge">
-                <div class="ach-badge__icon">🏆</div>
-                <span class="ach-badge__lbl">Top Seller</span>
+          <div class="ach-badge">
+            <div class="ach-badge__icon">🏆</div>
+            <span class="ach-badge__lbl">Top Seller</span>
+          </div>
+          <div class="ach-badge">
+            <div class="ach-badge__icon green">
+              <i
+                class="ph-fill ph-star"
+                style="color: #f3c650; font-size: 28px"
+              ></i>
             </div>
-            <div class="ach-badge">
-                <div class="ach-badge__icon green">
-                    <i class="ph-fill ph-star" style="color:#F3C650;font-size:28px;"></i>
-                </div>
-                <span class="ach-badge__lbl">Premium</span>
-            </div>
-            <div class="ach-badge">
-                <div class="ach-badge__icon">🎯</div>
-                <span class="ach-badge__lbl">Goal Reached</span>
-            </div>
+            <span class="ach-badge__lbl">Premium</span>
+          </div>
+          <div class="ach-badge">
+            <div class="ach-badge__icon">🎯</div>
+            <span class="ach-badge__lbl">Goal Reached</span>
+          </div>
         </div>
-    </div>
+      </div>
 
-    <!-- PREMIUM BANNER -->
-    <div class="premium-banner">
+      <!-- PREMIUM BANNER -->
+      <div class="premium-banner">
         <div class="premium-banner__icon">🏅</div>
         <div class="premium-banner__text">
-            <p class="premium-banner__title">Premium Member</p>
-            <p class="premium-banner__sub">Active since Dec 2025</p>
-            <p class="premium-banner__desc">Enjoy unlimited transactions, advanced analytics, and priority support.</p>
+          <p class="premium-banner__title">Premium Member</p>
+          <p class="premium-banner__sub">Active since Dec 2025</p>
+          <p class="premium-banner__desc">
+            Enjoy unlimited transactions, advanced analytics, and priority
+            support.
+          </p>
         </div>
-    </div>
+      </div>
 
-    <!-- ACTIONS -->
-    <div class="actions">
+      <!-- ACTIONS -->
+      <div class="actions">
         <button class="btn btn--primary" onclick="saveAll()">
-            <i class="ph ph-pencil-simple"></i> Edit Profile Details
+          <i class="ph ph-pencil-simple"></i> Edit Profile Details
         </button>
         <button class="btn btn--outline" onclick="openBizSheet()">
-            Update Business Profile
+          Update Business Profile
         </button>
         <button class="btn btn--danger" onclick="confirmLogout()">
-            <i class="ph ph-sign-out"></i> Log Out
+          <i class="ph ph-sign-out"></i> Log Out
         </button>
+      </div>
     </div>
 
-</div>
-
-<!-- UPDATE BUSINESS SHEET -->
-<div class="edit-overlay" id="bizOverlay" onclick="closeSheet(event,'bizOverlay')">
-    <div class="edit-sheet">
+    <!-- UPDATE BUSINESS SHEET -->
+    <div
+      class="edit-overlay"
+      id="bizOverlay"
+      onclick="closeSheet(event, 'bizOverlay')"
+    >
+      <div class="edit-sheet">
         <div class="edit-sheet__handle"></div>
         <p class="edit-sheet__title">Update Business Profile</p>
         <div class="field">
-            <label class="field__label">Business Name</label>
-            <div class="field__icon-wrap">
-                <i class="ph ph-storefront field__icon"></i>
-                <input class="field__input" id="editBizName" type="text" placeholder="e.g. Blessing's Hair Salon">
-            </div>
+          <label class="field__label">Business Name</label>
+          <div class="field__icon-wrap">
+            <i class="ph ph-storefront field__icon"></i>
+            <input
+              class="field__input"
+              id="editBizName"
+              type="text"
+              placeholder="e.g. Blessing's Hair Salon"
+            />
+          </div>
         </div>
         <div class="field">
-            <label class="field__label">Business Address</label>
-            <div class="field__icon-wrap">
-                <i class="ph ph-map-pin field__icon"></i>
-                <input class="field__input" id="editBizAddr" type="text" placeholder="e.g. 15 Adeniyi Jones Ave, Lagos">
-            </div>
+          <label class="field__label">Business Address</label>
+          <div class="field__icon-wrap">
+            <i class="ph ph-map-pin field__icon"></i>
+            <input
+              class="field__input"
+              id="editBizAddr"
+              type="text"
+              placeholder="e.g. 15 Adeniyi Jones Ave, Lagos"
+            />
+          </div>
         </div>
         <div class="field">
-            <label class="field__label">Business Type</label>
-            <select class="field__input" id="editBizType">
-                <option value="" disabled selected>Select business type</option>
-                <option>Hair & Beauty Services</option>
-                <option>Food & Beverages</option>
-                <option>Retail & Trading</option>
-                <option>Logistics & Delivery</option>
-                <option>Fashion & Tailoring</option>
-                <option>Electronics & Repairs</option>
-                <option>Other</option>
-            </select>
+          <label class="field__label">Business Type</label>
+          <select class="field__input" id="editBizType">
+            <option value="" disabled selected>Select business type</option>
+            <option>Hair & Beauty Services</option>
+            <option>Food & Beverages</option>
+            <option>Retail & Trading</option>
+            <option>Logistics & Delivery</option>
+            <option>Fashion & Tailoring</option>
+            <option>Electronics & Repairs</option>
+            <option>Other</option>
+          </select>
         </div>
-        <button class="edit-sheet__save" onclick="saveBusiness()">Save Changes</button>
-        <button class="edit-sheet__cancel" onclick="closeOverlay('bizOverlay')">Cancel</button>
+        <button class="edit-sheet__save" onclick="saveBusiness()">
+          Save Changes
+        </button>
+        <button class="edit-sheet__cancel" onclick="closeOverlay('bizOverlay')">
+          Cancel
+        </button>
+      </div>
     </div>
-</div>
 
-<!-- TOAST -->
-<div class="toast" id="toast">
-    <i class="ph-fill ph-check-circle" style="font-size:16px;"></i>
-    <span id="toastMsg">Saved</span>
-</div>
+    <!-- TOAST -->
+    <div class="toast" id="toast">
+      <i class="ph-fill ph-check-circle" style="font-size: 16px"></i>
+      <span id="toastMsg">Saved</span>
+    </div>
 
+    <script src="../src/scripts/theme.js"></script>
     <script src="../src/scripts/profile-settings.js"></script>
-</body>
+  </body>
 </html>

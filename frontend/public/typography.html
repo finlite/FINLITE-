@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Phosphor Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css"/>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Page stylesheet -->
+    <link rel="stylesheet" href="../src/styles/typography.css">
+
+    <title>Typography — Finlite</title>
+</head>
+<body>
+
+<!-- ── BACKDROP ── -->
+<div class="nav__backdrop" id="backdrop" aria-hidden="true"></div>
+
+<!-- ══════════════════════════════════════
+     NAV  (Settings active)
+══════════════════════════════════════ -->
+<nav class="nav" role="navigation" aria-label="Main navigation">
+    <a class="nav__brand" href="dashboard.html" aria-label="Finlite home">
+        <div class="nav__logo">
+            <img src="../src/assets/logo.png" width="36" height="42" alt="Finlite Logo">
+        </div>
+        <h2 class="nav__brand-text">FINLITE</h2>
+    </a>
+
+    <ul class="nav__links" role="list">
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="transactions.html">Transaction</a></li>
+        <li><a href="settings.html" class="active">Settings</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="report.html">Report</a></li>
+    </ul>
+
+    <button class="nav__hamburger" id="hamburgerBtn"
+            aria-label="Open navigation menu" aria-expanded="false"
+            aria-controls="mobileMenu">
+        <span class="nav__hb"></span>
+        <span class="nav__hb"></span>
+        <span class="nav__hb"></span>
+    </button>
+</nav>
+
+<!-- ── MOBILE MENU ── -->
+<div class="nav__mobile" id="mobileMenu"
+     role="dialog" aria-label="Navigation menu" aria-hidden="true">
+    <div class="nav__mobile-inner">
+        <a href="dashboard.html"    class="nav__m-link"><i class="ph ph-squares-four"></i> Dashboard</a>
+        <a href="transactions.html" class="nav__m-link"><i class="ph ph-arrows-left-right"></i> Transactions</a>
+        <a href="settings.html"     class="nav__m-link active"><i class="ph ph-gear"></i> Settings</a>
+        <a href="about.html"        class="nav__m-link"><i class="ph ph-info"></i> About Us</a>
+        <a href="report.html"       class="nav__m-link"><i class="ph ph-chart-bar"></i> Report</a>
+        <div class="nav__m-divider" role="separator"></div>
+        <div class="nav__m-user">
+            <div class="nav__m-avatar" id="mobile-avatar" aria-hidden="true">--</div>
+            <div>
+                <p class="nav__m-name" id="mobile-user-name">Loading…</p>
+                <p class="nav__m-role">Business Owner</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE
+══════════════════════════════════════ -->
+<div class="page">
+
+    <!-- TOPBAR -->
+    <div class="topbar">
+        <a href="theme-builder.html" class="topbar__back" aria-label="Back to Theme Builder">
+            <i class="ph ph-arrow-left"></i>
+        </a>
+        <h1 class="topbar__title">Theme Builder</h1>
+    </div>
+
+    <!-- SECTION LABEL -->
+    <p class="section-label">Typography</p>
+
+    <!-- ── MAIN CARD ── -->
+    <div class="typo-card">
+
+        <!-- TEXT SIZE -->
+        <div class="typo-block">
+            <div class="typo-block__head">
+                <div class="typo-block__left">
+                    <div class="typo-block__icon" aria-hidden="true">
+                        <i class="ph ph-text-t"></i>
+                    </div>
+                    <span class="typo-block__title">Text Size</span>
+                </div>
+                <span class="typo-block__current" id="currentSizeLabel">Medium</span>
+            </div>
+
+            <div class="size-pills" role="group" aria-label="Choose text size">
+                <button class="size-pill"
+                        data-size="small"
+                        onclick="selectSize('small')"
+                        aria-pressed="false">
+                    Small
+                </button>
+                <button class="size-pill active"
+                        data-size="medium"
+                        onclick="selectSize('medium')"
+                        aria-pressed="true">
+                    Medium
+                </button>
+                <button class="size-pill"
+                        data-size="large"
+                        onclick="selectSize('large')"
+                        aria-pressed="false">
+                    Large
+                </button>
+            </div>
+        </div>
+
+        <div class="typo-divider" role="separator"></div>
+
+        <!-- BOLD NUMBERS -->
+        <div class="typo-row">
+            <div class="typo-row__text">
+                <p class="typo-row__title">Bold Numbers</p>
+                <p class="typo-row__sub">Make currency values stand out</p>
+            </div>
+            <label class="tog" aria-label="Toggle bold numbers">
+                <input type="checkbox" id="tog-bold"
+                       onchange="toggleBoldNumbers(this.checked)">
+                <span class="tog__track"></span>
+                <span class="tog__thumb"></span>
+            </label>
+        </div>
+
+        <div class="typo-divider" role="separator"></div>
+
+        <!-- INCREASE LINE SPACING -->
+        <div class="typo-row">
+            <div class="typo-row__text">
+                <p class="typo-row__title">Increase Line Spacing</p>
+                <p class="typo-row__sub">More space between lines</p>
+            </div>
+            <label class="tog" aria-label="Toggle line spacing">
+                <input type="checkbox" id="tog-spacing"
+                       onchange="toggleLineSpacing(this.checked)">
+                <span class="tog__track"></span>
+                <span class="tog__thumb"></span>
+            </label>
+        </div>
+
+    </div>
+    <!-- /typo-card -->
+
+    <!-- ── LIVE PREVIEW ── -->
+    <div class="preview-card">
+        <p class="preview-card__label">Live Preview</p>
+
+        <div class="preview-row">
+            <span class="preview-row__desc">Hair Styling · 2:30 PM</span>
+            <span class="preview-row__amount">+₦5,000</span>
+        </div>
+        <div class="preview-row">
+            <span class="preview-row__desc">Braiding · 11:00 AM</span>
+            <span class="preview-row__amount">+₦8,500</span>
+        </div>
+        <div class="preview-row">
+            <span class="preview-row__desc">Supplies · 9:15 AM</span>
+            <span class="preview-row__amount expense">-₦2,200</span>
+        </div>
+        <div class="preview-row">
+            <span class="preview-row__desc">Weaving · 4:00 PM</span>
+            <span class="preview-row__amount">+₦6,000</span>
+        </div>
+    </div>
+
+</div>
+<!-- /page -->
+
+<script src="../src/scripts/typography.js"></script>
+</body>
+</html>

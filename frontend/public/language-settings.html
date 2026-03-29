@@ -1,43 +1,74 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css"/>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <title>Language Settings — Finlite</title>
-    <link rel="stylesheet" href="../src/styles/language-settings.css">
-</head>
-<body>
+    <link rel="stylesheet" href="../src/styles/language-settings.css" />
+  </head>
+  <body>
+    <div class="nav__backdrop" id="backdrop"></div>
 
-<div class="nav__backdrop" id="backdrop"></div>
-
-<nav class="nav">
-    <a class="nav__brand" href="#">
-        <img src="../src/assets/logo.png" width="36px" height="42px" alt="Finlite Logo" class="nav-bar__logo"/>
+    <nav class="nav">
+      <a class="nav__brand" href="#">
+        <img
+          src="../src/assets/logo.png"
+          width="36px"
+          height="42px"
+          alt="Finlite Logo"
+          class="nav-bar__logo"
+        />
         <h2 class="nav__brand-text">FINLITE</h2>
-    </a>
-    <ul class="nav__links">
+      </a>
+      <ul class="nav__links">
         <li><a href="dashboard.html">Dashboard</a></li>
         <li><a href="transactions.html">Transactions</a></li>
         <li><a href="settings.html" class="active">Settings</a></li>
         <li><a href="about.html">About Us</a></li>
         <li><a href="report.html">Report</a></li>
-    </ul>
-    <button class="nav__hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
-        <span class="nav__hb"></span><span class="nav__hb"></span><span class="nav__hb"></span>
-    </button>
-</nav>
-<div class="nav__mobile" id="mobileMenu" aria-hidden="true">
-    <div class="nav__mobile-inner">
-        <a href="dashboard.html" class="nav__m-link"><i class="ph ph-squares-four"></i> Dashboard</a>
-        <a href="transactions.html" class="nav__m-link"><i class="ph ph-arrows-left-right"></i> Transactions</a>
-        <a href="settings.html" class="nav__m-link active"><i class="ph ph-gear"></i> Settings <span class="nav__m-badge">Active</span></a>
-        <a href="about.html" class="nav__m-link"><i class="ph ph-info"></i> About Us</a>
-        <a href="report.html" class="nav__m-link"><i class="ph ph-chart-bar"></i> Report</a>
+      </ul>
+      <button
+        class="nav__hamburger"
+        id="hamburgerBtn"
+        aria-label="Open menu"
+        aria-expanded="false"
+      >
+        <span class="nav__hb"></span><span class="nav__hb"></span
+        ><span class="nav__hb"></span>
+      </button>
+    </nav>
+    <div class="nav__mobile" id="mobileMenu" aria-hidden="true">
+      <div class="nav__mobile-inner">
+        <a href="dashboard.html" class="nav__m-link"
+          ><i class="ph ph-squares-four"></i> Dashboard</a
+        >
+        <a href="transactions.html" class="nav__m-link"
+          ><i class="ph ph-arrows-left-right"></i> Transactions</a
+        >
+        <a href="settings.html" class="nav__m-link active"
+          ><i class="ph ph-gear"></i> Settings
+          <span class="nav__m-badge">Active</span></a
+        >
+        <a href="about.html" class="nav__m-link"
+          ><i class="ph ph-info"></i> About Us</a
+        >
+        <a href="report.html" class="nav__m-link"
+          ><i class="ph ph-chart-bar"></i> Report</a
+        >
         <div class="nav__m-divider"></div>
         <!-- User row -->
         <div class="nav__m-user">
@@ -49,84 +80,151 @@
             <p class="nav__m-role">Business Owner</p>
           </div>
         </div>
+      </div>
     </div>
-</div>
 
-<div class="page">
-
-    <div class="lang-hero">
+    <div class="page">
+      <div class="lang-hero">
         <div class="lang-hero__icon"><i class="ph-fill ph-globe"></i></div>
-        <h1 class="lang-hero__title" data-i18n="hero_title">Choose Your Language</h1>
-        <p class="lang-hero__sub" data-i18n="hero_sub">Select the language you're most comfortable with</p>
-    </div>
+        <h1 class="lang-hero__title" data-i18n="hero_title">
+          Choose Your Language
+        </h1>
+        <p class="lang-hero__sub" data-i18n="hero_sub">
+          Select the language you're most comfortable with
+        </p>
+      </div>
 
-    <p class="sec-label"><span style="font-size:19px;">🧡</span><span data-i18n="fav_label">Favorite Languages</span></p>
-    <div class="fav-scroll-wrapper">
+      <p class="sec-label">
+        <span style="font-size: 19px">🧡</span
+        ><span data-i18n="fav_label">Favorite Languages</span>
+      </p>
+      <div class="fav-scroll-wrapper">
         <div class="fav-scroll" id="favScroll"></div>
-    </div>
+      </div>
 
-    <div class="region-block">
-        <p class="region-lbl"><span style="font-size:18px;">🌍</span><span data-i18n="west_africa">West Africa</span></p>
-        <div class="lang-list" id="westList">
-            
-        </div>
-    </div>
-    <div class="region-block">
-        <p class="region-lbl"><span style="font-size:18px;">🌍</span><span data-i18n="east_africa">East Africa</span></p>
+      <div class="region-block">
+        <p class="region-lbl">
+          <span style="font-size: 18px">🌍</span
+          ><span data-i18n="west_africa">West Africa</span>
+        </p>
+        <div class="lang-list" id="westList"></div>
+      </div>
+      <div class="region-block">
+        <p class="region-lbl">
+          <span style="font-size: 18px">🌍</span
+          ><span data-i18n="east_africa">East Africa</span>
+        </p>
         <div class="lang-list" id="eastList"></div>
-    </div>
-    <div class="region-block">
-        <p class="region-lbl"><span style="font-size:18px;">🌍</span><span data-i18n="south_africa">Southern Africa</span></p>
+      </div>
+      <div class="region-block">
+        <p class="region-lbl">
+          <span style="font-size: 18px">🌍</span
+          ><span data-i18n="south_africa">Southern Africa</span>
+        </p>
         <div class="lang-list" id="southList"></div>
-    </div>
+      </div>
 
-    <p class="sec-label" style="margin-top:8px;"><span data-i18n="regional_format">Regional Format</span></p>
-    <div class="s-card">
+      <p class="sec-label" style="margin-top: 8px">
+        <span data-i18n="regional_format">Regional Format</span>
+      </p>
+      <div class="s-card">
         <div class="s-row">
-            <div><p class="s-row__lbl" data-i18n="date_format">Date Format</p><p class="s-row__val" id="dateVal">DD/MM/YYYY</p></div>
-            <button class="s-row__btn" onclick="openModal('date')" data-i18n="change">Change</button>
+          <div>
+            <p class="s-row__lbl" data-i18n="date_format">Date Format</p>
+            <p class="s-row__val" id="dateVal">DD/MM/YYYY</p>
+          </div>
+          <button
+            class="s-row__btn"
+            onclick="openModal('date')"
+            data-i18n="change"
+          >
+            Change
+          </button>
         </div>
         <div class="s-row">
-            <div><p class="s-row__lbl" data-i18n="currency_display">Currency Display</p><p class="s-row__val" id="currencyVal">&#8358; (Nigerian Naira)</p></div>
-            <button class="s-row__btn" onclick="openModal('currency')" data-i18n="change">Change</button>
+          <div>
+            <p class="s-row__lbl" data-i18n="currency_display">
+              Currency Display
+            </p>
+            <p class="s-row__val" id="currencyVal">&#8358; (Nigerian Naira)</p>
+          </div>
+          <button
+            class="s-row__btn"
+            onclick="openModal('currency')"
+            data-i18n="change"
+          >
+            Change
+          </button>
         </div>
         <div class="s-row">
-            <div><p class="s-row__lbl" data-i18n="number_format">Number Format</p><p class="s-row__val" id="numberVal">1,234.56</p></div>
-            <button class="s-row__btn" onclick="openModal('number')" data-i18n="change">Change</button>
+          <div>
+            <p class="s-row__lbl" data-i18n="number_format">Number Format</p>
+            <p class="s-row__val" id="numberVal">1,234.56</p>
+          </div>
+          <button
+            class="s-row__btn"
+            onclick="openModal('number')"
+            data-i18n="change"
+          >
+            Change
+          </button>
         </div>
-    </div>
+      </div>
 
-    <p class="sec-label"><span data-i18n="translation_settings">Translation Settings</span></p>
-    <div class="s-card">
+      <p class="sec-label">
+        <span data-i18n="translation_settings">Translation Settings</span>
+      </p>
+      <div class="s-card">
         <div class="tog-wrap">
-            <div class="tog-info">
-                <p class="tog-info__lbl" data-i18n="auto_translate">Auto-Translate</p>
-                <p class="tog-info__desc" data-i18n="auto_translate_desc">Translate content automatically</p>
-            </div>
-            <label class="tog"><input type="checkbox" id="autoTog" checked><span class="tog__track"></span><span class="tog__thumb"></span></label>
+          <div class="tog-info">
+            <p class="tog-info__lbl" data-i18n="auto_translate">
+              Auto-Translate
+            </p>
+            <p class="tog-info__desc" data-i18n="auto_translate_desc">
+              Translate content automatically
+            </p>
+          </div>
+          <label class="tog"
+            ><input type="checkbox" id="autoTog" checked /><span
+              class="tog__track"
+            ></span
+            ><span class="tog__thumb"></span
+          ></label>
         </div>
         <div class="tog-wrap">
-            <div class="tog-info">
-                <p class="tog-info__lbl" data-i18n="show_original">Show Original Text</p>
-                <p class="tog-info__desc" data-i18n="show_original_desc">Display original alongside translation</p>
-            </div>
-            <label class="tog"><input type="checkbox" id="origTog"><span class="tog__track"></span><span class="tog__thumb"></span></label>
+          <div class="tog-info">
+            <p class="tog-info__lbl" data-i18n="show_original">
+              Show Original Text
+            </p>
+            <p class="tog-info__desc" data-i18n="show_original_desc">
+              Display original alongside translation
+            </p>
+          </div>
+          <label class="tog"
+            ><input type="checkbox" id="origTog" /><span
+              class="tog__track"
+            ></span
+            ><span class="tog__thumb"></span
+          ></label>
         </div>
+      </div>
     </div>
 
-</div>
-
-<div class="modal-ov" id="modalOv" onclick="closeModalOutside(event)">
-    <div class="modal" id="modalBox">
+    <div class="modal-ov" id="modalOv" onclick="closeModalOutside(event)">
+      <div class="modal" id="modalBox">
         <div class="modal__handle"></div>
         <p class="modal__title" id="modalTitle">Select</p>
         <div id="modalOpts"></div>
         <button class="modal__done" onclick="closeModal()">Done</button>
+      </div>
     </div>
-</div>
 
-<div class="toast" id="toast"><i class="ph-fill ph-check-circle" style="font-size:16px;"></i><span id="toastMsg">Language updated</span></div>
+    <div class="toast" id="toast">
+      <i class="ph-fill ph-check-circle" style="font-size: 16px"></i
+      ><span id="toastMsg">Language updated</span>
+    </div>
 
+    <script src="../src/scripts/theme.js"></script>
     <script src="../src/scripts/language-settings.js"></script>
-</body>
+  </body>
 </html>

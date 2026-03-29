@@ -1,218 +1,357 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css"/>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <title>Transactions — Finlite</title>
-    <link rel="stylesheet" href="../src/styles/transactions.css">
-</head>
-<body>
+    <link rel="stylesheet" href="../src/styles/transactions.css" />
+  </head>
+  <body>
+    <!-- Backdrop -->
+    <div class="nav__backdrop" id="backdrop"></div>
 
-<!-- Backdrop -->
-<div class="nav__backdrop" id="backdrop"></div>
-
-<!-- NAV -->
-<nav class="nav">
-    <a class="nav__brand" href="dashboard.html" aria-label="Finlite home">
-        <img src="../src/assets/logo.png" width="36px" height="42px" alt="Finlite Logo" class="nav-bar__logo"/>
+    <!-- NAV -->
+    <nav class="nav">
+      <a class="nav__brand" href="dashboard.html" aria-label="Finlite home">
+        <img
+          src="../src/assets/logo.png"
+          width="36px"
+          height="42px"
+          alt="Finlite Logo"
+          class="nav-bar__logo"
+        />
         <h2 class="nav__brand-text">FINLITE</h2>
       </a>
-    <ul class="nav__links">
+      <ul class="nav__links">
         <li><a href="dashboard.html">Dashboard</a></li>
         <li><a href="transactions.html" class="active">Transactions</a></li>
         <li><a href="settings.html">Settings</a></li>
         <li><a href="about.html">About Us</a></li>
         <li><a href="report.html">Report</a></li>
-    </ul>
-    <button class="nav__hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
+      </ul>
+      <button
+        class="nav__hamburger"
+        id="hamburgerBtn"
+        aria-label="Open menu"
+        aria-expanded="false"
+      >
         <span class="nav__hb"></span>
         <span class="nav__hb"></span>
         <span class="nav__hb"></span>
-    </button>
-</nav>
+      </button>
+    </nav>
 
-<!-- Mobile menu -->
-<div class="nav__mobile" id="mobileMenu" aria-hidden="true">
-    <div class="nav__mobile-inner">
-        <a href="dashboard.html"    class="nav__m-link"><i class="ph ph-squares-four"></i> Dashboard</a>
-        <a href="transactions.html" class="nav__m-link active"><i class="ph ph-arrows-left-right"></i> Transactions</a>
-        <a href="settings.html"     class="nav__m-link"><i class="ph ph-gear"></i> Settings</a>
-        <a href="about.html"        class="nav__m-link"><i class="ph ph-info"></i> About Us</a>
-        <a href="report.html"       class="nav__m-link"><i class="ph ph-chart-bar"></i> Report</a>
+    <!-- Mobile menu -->
+    <div class="nav__mobile" id="mobileMenu" aria-hidden="true">
+      <div class="nav__mobile-inner">
+        <a href="dashboard.html" class="nav__m-link"
+          ><i class="ph ph-squares-four"></i> Dashboard</a
+        >
+        <a href="transactions.html" class="nav__m-link active"
+          ><i class="ph ph-arrows-left-right"></i> Transactions</a
+        >
+        <a href="settings.html" class="nav__m-link"
+          ><i class="ph ph-gear"></i> Settings</a
+        >
+        <a href="about.html" class="nav__m-link"
+          ><i class="ph ph-info"></i> About Us</a
+        >
+        <a href="report.html" class="nav__m-link"
+          ><i class="ph ph-chart-bar"></i> Report</a
+        >
         <div class="nav__m-divider" role="separator"></div>
         <div class="nav__m-user">
-            <div class="nav__m-avatar" id="mobile-avatar" aria-hidden="true">--</div>
-            <div>
-                <p class="nav__m-name" id="mobile-user-name">Loading…</p>
-                <p class="nav__m-role">Business Owner</p>
-            </div>
+          <div class="nav__m-avatar" id="mobile-avatar" aria-hidden="true">
+            --
+          </div>
+          <div>
+            <p class="nav__m-name" id="mobile-user-name">Loading…</p>
+            <p class="nav__m-role">Business Owner</p>
+          </div>
         </div>
+      </div>
     </div>
-</div>
 
-<!-- PAGE -->
-<div class="page">
-
-    <!-- TOPBAR -->
-    <div class="topbar">
+    <!-- PAGE -->
+    <div class="page">
+      <!-- TOPBAR -->
+      <div class="topbar">
         <a href="dashboard.html" class="topbar__back" aria-label="Back">
-            <i class="ph ph-arrow-left"></i>
+          <i class="ph ph-arrow-left"></i>
         </a>
         <div class="topbar__text">
-            <h1 class="topbar__title">Transactions</h1>
-            <p class="topbar__sub">Track your daily sales &amp; expenses</p>
+          <h1 class="topbar__title">Transactions</h1>
+          <p class="topbar__sub">Track your daily sales &amp; expenses</p>
         </div>
-    </div>
+      </div>
 
-    <!-- MONTH + CALENDAR -->
-    <div class="month-row">
+      <!-- MONTH + CALENDAR -->
+      <div class="month-row">
         <div class="month-row__label">
-            <span class="month-row__month" id="currentMonth">Loading…</span>
-            <p class="month-row__biz">Your business summary</p>
+          <span class="month-row__month" id="currentMonth">Loading…</span>
+          <p class="month-row__biz">Your business summary</p>
         </div>
         <button class="month-row__cal" id="calBtn" aria-label="Pick month">
-            <i class="ph ph-calendar-blank"></i>
+          <i class="ph ph-calendar-blank"></i>
         </button>
-    </div>
+      </div>
 
-    <!-- CUSTOM MONTH PICKER -->
-    <div class="mpicker__backdrop" id="mPickerBackdrop"></div>
-    <div class="mpicker" id="mPicker" role="dialog" aria-label="Month picker" aria-modal="true">
+      <!-- CUSTOM MONTH PICKER -->
+      <div class="mpicker__backdrop" id="mPickerBackdrop"></div>
+      <div
+        class="mpicker"
+        id="mPicker"
+        role="dialog"
+        aria-label="Month picker"
+        aria-modal="true"
+      >
         <div class="mpicker__header">
-            <button class="mpicker__nav" id="mPickerPrev" aria-label="Previous year">
-                <i class="ph ph-caret-left"></i>
-            </button>
-            <span class="mpicker__year" id="mPickerYear">2025</span>
-            <button class="mpicker__nav" id="mPickerNext" aria-label="Next year">
-                <i class="ph ph-caret-right"></i>
-            </button>
+          <button
+            class="mpicker__nav"
+            id="mPickerPrev"
+            aria-label="Previous year"
+          >
+            <i class="ph ph-caret-left"></i>
+          </button>
+          <span class="mpicker__year" id="mPickerYear">2025</span>
+          <button class="mpicker__nav" id="mPickerNext" aria-label="Next year">
+            <i class="ph ph-caret-right"></i>
+          </button>
         </div>
         <div class="mpicker__grid" id="mPickerGrid"></div>
         <button class="mpicker__close" id="mPickerClose">Cancel</button>
-    </div>
+      </div>
 
-    <!-- SUMMARY CARD -->
-    <div class="summary-card">
+      <!-- SUMMARY CARD -->
+      <div class="summary-card">
         <div class="summary-card__inner">
-            <p class="summary-card__lbl">Total Profit This Month</p>
-            <p class="summary-card__profit" id="totalProfit">N/A</p>
+          <p class="summary-card__lbl">Total Profit This Month</p>
+          <p class="summary-card__profit" id="totalProfit">N/A</p>
 
-            <div class="summary-card__row">
-                <div class="summary-card__col">
-                    <span class="summary-card__icon summary-card__icon--up">
-                        <i class="ph ph-arrow-up-right"></i>
-                    </span>
-                    <div class="summary-card__detail">
-                        <span class="summary-card__type">Sales</span>
-                        <span class="summary-card__amt" id="totalSales">N/A</span>
-                    </div>
-                </div>
-                <div class="summary-card__col">
-                    <span class="summary-card__icon summary-card__icon--down">
-                        <i class="ph ph-arrow-down-right"></i>
-                    </span>
-                    <div class="summary-card__detail">
-                        <span class="summary-card__type">Expenses</span>
-                        <span class="summary-card__amt" id="totalExpenses">N/A</span>
-                    </div>
-                </div>
+          <div class="summary-card__row">
+            <div class="summary-card__col">
+              <span class="summary-card__icon summary-card__icon--up">
+                <i class="ph ph-arrow-up-right"></i>
+              </span>
+              <div class="summary-card__detail">
+                <span class="summary-card__type">Sales</span>
+                <span class="summary-card__amt" id="totalSales">N/A</span>
+              </div>
             </div>
+            <div class="summary-card__col">
+              <span class="summary-card__icon summary-card__icon--down">
+                <i class="ph ph-arrow-down-right"></i>
+              </span>
+              <div class="summary-card__detail">
+                <span class="summary-card__type">Expenses</span>
+                <span class="summary-card__amt" id="totalExpenses">N/A</span>
+              </div>
+            </div>
+          </div>
 
-            <!-- Mini bar chart -->
-            <div class="bar-chart">
-                <div class="bar-chart__bars">
-                    <div class="bar-chart__bar" style="height:40%"></div>
-                    <div class="bar-chart__bar" style="height:65%"></div>
-                    <div class="bar-chart__bar" style="height:50%"></div>
-                    <div class="bar-chart__bar" style="height:80%"></div>
-                    <div class="bar-chart__bar" style="height:55%"></div>
-                    <div class="bar-chart__bar" style="height:70%"></div>
-                    <div class="bar-chart__bar" style="height:90%"></div>
-                </div>
-                <p class="bar-chart__label">Last 7 days trend</p>
+          <!-- Mini bar chart -->
+          <div class="bar-chart">
+            <div class="bar-chart__bars">
+              <div class="bar-chart__bar" style="height: 40%"></div>
+              <div class="bar-chart__bar" style="height: 65%"></div>
+              <div class="bar-chart__bar" style="height: 50%"></div>
+              <div class="bar-chart__bar" style="height: 80%"></div>
+              <div class="bar-chart__bar" style="height: 55%"></div>
+              <div class="bar-chart__bar" style="height: 70%"></div>
+              <div class="bar-chart__bar" style="height: 90%"></div>
             </div>
+            <p class="bar-chart__label">Last 7 days trend</p>
+          </div>
         </div>
-    </div>
+      </div>
 
-    <!-- SEARCH + FILTER -->
-    <div class="search-row">
+      <!-- SEARCH + FILTER -->
+      <div class="search-row">
         <div class="search-row__field">
-            <i class="ph ph-magnifying-glass search-row__icon"></i>
-            <input
-                type="text"
-                class="search-row__input"
-                id="searchInput"
-                placeholder="Search transactions..."
-                aria-label="Search transactions"
-            >
+          <i class="ph ph-magnifying-glass search-row__icon"></i>
+          <input
+            type="text"
+            class="search-row__input"
+            id="searchInput"
+            placeholder="Search transactions..."
+            aria-label="Search transactions"
+          />
         </div>
         <button class="search-row__filter" id="filterBtn" aria-label="Filter">
-            <i class="ph ph-funnel"></i>
+          <i class="ph ph-funnel"></i>
         </button>
-    </div>
+      </div>
 
-    <!-- FILTER TABS -->
-    <div class="filter-tabs" role="tablist">
-        <button class="filter-tab active" id="tab-all"      data-filter="all"      role="tab" aria-selected="true">All</button>
-        <button class="filter-tab"        id="tab-sales"    data-filter="sales"    role="tab" aria-selected="false">Sales</button>
-        <button class="filter-tab"        id="tab-expenses" data-filter="expenses" role="tab" aria-selected="false">Expenses</button>
-    </div>
+      <!-- FILTER TABS -->
+      <div class="filter-tabs" role="tablist">
+        <button
+          class="filter-tab active"
+          id="tab-all"
+          data-filter="all"
+          role="tab"
+          aria-selected="true"
+        >
+          All
+        </button>
+        <button
+          class="filter-tab"
+          id="tab-sales"
+          data-filter="sales"
+          role="tab"
+          aria-selected="false"
+        >
+          Sales
+        </button>
+        <button
+          class="filter-tab"
+          id="tab-expenses"
+          data-filter="expenses"
+          role="tab"
+          aria-selected="false"
+        >
+          Expenses
+        </button>
+      </div>
 
-    <!-- TODAY SUMMARY ROW -->
-    <div class="today-row">
+      <!-- TODAY SUMMARY ROW -->
+      <div class="today-row">
         <div class="today-card today-card--sales">
-            <p class="today-card__lbl">Today's Sales</p>
-            <p class="today-card__val" id="todaySales">N/A</p>
+          <p class="today-card__lbl">Today's Sales</p>
+          <p class="today-card__val" id="todaySales">N/A</p>
         </div>
         <div class="today-card today-card--expenses">
-            <p class="today-card__lbl">Today's Expenses</p>
-            <p class="today-card__val" id="todayExpenses">N/A</p>
+          <p class="today-card__lbl">Today's Expenses</p>
+          <p class="today-card__val" id="todayExpenses">N/A</p>
         </div>
-    </div>
+      </div>
 
-    <!-- TRANSACTION LIST -->
-    <div class="tx-list" id="txList">
+      <!-- TRANSACTION LIST -->
+      <div class="tx-list" id="txList">
         <!-- Populated by JS -->
-    </div>
+      </div>
 
-    <!-- BOTTOM BAR -->
-    <div class="bottom-bar">
-        <button class="bottom-bar__btn bottom-bar__btn--active" id="activityBtn">
-            <i class="ph-fill ph-chart-line-up"></i>
-            <span>Activity</span>
+      <!-- BOTTOM BAR -->
+      <div class="bottom-bar">
+        <button
+          class="bottom-bar__btn bottom-bar__btn--active"
+          id="activityBtn"
+        >
+          <i class="ph-fill ph-chart-line-up"></i>
+          <span>Activity</span>
         </button>
         <button class="bottom-bar__btn" id="exportBtn">
-            <i class="ph ph-export"></i>
-            <span>Export</span>
+          <i class="ph ph-export"></i>
+          <span>Export</span>
         </button>
+      </div>
     </div>
+    <!-- /page -->
 
-</div><!-- /page -->
+    <!-- FAB: shown only when Sales or Expenses tab is active -->
+    <button
+      class="fab"
+      id="fab"
+      aria-label="Add transaction"
+      style="display: none"
+    >
+      <i class="ph ph-plus"></i>
+    </button>
 
-<!-- FAB: shown only when Sales or Expenses tab is active -->
-<button class="fab" id="fab" aria-label="Add transaction" style="display:none;">
-    <i class="ph ph-plus"></i>
-</button>
-
-<!-- Sheet overlay kept for potential future use; hidden by default -->
-<div class="sheet-overlay" id="sheetOverlay" onclick="closeSheet(event)">
-    <div class="sheet" id="sheet">
+    <!-- Sheet overlay kept for potential future use; hidden by default -->
+    <div class="sheet-overlay" id="sheetOverlay" onclick="closeSheet(event)">
+      <div class="sheet" id="sheet">
         <div class="sheet__handle"></div>
         <h2 class="sheet__title" id="sheetTitle">Add Sale</h2>
+      </div>
     </div>
-</div>
 
-<!-- TOAST -->
-<div class="toast" id="toast">
-    <i class="ph-fill ph-check-circle"></i>
-    <span id="toastMsg">Saved</span>
-</div>
+    <!-- EDIT TRANSACTION MODAL -->
+    <div
+      class="edit-modal-overlay"
+      id="editModalOverlay"
+      onclick="closeEditModal(event)"
+    >
+      <div class="edit-modal" id="editModal">
+        <div class="edit-modal__header">
+          <h2 class="edit-modal__title">Edit Transaction</h2>
+          <button
+            class="edit-modal__close"
+            aria-label="Close"
+            onclick="closeEditModal()"
+          >
+            <i class="ph ph-x"></i>
+          </button>
+        </div>
+        <form class="edit-modal__form" id="editForm">
+          <div class="edit-modal__field">
+            <label for="editAmount">Amount</label>
+            <input type="text" id="editAmount" placeholder="₦ 0" required />
+          </div>
+          <div class="edit-modal__field">
+            <label for="editService">Service/Description</label>
+            <input
+              type="text"
+              id="editService"
+              placeholder="Enter description"
+              required
+            />
+          </div>
+          <div class="edit-modal__field">
+            <label for="editNotes">Notes</label>
+            <input
+              type="text"
+              id="editNotes"
+              placeholder="Add notes (optional)"
+            />
+          </div>
+          <div class="edit-modal__field">
+            <label for="editDate">Date & Time</label>
+            <input type="datetime-local" id="editDate" required />
+          </div>
+          <div class="edit-modal__actions">
+            <button
+              type="button"
+              class="edit-modal__btn edit-modal__btn--cancel"
+              onclick="closeEditModal()"
+            >
+              Cancel
+            </button>
+            <button type="submit" class="edit-modal__btn edit-modal__btn--save">
+              Save Changes
+            </button>
+            <button
+              type="button"
+              class="edit-modal__btn edit-modal__btn--delete"
+              id="deleteBtn"
+            >
+              Delete
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
 
-<script src="../src/scripts/transactions.js"></script>
-</body>
+    <!-- TOAST -->
+    <div class="toast" id="toast">
+      <i class="ph-fill ph-check-circle"></i>
+      <span id="toastMsg">Saved</span>
+    </div>
+
+    <script src="../src/scripts/theme.js"></script>
+    <script type="module" src="../src/scripts/transactions.js"></script>
+  </body>
 </html>

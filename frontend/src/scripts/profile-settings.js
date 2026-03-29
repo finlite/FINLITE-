@@ -148,6 +148,98 @@ function toggleDay(day) {
         times.style.display = 'none';
         closed.style.display = 'block';
     }
+/* NAV */
+const hb = document.getElementById("hamburgerBtn"),
+  mm = document.getElementById("mobileMenu"),
+  bd = document.getElementById("backdrop");
+let navOpen = false;
+const openNav = () => {
+  navOpen = true;
+  hb.classList.add("open");
+  mm.classList.add("open");
+  bd.classList.add("visible");
+  document.body.style.overflow = "hidden";
+};
+const closeNav = () => {
+  navOpen = false;
+  hb.classList.remove("open");
+  mm.classList.remove("open");
+  bd.classList.remove("visible");
+  document.body.style.overflow = "";
+};
+hb.addEventListener("click", (e) => {
+  e.stopPropagation();
+  navOpen ? closeNav() : openNav();
+});
+bd.addEventListener("click", closeNav);
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    closeNav();
+    document
+      .querySelectorAll(".edit-overlay.open")
+      .forEach((o) => o.classList.remove("open"));
+    document.body.style.overflow = "";
+  }
+});
+window.addEventListener("resize", () => {
+  if (window.innerWidth >= 769 && navOpen) closeNav();
+});
+
+/* AVATAR */
+document.getElementById("avatar-input").addEventListener("change", function () {
+  const file = this.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    const img = document.getElementById("avatarImg");
+    document.getElementById("avatarInitials").style.display = "none";
+    img.src = e.target.result;
+    img.style.display = "block";
+  };
+  reader.readAsDataURL(file);
+});
+
+/* NAME → hero sync */
+document.getElementById("fieldName").addEventListener("input", function () {
+  const n = this.value.trim();
+  const heroName = document.getElementById("heroName");
+  if (n) {
+    heroName.textContent = n;
+    heroName.classList.remove("placeholder");
+    const ini = n
+      .split(/\s+/)
+      .map((w) => w[0])
+      .join("")
+      .substring(0, 2)
+      .toUpperCase();
+    const initEl = document.getElementById("avatarInitials");
+    initEl.textContent = ini;
+    initEl.style.color = "#fff";
+    initEl.style.fontStyle = "normal";
+    initEl.style.fontSize = "28px";
+  } else {
+    heroName.textContent = "Your name will appear here";
+    heroName.classList.add("placeholder");
+    const initEl = document.getElementById("avatarInitials");
+    initEl.textContent = "Photo";
+    initEl.style.color = "rgba(255,255,255,.5)";
+    initEl.style.fontStyle = "italic";
+    initEl.style.fontSize = "14px";
+  }
+});
+
+/* HOURS TOGGLE */
+function toggleDay(day) {
+  const chk = document.getElementById("chk-" + day);
+  const times = document.getElementById("times-" + day);
+  const closed = document.getElementById("closed-" + day);
+  if (chk.checked) {
+    times.style.display = "block";
+    closed.style.display = "none";
+  } else {
+    times.style.display = "none";
+    closed.style.display = "block";
+  }
 }
 
 /* SAVE ALL (Edit Profile Details btn) */

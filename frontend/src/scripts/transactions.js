@@ -1,4 +1,6 @@
-'use strict';
+"use strict";
+
+const API_URL = (window.FINLITE_API_URL || 'https://finlite-nizr.onrender.com/api').replace(/\/+$/, '');
 
 /* ════════════════════════════════════════
    FINLITE — Transactions Page JavaScript

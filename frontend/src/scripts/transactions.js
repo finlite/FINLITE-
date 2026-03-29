@@ -529,14 +529,12 @@ function openEditModal(tx) {
   dateInput.value = isoDateTime;
 
   modal.classList.add("open");
-  document.body.style.overflow = "hidden";
 }
 
 function closeEditModal(e) {
   if (e && e.target !== document.getElementById("editModalOverlay")) return;
   const modal = document.getElementById("editModalOverlay");
   modal.classList.remove("open");
-  document.body.style.overflow = "";
   currentEditingTransaction = null;
 }
 
@@ -606,11 +604,18 @@ editForm.addEventListener("submit", async (e) => {
   }
 });
 
+const deleteBtn = document.getElementById("deleteBtn");
+if (deleteBtn) {
+  deleteBtn.addEventListener("click", deleteTransaction);
+}
+
+const cancelBtn = document.querySelector(".edit-modal__btn--cancel");
+if (cancelBtn) {
+  cancelBtn.addEventListener("click", () => closeEditModal());
+}
+
 function showDeleteConfirmation(tx) {
   currentEditingTransaction = tx;
-  const deleteBtn = document.getElementById("deleteBtn");
-  deleteBtn.onclick = null;
-  deleteBtn.onclick = deleteTransaction;
   openEditModal(tx);
 }
 

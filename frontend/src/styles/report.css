@@ -1012,9 +1012,6 @@ body {
   color: var(--secondary-color);
 }
 
-.format-option__text {
-}
-
 .format-option__name {
   font-family: var(--secondary-font);
   font-size: 15px;

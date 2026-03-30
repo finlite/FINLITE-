@@ -623,7 +623,7 @@ document.getElementById("modalDownload").addEventListener("click", async () => {
     a.download = `finlite-report-${selectedPeriod}m.csv`;
     a.click();
     URL.revokeObjectURL(url);
-    showToast("Report exported as CSV ✓");
+    showToast("Done");
   } else {
     // PDF: open a new print window with the report summary
     const win = window.open("", "_blank");
@@ -659,7 +659,7 @@ document.getElementById("modalDownload").addEventListener("click", async () => {
         </tbody></table></body></html>`);
     win.document.close();
     win.print();
-    showToast("PDF opened for printing ✓");
+    showToast("Done");
   }
 });
 

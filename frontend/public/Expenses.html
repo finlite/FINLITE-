@@ -59,27 +59,27 @@
     <main class="overflow-hidden w-full max-w-full mx-auto sm:px-12 px-6 mt-25">
         <section>
             <div
-                class="w-full max-w-full bg-[#6C8C3B] sm:py-10 sm:px-24 p-6  sm:rounded-b-[78px] rounded-b-[60px] sm:rounded-tr-[78px] rounded-tr-[60px] flex sm:gap-10 gap-6 items-center">
+                class="w-full max-w-full bg-[#E7000B] sm:py-10 sm:px-24 p-6  sm:rounded-b-[78px] rounded-b-[60px] sm:rounded-tr-[78px] rounded-tr-[60px] flex sm:gap-10 gap-6 items-center">
                 <div class="w-24 h-24 rounded-full bg-white/20 flex items-center justify-center">
                     <i class="ph ph-arrow-left text-white text-4xl font-semibold"></i>
                 </div>
 
                 <div class="flex flex-col sm:gap-14 gap-8">
-                    <p id="add-sales" class="font-semibold text-white text-[32px]">Add Sales</p>
-                    <p id="record-income" class="text-white text-[26px]">Record Your Income</p>
+                    <p id="add-sales" class="font-semibold text-white text-[32px]">Add Expenses</p>
+                    <p id="record-income" class="text-white text-[26px]">Record Your Expenses</p>
                 </div>
             </div>
         </section>
 
-        <!-- Sales input form -->
+        <!-- Expenses input form -->
         <form class="mt-14">
             <!-- Container that holds the label and input to enter amount -->
             <div class="max-w-full flex flex-col gap-2.5">
-                <!-- Income input label -->
+                <!-- Expense input label -->
                 <label for="sales" class="font-semibold text-text-secondary text-[26px]">How much did you
                     receive?</label>
 
-                <!-- Income Input -->
+                <!-- Expense Input -->
                 <input type="text" name="sales" id="sales" placeholder="₦ 0"
                     class="bg-white p-16 rounded-3xl outline-0 text-[26px] placeholder:text-[26px] drop-shadow-[0px 2.78px 5.56px -2.78px #0000001a, 0px 2.78px 8.34px 0px #0000001a]">
             </div>
@@ -148,10 +148,10 @@
             </div>
 
             <!-- Add sales button -->
-            <button id="save-sale" class="bg-secondary w-full py-8  rounded-3xl text-white text-2xl shadow-md mt-14">
+            <button id="save-sale" class="bg-[#E7000B] w-full py-8  rounded-3xl text-white text-2xl shadow-md mt-14">
                 <!-- Check icon -->
                 <i class="ph ph-check"></i>
-                <span>Save Sale</span>
+                <span>Save Expense</span>
             </button>
 
             <!-- Cancel link -->
@@ -167,15 +167,15 @@
 
         <!-- Confirmation mark with its container -->
         <div
-            class="sm:w-75 mx-auto w-50 h-50 sm:h-75 bg-secondary rounded-full flex items-center justify-center shadow-[0px_62.5px_125px_-30px_rgba(0,0,0,0.25)]">
+            class="sm:w-75 mx-auto w-50 h-50 sm:h-75 bg-[#E7000B] rounded-full flex items-center justify-center shadow-[0px_62.5px_125px_-30px_rgba(0,0,0,0.25)]">
             <div class="bg-white/20 sm:w-60 sm:h-60 w-40 h-40 rounded-full flex items-center justify-center">
                 <i class="ph ph-check text-white font-bold text-7xl sm:text-9xl"></i>
             </div>
         </div>
 
         <!-- Confirmation texts -->
-        <p class="text-[#2C2C2C] sm:text-[80px] text-6xl mt-10 font-normal text-center">Sale Saved!</p>
-        <p class="text-[#4B4B4B] text-normal text-center sm:text-[40px] text-2xl mt-1.5">Your income has been recorded successfully.
+        <p class="text-[#2C2C2C] sm:text-[80px] text-6xl mt-10 font-normal text-center">Expense Saved!</p>
+        <p class="text-[#4B4B4B] text-normal text-center sm:text-[40px] text-2xl mt-1.5">Your expense has been recorded successfully.
         </p>
 
         <!-- Container containing details collected from sales input form-->
@@ -183,7 +183,7 @@
             class="bg-white sm:p-14 p-8 sm:rounded-[60px] rounded-4xl w-full shadow-[0px_10px_15px_-10px_rgba(0,0,0,0.1),_0px_25px_37.5px_-7.5px_rgba(0,0,0,0.1)] mt-5">
             <!-- Amount received -->
             <p class="text-[36px] text-[#9E9E9E] font-normal text-center">Amount Received</p>
-            <p id="amount-received" class="sm:text-[100px] text-7xl text-secondary mt-6 text-center">₦0</p>
+            <p id="amount-received" class="sm:text-[100px] text-7xl text-[#E7000B] mt-6 text-center">₦0</p>
 
             <!-- Service/product type, time recorded, and date recorded -->
             <div class="flex flex-col max-w-full mt-12.5 border-t-2 border-[#F1EDE4] pt-4  gap-7">
@@ -222,9 +222,9 @@
 
         <!-- Add another sale button -->
         <button id="another-saleBtn"
-            class="bg-secondary w-full py-8  rounded-3xl text-white sm:text-[42px] text-4xl shadow-md mt-5">
+            class="bg-[#E7000B] w-full py-8  rounded-3xl text-white sm:text-[42px] text-4xl shadow-md mt-5">
             <i class="ph ph-plus"></i>
-            <span>Add Another Sale<span>
+            <span>Add Another Expense<span>
         </button>
 
         <!-- Return to dashboard button -->

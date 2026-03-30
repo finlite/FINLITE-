@@ -18,6 +18,22 @@ async function ensureAppSchema() {
       `);
 
       await db.query(`
+        CREATE TABLE IF NOT EXISTS support (
+          support_id integer GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+          user_id integer NOT NULL REFERENCES users(user_id) ON DELETE CASCADE,
+          full_name varchar(100) NOT NULL,
+          email varchar(255) NOT NULL,
+          subject text NOT NULL,
+          message text NOT NULL
+        );
+      `);
+
+      await db.query(`
+        ALTER TABLE support
+        DROP CONSTRAINT IF EXISTS support_user_id_unique;
+      `);
+
+      await db.query(`
         CREATE TABLE IF NOT EXISTS user_settings (
           settings_id integer GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
           user_id integer NOT NULL UNIQUE REFERENCES users(user_id) ON DELETE CASCADE,

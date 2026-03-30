@@ -5,43 +5,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Phosphor Icons -->
-    <!-- <link rel="stylesheet" type="text/css"
-    href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css" />
-<link rel="stylesheet" type="text/css"
-    href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css" /> -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css" />
 
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Poppins:wght@400;500;600;700&display=swap"
         rel="stylesheet">
+
     <title>Help & Support</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <link rel="stylesheet" href="../src/styles/help.css">
     <link rel="stylesheet" href="../src/styles/output.css" />
 </head>
 
 <body class="bg-[#F1EDE4]">
-    <!-- Backdrop -->
     <div class="nav__backdrop" id="backdrop" aria-hidden="true"></div>
 
-    <!-- ══════════ NAV ══════════ -->
     <nav class="nav" role="navigation" aria-label="Main navigation">
-        <!-- Brand -->
         <a class="nav__brand" href="dashboard.html" aria-label="Finlite home">
-            <img src="../src/assets/logo.png" width="36px" height="42px" alt="Finlite Logo" class="nav-bar__logo" />
+            <img src="../src/assets/logo.png" width="36" height="42" alt="Finlite Logo" class="nav-bar__logo" />
             <h2 class="nav__brand-text">FINLITE</h2>
         </a>
 
-        <!-- Desktop links -->
         <ul class="nav__links" role="list">
             <li><a href="dashboard.html">Dashboard</a></li>
             <li><a href="transactions.html">Transactions</a></li>
             <li><a href="settings.html">Settings</a></li>
-            <li><a href="about.html" class="active">About Us</a></li>
+            <li><a href="Help.html" class="active">Help</a></li>
             <li><a href="report.html">Report</a></li>
         </ul>
 
@@ -53,103 +45,76 @@
         </button>
     </nav>
 
-    <!-- Mobile menu -->
     <div class="nav__mobile" id="mobileMenu" role="dialog" aria-label="Navigation menu" aria-hidden="true">
         <div class="nav__mobile-inner">
             <a href="dashboard.html" class="nav__m-link"><i class="ph ph-squares-four"></i> Dashboard</a>
             <a href="transactions.html" class="nav__m-link"><i class="ph ph-arrows-left-right"></i> Transactions</a>
             <a href="settings.html" class="nav__m-link"><i class="ph ph-gear"></i> Settings</a>
-            <a href="about.html" class="nav__m-link active">
-                <i class="ph ph-info"></i> About Us
+            <a href="Help.html" class="nav__m-link active">
+                <i class="ph ph-question"></i> Help
                 <span class="nav__m-badge">Active</span>
             </a>
             <a href="report.html" class="nav__m-link"><i class="ph ph-chart-bar"></i> Report</a>
             <div class="nav__m-divider" role="separator"></div>
-            <!-- User row -->
             <div class="nav__m-user">
-                <div class="nav__m-avatar" id="mobile-avatar" aria-hidden="true">
-                    --
-                </div>
+                <div class="nav__m-avatar" id="mobile-avatar" aria-hidden="true">--</div>
                 <div>
-                    <p class="nav__m-name" id="mobile-user-name">Loading…</p>
+                    <p class="nav__m-name" id="mobile-user-name">Loading...</p>
                     <p class="nav__m-role">Business Owner</p>
                 </div>
             </div>
         </div>
     </div>
-    <!-- /mobile-menu -->
 
-
-    <!-- ══════════ MAIN SECTION ══════════ -->
     <section class="mt-24 md:mr-16 md:ml-16 sm:mr-12 sm:ml-12 ml-8 mr-8">
-        <!-- ══════════ SECTION NAME AND BACK ICON ══════════ -->
         <div class="flex sm:items-start items-center">
-            <!-- ══════════ BACK ICON ══════════ -->
-            <div
+            <button id="help-back-button" type="button"
                 class="sm:w-20 sm:h-20 w-14 h-14 rounded-full bg-white flex items-center justify-center shadow-[0px_2.77px_5.53px_-2.77px_#0000001A,0px_2.77px_8.3px_0px_#0000001A]">
                 <i class="ph ph-arrow-left md:text-4xl sm:text-2xl text-xl font-bold"></i>
-            </div>
+            </button>
 
-            <!-- ══════════ SECTION TITLE ══════════ -->
             <div class="font-bold sm:text-[32px] text-3xl w-full text-center text-[#2C2C2C]">Help and Support</div>
         </div>
 
-        <!-- ══════════ SUBSECTION ONE (CARDS CONTAINER) ══════════ -->
         <div class="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 md:gap-5 sm:gap-16 gap-6 mt-6">
-            <!-- ══════════ CARD 1 (RESPONSE TIME) ══════════ -->
             <div
                 class="flex flex-col items-center sm:py-20 py-8 bg-white gap-4 rounded-[36px] shadow-[0px_2.77px_5.53px_-2.77px_#0000001A,0px_2.77px_8.3px_0px_#0000001A]">
-                <!-- ══════════ CARD ICON ══════════ -->
                 <div class="w-24 h-24 rounded-full bg-[#D98A54] flex items-center justify-center">
                     <i class="ph ph-clock text-white text-4xl"></i>
                 </div>
-                <!-- ══════════ CARD TEXTS ══════════ -->
                 <p class="font-bold md:text-[32px] sm:text-[24px] text-[16px] text-center">2 hours</p>
                 <p class="md:text-[32px] sm:text-[24px] text-[16px] text-[#9E9E9E] text-center">Response Time</p>
             </div>
 
-            <!-- ══════════ CARD 2 (SATISFACTION) ══════════ -->
             <div
-                class="flex flex-col items-center bg-white  sm:py-20 py-8 gap-4 rounded-[36px] shadow-[0px_2.77px_5.53px_-2.77px_#0000001A,0px_2.77px_8.3px_0px_#0000001A]">
-                <!-- ══════════ CARD ICON ══════════ -->
+                class="flex flex-col items-center bg-white sm:py-20 py-8 gap-4 rounded-[36px] shadow-[0px_2.77px_5.53px_-2.77px_#0000001A,0px_2.77px_8.3px_0px_#0000001A]">
                 <div class="w-24 h-24 rounded-full bg-[#F3C650] flex items-center justify-center">
                     <i class="ph ph-star text-white text-4xl"></i>
                 </div>
-
-                <!-- ══════════ CARD TEXTS ══════════ -->
                 <p class="font-bold md:text-[32px] sm:text-[24px] text-[16px] text-center">4.9/5</p>
                 <p class="md:text-[32px] sm:text-[24px] text-[16px] text-[#9E9E9E] text-center">Satisfaction</p>
             </div>
 
-            <!-- ══════════ CARD 3 (RESOLVE RATE) ══════════ -->
             <div
-                class="flex flex-col items-center bg-white  sm:py-20 py-8 gap-4 rounded-[36px] shadow-[0px_2.77px_5.53px_-2.77px_#0000001A,0px_2.77px_8.3px_0px_#0000001A]">
-                <!-- ══════════ CARD3 ICON ══════════ -->
+                class="flex flex-col items-center bg-white sm:py-20 py-8 gap-4 rounded-[36px] shadow-[0px_2.77px_5.53px_-2.77px_#0000001A,0px_2.77px_8.3px_0px_#0000001A]">
                 <div class="w-24 h-24 rounded-full bg-[#6C8C3B] flex items-center justify-center">
                     <i class="ph ph-check-circle text-white text-4xl"></i>
                 </div>
-
-                <!-- ══════════ CARD TEXTS ══════════ -->
                 <p class="font-bold md:text-[32px] sm:text-[24px] text-[16px] text-center">98%</p>
                 <p class="md:text-[32px] sm:text-[24px] text-[16px] text-[#9E9E9E] text-center">Resolved</p>
             </div>
         </div>
 
-        <!-- ══════════ SUB SECTION TWO(INSTANT HELP) ══════════ -->
         <div class="w-full sm:mt-14 mt-10">
-            <!-- ══════════ SUB SECTION TITLE ══════════ -->
             <h1 class="font-bold sm:text-[32px] text-3xl text-[#2C2C2C] mb-3">Get Help Instantly</h1>
 
-            <!-- ══════════ SUB SECTION TWO CARD ══════════ -->
             <div
                 class="bg-linear-to-b from-[#D98A54] to-[#C97A44] w-full flex rounded-4xl sm:px-14 px-4 sm:py-8 py-5 md:gap-11 sm:gap-6 gap-4">
-                <!-- ══════════ SUB SECTION TWO ICON ══════════ -->
                 <div
                     class="flex justify-center items-center md:w-36 md:h-36 sm:w-28 sm:h-28 w-14 h-14 rounded-full bg-white/20">
                     <i class="ph ph-chat-circle text-white md:text-[60px] sm:text-5xl text-3xl font-bold"></i>
                 </div>
 
-                <!-- ══════════ SUB SECTION TWO TEXTS INSIDE A CONTAINER ══════════ -->
                 <div class="flex flex-col md:gap-10 sm:gap-6 gap-4">
                     <p class="md:text-[32px] sm:text-2xl text-xl font-bold text-white">Start Live Chat</p>
                     <p class="text-white font-semibold md:text-[26px] sm:text-[20px] text-[14px]">Usually responds in 5
@@ -157,20 +122,16 @@
                 </div>
             </div>
 
-            <!-- ══════════ SUB SECTION TWO SUPPORTING CARDS CONTAINER ══════════ -->
             <div class="grid md:grid-cols-2 grid-cols-1 sm:gap-14 gap-6 mt-6">
-
-                <!-- ══════════ SUB SECTION TWO SUPPORTING CARD 1 ══════════ -->
                 <div
                     class="flex flex-col items-center bg-white px-7 py-20 gap-4 rounded-[36px] shadow-[0px_2.77px_5.53px_-2.77px_#0000001A,0px_2.77px_8.3px_0px_#0000001A]">
                     <div class="w-32 h-32 rounded-full bg-[#6C8C3B1A] flex items-center justify-center">
-                        <i class="ph ph-envelope-simple text-6xl text-[#6C8C3B] "></i>
+                        <i class="ph ph-envelope-simple text-6xl text-[#6C8C3B]"></i>
                     </div>
                     <p class="font-bold md:text-[32px] text-[24px]">Email</p>
                     <p class="md:text-[32px] text-[24px] text-[#9E9E9E]">2-4 hours</p>
                 </div>
 
-                <!-- ══════════ SUB SECTION TWO SUPPORTING CARD TWO ══════════ -->
                 <div
                     class="flex flex-col items-center bg-white px-7 py-20 gap-4 rounded-[36px] shadow-[0px_2.77px_5.53px_-2.77px_#0000001A,0px_2.77px_8.3px_0px_#0000001A]">
                     <div class="w-32 h-32 rounded-full bg-[#F3C6501A] flex items-center justify-center">
@@ -182,59 +143,58 @@
             </div>
         </div>
 
-
-        <!-- ══════════ SUB SECTION THREE (SEND US A MESSAGE) ══════════ -->
         <div class="w-full sm:mt-14 mt-10">
-            <!-- ══════════ SUB SECTION THREE TITLE ══════════ -->
             <h1 class="font-bold sm:text-[32px] text-3xl text-[#2C2C2C] mb-3">Send us a message</h1>
 
-            <!-- ══════════ SUB SECTION THREE INTERACTIVE FORM ══════════ -->
-            <form action=""
+            <form id="support-form"
                 class="bg-white md:p-16 sm:p-6 p-4 rounded-4xl shadow-[0px_2.77px_5.53px_-2.77px_#0000001A]">
-
-                <!-- input for user's name -->
                 <label for="name"
                     class="block font-semibold md:text-2xl sm:text-xl text-[16px] text-[#4B4B4B] mb-2">Your Name</label>
                 <input type="text" id="name" placeholder="Enter your name"
-                    class="w-full bg-[#F1EDE4] outline-0 sm:rounded-4xl rounded-2xl sm:p-8 px-5 py-3 placeholder:text-[14px] sm:placeholder:md:text-2xl sm:text-xl text-[16px] placeholder:text[#4B4B4B80] placeholder:font-normal sm:placeholder:font-semibold mb-6">
+                    class="w-full bg-[#F1EDE4] outline-0 sm:rounded-4xl rounded-2xl sm:p-8 px-5 py-3 placeholder:text-[14px] sm:text-xl text-[16px] mb-6">
 
-                <!-- Input for user's email -->
                 <label for="email"
                     class="block font-semibold md:text-2xl sm:text-xl text-[16px] text-[#4B4B4B] mb-2">Email
                     Address</label>
                 <input type="email" id="email" placeholder="your@email.com"
-                    class="w-full bg-[#F1EDE4] outline-0 sm:rounded-4xl rounded-2xl sm:p-8 px-5 py-3 placeholder:text-[14px] sm:placeholder:md:text-2xl sm:text-xl text-[16px] placeholder:text[#4B4B4B80] placeholder:font-normal sm:placeholder:font-semibold mb-6">
+                    class="w-full bg-[#F1EDE4] outline-0 sm:rounded-4xl rounded-2xl sm:p-8 px-5 py-3 placeholder:text-[14px] sm:text-xl text-[16px] mb-6">
 
-                <!-- input for the topic user wants to discuss or clarify -->
                 <label for="subject"
                     class="block font-semibold md:text-2xl sm:text-xl text-[16px] text-[#4B4B4B] mb-2">Subject</label>
-                <textarea name="subject" id="subject"
+                <textarea name="subject" id="subject" rows="3"
                     class="w-full bg-[#F1EDE4] outline-0 sm:rounded-4xl rounded-2xl sm:p-8 p-5 mb-6"></textarea>
 
-                <!-- input for the body of the subject/topic -->
                 <label for="message"
                     class="block font-semibold md:text-2xl sm:text-xl text-[16px] text-[#4B4B4B] mb-2">Message</label>
                 <textarea name="message" id="message" rows="10"
                     class="w-full bg-[#F1EDE4] outline-0 rounded-4xl sm:p-8 p-5 mb-6"></textarea>
 
-                <!-- button for submission -->
-                <button
-                    class="w-full bg-linear-to-b from-[#D98A54] to-[#C97A44] text-white shadow-[0px_5.53px_11.07px_-5.53px_#0000001A,0px_11.07px_16.6px_-2.77px_#0000001A] font-bold md:text-[24px] sm:text-[18px] text-[14px] p-4 rounded-3xl ">Send
+                <button id="support-submit" type="submit"
+                    class="w-full bg-linear-to-b from-[#D98A54] to-[#C97A44] text-white shadow-[0px_5.53px_11.07px_-5.53px_#0000001A,0px_11.07px_16.6px_-2.77px_#0000001A] font-bold md:text-[24px] sm:text-[18px] text-[14px] p-4 rounded-3xl">Send
                     Us Message</button>
             </form>
+
+            <div id="latest-ticket-card"
+                class="hidden mt-6 bg-[#FFF7ED] border border-[#F3C650] rounded-4xl p-6 shadow-[0px_2.77px_5.53px_-2.77px_#0000001A]">
+                <div class="flex items-start justify-between gap-4">
+                    <div>
+                        <p class="text-[#9E9E9E] text-sm font-semibold">Latest support request</p>
+                        <h3 id="latest-ticket-subject" class="font-bold text-[#2C2C2C] text-xl mt-1">Support request</h3>
+                    </div>
+                    <span id="latest-ticket-id" class="text-[#D98A54] font-bold text-sm">Ticket</span>
+                </div>
+                <p id="latest-ticket-message" class="text-[#4B4B4B] mt-3 text-base leading-relaxed"></p>
+            </div>
         </div>
 
-        <!-- ══════════ SUB SECTION fOUR (FAQ / BROWSE ARTICLES) ══════════ -->
         <div
             class="bg-linear-to-b from-[#6C8C3B] to-[#5C7C2B] w-full flex flex-col rounded-4xl sm:px-14 px-4 sm:py-8 py-5 md:gap-11 sm:gap-6 gap-4 sm:mt-14 mt-10">
             <div class="flex w-full md:gap-11 sm:gap-6 gap-4">
-                <!-- ══════════ SUB SECTION THREE icon ══════════ -->
                 <div
-                    class="flex justify-center items-center  md:w-36 md:h-36 sm:w-28 sm:h-28 w-14 h-14 rounded-full bg-white/20">
+                    class="flex justify-center items-center md:w-36 md:h-36 sm:w-28 sm:h-28 w-14 h-14 rounded-full bg-white/20">
                     <i class="ph ph-book-open text-white md:text-[60px] sm:text-5xl text-3xl font-bold"></i>
                 </div>
 
-                <!-- ══════════ SUB SECTION THREE TEXTS ══════════ -->
                 <div class="flex flex-col sm:gap-10 gap-4">
                     <p class="md:text-[32px] sm:text-2xl text-xl font-bold text-white">Browse Help Center</p>
                     <p class="text-white font-semibold md:text-[26px] sm:text-[20px] text-[14px]">Find answers in our
@@ -242,33 +202,33 @@
                 </div>
             </div>
 
-            <!-- ══════════ VIEW ARTICLES BUTTON ══════════ -->
-            <button
-                class="w-full bg-white/20 text-white block shadow-[0px_5.53px_11.07px_-5.53px_#0000001A,0px_11.07px_16.6px_-2.77px_#0000001A] font-boldmd:text-[24px] sm:text-[18px] text-[14px] sm:p-4 px-4 py-3 rounded-3xl ">View
+            <button type="button"
+                class="w-full bg-white/20 text-white block shadow-[0px_5.53px_11.07px_-5.53px_#0000001A,0px_11.07px_16.6px_-2.77px_#0000001A] sm:text-[18px] text-[14px] sm:p-4 px-4 py-3 rounded-3xl">View
                 Articles</button>
         </div>
 
-        <!-- ══════════ SUB SECTION FOUR (OPENING HOURS) ══════════ -->
         <div
             class="bg-white shadow-[0px_2.74px_5.48px_-2.74px_#0000001A,0px_2.74px_8.22px_0px_#0000001A] w-full sm:mt-14 mt-10 sm:px-14 px-6 sm:py-8 py-4 rounded-4xl flex flex-col sm:gap-4 gap-2 mb-14">
-            <!-- ══════════ SUB SECTION FOUR TITLE ══════════ -->
             <h1 class="font-bold text-black text-3xl sm:text-[32px]">Support Hours</h1>
 
-            <!-- ══════════ SUB SECTION FOUR TEXTS ══════════ -->
             <div class="flex justify-between">
-                <p class="text-[#9E9E9E] font-semibold md:text-2xl sm:text-xl text-[14px]">Monday - Friday</p> <!--Day(s) of the week-->
-                <p class="md:text-2xl sm:text-xl text-[14px] text-black ">8:00 AM - 8:00 PM</p> <!-- Time of opening and closing-->
+                <p class="text-[#9E9E9E] font-semibold md:text-2xl sm:text-xl text-[14px]">Monday - Friday</p>
+                <p class="md:text-2xl sm:text-xl text-[14px] text-black">8:00 AM - 8:00 PM</p>
             </div>
             <div class="flex justify-between">
-                <p class="text-[#9E9E9E] font-semibold md:text-2xl sm:text-xl text-[14px]">Saturday</p> <!--Day(s) of the week-->
-                <p class="md:text-2xl sm:text-xl text-[14px] text-black ">10:00 AM - 6:00 PM</p> <!-- Time of opening and closing-->
+                <p class="text-[#9E9E9E] font-semibold md:text-2xl sm:text-xl text-[14px]">Saturday</p>
+                <p class="md:text-2xl sm:text-xl text-[14px] text-black">10:00 AM - 6:00 PM</p>
             </div>
             <div class="flex justify-between">
-                <p class="text-[#9E9E9E] font-semibold md:text-2xl sm:text-xl text-[14px]">Sunday</p> <!--Day(s) of the week-->
-                <p class="md:text-2xl sm:text-xl text-[14px] text-black ">Closed</p> <!-- Time of opening and closing-->
+                <p class="text-[#9E9E9E] font-semibold md:text-2xl sm:text-xl text-[14px]">Sunday</p>
+                <p class="md:text-2xl sm:text-xl text-[14px] text-black">Closed</p>
             </div>
         </div>
     </section>
+
+    <script src="../src/scripts/theme.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script type="module" src="../src/scripts/help.js"></script>
 </body>
 
 </html>

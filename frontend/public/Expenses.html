@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Signup</title>
+    <title>Expenses</title>
 
     <link rel="stylesheet" href="../src/styles/output.css" />
     <link rel="stylesheet" href="sales.css">
@@ -15,19 +15,15 @@
 </head>
 
 <body class="bg-bg-primary">
-    <!-- Header -->
     <nav
         class="lg:px-6 lg:py-2.5 py-1.5 px-4 flex items-center bg-white fixed right-0 left-0 top-0 max-w-full justify-between">
-        <!-- Brand's Logo and Name -->
         <a href="#" class="flex items-center">
             <div class="lg:w-14 lg:h-16 w-11 h-14">
                 <img src="../src/assets/logo.png" alt="finite logo" class="w-full h-full">
             </div>
-            <h2 class="font-secondary lg:text-[26px] text-[20px]  font-semibold text-secondary ml-2">FINLITE</h2>
+            <h2 class="font-secondary lg:text-[26px] text-[20px] font-semibold text-secondary ml-2">FINLITE</h2>
         </a>
 
-
-        <!-- Navigation links -->
         <ul class="lg:flex flex-row hidden lg:gap-10 gap-7 py-2.5 justify-around">
             <li class="font-medium text-[20px]">
                 <a href="dashboard.html">Dashboard</a>
@@ -44,128 +40,95 @@
             <li class="font-medium text-[20px]">
                 <a href="report.html">Report</a>
             </li>
-            <li class="text-[20px]  active-tab font-medium">
-                <a href="sales.html">Sales</a>
+            <li class="text-[20px] active-tab font-medium">
+                <a href="Expenses.html">Expenses</a>
             </li>
         </ul>
 
-        <!-- Mobile menu -->
-        <button class="lg:hidden block">
+        <button class="lg:hidden block" type="button" aria-label="Open menu">
             <i class="ph ph-list text-3xl"></i>
         </button>
     </nav>
 
-    <!-- Main section- 100px from the top of the screen -->
     <main class="overflow-hidden w-full max-w-full mx-auto sm:px-12 px-6 mt-25">
         <section>
             <div
-                class="w-full max-w-full bg-[#E7000B] sm:py-10 sm:px-24 p-6  sm:rounded-b-[78px] rounded-b-[60px] sm:rounded-tr-[78px] rounded-tr-[60px] flex sm:gap-10 gap-6 items-center">
+                class="w-full max-w-full bg-[#E7000B] sm:py-10 sm:px-24 p-6 sm:rounded-b-[78px] rounded-b-[60px] sm:rounded-tr-[78px] rounded-tr-[60px] flex sm:gap-10 gap-6 items-center">
                 <div class="w-24 h-24 rounded-full bg-white/20 flex items-center justify-center">
                     <i class="ph ph-arrow-left text-white text-4xl font-semibold"></i>
                 </div>
 
                 <div class="flex flex-col sm:gap-14 gap-8">
-                    <p id="add-sales" class="font-semibold text-white text-[32px]">Add Expenses</p>
-                    <p id="record-income" class="text-white text-[26px]">Record Your Expenses</p>
+                    <p class="font-semibold text-white text-[32px]">Add Expenses</p>
+                    <p class="text-white text-[26px]">Record Your Expenses</p>
                 </div>
             </div>
         </section>
 
-        <!-- Expenses input form -->
         <form class="mt-14">
-            <!-- Container that holds the label and input to enter amount -->
             <div class="max-w-full flex flex-col gap-2.5">
-                <!-- Expense input label -->
-                <label for="sales" class="font-semibold text-text-secondary text-[26px]">How much did you
-                    receive?</label>
-
-                <!-- Expense Input -->
+                <label for="sales" class="font-semibold text-text-secondary text-[26px]">How much did you spend?</label>
                 <input type="text" name="sales" id="sales" placeholder="₦ 0"
-                    class="bg-white p-16 rounded-3xl outline-0 text-[26px] placeholder:text-[26px] drop-shadow-[0px 2.78px 5.56px -2.78px #0000001a, 0px 2.78px 8.34px 0px #0000001a]">
+                    class="bg-white p-16 rounded-3xl outline-0 text-[26px] placeholder:text-[26px] drop-shadow-[0px_2.78px_5.56px_-2.78px_#0000001a,0px_2.78px_8.34px_0px_#0000001a]">
             </div>
 
-            <!-- Quick Amounts that users can easily select from instead of typing -->
             <div class="flex flex-col gap-2.5 mt-3">
-                <!-- Quick amounts heading -->
-                <h3 class="font-semibold text-text-secondary text-[26px]">⚡ Quick Amounts</h3>
-
-                <!-- Quick amounts container that holds common amounts users can quickly click on -->
+                <h3 class="font-semibold text-text-secondary text-[26px]">Quick Amounts</h3>
                 <div class="grid grid-cols-4 gap-7">
-                    <button id="quick-1k"
+                    <button id="quick-1k" type="button"
                         class="bg-[#EFEFEF] flex border-0 justify-center items-center py-9 rounded-3xl px-8 text-2xl text-[#4B4B4B] font-medium shadow-2xs">₦1k</button>
-                    <button id="quick-2k"
-                        class=" font-medium bg-[#EFEFEF] flex border-0 justify-center items-center py-9 rounded-3xl px-8 text-2xl text-[#4B4B4B] shadow-2xs">₦2k</button>
-                    <button id="quick-5k"
-                        class="bg-[#EFEFEF]  font-medium flex border-0 justify-center items-center py-9 rounded-3xl px-8 text-2xl text-[#4B4B4B] shadow-2xs">₦5k</button>
-                    <button id="quick-10k"
-                        class="bg-[#EFEFEF]  font-medium flex border-0 justify-center items-center py-9 rounded-3xl px-8 text-2xl text-[#4B4B4B] shadow-2xs">₦10k</button>
+                    <button id="quick-2k" type="button"
+                        class="font-medium bg-[#EFEFEF] flex border-0 justify-center items-center py-9 rounded-3xl px-8 text-2xl text-[#4B4B4B] shadow-2xs">₦2k</button>
+                    <button id="quick-5k" type="button"
+                        class="bg-[#EFEFEF] font-medium flex border-0 justify-center items-center py-9 rounded-3xl px-8 text-2xl text-[#4B4B4B] shadow-2xs">₦5k</button>
+                    <button id="quick-10k" type="button"
+                        class="bg-[#EFEFEF] font-medium flex border-0 justify-center items-center py-9 rounded-3xl px-8 text-2xl text-[#4B4B4B] shadow-2xs">₦10k</button>
                 </div>
             </div>
 
-            <!-- Product or service type container -->
             <div class="flex flex-col gap-2.5 mt-14">
-                <!-- Label for product or service type -->
                 <label for="category" class="font-semibold text-text-secondary text-[26px]">What was it for?</label>
-
-                <!-- Input for product or service type -->
-                <input type="text" name="category" id="category" placeholder="e.g Hair Styling"
+                <input type="text" name="category" id="category" placeholder="e.g Hair supplies"
                     class="bg-white p-16 rounded-3xl outline-0 text-[26px] placeholder:text-[26px]">
-                <!-- Quick service or product type heading -->
-                <h3 class="font-semibold text-text-secondary text-[26px]">Or choose a common service</h3>
+                <h3 class="font-semibold text-text-secondary text-[26px]">Or choose a common expense</h3>
 
-                <!-- Quick product/service type container -->
                 <div class="grid grid-cols-2 gap-7">
-                    <button id="first-commonService"
-                        class="bg-white flex border-0 justify-center items-center py-9 rounded-3xl px-8 text-2xl text-[#4B4B4B] font-medium">Hair
-                        Styling</button>
-                    <button id="second-commonService"
-                        class=" font-medium bg-white flex border-0 justify-center items-center py-9 rounded-3xl px-8 text-2xl text-[#4B4B4B]">Hair
-                        Treatment</button>
-                    <button id="third-commonService"
-                        class="bg-white  font-medium flex border-0 justify-center items-center py-9 rounded-3xl px-8 text-2xl text-[#4B4B4B]">Braiding</button>
-                    <button id="fourth-commonService"
-                        class="bg-white  font-medium flex border-0 justify-center items-center py-9 rounded-3xl px-8 text-2xl text-[#4B4B4B]">Weaving</button>
+                    <button id="first-commonService" type="button"
+                        class="bg-white flex border-0 justify-center items-center py-9 rounded-3xl px-8 text-2xl text-[#4B4B4B] font-medium">Hair Supplies</button>
+                    <button id="second-commonService" type="button"
+                        class="font-medium bg-white flex border-0 justify-center items-center py-9 rounded-3xl px-8 text-2xl text-[#4B4B4B]">Transportation</button>
+                    <button id="third-commonService" type="button"
+                        class="bg-white font-medium flex border-0 justify-center items-center py-9 rounded-3xl px-8 text-2xl text-[#4B4B4B]">Utility Bills</button>
+                    <button id="fourth-commonService" type="button"
+                        class="bg-white font-medium flex border-0 justify-center items-center py-9 rounded-3xl px-8 text-2xl text-[#4B4B4B]">Rent</button>
                 </div>
             </div>
 
-            <!-- Time container -->
             <div class="flex flex-col gap-2.5 mt-14">
-                <!-- Time input label -->
-                <label for="date-time" class="font-semibold text-text-secondary text-[26px]">What time?</label>
-                <!-- Time input with datetime-local type -->
+                <label for="date-time" class="font-semibold text-text-secondary text-[26px]">When was it?</label>
                 <input type="datetime-local" name="time" id="date-time"
                     class="bg-white p-16 rounded-3xl outline-0 text-[26px] placeholder:text-[26px]">
             </div>
 
-            <!-- Optional note container -->
             <div class="flex flex-col gap-2.5 mt-14">
-                <!-- Label for optional note -->
                 <label for="note" class="font-semibold text-text-secondary text-[26px]">Add a note (optional)</label>
-                <!-- Input for notes. Textarea is used -->
                 <textarea name="note" id="note"
                     class="bg-white p-16 rounded-3xl outline-0 text-[26px] placeholder:text-[26px]"
                     placeholder="Any details you want to remember..."></textarea>
             </div>
 
-            <!-- Add sales button -->
-            <button id="save-sale" class="bg-[#E7000B] w-full py-8  rounded-3xl text-white text-2xl shadow-md mt-14">
-                <!-- Check icon -->
+            <button id="save-expense" class="bg-[#E7000B] w-full py-8 rounded-3xl text-white text-2xl shadow-md mt-14">
                 <i class="ph ph-check"></i>
                 <span>Save Expense</span>
             </button>
 
-            <!-- Cancel link -->
-            <a id="cancel-sale" href="#"
+            <a id="cancel-expense" href="#"
                 class="text-text-secondary text-2xl mt-10 mb-11 font-semibold block text-center">Cancel</a>
         </form>
     </main>
 
-    <!-- Confirmation Modal -->
-    <div id="salesConfirmation-modal"
-        class="hidden sm:mx-12 mx-8  h-full sm:px-20 px-6 sm:py-10 py-8 bg-black/3  flex-col items-center justify-center">
-        <!-- Modal content would go here -->
-
-        <!-- Confirmation mark with its container -->
+    <div id="expenseConfirmation-modal"
+        class="hidden sm:mx-12 mx-8 h-full sm:px-20 px-6 sm:py-10 py-8 bg-black/3 flex-col items-center justify-center">
         <div
             class="sm:w-75 mx-auto w-50 h-50 sm:h-75 bg-[#E7000B] rounded-full flex items-center justify-center shadow-[0px_62.5px_125px_-30px_rgba(0,0,0,0.25)]">
             <div class="bg-white/20 sm:w-60 sm:h-60 w-40 h-40 rounded-full flex items-center justify-center">
@@ -173,33 +136,25 @@
             </div>
         </div>
 
-        <!-- Confirmation texts -->
         <p class="text-[#2C2C2C] sm:text-[80px] text-6xl mt-10 font-normal text-center">Expense Saved!</p>
-        <p class="text-[#4B4B4B] text-normal text-center sm:text-[40px] text-2xl mt-1.5">Your expense has been recorded successfully.
-        </p>
+        <p class="text-[#4B4B4B] text-normal text-center sm:text-[40px] text-2xl mt-1.5">Your expense has been recorded successfully.</p>
 
-        <!-- Container containing details collected from sales input form-->
         <div
-            class="bg-white sm:p-14 p-8 sm:rounded-[60px] rounded-4xl w-full shadow-[0px_10px_15px_-10px_rgba(0,0,0,0.1),_0px_25px_37.5px_-7.5px_rgba(0,0,0,0.1)] mt-5">
-            <!-- Amount received -->
-            <p class="text-[36px] text-[#9E9E9E] font-normal text-center">Amount Received</p>
-            <p id="amount-received" class="sm:text-[100px] text-7xl text-[#E7000B] mt-6 text-center">₦0</p>
+            class="bg-white sm:p-14 p-8 sm:rounded-[60px] rounded-4xl w-full shadow-[0px_10px_15px_-10px_rgba(0,0,0,0.1),0px_25px_37.5px_-7.5px_rgba(0,0,0,0.1)] mt-5">
+            <p class="text-[36px] text-[#9E9E9E] font-normal text-center">Amount Spent</p>
+            <p id="amount-spent" class="sm:text-[100px] text-7xl text-[#E7000B] mt-6 text-center">₦0</p>
 
-            <!-- Service/product type, time recorded, and date recorded -->
-            <div class="flex flex-col max-w-full mt-12.5 border-t-2 border-[#F1EDE4] pt-4  gap-7">
-                <!-- service/product type -->
+            <div class="flex flex-col max-w-full mt-12.5 border-t-2 border-[#F1EDE4] pt-4 gap-7">
                 <div class="flex justify-between">
-                    <p class="sm:text-[36px] text-3xl text-[#9E9E9E]">Service</p>
-                    <p id="serviceType-log" class="sm:text-[36px] text-3xl text-[#4B4B4B]">Hair styling</p>
+                    <p class="sm:text-[36px] text-3xl text-[#9E9E9E]">Category</p>
+                    <p id="serviceType-log" class="sm:text-[36px] text-3xl text-[#4B4B4B]">Utilities</p>
                 </div>
 
-                <!-- Time recorded -->
                 <div class="flex justify-between">
                     <p class="sm:text-[36px] text-3xl text-[#9E9E9E]">Time</p>
-                    <p id="salesTime-log" class="sm:text-[36px] text-3xl text-[#4B4B4B]">2:30 PM</p>
+                    <p id="expenseTime-log" class="sm:text-[36px] text-3xl text-[#4B4B4B]">2:30 PM</p>
                 </div>
 
-                <!-- Date recorded -->
                 <div class="flex justify-between">
                     <p class="sm:text-[36px] text-3xl text-[#9E9E9E]">Date</p>
                     <p id="date-log" class="sm:text-[36px] text-3xl text-[#4B4B4B]">January 23, 2026</p>
@@ -207,31 +162,29 @@
             </div>
         </div>
 
-        <!-- Total sales -->
         <div
-            class="mt-5  w-full max-w-full bg-[linear-gradient(180deg,#F3C650_0%,_#E3B640_100%)] sm:p-8 p-4 sm:rounded-[50px] rounded-[40px]  flex gap-6 items-center">
+            class="mt-5 w-full max-w-full bg-[linear-gradient(180deg,#F3C650_0%,_#E3B640_100%)] sm:p-8 p-4 sm:rounded-[50px] rounded-[40px] flex gap-6 items-center">
             <div class="w-24 h-24 rounded-full bg-white/20 flex items-center justify-center">
-                <i class="ph ph-trend-up text-white text-4xl font-semibold"></i>
+                <i class="ph ph-trend-down text-white text-4xl font-semibold"></i>
             </div>
 
             <div class="flex flex-col gap-1">
-                <p class="font-light text-white sm:text-[32px] text-3xl">Total sales today</p>
-                <p id="total-Sales" class="text-white sm:text-[55px] text-5xl font-normal">₦12,500</p>
+                <p class="font-light text-white sm:text-[32px] text-3xl">Total expenses today</p>
+                <p id="total-expenses" class="text-white sm:text-[55px] text-5xl font-normal">₦0</p>
             </div>
         </div>
 
-        <!-- Add another sale button -->
-        <button id="another-saleBtn"
-            class="bg-[#E7000B] w-full py-8  rounded-3xl text-white sm:text-[42px] text-4xl shadow-md mt-5">
+        <button id="another-expenseBtn"
+            class="bg-[#E7000B] w-full py-8 rounded-3xl text-white sm:text-[42px] text-4xl shadow-md mt-5">
             <i class="ph ph-plus"></i>
-            <span>Add Another Expense<span>
+            <span>Add Another Expense</span>
         </button>
 
-        <!-- Return to dashboard button -->
-        <button id="return-btn" class="bg-white w-full py-8  rounded-3xl text-secondary sm:text-[42px] text-4xl shadow-md mt-5">
-            <span>Back to Dashboard<span>
+        <button id="return-btn" class="bg-white w-full py-8 rounded-3xl text-secondary sm:text-[42px] text-4xl shadow-md mt-5">
+            <span>Back to Transactions</span>
         </button>
     </div>
+
     <script src="../src/scripts/theme.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script type="module" src="../src/scripts/expenses.js"></script>

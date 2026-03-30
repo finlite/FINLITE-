@@ -19,7 +19,7 @@ exports.createSupportTicket = async (req, res) => {
 exports.getUserTickets = async (req, res) => {
     const user_id = req.user.user_id;
     try {
-        const result = await db.query('SELECT * FROM support WHERE user_id = $1', [user_id]);
+        const result = await db.query('SELECT * FROM support WHERE user_id = $1 ORDER BY support_id DESC', [user_id]);
         res.json(result.rows);
     } catch (err) {
         console.error(err);

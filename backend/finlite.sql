@@ -107,8 +107,7 @@ ALTER TABLE `business_info`
 -- Indexes for table `support`
 --
 ALTER TABLE `support`
-  ADD PRIMARY KEY (`support_id`),
-  ADD UNIQUE KEY `user_id` (`user_id`);
+  ADD PRIMARY KEY (`support_id`);
 
 --
 -- Indexes for table `transactions`

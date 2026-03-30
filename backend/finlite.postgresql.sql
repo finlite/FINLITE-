@@ -33,8 +33,7 @@ CREATE TABLE support (
   full_name varchar(100) NOT NULL,
   email varchar(255) NOT NULL,
   subject text NOT NULL,
-  message text NOT NULL,
-  CONSTRAINT support_user_id_unique UNIQUE (user_id)
+  message text NOT NULL
 );
 
 -- business_info

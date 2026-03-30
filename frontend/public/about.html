@@ -1,10 +1,15 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- Phosphor Icons -->
+    <!-- <link rel="stylesheet" type="text/css"
     <!-- Phosphor Icons -->
     <!-- <link rel="stylesheet" type="text/css"
     href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css" />
@@ -19,14 +24,34 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Poppins:wght@400;500;600;700&display=swap"
         rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css"
+    />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
     <title>About Us — Finlite</title>
+    <title>About Us — Finlite</title>
 
-    <link rel="stylesheet" href="../src/styles/about.css">
-</head>
+    <link rel="stylesheet" href="../src/styles/about.css" />
+  </head>
 
 <body>
 
+    <!-- Backdrop -->
+    <div class="nav__backdrop" id="backdrop" aria-hidden="true"></div>
+  <body>
     <!-- Backdrop -->
     <div class="nav__backdrop" id="backdrop" aria-hidden="true"></div>
 
@@ -37,6 +62,19 @@
             <img src="../src/assets/logo.png" width="36px" height="42px" alt="Finlite Logo" class="nav-bar__logo" />
             <h2 class="nav__brand-text">FINLITE</h2>
         </a>
+    <!-- ══════════ NAV ══════════ -->
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+      <!-- Brand -->
+      <a class="nav__brand" href="dashboard.html" aria-label="Finlite home">
+        <img
+          src="../src/assets/logo.png"
+          width="36px"
+          height="42px"
+          alt="Finlite Logo"
+          class="nav-bar__logo"
+        />
+        <h2 class="nav__brand-text">FINLITE</h2>
+      </a>
 
         <!-- Desktop links -->
         <ul class="nav__links" role="list">
@@ -53,6 +91,18 @@
             <span class="nav__hb"></span>
             <span class="nav__hb"></span>
         </button>
+    </nav>
+      <button
+        class="nav__hamburger"
+        id="hamburgerBtn"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="mobileMenu"
+      >
+        <span class="nav__hb"></span>
+        <span class="nav__hb"></span>
+        <span class="nav__hb"></span>
+      </button>
     </nav>
 
     <!-- Mobile menu -->
@@ -78,6 +128,43 @@
                 </div>
             </div>
         </div>
+    <!-- Mobile menu -->
+    <div
+      class="nav__mobile"
+      id="mobileMenu"
+      role="dialog"
+      aria-label="Navigation menu"
+      aria-hidden="true"
+    >
+      <div class="nav__mobile-inner">
+        <a href="dashboard.html" class="nav__m-link"
+          ><i class="ph ph-squares-four"></i> Dashboard</a
+        >
+        <a href="transactions.html" class="nav__m-link"
+          ><i class="ph ph-arrows-left-right"></i> Transactions</a
+        >
+        <a href="settings.html" class="nav__m-link"
+          ><i class="ph ph-gear"></i> Settings</a
+        >
+        <a href="about.html" class="nav__m-link active">
+          <i class="ph ph-info"></i> About Us
+          <span class="nav__m-badge">Active</span>
+        </a>
+        <a href="report.html" class="nav__m-link"
+          ><i class="ph ph-chart-bar"></i> Report</a
+        >
+        <div class="nav__m-divider" role="separator"></div>
+        <!-- User row -->
+        <div class="nav__m-user">
+          <div class="nav__m-avatar" id="mobile-avatar" aria-hidden="true">
+            --
+          </div>
+          <div>
+            <p class="nav__m-name" id="mobile-user-name">Loading…</p>
+            <p class="nav__m-role">Business Owner</p>
+          </div>
+        </div>
+      </div>
     </div>
     <!-- /mobile-menu -->
 
@@ -92,6 +179,21 @@
             </div>
             <h1 class="about__hero-title">About Us</h1>
         </div>
+    <!-- ══════════ PAGE ══════════ -->
+    <div class="page">
+      <!-- Hero -->
+      <div class="about__hero">
+        <div class="about__hero-logo">
+          <img
+            src="../src/assets/logo.png"
+            width="60px"
+            height="80px"
+            alt="Finlite Logo"
+            class="about__hero-logo-img"
+          />
+        </div>
+        <h1 class="about__hero-title">About Us</h1>
+      </div>
 
         <!-- Who We Are -->
         <h2 class="about__section-label">Who We Are</h2>
@@ -111,6 +213,33 @@
                 FinLite was built with them in mind. Real people. Real businesses. Real solutions.
             </p>
         </div>
+      <!-- Who We Are -->
+      <h2 class="about__section-label">Who We Are</h2>
+      <div class="about__card">
+        <p
+          style="
+            font-weight: 700;
+            font-size: 15px;
+            color: var(--primary-text-color);
+            margin: 0 0 16px;
+          "
+        >
+          A Digital Notebook for Everyday Business Owners
+        </p>
+        <p>
+          FinLite is a people-first financial tool built for African small
+          businesses to easily track daily sales, expenses, and profit. Designed
+          around real shop owners, market traders, and POS operators, it
+          reflects how local businesses actually work. By removing complex
+          fintech interfaces, FinLite delivers a clear, familiar, and practical
+          experience that helps everyday business owners stay organized, make
+          better decisions, and run their businesses with confidence.
+        </p>
+        <p style="margin-top: 16px">
+          FinLite was built with them in mind. Real people. Real businesses.
+          Real solutions.
+        </p>
+      </div>
 
         <!-- Our Mission -->
         <h2 class="about__section-label">Our Mission</h2>
@@ -118,15 +247,33 @@
             <p>To provide a stress-free way for business owners to record sales, track expenses, and see profit
                 instantly.</p>
         </div>
+      <!-- Our Mission -->
+      <h2 class="about__section-label">Our Mission</h2>
+      <div class="about__card">
+        <p>
+          To provide a stress-free way for business owners to record sales,
+          track expenses, and see profit instantly.
+        </p>
+      </div>
 
         <!-- Our Vision -->
         <h2 class="about__section-label">Our Vision</h2>
         <div class="about__card">
             <p>To become the most trusted and simplest financial companion for everyday business people.</p>
         </div>
+      <!-- Our Vision -->
+      <h2 class="about__section-label">Our Vision</h2>
+      <div class="about__card">
+        <p>
+          To become the most trusted and simplest financial companion for
+          everyday business people.
+        </p>
+      </div>
 
         <!-- Community-Driven -->
         <h2 class="about__section-label">Community-Driven</h2>
+      <!-- Community-Driven -->
+      <h2 class="about__section-label">Community-Driven</h2>
 
         <div class="about__feature-card">
             <div class="about__feature-icon icon--primary"><i class="ph ph-chat-circle-text"></i></div>
@@ -136,6 +283,18 @@
                     like you</p>
             </div>
         </div>
+      <div class="about__feature-card">
+        <div class="about__feature-icon icon--primary">
+          <i class="ph ph-chat-circle-text"></i>
+        </div>
+        <div>
+          <p class="about__feature-title">We Listen</p>
+          <p class="about__feature-desc">
+            Every feature in FinLite comes from real feedback from business
+            owners like you
+          </p>
+        </div>
+      </div>
 
         <div class="about__feature-card">
             <div class="about__feature-icon icon--secondary"><i class="ph ph-heart"></i></div>
@@ -144,6 +303,17 @@
                 <p class="about__feature-desc">Your success is our success. We celebrate every milestone with you</p>
             </div>
         </div>
+      <div class="about__feature-card">
+        <div class="about__feature-icon icon--secondary">
+          <i class="ph ph-heart"></i>
+        </div>
+        <div>
+          <p class="about__feature-title">We Care</p>
+          <p class="about__feature-desc">
+            Your success is our success. We celebrate every milestone with you
+          </p>
+        </div>
+      </div>
 
         <div class="about__feature-card">
             <div class="about__feature-icon icon--gold"><i class="ph ph-handshake"></i></div>
@@ -153,9 +323,23 @@
                 </p>
             </div>
         </div>
+      <div class="about__feature-card">
+        <div class="about__feature-icon icon--gold">
+          <i class="ph ph-handshake"></i>
+        </div>
+        <div>
+          <p class="about__feature-title">We Support</p>
+          <p class="about__feature-desc">
+            Free support. Patient help. Clear answers. We're here when you need
+            us
+          </p>
+        </div>
+      </div>
 
         <!-- What FinLite Does -->
         <h2 class="about__section-label">What FinLite Does</h2>
+      <!-- What FinLite Does -->
+      <h2 class="about__section-label">What FinLite Does</h2>
 
         <div class="about__feature-card">
             <div class="about__feature-icon icon--orange-solid"><i class="ph-fill ph-currency-dollar"
@@ -165,6 +349,17 @@
                 <p class="about__feature-desc">Track every sale and expense in seconds. Simple forms. Big buttons.</p>
             </div>
         </div>
+      <div class="about__feature-card">
+        <div class="about__feature-icon icon--orange-solid">
+          <i class="ph-fill ph-currency-dollar" style="font-size: 28px"></i>
+        </div>
+        <div>
+          <p class="about__feature-title">Record Sales & Expenses</p>
+          <p class="about__feature-desc">
+            Track every sale and expense in seconds. Simple forms. Big buttons.
+          </p>
+        </div>
+      </div>
 
         <div class="about__feature-card">
             <div class="about__feature-icon icon--green-solid"><i class="ph-fill ph-trend-up"
@@ -175,6 +370,18 @@
                 </p>
             </div>
         </div>
+      <div class="about__feature-card">
+        <div class="about__feature-icon icon--green-solid">
+          <i class="ph-fill ph-trend-up" style="font-size: 28px"></i>
+        </div>
+        <div>
+          <p class="about__feature-title">See Your Profit Instantly</p>
+          <p class="about__feature-desc">
+            Know how much you made today without doing math. We calculate for
+            you.
+          </p>
+        </div>
+      </div>
 
         <div class="about__feature-card">
             <div class="about__feature-icon icon--gold-solid"><i class="ph-fill ph-file-text"
@@ -184,6 +391,17 @@
                 <p class="about__feature-desc">Daily, weekly, or monthly summaries. Download as PDF anytime.</p>
             </div>
         </div>
+      <div class="about__feature-card">
+        <div class="about__feature-icon icon--gold-solid">
+          <i class="ph-fill ph-file-text" style="font-size: 28px"></i>
+        </div>
+        <div>
+          <p class="about__feature-title">Simple Reports</p>
+          <p class="about__feature-desc">
+            Daily, weekly, or monthly summaries. Download as PDF anytime.
+          </p>
+        </div>
+      </div>
 
         <div class="about__feature-card">
             <div class="about__feature-icon icon--orange-solid"><i class="ph-fill ph-wifi-slash"
@@ -193,9 +411,22 @@
                 <p class="about__feature-desc">No internet? No problem. Your records are saved even without data.</p>
             </div>
         </div>
+      <div class="about__feature-card">
+        <div class="about__feature-icon icon--orange-solid">
+          <i class="ph-fill ph-wifi-slash" style="font-size: 28px"></i>
+        </div>
+        <div>
+          <p class="about__feature-title">Works Offline</p>
+          <p class="about__feature-desc">
+            No internet? No problem. Your records are saved even without data.
+          </p>
+        </div>
+      </div>
 
         <!-- What Makes Us Different -->
         <h2 class="about__section-label">What Makes Us Different</h2>
+      <!-- What Makes Us Different -->
+      <h2 class="about__section-label">What Makes Us Different</h2>
 
         <div class="about__feature-card">
             <div class="about__feature-icon icon--orange-solid"><i class="ph-fill ph-smiley"
@@ -206,6 +437,18 @@
                     complicated apps. So we built something different.</p>
             </div>
         </div>
+      <div class="about__feature-card">
+        <div class="about__feature-icon icon--orange-solid">
+          <i class="ph-fill ph-smiley" style="font-size: 28px"></i>
+        </div>
+        <div>
+          <p class="about__feature-title">Built for Real People</p>
+          <p class="about__feature-desc">
+            We saw market vendors, hair sellers, and shop owners struggling with
+            complicated apps. So we built something different.
+          </p>
+        </div>
+      </div>
 
         <div class="about__feature-card">
             <div class="about__feature-icon icon--orange-solid"><i class="ph-fill ph-book-open"
@@ -216,6 +459,18 @@
                     that makes sense.</p>
             </div>
         </div>
+      <div class="about__feature-card">
+        <div class="about__feature-icon icon--orange-solid">
+          <i class="ph-fill ph-book-open" style="font-size: 28px"></i>
+        </div>
+        <div>
+          <p class="about__feature-title">Simple by Design</p>
+          <p class="about__feature-desc">
+            No confusing charts. No intimidating numbers. Just a friendly
+            notebook that makes sense.
+          </p>
+        </div>
+      </div>
 
         <div class="about__feature-card">
             <div class="about__feature-icon icon--orange-solid"><i class="ph-fill ph-sun" style="font-size:28px;"></i>
@@ -226,6 +481,18 @@
                     actually operate.</p>
             </div>
         </div>
+      <div class="about__feature-card">
+        <div class="about__feature-icon icon--orange-solid">
+          <i class="ph-fill ph-sun" style="font-size: 28px"></i>
+        </div>
+        <div>
+          <p class="about__feature-title">Made for Africa</p>
+          <p class="about__feature-desc">
+            Works offline. Uses familiar language. Understands how local
+            businesses actually operate.
+          </p>
+        </div>
+      </div>
 
         <!-- Why Choose FinLite? -->
         <h2 class="about__section-label">Why Choose FinLite?</h2>
@@ -255,6 +522,38 @@
                 <p class="about__check-text">Free to use forever</p>
             </div>
         </div>
+      <!-- Why Choose FinLite? -->
+      <h2 class="about__section-label">Why Choose FinLite?</h2>
+      <div class="about__checklist">
+        <div class="about__check-item">
+          <div class="about__check-icon"><i class="ph-fill ph-check"></i></div>
+          <p class="about__check-text">
+            Sign up in minutes &amp; minimal paperwork
+          </p>
+        </div>
+        <div class="about__check-item">
+          <div class="about__check-icon"><i class="ph-fill ph-check"></i></div>
+          <p class="about__check-text">Transaction history in real time.</p>
+        </div>
+        <div class="about__check-item">
+          <div class="about__check-icon"><i class="ph-fill ph-check"></i></div>
+          <p class="about__check-text">
+            Built-in tools help users monitor spending
+          </p>
+        </div>
+        <div class="about__check-item">
+          <div class="about__check-icon"><i class="ph-fill ph-check"></i></div>
+          <p class="about__check-text">Simple language you understand</p>
+        </div>
+        <div class="about__check-item">
+          <div class="about__check-icon"><i class="ph-fill ph-check"></i></div>
+          <p class="about__check-text">Built for low-end devices</p>
+        </div>
+        <div class="about__check-item">
+          <div class="about__check-icon"><i class="ph-fill ph-check"></i></div>
+          <p class="about__check-text">Free to use forever</p>
+        </div>
+      </div>
 
         <!-- Who We Serve -->
         <h2 class="about__section-label">Who We Serve</h2>
@@ -266,6 +565,27 @@
                 <p style="margin:0;">Built for market vendors, POS operators, and everyday small business owners.</p>
             </div>
         </div>
+      <!-- Who We Serve -->
+      <h2 class="about__section-label">Who We Serve</h2>
+      <div class="about__card">
+        <div style="display: flex; align-items: flex-start; gap: 10px">
+          <span
+            style="
+              width: 10px;
+              height: 10px;
+              border-radius: 50%;
+              background: var(--primary-color);
+              flex-shrink: 0;
+              margin-top: 4px;
+            "
+            aria-hidden="true"
+          ></span>
+          <p style="margin: 0">
+            Built for market vendors, POS operators, and everyday small business
+            owners.
+          </p>
+        </div>
+      </div>
 
         <!-- Our Commitment -->
         <div class="about__commitment">
@@ -275,17 +595,34 @@
                 No confusing jargon. Just your money story, simplified.
             </p>
         </div>
+      <!-- Our Commitment -->
+      <div class="about__commitment">
+        <p class="about__commitment-title">Our Commitment</p>
+        <p class="about__commitment-text">
+          We promise to always keep FinLite simple, and warm. No complicated
+          features. No confusing jargon. Just your money story, simplified.
+        </p>
+      </div>
 
         <!-- Badge -->
         <div class="about__badge">
             <span style="font-size:28px;" role="img" aria-label="Globe">🌍</span>
             <p class="about__badge-text">Proudly Made in Africa</p>
         </div>
+      <!-- Badge -->
+      <div class="about__badge">
+        <span style="font-size: 28px" role="img" aria-label="Globe">🌍</span>
+        <p class="about__badge-text">Proudly Made in Africa</p>
+      </div>
+    </div>
+    <!-- /page -->
 
     </div><!-- /page -->
 
+    <script src="../src/scripts/theme.js"></script>
     <script src="../src/scripts/about.js"></script>
 
 </body>
 
+  </body>
 </html>

@@ -105,9 +105,10 @@ function setupLogout() {
         logoutBtn.addEventListener('click', () => {
             localStorage.removeItem('token');
             localStorage.removeItem('user');
+            localStorage.removeItem('finlite_tx');
             showToast('Logged out successfully', 'success');
             setTimeout(() => {
-                window.location.href = 'login.html';
+                window.location.href = '../index.html';
             }, 1000);
         });
     }
@@ -180,25 +181,25 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    /* ─────────────────────────────────────────
-      THEME TOGGLE  (Light / Dark)
-    ───────────────────────────────────────── */
-    const btnLight = document.getElementById('btnLight');
-    const btnDark  = document.getElementById('btnDark');
+    // /* ─────────────────────────────────────────
+    //   THEME TOGGLE  (Light / Dark)
+    // ───────────────────────────────────────── */
+    // const btnLight = document.getElementById('btnLight');
+    // const btnDark  = document.getElementById('btnDark');
 
-    function applyTheme(theme) {
-        document.documentElement.setAttribute('data-theme', theme);
-        localStorage.setItem('finlite_theme', theme);
-        btnLight.classList.toggle('active', theme === 'light');
-        btnDark.classList.toggle('active',  theme === 'dark');
-    }
+    // function applyTheme(theme) {
+    //     document.documentElement.setAttribute('data-theme', theme);
+    //     localStorage.setItem('finlite_theme', theme);
+    //     btnLight.classList.toggle('active', theme === 'light');
+    //     btnDark.classList.toggle('active',  theme === 'dark');
+    // }
 
-    // Restore saved preference on load
-    const savedTheme = localStorage.getItem('finlite_theme') || 'light';
-    applyTheme(savedTheme);
+    // // Restore saved preference on load
+    // const savedTheme = localStorage.getItem('finlite_theme') || 'light';
+    // applyTheme(savedTheme);
 
-    btnLight.addEventListener('click', () => applyTheme('light'));
-    btnDark.addEventListener('click',  () => applyTheme('dark'));
+    // btnLight.addEventListener('click', () => applyTheme('light'));
+    // btnDark.addEventListener('click',  () => applyTheme('dark));
 
 
     /* ─────────────────────────────────────────

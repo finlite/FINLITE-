@@ -557,7 +557,7 @@ editForm.addEventListener("submit", async (e) => {
   const dateTime = document.getElementById("editDate").value;
 
   if (!amount || amount <= 0) {
-    showToast("Enter a valid amount", 2800);
+    showToast("Enter a valid amount");
     return;
   }
 
@@ -588,16 +588,16 @@ editForm.addEventListener("submit", async (e) => {
 
     if (!response.ok) {
       const data = await response.json();
-      showToast(data.message || "Failed to update transaction", 2800);
+      showToast(data.message || "Failed to update transaction");
       return;
     }
 
-    showToast("Transaction updated successfully", 2800);
+    showToast("Done");
     closeEditModal();
     await fetchTransactions();
   } catch (error) {
     console.error("Error updating transaction:", error);
-    showToast("Error updating transaction", 2800);
+    showToast("Error updating transaction");
   } finally {
     editBtn.disabled = false;
     editBtn.textContent = originalText;
@@ -652,16 +652,16 @@ async function deleteTransaction() {
 
     if (!response.ok) {
       const data = await response.json();
-      showToast(data.message || "Failed to delete transaction", 2800);
+      showToast(data.message || "Failed to delete transaction");
       return;
     }
 
-    showToast("Transaction deleted successfully", 2800);
+    showToast("Done");
     closeEditModal();
     await fetchTransactions();
   } catch (error) {
     console.error("Error deleting transaction:", error);
-    showToast("Error deleting transaction", 2800);
+    showToast("Error deleting transaction");
   } finally {
     deleteBtn.disabled = false;
     deleteBtn.textContent = originalText;

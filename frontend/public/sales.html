@@ -7,7 +7,7 @@
     <title>Signup</title>
 
     <link rel="stylesheet" href="../src/styles/output.css" />
-    <link rel="stylesheet" href="sales.css">
+    <link rel="stylesheet" href="../src/styles/sales.css">
     <link rel="stylesheet" type="text/css"
         href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css" />
     <link rel="stylesheet" type="text/css"
@@ -16,221 +16,246 @@
 
 <body class="bg-bg-primary">
     <!-- Header -->
-    <nav
-        class="lg:px-6 lg:py-2.5 py-1.5 px-4 flex items-center bg-white fixed right-0 left-0 top-0 max-w-full justify-between">
-        <!-- Brand's Logo and Name -->
-        <a href="#" class="flex items-center">
-            <div class="lg:w-14 lg:h-16 w-11 h-14">
-                <img src="../src/assets/logo.png" alt="finite logo" class="w-full h-full">
-            </div>
-            <h2 class="font-secondary lg:text-[26px] text-[20px]  font-semibold text-secondary ml-2">FINLITE</h2>
+    <div class="nav__backdrop" id="backdrop" aria-hidden="true"></div>
+
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+        <a class="nav__brand" href="dashboard.html" aria-label="Finlite home">
+            <img src="../src/assets/logo.png" width="36" height="42" alt="Finlite Logo" class="nav-bar__logo" />
+            <h2 class="nav__brand-text">FINLITE</h2>
         </a>
 
-
-        <!-- Navigation links -->
-        <ul class="lg:flex flex-row hidden lg:gap-10 gap-7 py-2.5 justify-around">
-            <li class="font-medium text-[20px]">
-                <a href="dashboard.html">Dashboard</a>
-            </li>
-            <li class="font-medium text-[20px]">
-                <a href="transactions.html">Transactions</a>
-            </li>
-            <li class="font-medium text-[20px]">
-                <a href="settings.html">Settings</a>
-            </li>
-            <li class="font-medium text-[20px]">
-                <a href="about.html">About Us</a>
-            </li>
-            <li class="font-medium text-[20px]">
-                <a href="report.html">Report</a>
-            </li>
-            <li class="text-[20px]  active-tab font-medium">
-                <a href="sales.html">Sales</a>
-            </li>
+        <ul class="nav__links" role="list">
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="transactions.html">Transactions</a></li>
+            <li><a href="settings.html" class="active">Settings</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="report.html">Report</a></li>
         </ul>
 
-        <!-- Mobile menu -->
-        <button class="lg:hidden block">
-            <i class="ph ph-list text-3xl"></i>
+        <button class="nav__hamburger" id="hamburgerBtn" aria-label="Open navigation menu" aria-expanded="false"
+            aria-controls="mobileMenu">
+            <span class="nav__hb"></span>
+            <span class="nav__hb"></span>
+            <span class="nav__hb"></span>
         </button>
     </nav>
 
+    <div class="nav__mobile" id="mobileMenu" role="dialog" aria-label="Navigation menu" aria-hidden="true">
+        <div class="nav__mobile-inner">
+            <a href="dashboard.html" class="nav__m-link"><i class="ph ph-squares-four"></i> Dashboard</a>
+            <a href="transactions.html" class="nav__m-link"><i class="ph ph-arrows-left-right"></i> Transactions</a>
+            <a href="settings.html" class="nav__m-link"><i class="ph ph-gear"></i> Settings</a>
+            <a href="Help.html" class="nav__m-link active">
+                <i class="ph ph-question"></i> Help
+                <span class="nav__m-badge">Active</span>
+            </a>
+            <a href="report.html" class="nav__m-link"><i class="ph ph-chart-bar"></i> Report</a>
+            <div class="nav__m-divider" role="separator"></div>
+            <div class="nav__m-user">
+                <div class="nav__m-avatar" id="mobile-avatar" aria-hidden="true">--</div>
+                <div>
+                    <p class="nav__m-name" id="mobile-user-name">Loading...</p>
+                    <p class="nav__m-role">Business Owner</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <!-- Main section- 100px from the top of the screen -->
-    <main class="overflow-hidden w-full max-w-full mx-auto sm:px-12 px-6 mt-25">
-        <section>
+    <main class="max-w-full w-full mt-24 lg:px-28 md:px-16 px-3 mx-auto min-h-screen h-full relative">
+        <section class="w-full sm:mt-10 px-10">
             <div
-                class="w-full max-w-full bg-[#6C8C3B] sm:py-10 sm:px-24 p-6  sm:rounded-b-[78px] rounded-b-[60px] sm:rounded-tr-[78px] rounded-tr-[60px] flex sm:gap-10 gap-6 items-center">
-                <div class="w-24 h-24 rounded-full bg-white/20 flex items-center justify-center">
-                    <i class="ph ph-arrow-left text-white text-4xl font-semibold"></i>
+                class="w-full max-w-full bg-[#6C8C3B] sm:px-14 px-4 sm:py-8 py-5 rounded-b-4xl rounded-tr-4xl flex sm:gap-10 gap-6 items-center">
+                <div class="flex justify-center items-center w-14 h-14 rounded-full bg-white/20">
+                    <i class="ph ph-arrow-left text-white text-3xl font-bold"></i>
                 </div>
 
-                <div class="flex flex-col sm:gap-14 gap-8">
-                    <p id="add-sales" class="font-semibold text-white text-[32px]">Add Sales</p>
-                    <p id="record-income" class="text-white text-[26px]">Record Your Income</p>
+                <div class="flex flex-col gap-4">
+                    <p id="add-sales" class="sm:text-2xl text-xl font-bold text-white">Add Sales</p>
+                    <p id="record-income" class="text-white font-normal sm:text-[20px] text-[14px]">Record Your Income to keep track of your earnings and manage your finances better.
+                    </p>
                 </div>
             </div>
         </section>
 
         <!-- Sales input form -->
-        <form class="mt-14">
+        <form class="w-full sm:mt-10 mt-6 px-10 grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-8 mb-9">
             <!-- Container that holds the label and input to enter amount -->
-            <div class="max-w-full flex flex-col gap-2.5">
+            <div class="flex flex-col">
                 <!-- Income input label -->
-                <label for="sales" class="font-semibold text-text-secondary text-[26px]">How much did you
+                <label for="sales" class="text-[18px] font-semibold text-black mb-2">How much did you
                     receive?</label>
 
                 <!-- Income Input -->
                 <input type="text" name="sales" id="sales" placeholder="₦ 0"
-                    class="bg-white p-16 rounded-3xl outline-0 text-[26px] placeholder:text-[26px] drop-shadow-[0px 2.78px 5.56px -2.78px #0000001a, 0px 2.78px 8.34px 0px #0000001a]">
-            </div>
+                    class="bg-white p-6 rounded-md outline-0 text-xl placeholder:text-2xl shadow-md">
+                <!-- Quick Amounts that users can easily select from instead of typing -->
 
-            <!-- Quick Amounts that users can easily select from instead of typing -->
-            <div class="flex flex-col gap-2.5 mt-3">
                 <!-- Quick amounts heading -->
-                <h3 class="font-semibold text-text-secondary text-[26px]">⚡ Quick Amounts</h3>
+                <h3 class="text-[18px] font-semibold text-black mb-2 mt-2">⚡ Quick Amounts</h3>
 
                 <!-- Quick amounts container that holds common amounts users can quickly click on -->
-                <div class="grid grid-cols-4 gap-7">
+                <div class="grid grid-cols-2 gap-2">
                     <button id="quick-1k"
-                        class="bg-[#EFEFEF] flex border-0 justify-center items-center py-9 rounded-3xl px-8 text-2xl text-[#4B4B4B] font-medium shadow-2xs">₦1k</button>
+                        class="bg-white shadow-md flex border-0 justify-center items-center  rounded-xl p-4 text-[14px] text-[#4B4B4B] font-medium">₦1k</button>
                     <button id="quick-2k"
-                        class=" font-medium bg-[#EFEFEF] flex border-0 justify-center items-center py-9 rounded-3xl px-8 text-2xl text-[#4B4B4B] shadow-2xs">₦2k</button>
+                        class=" font-medium bg-white flex border-0 justify-center items-center  rounded-xl p-4 text-[14px] text-[#4B4B4B] shadow-md">₦2k</button>
                     <button id="quick-5k"
-                        class="bg-[#EFEFEF]  font-medium flex border-0 justify-center items-center py-9 rounded-3xl px-8 text-2xl text-[#4B4B4B] shadow-2xs">₦5k</button>
+                        class="bg-white  font-medium flex border-0 justify-center items-center  rounded-xl p-4 text-[14px] text-[#4B4B4B] shadow-md">₦5k</button>
                     <button id="quick-10k"
-                        class="bg-[#EFEFEF]  font-medium flex border-0 justify-center items-center py-9 rounded-3xl px-8 text-2xl text-[#4B4B4B] shadow-2xs">₦10k</button>
+                        class="bg-white  font-medium flex border-0 justify-center items-center  rounded-xl p-4 text-[14px] text-[#4B4B4B] shadow-md">₦10k</button>
                 </div>
+
             </div>
 
+
             <!-- Product or service type container -->
-            <div class="flex flex-col gap-2.5 mt-14">
+            <div class="flex flex-col">
                 <!-- Label for product or service type -->
-                <label for="category" class="font-semibold text-text-secondary text-[26px]">What was it for?</label>
+                <label for="category" class="text-[18px] font-semibold text-black mb-2">What was it for?</label>
 
                 <!-- Input for product or service type -->
                 <input type="text" name="category" id="category" placeholder="e.g Hair Styling"
-                    class="bg-white p-16 rounded-3xl outline-0 text-[26px] placeholder:text-[26px]">
+                    class="bg-white p-6 rounded-md outline-0 text-xl placeholder:text-2xl shadow-md">
                 <!-- Quick service or product type heading -->
-                <h3 class="font-semibold text-text-secondary text-[26px]">Or choose a common service</h3>
+                <h3 class="text-[18px] font-semibold text-black mb-2 mt-2">Choose a Common Service</h3>
 
                 <!-- Quick product/service type container -->
-                <div class="grid grid-cols-2 gap-7">
-                    <button id="first-commonService"
-                        class="bg-white flex border-0 justify-center items-center py-9 rounded-3xl px-8 text-2xl text-[#4B4B4B] font-medium">Hair
-                        Styling</button>
-                    <button id="second-commonService"
-                        class=" font-medium bg-white flex border-0 justify-center items-center py-9 rounded-3xl px-8 text-2xl text-[#4B4B4B]">Hair
-                        Treatment</button>
-                    <button id="third-commonService"
-                        class="bg-white  font-medium flex border-0 justify-center items-center py-9 rounded-3xl px-8 text-2xl text-[#4B4B4B]">Braiding</button>
-                    <button id="fourth-commonService"
-                        class="bg-white  font-medium flex border-0 justify-center items-center py-9 rounded-3xl px-8 text-2xl text-[#4B4B4B]">Weaving</button>
+                <div class="grid grid-cols-2 gap-2">
+                    <button id="first-commonService">
+                        <pre
+                            class="bg-white flex border-0 justify-center items-center p-4 rounded-md text-[14px] text-[#4B4B4B] font-semibold shadow-md">Hair Styling</pre>
+                    </button>
+                    <button id="second-commonService">
+                        <pre
+                            class="bg-white flex border-0 justify-center items-center p-4 rounded-md text-[14px] text-[#4B4B4B] font-semibold shadow-md">Hair Treatment</pre>
+                    </button>
+                    <button id="third-commonService">
+                        <pre
+                            class="bg-white flex border-0 justify-center items-center p-4 rounded-md text-[14px] text-[#4B4B4B] font-semibold shadow-md">Braiding</pre>
+                    </button>
+                    <button id="fourth-commonService">
+                        <pre
+                            class="bg-white flex border-0 justify-center items-center p-4 rounded-md text-[14px] text-[#4B4B4B] font-semibold shadow-md">Weaving</pre>
+                    </button>
                 </div>
             </div>
 
             <!-- Time container -->
-            <div class="flex flex-col gap-2.5 mt-14">
+            <div class="flex flex-col">
                 <!-- Time input label -->
-                <label for="date-time" class="font-semibold text-text-secondary text-[26px]">What time?</label>
+                <label for="date-time" class="text-[18px] font-semibold text-black mb-2">What Time?</label>
                 <!-- Time input with datetime-local type -->
                 <input type="datetime-local" name="time" id="date-time"
-                    class="bg-white p-16 rounded-3xl outline-0 text-[26px] placeholder:text-[26px]">
+                    class="bg-white p-6 rounded-md outline-0 text-xl placeholder:text-2xl shadow-md">
             </div>
 
             <!-- Optional note container -->
-            <div class="flex flex-col gap-2.5 mt-14">
+            <div class="flex flex-col">
                 <!-- Label for optional note -->
-                <label for="note" class="font-semibold text-text-secondary text-[26px]">Add a note (optional)</label>
+                <label for="note" class="text-[18px] font-semibold text-black mb-2">Add a Note (optional)</label>
                 <!-- Input for notes. Textarea is used -->
                 <textarea name="note" id="note"
-                    class="bg-white p-16 rounded-3xl outline-0 text-[26px] placeholder:text-[26px]"
+                    class="bg-white p-6 rounded-md outline-0 text-xl placeholder:text-2xl shadow-md"
                     placeholder="Any details you want to remember..."></textarea>
             </div>
+        </form>
 
+        <div class="w-full sm:mt-10 mt-6 px-10">
             <!-- Add sales button -->
-            <button id="save-sale" class="bg-secondary w-full py-8  rounded-3xl text-white text-2xl shadow-md mt-14">
+            <button id="save-sale"
+                class="bg-secondary w-full text-white  shadow-md sm:text-[18px] text-[14px] sm:p-4 px-4 py-3 rounded-3xl">
                 <!-- Check icon -->
                 <i class="ph ph-check"></i>
                 <span>Save Sale</span>
             </button>
 
             <!-- Cancel link -->
-            <a id="cancel-sale" href="#"
-                class="text-text-secondary text-2xl mt-10 mb-11 font-semibold block text-center">Cancel</a>
-        </form>
+            <button id="cancel-sale" href="#"
+                class="bg-white/20 w-full text-red-600 mt-5 sm:text-[18px] text-[14px] sm:p-4 px-4 py-3 rounded-3xl">Cancel</button>
+        </div>
+
+
+        <!-- Confirmation Modal -->
+        <div id="salesConfirmation-modal"
+            class="absolute hidden top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-1001 mx-auto w-[40%] px-8 py-4 bg-white  flex-col items-center justify-center">
+            <!-- Modal content would go here -->
+
+            <!-- Confirmation mark with its container -->
+            <div
+                class="w-24 h-24 mx-auto bg-secondary rounded-full flex items-center justify-center shadow-[0px_62.5px_125px_-30px_rgba(0,0,0,0.25)]">
+                <div class="bg-white/20 w-18 h-18 rounded-full flex items-center justify-center">
+                    <i class="ph ph-check text-white font-bold text-3xl"></i>
+                </div>
+            </div>
+
+            <!-- Confirmation texts -->
+            <p class="text-[#2C2C2C] sm:text-3xl text-2xl mt-1 font-normal text-center">Sale Saved!</p>
+            <p class="text-[#4B4B4B] text-normal text-center sm:text-[20px] text-[14px] mt-1.5">Your income has been
+                recorded
+                successfully.
+            </p>
+
+            <!-- Container containing details collected from sales input form-->
+            <div class="bg-white p-3 rounded-2xl w-full shadow-md mt-5">
+                <!-- Amount received -->
+                <p class="sm:text-3xl text-2xl text-[#9E9E9E] font-normal text-center">Amount Received</p>
+                <p id="amount-received" class="sm:text-7xl text-2xl text-secondary mt-3 text-center">₦0</p>
+
+                <!-- Service/product type, time recorded, and date recorded -->
+                <div class="flex flex-col max-w-full mt-5 border-t-2 border-[#F1EDE4] gap-2">
+                    <!-- service/product type -->
+                    <div class="flex justify-between">
+                        <p class="text-lg sm:text-[20px] text-[#9E9E9E]">Service</p>
+                        <p id="serviceType-log" class="text-lg sm:text-xl text-[#4B4B4B]"></p>
+                    </div>
+
+                    <!-- Time recorded -->
+                    <div class="flex justify-between">
+                        <p class="text-lg sm:text-[20px] text-[#9E9E9E]">Time</p>
+                        <p id="salesTime-log" class="text-lg sm:text-xl text-[#4B4B4B]"></p>
+                    </div>
+
+                    <!-- Date recorded -->
+                    <div class="flex justify-between">
+                        <p class="text-lg sm:text-[20px] text-[#9E9E9E]">Date</p>
+                        <p id="date-log" class="text-lg sm:text-xl text-[#4B4B4B]"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Total sales -->
+            <div
+                class="mt-5  w-full max-w-full bg-[linear-gradient(180deg,#F3C650_0%,_#E3B640_100%)]  p-4 rounded-xl  flex gap-6 items-center">
+                <div class="w-14 h-14 rounded-full bg-white/20 flex items-center justify-center">
+                    <i class="ph ph-trend-up text-white text-2xl font-semibold"></i>
+                </div>
+
+                <div class="flex flex-col gap-1">
+                    <p class="font-light text-white sm:text-2xl text-xl ">Total sales today</p>
+                    <p id="total-Sales" class="text-white sm:text-[20px] text-[14px] font-normal">₦0</p>
+                </div>
+            </div>
+
+            <!-- Add another sale button -->
+            <button id="another-saleBtn"
+                class="bg-secondary w-full rounded-xl text-white sm:text-[18px] text-[14px] sm:p-4 px-4 py-3 shadow-md mt-5">
+                <i class="ph ph-plus"></i>
+                <span>Add Another Sale<span>
+            </button>
+
+            <!-- Return to dashboard button -->
+            <button id="return-btn"
+                class="bg-white w-full rounded-xl text-secondary sm:text-[18px] text-[14px] sm:p-4 px-4 py-3 shadow-md mt-5">
+                <span>Back to Dashboard<span>
+            </button>
+        </div>
+
     </main>
 
-    <!-- Confirmation Modal -->
-    <div id="salesConfirmation-modal"
-        class="hidden sm:mx-12 mx-8  h-full sm:px-20 px-6 sm:py-10 py-8 bg-black/3  flex-col items-center justify-center">
-        <!-- Modal content would go here -->
-
-        <!-- Confirmation mark with its container -->
-        <div
-            class="sm:w-75 mx-auto w-50 h-50 sm:h-75 bg-secondary rounded-full flex items-center justify-center shadow-[0px_62.5px_125px_-30px_rgba(0,0,0,0.25)]">
-            <div class="bg-white/20 sm:w-60 sm:h-60 w-40 h-40 rounded-full flex items-center justify-center">
-                <i class="ph ph-check text-white font-bold text-7xl sm:text-9xl"></i>
-            </div>
-        </div>
-
-        <!-- Confirmation texts -->
-        <p class="text-[#2C2C2C] sm:text-[80px] text-6xl mt-10 font-normal text-center">Sale Saved!</p>
-        <p class="text-[#4B4B4B] text-normal text-center sm:text-[40px] text-2xl mt-1.5">Your income has been recorded successfully.
-        </p>
-
-        <!-- Container containing details collected from sales input form-->
-        <div
-            class="bg-white sm:p-14 p-8 sm:rounded-[60px] rounded-4xl w-full shadow-[0px_10px_15px_-10px_rgba(0,0,0,0.1),_0px_25px_37.5px_-7.5px_rgba(0,0,0,0.1)] mt-5">
-            <!-- Amount received -->
-            <p class="text-[36px] text-[#9E9E9E] font-normal text-center">Amount Received</p>
-            <p id="amount-received" class="sm:text-[100px] text-7xl text-secondary mt-6 text-center">₦0</p>
-
-            <!-- Service/product type, time recorded, and date recorded -->
-            <div class="flex flex-col max-w-full mt-12.5 border-t-2 border-[#F1EDE4] pt-4  gap-7">
-                <!-- service/product type -->
-                <div class="flex justify-between">
-                    <p class="sm:text-[36px] text-3xl text-[#9E9E9E]">Service</p>
-                    <p id="serviceType-log" class="sm:text-[36px] text-3xl text-[#4B4B4B]">Hair styling</p>
-                </div>
-
-                <!-- Time recorded -->
-                <div class="flex justify-between">
-                    <p class="sm:text-[36px] text-3xl text-[#9E9E9E]">Time</p>
-                    <p id="salesTime-log" class="sm:text-[36px] text-3xl text-[#4B4B4B]">2:30 PM</p>
-                </div>
-
-                <!-- Date recorded -->
-                <div class="flex justify-between">
-                    <p class="sm:text-[36px] text-3xl text-[#9E9E9E]">Date</p>
-                    <p id="date-log" class="sm:text-[36px] text-3xl text-[#4B4B4B]">January 23, 2026</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Total sales -->
-        <div
-            class="mt-5  w-full max-w-full bg-[linear-gradient(180deg,#F3C650_0%,_#E3B640_100%)] sm:p-8 p-4 sm:rounded-[50px] rounded-[40px]  flex gap-6 items-center">
-            <div class="w-24 h-24 rounded-full bg-white/20 flex items-center justify-center">
-                <i class="ph ph-trend-up text-white text-4xl font-semibold"></i>
-            </div>
-
-            <div class="flex flex-col gap-1">
-                <p class="font-light text-white sm:text-[32px] text-3xl">Total sales today</p>
-                <p id="total-Sales" class="text-white sm:text-[55px] text-5xl font-normal">₦12,500</p>
-            </div>
-        </div>
-
-        <!-- Add another sale button -->
-        <button id="another-saleBtn"
-            class="bg-secondary w-full py-8  rounded-3xl text-white sm:text-[42px] text-4xl shadow-md mt-5">
-            <i class="ph ph-plus"></i>
-            <span>Add Another Sale<span>
-        </button>
-
-        <!-- Return to dashboard button -->
-        <button id="return-btn" class="bg-white w-full py-8  rounded-3xl text-secondary sm:text-[42px] text-4xl shadow-md mt-5">
-            <span>Back to Dashboard<span>
-        </button>
+    <!-- Modal Overlay -->
+    <div id="overlay" class=" z-1000 bg-black/50  justify-center items-center fixed top-0 hidden left-0 w-full h-full hidden">
     </div>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script type="module" src="../src/scripts/sales.js"></script>

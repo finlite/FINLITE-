@@ -1,222 +1,280 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css"/>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <title>Reports — Finlite</title>
-    <link rel="stylesheet" href="../src/styles/report.css">
-</head>
-<body>
+    <link rel="icon" href="../src/assets/logo.png" type="image/png" />
+    <link rel="stylesheet" href="../src/styles/report.css" />
+  </head>
+  <body>
+    <!-- Backdrop -->
+    <div class="nav__backdrop" id="backdrop" aria-hidden="true"></div>
 
-<!-- Backdrop -->
-<div class="nav__backdrop" id="backdrop" aria-hidden="true"></div>
-
-<!-- NAV -->
-<nav class="nav" role="navigation" aria-label="Main navigation">
-    <a class="nav__brand" href="dashboard.html" aria-label="Finlite home">
+    <!-- NAV -->
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+      <a class="nav__brand" href="dashboard.html" aria-label="Finlite home">
         <div class="nav__logo">
-            <img src="../src/assets/logo.png" width="36" height="42" alt="Finlite Logo">
+          <img
+            src="../src/assets/logo.png"
+            width="36"
+            height="42"
+            alt="Finlite Logo"
+          />
         </div>
         <h2 class="nav__brand-text">FINLITE</h2>
-    </a>
-    <ul class="nav__links" role="list">
+      </a>
+      <ul class="nav__links" role="list">
         <li><a href="dashboard.html">Dashboard</a></li>
-        <li><a href="transactions.html">Transaction</a></li>
+        <li><a href="transactions.html">Transactions</a></li>
         <li><a href="settings.html">Settings</a></li>
         <li><a href="about.html">About Us</a></li>
         <li><a href="report.html" class="active">Report</a></li>
-    </ul>
-    <button class="nav__hamburger" id="hamburgerBtn"
-            aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">
+      </ul>
+      <button
+        class="nav__hamburger"
+        id="hamburgerBtn"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="mobileMenu"
+      >
         <span class="nav__hb"></span>
         <span class="nav__hb"></span>
         <span class="nav__hb"></span>
-    </button>
-</nav>
+      </button>
+    </nav>
 
-<!-- Mobile menu -->
-<div class="nav__mobile" id="mobileMenu" role="dialog" aria-label="Navigation menu" aria-hidden="true">
-    <div class="nav__mobile-inner">
-        <a href="dashboard.html" class="nav__m-link"><i class="ph ph-squares-four"></i> Dashboard</a>
-        <a href="transactions.html" class="nav__m-link"><i class="ph ph-arrows-left-right"></i> Transactions</a>
-        <a href="settings.html" class="nav__m-link"><i class="ph ph-gear"></i> Settings</a>
-        <a href="about.html" class="nav__m-link"><i class="ph ph-info"></i> About Us</a>
-        <a href="report.html" class="nav__m-link active"><i class="ph ph-chart-bar"></i> Report</a>
+    <!-- Mobile menu -->
+    <div
+      class="nav__mobile"
+      id="mobileMenu"
+      role="dialog"
+      aria-label="Navigation menu"
+      aria-hidden="true"
+    >
+      <div class="nav__mobile-inner">
+        <a href="dashboard.html" class="nav__m-link"
+          ><i class="ph ph-squares-four"></i> Dashboard</a
+        >
+        <a href="transactions.html" class="nav__m-link"
+          ><i class="ph ph-arrows-left-right"></i> Transactions</a
+        >
+        <a href="settings.html" class="nav__m-link"
+          ><i class="ph ph-gear"></i> Settings</a
+        >
+        <a href="about.html" class="nav__m-link"
+          ><i class="ph ph-info"></i> About Us</a
+        >
+        <a href="report.html" class="nav__m-link active"
+          ><i class="ph ph-chart-bar"></i> Report</a
+        >
         <div class="nav__m-divider" role="separator"></div>
         <div class="nav__m-user">
-            <div class="nav__m-avatar" id="mobile-avatar" aria-hidden="true">--</div>
-            <div>
-                <p class="nav__m-name" id="mobile-user-name">Loading…</p>
-                <p class="nav__m-role">Business Owner</p>
-            </div>
+          <div class="nav__m-avatar" id="mobile-avatar" aria-hidden="true">
+            --
+          </div>
+          <div>
+            <p class="nav__m-name" id="mobile-user-name">Loading…</p>
+            <p class="nav__m-role">Business Owner</p>
+          </div>
         </div>
+      </div>
     </div>
-</div>
 
-<!-- PAGE -->
-<div class="page">
-
-    <!-- TOPBAR -->
-    <div class="topbar">
-        <a href="dashboard.html" class="topbar__back" aria-label="Back to Dashboard">
-            <i class="ph ph-arrow-left"></i>
+    <!-- PAGE -->
+    <div class="page">
+      >
+      <!-- TOPBAR -->
+      <div class="topbar">
+        <a
+          href="dashboard.html"
+          class="topbar__back"
+          aria-label="Back to Dashboard"
+        >
+          <i class="ph ph-arrow-left"></i>
         </a>
         <h1 class="topbar__title">Reports</h1>
-    </div>
+      </div>
 
-    <!-- SUMMARY PILLS -->
-    <div class="summary-pills">
+      <!-- SUMMARY PILLS -->
+      <div class="summary-pills">
         <div class="pill">
-            <div class="pill__icon pill__icon--income">
-                <i class="ph-fill ph-trend-up"></i>
-            </div>
-            <span class="pill__label">Income</span>
-            <span class="pill__value pill__value--income" id="pillIncome">₦0</span>
+          <div class="pill__icon pill__icon--income">
+            <i class="ph-fill ph-trend-up"></i>
+          </div>
+          <span class="pill__label">Income</span>
+          <span class="pill__value pill__value--income" id="pillIncome"
+            >₦0</span
+          >
         </div>
         <div class="pill">
-            <div class="pill__icon pill__icon--expense">
-                <i class="ph-fill ph-trend-down"></i>
-            </div>
-            <span class="pill__label">Expenses</span>
-            <span class="pill__value pill__value--expense" id="pillExpenses">₦0</span>
+          <div class="pill__icon pill__icon--expense">
+            <i class="ph-fill ph-trend-down"></i>
+          </div>
+          <span class="pill__label">Expenses</span>
+          <span class="pill__value pill__value--expense" id="pillExpenses"
+            >₦0</span
+          >
         </div>
         <div class="pill">
-            <div class="pill__icon pill__icon--balance">
-                <i class="ph-fill ph-currency-dollar"></i>
-            </div>
-            <span class="pill__label">Balance</span>
-            <span class="pill__value pill__value--balance" id="pillBalance">₦0</span>
+          <div class="pill__icon pill__icon--balance">
+            <i class="ph-fill ph-currency-dollar"></i>
+          </div>
+          <span class="pill__label">Balance</span>
+          <span class="pill__value pill__value--balance" id="pillBalance"
+            >₦0</span
+          >
         </div>
-    </div>
+      </div>
 
-    <!-- PERIOD SELECTOR -->
-    <div class="period-bar" id="periodBar" role="button" aria-haspopup="listbox" aria-expanded="false">
+      <!-- PERIOD SELECTOR -->
+      <div
+        class="period-bar"
+        id="periodBar"
+        role="button"
+        aria-haspopup="listbox"
+        aria-expanded="false"
+      >
         <i class="ph ph-calendar-blank period-bar__icon"></i>
         <span class="period-bar__label" id="periodLabel">Last 6 Months</span>
         <i class="ph ph-caret-down period-bar__chevron" id="periodChevron"></i>
-    </div>
-    <div class="period-dropdown" id="periodDropdown" role="listbox"></div>
+      </div>
+      <div class="period-dropdown" id="periodDropdown" role="listbox"></div>
 
-    <!-- INCOME vs EXPENSE CHART -->
-    <div class="chart-card">
+      <!-- INCOME vs EXPENSE CHART -->
+      <div class="chart-card">
         <p class="chart-card__title">Income vs Expense</p>
         <div class="chart-legend">
-            <div class="chart-legend__item">
-                <span class="chart-legend__dot chart-legend__dot--income"></span>
-                Income
-            </div>
-            <div class="chart-legend__item">
-                <span class="chart-legend__dot chart-legend__dot--expense"></span>
-                Expense
-            </div>
+          <div class="chart-legend__item">
+            <span class="chart-legend__dot chart-legend__dot--income"></span>
+            Income
+          </div>
+          <div class="chart-legend__item">
+            <span class="chart-legend__dot chart-legend__dot--expense"></span>
+            Expense
+          </div>
         </div>
         <div class="bar-chart-wrap">
-            <div class="y-labels" id="yLabels"></div>
-            <div class="bars-area" id="barsArea"></div>
-            <div class="x-labels" id="xLabels"></div>
+          <div class="y-labels" id="yLabels"></div>
+          <div class="bars-area" id="barsArea"></div>
+          <div class="x-labels" id="xLabels"></div>
         </div>
         <div class="avg-row">
-            <div class="avg-card avg-card--income">
-                <p class="avg-card__label">Average Income</p>
-                <p class="avg-card__value" id="avgIncome">₦0</p>
-            </div>
-            <div class="avg-card avg-card--expense">
-                <p class="avg-card__label">Average Expense</p>
-                <p class="avg-card__value" id="avgExpense">₦0</p>
-            </div>
+          <div class="avg-card avg-card--income">
+            <p class="avg-card__label">Average Income</p>
+            <p class="avg-card__value" id="avgIncome">₦0</p>
+          </div>
+          <div class="avg-card avg-card--expense">
+            <p class="avg-card__label">Average Expense</p>
+            <p class="avg-card__value" id="avgExpense">₦0</p>
+          </div>
         </div>
-    </div>
+      </div>
 
-    <!-- SPENDING BY CATEGORY -->
-    <div class="donut-card">
+      <!-- SPENDING BY CATEGORY -->
+      <div class="donut-card">
         <div class="donut-card__header">
-            <p class="donut-card__title">Spending by Category</p>
-            <i class="ph ph-clock donut-card__icon"></i>
+          <p class="donut-card__title">Spending by Category</p>
+          <i class="ph ph-clock donut-card__icon"></i>
         </div>
         <div class="donut-wrap">
-            <canvas id="donutCanvas"></canvas>
+          <canvas id="donutCanvas"></canvas>
         </div>
         <div class="cat-legend" id="catLegend"></div>
-    </div>
+      </div>
 
-    <!-- INSIGHTS -->
-    <p class="insights-title">Insights</p>
+      <!-- INSIGHTS -->
+      <p class="insights-title">Insights</p>
 
-    <div class="insight-card">
+      <div class="insight-card">
         <p class="insight-card__title" id="insightGrowthTitle">Income Growth</p>
         <p class="insight-card__body" id="insightGrowth">Calculating…</p>
-    </div>
-    <div class="insight-card">
+      </div>
+      <div class="insight-card">
         <p class="insight-card__title" id="insightSavedTitle">Great Work</p>
         <p class="insight-card__body" id="insightSaved">Calculating…</p>
-    </div>
-    <div class="insight-card">
+      </div>
+      <div class="insight-card">
         <p class="insight-card__title">Top Spending</p>
         <p class="insight-card__body" id="insightTopSpending">Calculating…</p>
-    </div>
+      </div>
 
-    <!-- DOWNLOAD BUTTON -->
-    <button class="dl-btn" id="dlBtn" aria-haspopup="dialog">
+      <!-- DOWNLOAD BUTTON -->
+      <button class="dl-btn" id="dlBtn" aria-haspopup="dialog">
         <i class="ph ph-export"></i>
         Download Report
-    </button>
+      </button>
+    </div>
+    <!-- /page -->
 
-</div>
-<!-- /page -->
-
-<!-- DOWNLOAD MODAL -->
-<div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-label="Download Report">
-    <div class="modal">
+    <!-- DOWNLOAD MODAL -->
+    <div
+      class="modal-overlay"
+      id="modalOverlay"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Download Report"
+    >
+      <div class="modal">
         <div class="modal__header">
-            <p class="modal__title">Download Report</p>
-            <button class="modal__close" id="modalClose" aria-label="Close">
-                <i class="ph ph-x"></i>
-            </button>
+          <p class="modal__title">Download Report</p>
+          <button class="modal__close" id="modalClose" aria-label="Close">
+            <i class="ph ph-x"></i>
+          </button>
         </div>
         <p class="modal__subtitle">Choose your preferred format</p>
 
         <div class="format-option selected" data-format="pdf">
-            <div class="format-option__icon format-option__icon--pdf">
-                <i class="ph-fill ph-file-text"></i>
-            </div>
-            <div class="format-option__text">
-                <p class="format-option__name">PDF Document</p>
-                <p class="format-option__desc">Best for printing and sharing</p>
-            </div>
-            <div class="format-option__radio"></div>
+          <div class="format-option__icon format-option__icon--pdf">
+            <i class="ph-fill ph-file-text"></i>
+          </div>
+          <div class="format-option__text">
+            <p class="format-option__name">PDF Document</p>
+            <p class="format-option__desc">Best for printing and sharing</p>
+          </div>
+          <div class="format-option__radio"></div>
         </div>
 
         <div class="format-option" data-format="csv">
-            <div class="format-option__icon format-option__icon--excel">
-                <i class="ph-fill ph-file-xls"></i>
-            </div>
-            <div class="format-option__text">
-                <p class="format-option__name">Excel Spreadsheet</p>
-                <p class="format-option__desc">Best for data analysis</p>
-            </div>
-            <div class="format-option__radio"></div>
+          <div class="format-option__icon format-option__icon--excel">
+            <i class="ph-fill ph-file-xls"></i>
+          </div>
+          <div class="format-option__text">
+            <p class="format-option__name">Excel Spreadsheet</p>
+            <p class="format-option__desc">Best for data analysis</p>
+          </div>
+          <div class="format-option__radio"></div>
         </div>
 
         <button class="modal__dl-btn" id="modalDownload">
-            <i class="ph ph-export"></i>
-            DOWNLOAD REPORT
+          <i class="ph ph-export"></i>
+          DOWNLOAD REPORT
         </button>
         <button class="modal__cancel-btn" id="modalCancel">CANCEL</button>
+      </div>
     </div>
-</div>
 
-<!-- TOAST -->
-<div class="toast" id="toast">
-    <i class="ph-fill ph-check-circle"></i>
-    <span id="toastMsg">Done</span>
-</div>
+    <!-- TOAST -->
+    <div class="toast" id="toast">
+      <i class="ph-fill ph-check-circle"></i>
+      <span id="toastMsg">Done</span>
+    </div>
 
-<script src="../src/scripts/theme.js"></script>
-<script src="../src/scripts/report.js"></script>
-</body>
+    <script src="../src/scripts/theme.js"></script>
+    <script src="../src/scripts/report.js"></script>
+  </body>
 </html>

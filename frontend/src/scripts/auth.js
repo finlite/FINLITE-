@@ -92,7 +92,7 @@ if (loginForm) {
                 localStorage.setItem('user', JSON.stringify(data.user));
                 showToast('Login successful!', 'success');
                 setTimeout(() => {
-                    window.location.href = 'sales.html';
+                    window.location.href = 'dashboard.html';
                 }, 1000); // Wait a second for the toast
             } else {
                 showToast(data.message || 'Login failed', 'error');

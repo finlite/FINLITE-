@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Signup</title>
 
+    <link rel="icon" href="../src/assets/logo.png" type="image/png" />
+
     <link rel="stylesheet" href="../src/styles/output.css" />
     <link rel="stylesheet" href="../src/styles/expenses.css">
     <link rel="stylesheet" type="text/css"
@@ -26,8 +28,8 @@
 
         <ul class="nav__links" role="list">
             <li><a href="dashboard.html">Dashboard</a></li>
-            <li><a href="transactions.html">Transactions</a></li>
-            <li><a href="settings.html" class="active">Settings</a></li>
+            <li><a href="transactions.html" class="active">Transactions</a></li>
+            <li><a href="settings.html">Settings</a></li>
             <li><a href="about.html">About Us</a></li>
             <li><a href="report.html">Report</a></li>
         </ul>
@@ -43,12 +45,9 @@
     <div class="nav__mobile" id="mobileMenu" role="dialog" aria-label="Navigation menu" aria-hidden="true">
         <div class="nav__mobile-inner">
             <a href="dashboard.html" class="nav__m-link"><i class="ph ph-squares-four"></i> Dashboard</a>
-            <a href="transactions.html" class="nav__m-link"><i class="ph ph-arrows-left-right"></i> Transactions</a>
+            <a href="transactions.html" class="nav__m-link active"><i class="ph ph-arrows-left-right"></i> Transactions</a>
             <a href="settings.html" class="nav__m-link"><i class="ph ph-gear"></i> Settings</a>
-            <a href="Help.html" class="nav__m-link active">
-                <i class="ph ph-question"></i> Help
-                <span class="nav__m-badge">Active</span>
-            </a>
+            <a href="about.html" class="nav__m-link"><i class="ph ph-info"></i> About Us</a>
             <a href="report.html" class="nav__m-link"><i class="ph ph-chart-bar"></i> Report</a>
             <div class="nav__m-divider" role="separator"></div>
             <div class="nav__m-user">
@@ -63,7 +62,7 @@
 
 
     <!-- Main section- 100px from the top of the screen -->
-    <main class="max-w-full w-full mt-24 lg:px-28 md:px-16 px-3 mx-auto min-h-screen h-full relative">
+    <main class="page">
         <section class="w-full sm:mt-10 px-10">
             <div
                 class="w-full max-w-full bg-[#E7000B] sm:px-14 px-4 sm:py-8 py-5 rounded-b-4xl rounded-tr-4xl flex sm:gap-10 gap-6 items-center">
@@ -97,13 +96,13 @@
 
                 <!-- Quick amounts container that holds common amounts users can quickly click on -->
                 <div class="grid grid-cols-2 gap-2">
-                    <button id="quick-1k"
+                    <button type="button" id="quick-1k"
                         class="bg-white shadow-md flex border-0 justify-center items-center  rounded-xl p-4 text-[14px] text-[#4B4B4B] font-medium">₦1k</button>
-                    <button id="quick-2k"
+                    <button type="button" id="quick-2k"
                         class=" font-medium bg-white flex border-0 justify-center items-center  rounded-xl p-4 text-[14px] text-[#4B4B4B] shadow-md">₦2k</button>
-                    <button id="quick-5k"
+                    <button type="button" id="quick-5k"
                         class="bg-white  font-medium flex border-0 justify-center items-center  rounded-xl p-4 text-[14px] text-[#4B4B4B] shadow-md">₦5k</button>
-                    <button id="quick-10k"
+                    <button type="button" id="quick-10k"
                         class="bg-white  font-medium flex border-0 justify-center items-center  rounded-xl p-4 text-[14px] text-[#4B4B4B] shadow-md">₦10k</button>
                 </div>
 
@@ -123,19 +122,19 @@
 
                 <!-- Quick product/service type container -->
                 <div class="grid grid-cols-2 gap-2">
-                    <button id="first-commonService">
+                    <button type="button" id="first-commonService">
                         <pre
                             class="bg-white flex border-0 justify-center items-center p-4 rounded-md text-[14px] text-[#4B4B4B] font-semibold shadow-md">Hair Styling</pre>
                     </button>
-                    <button id="second-commonService">
+                    <button type="button" id="second-commonService">
                         <pre
                             class="bg-white flex border-0 justify-center items-center p-4 rounded-md text-[14px] text-[#4B4B4B] font-semibold shadow-md">Hair Treatment</pre>
                     </button>
-                    <button id="third-commonService">
+                    <button type="button" id="third-commonService">
                         <pre
                             class="bg-white flex border-0 justify-center items-center p-4 rounded-md text-[14px] text-[#4B4B4B] font-semibold shadow-md">Braiding</pre>
                     </button>
-                    <button id="fourth-commonService">
+                    <button type="button" id="fourth-commonService">
                         <pre
                             class="bg-white flex border-0 justify-center items-center p-4 rounded-md text-[14px] text-[#4B4B4B] font-semibold shadow-md">Weaving</pre>
                     </button>
@@ -172,7 +171,7 @@
             </button>
 
             <!-- Cancel link -->
-            <button id="cancel-expense" href="#"
+            <button type="button" id="cancel-expense" href="#"
                 class="bg-white/20 w-full text-red-600 mt-5 sm:text-[18px] text-[14px] sm:p-4 px-4 py-3 rounded-3xl">Cancel</button>
         </div>
 
@@ -258,7 +257,7 @@
     <div id="overlay" class=" z-1000 bg-black/50  justify-center items-center fixed top-0 left-0 w-full h-full hidden">
     </div>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-    <script type="module" src="../src/scripts/sales.js"></script>
+    <script type="module" src="../src/scripts/expenses.js"></script>
 </body>
 
 </html>

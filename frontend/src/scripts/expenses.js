@@ -1,12 +1,13 @@
 import { API_URL } from "./config.js";
 
 const expenseForm = document.querySelector("main form");
-const amountInput = document.getElementById("sales");
+const amountInput = document.getElementById("expenses");
 const serviceInput = document.getElementById("category");
 const dateTimeInput = document.getElementById("date-time");
 const noteInput = document.getElementById("note");
-const saveButton = document.getElementById("save-sale");
+const saveButton = document.getElementById("save-expense");
 const confirmationModal = document.getElementById("salesConfirmation-modal");
+const overlay = document.getElementById("overlay");
 
 const quickAmountButtons = [
   { id: "quick-1k", value: 1000 },
@@ -103,12 +104,21 @@ const showConfirmation = async ({ amount, service, transactionDate }) => {
     console.error("Failed to compute total expenses:", error);
   }
 
+  if (overlay) {
+    overlay.classList.remove("hidden");
+    overlay.classList.add("flex");
+  }
+
   confirmationModal.classList.remove("hidden");
   confirmationModal.classList.add("flex");
 };
 
 const hideConfirmation = () => {
   if (!confirmationModal) return;
+  if (overlay) {
+    overlay.classList.add("hidden");
+    overlay.classList.remove("flex");
+  }
   confirmationModal.classList.add("hidden");
   confirmationModal.classList.remove("flex");
 };
@@ -136,7 +146,7 @@ const wireQuickInputs = () => {
 const wireModalButtons = () => {
   const anotherExpenseBtn = document.getElementById("another-saleBtn");
   const returnBtn = document.getElementById("return-btn");
-  const cancelLink = document.getElementById("cancel-sale");
+  const cancelLink = document.getElementById("cancel-expense");
 
   if (anotherExpenseBtn) {
     anotherExpenseBtn.addEventListener("click", (event) => {
@@ -149,7 +159,7 @@ const wireModalButtons = () => {
   if (returnBtn) {
     returnBtn.addEventListener("click", (event) => {
       event.preventDefault();
-      window.location.href = "settings.html";
+      window.location.href = "dashboard.html";
     });
   }
 
@@ -219,7 +229,21 @@ const saveExpense = async (event) => {
   } catch (error) {
     console.error("Error saving expense:", error);
     showToast("Error saving expense. Please try again.", "error");
+    return;
   } finally {
+    // Always save to localStorage
+    const existingTx = JSON.parse(localStorage.getItem("finlite_tx") || "[]");
+    const localTx = {
+      id: payload.transaction_id,
+      category: payload.category,
+      amount: payload.amount,
+      service: payload.service,
+      notes: payload.notes,
+      date: payload.transaction_date,
+    };
+    existingTx.push(localTx);
+    localStorage.setItem("finlite_tx", JSON.stringify(existingTx));
+
     saveButton.disabled = false;
     saveButton.innerHTML = originalText;
   }
@@ -233,5 +257,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   wireQuickInputs();
   wireModalButtons();
-  expenseForm.addEventListener("submit", saveExpense);
+  // Add click listener to save button since it's outside the form
+  if (saveButton) {
+    saveButton.addEventListener("click", (event) => {
+      event.preventDefault();
+      saveExpense(event);
+    });
+  }
 });

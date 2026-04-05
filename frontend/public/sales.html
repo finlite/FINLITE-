@@ -65,7 +65,7 @@
 
 
     <!-- Main section- 100px from the top of the screen -->
-    <main class="mt-24">
+    <main class="mt-24 relative">
         <section class="w-full sm:mt-10 px-10">
             <div
                 class="w-full max-w-full bg-[#6C8C3B] sm:px-14 px-4 sm:py-8 py-5 rounded-b-4xl rounded-tr-4xl flex sm:gap-10 gap-6 items-center">
@@ -181,7 +181,7 @@
 
         <!-- Confirmation Modal -->
         <div id="salesConfirmation-modal"
-            class="absolute hidden top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-1001 mx-auto w-[40%] px-8 py-4 bg-white  flex-col items-center justify-center">
+            class="absolute top-1/2 left-1/2 hidden -translate-x-1/2 -translate-y-1/2 z-1001 mx-auto sm:w-[40%] w-[90%] md:w-[60%] px-8 py-4 bg-white  flex-col items-center justify-center">
             <!-- Modal content would go here -->
 
             <!-- Confirmation mark with its container -->
@@ -257,7 +257,7 @@
     </main>
 
     <!-- Modal Overlay -->
-    <div id="overlay" class=" z-1000 bg-black/50  justify-center items-center fixed top-0 hidden left-0 w-full h-full hidden">
+    <div id="overlay" class=" z-1000 bg-black/50  justify-center items-center fixed top-0 left-0 w-full h-full hidden">
     </div>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script type="module" src="../src/scripts/sales.js"></script>

@@ -1,171 +1,211 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" data-theme="light">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Business Profile — Finlite</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Business Profile — Finlite</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css"
+    />
 
-  <link rel="stylesheet" href="../src/styles/profile-summary.css" />
-</head>
-<body>
+    <link rel="stylesheet" href="../src/styles/profile-summary.css" />
+  </head>
+  <body>
+    <div class="nav__backdrop" id="backdrop" aria-hidden="true"></div>
 
-<div class="nav__backdrop" id="backdrop" aria-hidden="true"></div>
+    <!-- NAV -->
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+      <a class="nav__brand" href="dashboard.html" aria-label="Finlite home">
+        <div class="nav__logo">
+          <img src="../src/assets/logo.png" alt="Finlite" />
+        </div>
+        <h2 class="nav__brand-text">FINLITE</h2>
+      </a>
 
-<!-- NAV -->
-<nav class="nav" role="navigation" aria-label="Main navigation">
-  <a class="nav__brand" href="dashboard.html" aria-label="Finlite home">
-    <div class="nav__logo">
-      <img src="../src/assets/logo.png" alt="Finlite" />
-    </div>
-    <h2 class="nav__brand-text">FINLITE</h2>
-  </a>
+      <ul class="nav__links" role="list">
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="transactions.html">Transaction</a></li>
+        <li><a href="settings.html" class="active">Settings</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="report.html">Report</a></li>
+      </ul>
 
-  <ul class="nav__links" role="list">
-    <li><a href="dashboard.html">Dashboard</a></li>
-    <li><a href="transactions.html">Transaction</a></li>
-    <li><a href="settings.html" class="active">Settings</a></li>
-    <li><a href="about.html">About Us</a></li>
-    <li><a href="report.html">Report</a></li>
-  </ul>
+      <button
+        class="nav__hamburger"
+        id="hamburgerBtn"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="mobileMenu"
+      >
+        <span class="nav__hb"></span>
+        <span class="nav__hb"></span>
+        <span class="nav__hb"></span>
+      </button>
+    </nav>
 
-  <button class="nav__hamburger" id="hamburgerBtn"
-          aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">
-    <span class="nav__hb"></span>
-    <span class="nav__hb"></span>
-    <span class="nav__hb"></span>
-  </button>
-</nav>
-
-<!-- MOBILE MENU -->
-<div class="nav__mobile" id="mobileMenu" role="dialog" aria-label="Navigation menu" aria-hidden="true">
-  <div class="nav__mobile-inner">
-    <a href="dashboard.html"    class="nav__m-link"><i class="ph ph-squares-four" aria-hidden="true"></i><span>Dashboard</span></a>
-    <a href="transactions.html" class="nav__m-link"><i class="ph ph-arrows-left-right" aria-hidden="true"></i><span>Transactions</span></a>
-    <a href="settings.html"     class="nav__m-link active"><i class="ph ph-gear" aria-hidden="true"></i><span>Settings</span><span class="nav__m-badge">Active</span></a>
-    <a href="about.html"        class="nav__m-link"><i class="ph ph-info" aria-hidden="true"></i><span>About Us</span></a>
-    <a href="report.html"       class="nav__m-link"><i class="ph ph-chart-bar" aria-hidden="true"></i><span>Report</span></a>
-    <div class="nav__m-divider" role="separator"></div>
-    <div class="nav__m-user">
-      <div class="nav__m-avatar" id="mobile-avatar" aria-hidden="true">--</div>
-      <div>
-        <p class="nav__m-name" id="mobile-user-name">Business Owner</p>
-        <p class="nav__m-role">Business Owner</p>
+    <!-- MOBILE MENU -->
+    <div
+      class="nav__mobile"
+      id="mobileMenu"
+      role="dialog"
+      aria-label="Navigation menu"
+      aria-hidden="true"
+    >
+      <div class="nav__mobile-inner">
+        <a href="dashboard.html" class="nav__m-link"
+          ><i class="ph ph-squares-four" aria-hidden="true"></i
+          ><span>Dashboard</span></a
+        >
+        <a href="transactions.html" class="nav__m-link"
+          ><i class="ph ph-arrows-left-right" aria-hidden="true"></i
+          ><span>Transactions</span></a
+        >
+        <a href="settings.html" class="nav__m-link active"
+          ><i class="ph ph-gear" aria-hidden="true"></i><span>Settings</span
+          ><span class="nav__m-badge">Active</span></a
+        >
+        <a href="about.html" class="nav__m-link"
+          ><i class="ph ph-info" aria-hidden="true"></i><span>About Us</span></a
+        >
+        <a href="report.html" class="nav__m-link"
+          ><i class="ph ph-chart-bar" aria-hidden="true"></i
+          ><span>Report</span></a
+        >
+        <div class="nav__m-divider" role="separator"></div>
+        <div class="nav__m-user">
+          <div class="nav__m-avatar" id="mobile-avatar" aria-hidden="true">
+            --
+          </div>
+          <div>
+            <p class="nav__m-name" id="mobile-user-name">Business Owner</p>
+            <p class="nav__m-role">Business Owner</p>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
 
-<!-- PAGE -->
-<main class="page">
+    <!-- PAGE -->
+    <main class="page">
+      <!-- ── HERO ── -->
+      <div class="hero-card">
+        <div class="hero-logo">
+          <img id="hero-logo-img" src="" alt="Business logo" />
+          <i class="ph ph-storefront hero-logo__icon" id="hero-logo-icon"></i>
+        </div>
+        <h1 class="hero-name" id="hero-biz-name">Your Business</h1>
+        <p class="hero-type" id="hero-biz-type"></p>
+        <div class="hero-status-pill" id="hero-status-pill">
+          <i class="ph ph-globe" id="hero-status-icon"></i>
+          <span id="hero-status-text">Open Now</span>
+        </div>
+      </div>
 
-  <!-- ── HERO ── -->
-  <div class="hero-card">
-    <div class="hero-logo">
-      <img id="hero-logo-img" src="" alt="Business logo" />
-      <i class="ph ph-storefront hero-logo__icon" id="hero-logo-icon"></i>
+      <!-- ── BUSINESS HOURS ── -->
+      <div class="info-card">
+        <div class="info-card__header">
+          <div class="info-card__header-icon">
+            <i class="ph ph-clock"></i>
+          </div>
+          <p class="info-card__title">Business Hours</p>
+          <div class="info-card__badge info-card__badge--open" id="hours-badge">
+            <span
+              class="info-card__badge-dot info-card__badge-dot--open"
+              id="hours-badge-dot"
+            ></span>
+            <span id="hours-badge-text">Open</span>
+          </div>
+        </div>
+
+        <div class="hours-table" id="hours-tbody">
+          <!-- Rendered by JS -->
+          <div class="hours-row">
+            <span class="hours-row__day">Monday</span>
+            <span class="hours-row__closed">Closed</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-row__day">Tuesday</span>
+            <span class="hours-row__closed">Closed</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-row__day">Wednesday</span>
+            <span class="hours-row__closed">Closed</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-row__day">Thursday</span>
+            <span class="hours-row__closed">Closed</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-row__day">Friday</span>
+            <span class="hours-row__closed">Closed</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-row__day">Saturday</span>
+            <span class="hours-row__closed">Closed</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-row__day">Sunday</span>
+            <span class="hours-row__closed">Closed</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── CONTACT INFORMATION ── -->
+      <div class="info-card">
+        <div class="info-card__header">
+          <div class="info-card__header-icon">
+            <i class="ph ph-address-book"></i>
+          </div>
+          <p class="info-card__title">Contact Information</p>
+        </div>
+        <div id="contact-list">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+
+      <!-- ── ONLINE PRESENCE ── -->
+      <div class="info-card" id="presence-card" style="display: none">
+        <div class="info-card__header">
+          <div class="info-card__header-icon">
+            <i class="ph ph-globe"></i>
+          </div>
+          <p class="info-card__title">Online Presence</p>
+        </div>
+        <div id="presence-list">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+    </main>
+
+    <!-- EDIT BUSINESS INFO BUTTON (fixed bottom) -->
+    <div class="edit-btn-wrap">
+      <button
+        class="edit-btn"
+        onclick="window.location.href = 'profile-settings.html'"
+      >
+        <i class="ph ph-pencil-simple"></i>
+        Edit Business Info
+      </button>
     </div>
-    <h1 class="hero-name" id="hero-biz-name">Your Business</h1>
-    <p class="hero-type"  id="hero-biz-type"></p>
-    <div class="hero-status-pill" id="hero-status-pill">
-      <i class="ph ph-globe" id="hero-status-icon"></i>
-      <span id="hero-status-text">Open Now</span>
-    </div>
-  </div>
 
-  <!-- ── BUSINESS HOURS ── -->
-  <div class="info-card">
-    <div class="info-card__header">
-      <div class="info-card__header-icon">
-        <i class="ph ph-clock"></i>
-      </div>
-      <p class="info-card__title">Business Hours</p>
-      <div class="info-card__badge info-card__badge--open" id="hours-badge">
-        <span class="info-card__badge-dot info-card__badge-dot--open" id="hours-badge-dot"></span>
-        <span>Open</span>
-      </div>
+    <!-- TOAST -->
+    <div id="toast">
+      <i class="ph ph-check-circle"></i>
+      <span id="toast-msg">Saved</span>
     </div>
 
-    <div class="hours-table" id="hours-tbody">
-      <!-- Rendered by JS -->
-      <div class="hours-row">
-        <span class="hours-row__day">Monday</span>
-        <span class="hours-row__closed">Closed</span>
-      </div>
-      <div class="hours-row">
-        <span class="hours-row__day">Tuesday</span>
-        <span class="hours-row__closed">Closed</span>
-      </div>
-      <div class="hours-row">
-        <span class="hours-row__day">Wednesday</span>
-        <span class="hours-row__closed">Closed</span>
-      </div>
-      <div class="hours-row">
-        <span class="hours-row__day">Thursday</span>
-        <span class="hours-row__closed">Closed</span>
-      </div>
-      <div class="hours-row">
-        <span class="hours-row__day">Friday</span>
-        <span class="hours-row__closed">Closed</span>
-      </div>
-      <div class="hours-row">
-        <span class="hours-row__day">Saturday</span>
-        <span class="hours-row__closed">Closed</span>
-      </div>
-      <div class="hours-row">
-        <span class="hours-row__day">Sunday</span>
-        <span class="hours-row__closed">Closed</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- ── CONTACT INFORMATION ── -->
-  <div class="info-card">
-    <div class="info-card__header">
-      <div class="info-card__header-icon">
-        <i class="ph ph-address-book"></i>
-      </div>
-      <p class="info-card__title">Contact Information</p>
-    </div>
-    <div id="contact-list">
-      <!-- Rendered by JS -->
-    </div>
-  </div>
-
-  <!-- ── ONLINE PRESENCE ── -->
-  <div class="info-card" id="presence-card" style="display:none">
-    <div class="info-card__header">
-      <div class="info-card__header-icon">
-        <i class="ph ph-globe"></i>
-      </div>
-      <p class="info-card__title">Online Presence</p>
-    </div>
-    <div id="presence-list">
-      <!-- Rendered by JS -->
-    </div>
-  </div>
-
-</main>
-
-<!-- EDIT BUSINESS INFO BUTTON (fixed bottom) -->
-<div class="edit-btn-wrap">
-  <button class="edit-btn" onclick="window.location.href='profile-settings.html'">
-    <i class="ph ph-pencil-simple"></i>
-    Edit Business Info
-  </button>
-</div>
-
-<!-- TOAST -->
-<div id="toast">
-  <i class="ph ph-check-circle"></i>
-  <span id="toast-msg">Saved</span>
-</div>
-
-<script src="../src/scripts/profile-summary.js"></script>
-</body>
+    <script src="../src/scripts/profile-summary.js"></script>
+    <script src="../src/scripts/theme.js"></script>
+  </body>
 </html>

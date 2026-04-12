@@ -306,7 +306,7 @@ document.addEventListener("change", function (e) {
   if (e.target.type === "checkbox" || e.target.type === "time") persistHours();
 });
 
-/* SAVE ALL (Edit Profile Details btn) */
+/* SAVE ALL (Save Profile Details btn) */
 function saveAll() {
   const name = document.getElementById("fieldName").value.trim();
   const email = document.getElementById("fieldEmail").value.trim();
@@ -317,38 +317,10 @@ function saveAll() {
   }
   persistProfile();
   persistHours();
-  showToast("Profile details saved ✓");
-}
-
-/* BIZ SHEET */
-function openBizSheet() {
-  document.getElementById("editBizName").value =
-    document.getElementById("fieldBizName").value;
-  document.getElementById("editBizAddr").value =
-    document.getElementById("fieldAddress").value;
-  document.getElementById("bizOverlay").classList.add("open");
-  document.body.style.overflow = "hidden";
-}
-function closeOverlay(id) {
-  document.getElementById(id).classList.remove("open");
-  document.body.style.overflow = "";
-}
-function closeSheet(e, id) {
-  if (e.target === document.getElementById(id)) closeOverlay(id);
-}
-function saveBusiness() {
-  const n = document.getElementById("editBizName").value;
-  const a = document.getElementById("editBizAddr").value;
-  const t = document.getElementById("editBizType").value;
-  if (n) {
-    document.getElementById("fieldBizName").value = n;
-    document.getElementById("heroBiz").textContent = n;
-  }
-  if (a) document.getElementById("fieldAddress").value = a;
-  if (t) document.getElementById("fieldBizType").value = t;
-  persistProfile();
-  closeOverlay("bizOverlay");
-  showToast("Business profile updated ✓");
+  showToast("Saved");
+  setTimeout(() => {
+    window.location.href = "profile-summary.html";
+  }, 1400);
 }
 
 /* Load saved data on page start */

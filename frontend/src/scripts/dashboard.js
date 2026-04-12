@@ -611,7 +611,7 @@ function render() {
   const trendPct =
     trend7.length >= 2 && trend7[0] !== 0
       ? ((trend7[trend7.length - 1] - trend7[0]) / Math.abs(trend7[0])) * 100
-      : 18;
+      : 0;
 
   renderHero(stats);
   renderStats(stats);

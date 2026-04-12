@@ -1,234 +1,41 @@
 "use strict";
 
-const API_URL = (
-  window.FINLITE_API_URL || "https://finlite-nizr.onrender.com/api"
-).replace(/\/+$/, "");
-const DAYS = [
-  "monday",
-  "tuesday",
-  "wednesday",
-  "thursday",
-  "friday",
-  "saturday",
-  "sunday",
-];
-
+/* NAV */
+const hb = document.getElementById("hamburgerBtn"),
+  mm = document.getElementById("mobileMenu"),
+  bd = document.getElementById("backdrop");
 let navOpen = false;
-let toastTimer;
-let currentPhotoDataUrl = null;
-
-function getToken() {
-  return localStorage.getItem("token");
-}
-
-function getAuthHeaders(withJson = false) {
-  const headers = {
-    Authorization: `Bearer ${getToken()}`,
-  };
-
-  if (withJson) {
-    headers["Content-Type"] = "application/json";
-  }
-
-  return headers;
-}
-
-function redirectToLogin() {
-  localStorage.removeItem("token");
-  localStorage.removeItem("user");
-  window.location.href = "login.html";
-}
-
-function requireAuth() {
-  if (!getToken()) {
-    redirectToLogin();
-    return false;
-  }
-
-  return true;
-}
-
-function getUser() {
-  try {
-    const raw = localStorage.getItem("user");
-    if (!raw) return {};
-    return JSON.parse(raw);
-  } catch {
-    return {};
-  }
-}
-
-function setProfileFields(user) {
-  const fullName = user.full_name || user.fullName || "";
-  const email = user.email || "";
-  const phone = user.phone || "";
-  const businessName = user.business_name || user.bizName || "";
-  const businessAddress = user.business_address || "";
-
-  const fieldName = document.getElementById("fieldName");
-  const fieldEmail = document.getElementById("fieldEmail");
-  const fieldPhone = document.getElementById("fieldPhone");
-  const fieldBizName = document.getElementById("fieldBizName");
-  const fieldAddress = document.getElementById("fieldAddress");
-
-  if (fieldName) fieldName.value = fullName;
-  if (fieldEmail) fieldEmail.value = email;
-  if (fieldPhone) fieldPhone.value = phone;
-  if (fieldBizName) fieldBizName.value = businessName;
-  if (fieldAddress) fieldAddress.value = businessAddress;
-
-  updateHeroName(fullName);
-  updateHeroBusinessName(businessName);
-
-  if (user.photo_data_url) {
-    updateAvatar(user.photo_data_url, fullName);
-  } else if (fullName) {
-    updateAvatar("", fullName);
-  }
-}
-
-async function loadProfileFromStorage() {
-  if (!requireAuth()) return;
-
-  const storageUser = getUser();
-  if (storageUser && (storageUser.full_name || storageUser.email)) {
-    setProfileFields(storageUser);
-  }
-
-  try {
-    const token = getToken();
-    const response = await fetch(`${API_URL}/users/profile`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-
-    if (response.status === 401) {
-      redirectToLogin();
-      return;
-    }
-
-    if (response.ok) {
-      const profile = await response.json();
-      setProfileFields(profile);
-      localStorage.setItem("user", JSON.stringify(profile));
-    }
-  } catch (err) {
-    console.warn("Could not fetch remote profile; using local data", err);
-  }
-}
-
-function getInitials(name) {
-  if (!name) return "FL";
-  return name
-    .trim()
-    .split(/\s+/)
-    .slice(0, 2)
-    .map((part) => part[0])
-    .join("")
-    .toUpperCase();
-}
-
-function showToast(msg) {
-  const el = document.getElementById("toast");
-  document.getElementById("toastMsg").textContent = msg;
-  el.classList.add("show");
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => el.classList.remove("show"), 2800);
-}
-
-function openNav() {
-  const hb = document.getElementById("hamburgerBtn");
-  const mm = document.getElementById("mobileMenu");
-  const bd = document.getElementById("backdrop");
-
+const openNav = () => {
   navOpen = true;
   hb.classList.add("open");
   mm.classList.add("open");
   bd.classList.add("visible");
   document.body.style.overflow = "hidden";
-}
-
-function closeNav() {
-  const hb = document.getElementById("hamburgerBtn");
-  const mm = document.getElementById("mobileMenu");
-  const bd = document.getElementById("backdrop");
-
+};
+const closeNav = () => {
   navOpen = false;
   hb.classList.remove("open");
   mm.classList.remove("open");
   bd.classList.remove("visible");
   document.body.style.overflow = "";
-}
-
-function updateHeroName(name) {
-  const heroName = document.getElementById("heroName");
-  const avatarInitials = document.getElementById("avatarInitials");
-  const mobileAvatar = document.getElementById("mobile-avatar");
-  const mobileUserName = document.getElementById("mobile-user-name");
-
-  if (name) {
-    heroName.textContent = name;
-    heroName.classList.remove("placeholder");
-    avatarInitials.textContent = getInitials(name);
-    avatarInitials.style.color = "#fff";
-    avatarInitials.style.fontStyle = "normal";
-    avatarInitials.style.fontSize = "28px";
-    mobileAvatar.textContent = getInitials(name);
-    mobileUserName.textContent = name;
-  } else {
-    heroName.textContent = "Your name will appear here";
-    heroName.classList.add("placeholder");
-    avatarInitials.textContent = "Photo";
-    avatarInitials.style.color = "rgba(255,255,255,.5)";
-    avatarInitials.style.fontStyle = "italic";
-    avatarInitials.style.fontSize = "14px";
+};
+hb.addEventListener("click", (e) => {
+  e.stopPropagation();
+  navOpen ? closeNav() : openNav();
+});
+bd.addEventListener("click", closeNav);
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    closeNav();
+    document
+      .querySelectorAll(".edit-overlay.open")
+      .forEach((o) => o.classList.remove("open"));
+    document.body.style.overflow = "";
   }
-}
-
-function updateAvatar(photoDataUrl, fallbackName = "") {
-  const avatarInitials = document.getElementById("avatarInitials");
-  const avatarImg = document.getElementById("avatarImg");
-  currentPhotoDataUrl = photoDataUrl || null;
-
-  if (photoDataUrl) {
-    avatarImg.src = photoDataUrl;
-    avatarImg.style.display = "block";
-    avatarInitials.style.display = "none";
-    return;
-  }
-
-  avatarImg.removeAttribute("src");
-  avatarImg.style.display = "none";
-  avatarInitials.style.display = "block";
-  if (fallbackName) {
-    avatarInitials.textContent = getInitials(fallbackName);
-    avatarInitials.style.color = "#fff";
-    avatarInitials.style.fontStyle = "normal";
-    avatarInitials.style.fontSize = "28px";
-  }
-}
-
-function updateHeroBusinessName(name) {
-  const heroBiz = document.getElementById("heroBiz");
-  heroBiz.textContent = name || "Business name";
-  heroBiz.style.color = name ? "" : "rgba(255,255,255,.55)";
-  heroBiz.style.fontStyle = name ? "normal" : "italic";
-}
-
-function toggleDay(day) {
-  const chk = document.getElementById(`chk-${day}`);
-  const times = document.getElementById(`times-${day}`);
-  const closed = document.getElementById(`closed-${day}`);
-
-  if (chk.checked) {
-    times.style.display = "block";
-    closed.style.display = "none";
-  } else {
-    times.style.display = "none";
-    closed.style.display = "block";
-  }
-}
+});
+window.addEventListener("resize", () => {
+  if (window.innerWidth >= 769 && navOpen) closeNav();
+});
 
 /* AVATAR */
 document.getElementById("avatar-input").addEventListener("change", function () {
@@ -287,6 +94,218 @@ function toggleDay(day) {
   }
 }
 
+/* ── PERSIST HELPERS ── */
+const DAYS_LIST = [
+  "monday",
+  "tuesday",
+  "wednesday",
+  "thursday",
+  "friday",
+  "saturday",
+  "sunday",
+];
+
+function persistProfile() {
+  /* Collect avatar as data URI if one was uploaded */
+  const imgEl = document.getElementById("avatarImg");
+  const avatar =
+    imgEl &&
+    imgEl.style.display !== "none" &&
+    imgEl.src &&
+    imgEl.src.startsWith("data:")
+      ? imgEl.src
+      : "";
+  const profile = {
+    name: document.getElementById("fieldName").value.trim(),
+    email: document.getElementById("fieldEmail").value.trim(),
+    phone: document.getElementById("fieldPhone").value.trim(),
+    bizName: document.getElementById("fieldBizName").value.trim(),
+    address: document.getElementById("fieldAddress").value.trim(),
+    bizType: document.getElementById("fieldBizType").value,
+    regDate: document.getElementById("fieldRegDate")?.value || "",
+    website: document.getElementById("fieldWebsite")?.value.trim() || "",
+    instagram: document.getElementById("fieldInstagram")?.value.trim() || "",
+    facebook: document.getElementById("fieldFacebook")?.value.trim() || "",
+    avatar,
+  };
+  localStorage.setItem("finlite_profile", JSON.stringify(profile));
+}
+
+function formatCurrency(value) {
+  if (value === null || value === undefined || Number.isNaN(Number(value)))
+    return "—";
+  return "₦" + Number(value).toLocaleString("en-NG");
+}
+
+function updateRevenueStat() {
+  const revenueElement = document.getElementById("profileRevenueValue");
+  const customersElement = document.getElementById("profileCustomersValue");
+  const daysActiveElement = document.getElementById("profileDaysActiveValue");
+
+  let transactions = [];
+  try {
+    transactions = JSON.parse(localStorage.getItem("finlite_tx") || "[]");
+  } catch (e) {
+    transactions = [];
+  }
+
+  if (!Array.isArray(transactions)) transactions = [];
+
+  const profit = transactions.reduce((sum, tx) => {
+    const amount = Number(tx.amount || 0);
+    if (tx.type === "sale") return sum + amount;
+    if (tx.type === "expense") return sum - amount;
+    return sum;
+  }, 0);
+
+  const salesCount = transactions.filter((tx) => tx.type === "sale").length;
+
+  let activeDays = [];
+  try {
+    activeDays = JSON.parse(
+      localStorage.getItem("finlite_active_days") || "[]",
+    );
+  } catch (e) {
+    activeDays = [];
+  }
+  if (!Array.isArray(activeDays)) activeDays = [];
+
+  if (revenueElement)
+    revenueElement.textContent = transactions.length
+      ? formatCurrency(profit)
+      : "—";
+  if (customersElement)
+    customersElement.textContent = salesCount ? String(salesCount) : "—";
+  if (daysActiveElement)
+    daysActiveElement.textContent = activeDays.length
+      ? String(activeDays.length)
+      : "—";
+}
+
+function persistHours() {
+  const hours = {};
+  DAYS_LIST.forEach((day) => {
+    const chk = document.getElementById("chk-" + day);
+    hours[day] = {
+      enabled: chk ? chk.checked : false,
+      open: document.getElementById("open-" + day)?.value || "",
+      close: document.getElementById("close-" + day)?.value || "",
+    };
+  });
+  localStorage.setItem("finlite_hours", JSON.stringify(hours));
+}
+
+function loadPersistedData() {
+  let p = {};
+  let user = null;
+  let signupProfile = null;
+
+  try {
+    p = JSON.parse(localStorage.getItem("finlite_profile") || "{}") || {};
+  } catch (e) {
+    p = {};
+  }
+  try {
+    user = JSON.parse(localStorage.getItem("user") || "null");
+  } catch (e) {
+    user = null;
+  }
+  try {
+    signupProfile = JSON.parse(
+      localStorage.getItem("finlite_signup_profile") || "null",
+    );
+  } catch (e) {
+    signupProfile = null;
+  }
+
+  const fallback = {
+    name:
+      p.name ||
+      user?.full_name ||
+      user?.name ||
+      signupProfile?.full_name ||
+      signupProfile?.name ||
+      "",
+    email: p.email || user?.email || signupProfile?.email || "",
+    phone: p.phone || user?.phone || signupProfile?.phone || "",
+  };
+
+  if (fallback.name) document.getElementById("fieldName").value = fallback.name;
+  if (fallback.email)
+    document.getElementById("fieldEmail").value = fallback.email;
+  if (fallback.phone)
+    document.getElementById("fieldPhone").value = fallback.phone;
+
+  if (p.bizName) {
+    document.getElementById("fieldBizName").value = p.bizName;
+    document.getElementById("heroBiz").textContent = p.bizName;
+  }
+  if (p.address) document.getElementById("fieldAddress").value = p.address;
+  if (p.bizType) document.getElementById("fieldBizType").value = p.bizType;
+  if (p.regDate && document.getElementById("fieldRegDate"))
+    document.getElementById("fieldRegDate").value = p.regDate;
+  if (p.website && document.getElementById("fieldWebsite"))
+    document.getElementById("fieldWebsite").value = p.website;
+  if (p.instagram && document.getElementById("fieldInstagram"))
+    document.getElementById("fieldInstagram").value = p.instagram;
+  if (p.facebook && document.getElementById("fieldFacebook"))
+    document.getElementById("fieldFacebook").value = p.facebook;
+
+  if (fallback.name) {
+    const heroName = document.getElementById("heroName");
+    if (heroName) {
+      heroName.textContent = fallback.name;
+      heroName.classList.remove("placeholder");
+    }
+    const ini = fallback.name
+      .split(/\s+/)
+      .map((w) => w[0])
+      .join("")
+      .substring(0, 2)
+      .toUpperCase();
+    const initEl = document.getElementById("avatarInitials");
+    if (initEl) {
+      initEl.textContent = ini;
+      initEl.style.color = "#fff";
+      initEl.style.fontStyle = "normal";
+      initEl.style.fontSize = "28px";
+    }
+  }
+  if (p.avatar) {
+    const img = document.getElementById("avatarImg");
+    const initEl = document.getElementById("avatarInitials");
+    if (img) {
+      img.src = p.avatar;
+      img.style.display = "block";
+    }
+    if (initEl) initEl.style.display = "none";
+  }
+
+  updateRevenueStat();
+
+  try {
+    const h = JSON.parse(localStorage.getItem("finlite_hours") || "{}");
+    DAYS_LIST.forEach((day) => {
+      const info = h[day];
+      if (!info) return;
+      const chk = document.getElementById("chk-" + day);
+      if (chk && info.enabled) {
+        chk.checked = true;
+        toggleDay(day);
+      }
+      if (info.open && document.getElementById("open-" + day))
+        document.getElementById("open-" + day).value = info.open;
+      if (info.close && document.getElementById("close-" + day))
+        document.getElementById("close-" + day).value = info.close;
+    });
+  } catch (e) {}
+}
+
+/* Auto-save hours whenever a time input or checkbox changes */
+document.addEventListener("change", function (e) {
+  if (e.target.type === "checkbox" || e.target.type === "time") persistHours();
+});
+
 /* SAVE ALL (Edit Profile Details btn) */
 function saveAll() {
   const name = document.getElementById("fieldName").value.trim();
@@ -296,6 +315,8 @@ function saveAll() {
     showToast("Fill in at least one field to save");
     return;
   }
+  persistProfile();
+  persistHours();
   showToast("Profile details saved ✓");
 }
 
@@ -325,9 +346,13 @@ function saveBusiness() {
   }
   if (a) document.getElementById("fieldAddress").value = a;
   if (t) document.getElementById("fieldBizType").value = t;
+  persistProfile();
   closeOverlay("bizOverlay");
   showToast("Business profile updated ✓");
 }
+
+/* Load saved data on page start */
+document.addEventListener("DOMContentLoaded", loadPersistedData);
 
 function confirmLogout() {
   if (confirm("Are you sure you want to log out?")) {
@@ -336,5 +361,12 @@ function confirmLogout() {
   }
 }
 
-// Initialize user profile text on page load
-document.addEventListener("DOMContentLoaded", loadProfileFromStorage);
+/* TOAST */
+let toastTimer;
+function showToast(msg) {
+  const el = document.getElementById("toast");
+  document.getElementById("toastMsg").textContent = msg;
+  el.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove("show"), 2800);
+}

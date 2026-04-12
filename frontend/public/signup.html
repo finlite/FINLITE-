@@ -1,141 +1,223 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signup</title>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Signup</title>
+    <link rel="icon" href="../src/assets/logo.png" type="image/png" />
 
-  <link rel="icon" href="../src/assets/logo.png" type="image/png" />
+    <link rel="stylesheet" href="../src/styles/output.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+  </head>
 
-  <link rel="stylesheet" href="../src/styles/output.css" />
-  <link rel="stylesheet" type="text/css"
-    href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css" />
-  <link rel="stylesheet" type="text/css"
-    href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css" />
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-</head>
+  <body>
+    <main>
+      <section
+        class="overflow-x-hidden w-full max-w-full bg-bg-primary min-h-screen flex justify-center items-center relative px-4"
+      >
+        <!-- Back arrow -->
+        <a
+          id="back-icon"
+          href="login.html"
+          class="absolute top-4 left-4 text-black hover:text-primary transition-colors"
+        >
+          <i class="ph ph-arrow-left text-2xl"></i>
+        </a>
 
-<body>
-  <main>
-    <section
-      class="overflow-x-hidden w-full max-w-full bg-bg-primary min-h-screen flex justify-center items-center relative px-4">
-      <!-- Back arrow -->
-      <a id="back-icon" href="login.html" class="absolute top-4 left-4 text-black hover:text-primary transition-colors">
-        <i class="ph ph-arrow-left text-2xl"></i>
-      </a>
-
-      <!-- Form container -->
-      <form id="signup-form"
-        class="w-full max-w-md md:p-5 p-4 mx-4 md:mx-auto md:my-8 my-4 bg-white shadow-xl rounded-xl">
-        <!-- Finlite's Logo -->
-        <div class="mx-auto w-10 h-12 mb-4">
-          <img src="../src/assets/logo.png" alt="finite logo" class="w-full h-full">
-        </div>
-
-        <!-- Create Account heading -->
-        <h1 id="create-accountHeading" class="text-center text-black font-semibold text-lg my-1">
-          Create Your Account
-        </h1>
-
-        <!-- Create Account description -->
-        <p id="create-accountSlogan" class="text-center font-normal text-sm mb-3">
-          Your Journey to a better wealth starts here.
-        </p>
-
-        <!-- User's full name -->
-        <div class="flex flex-col gap-1 my-2">
-          <label for="fullName" class="text-left text-sm">Full Name</label>
-          <input id="fullName" type="text"
-            class="outline-none border border-primary rounded-lg px-3 py-1.5 block w-full text-sm placeholder::text-black"
-            placeholder="Full Name" />
-        </div>
-
-        <!-- User's email -->
-        <div class="flex flex-col gap-1 my-2">
-          <label for="email" class="text-left text-sm">Email</label>
-          <input id="email" type="email"
-            class="outline-none border border-primary rounded-lg px-3 py-1.5 block w-full text-sm placeholder::text-black"
-            placeholder="Email Address" />
-        </div>
-
-        <!-- User's phone number -->
-        <!-- <div class="flex flex-col gap-1 my-2">
-          <label for="phone" class="text-left text-sm">Phone Number</label>
-          <input id="phone" type="tel"
-            class="outline-none border border-primary rounded-lg px-3 py-1.5 block w-full text-sm placeholder::text-black"
-            placeholder="Phone Number" />
-        </div> -->
-
-        <!-- User's new password -->
-        <div class="flex flex-col gap-1 my-2">
-          <label for="signup-password" class="text-left text-sm">Password</label>
-          <div class="relative">
-            <input id="signup-password" type="password" placeholder="Password"
-              class="w-full border border-primary outline-none rounded-lg px-3 py-1.5 text-sm" />
-            <!-- Visibility icon for toggling -->
-            <i id="toggle-signup-password"
-              class="ph ph-eye absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-sm"></i>
+        <!-- Form container -->
+        <form
+          id="signup-form"
+          class="w-full max-w-md md:p-5 p-4 mx-4 md:mx-auto md:my-8 my-4 bg-white shadow-xl rounded-xl"
+        >
+          <!-- Finlite's Logo -->
+          <div class="mx-auto w-10 h-12 mb-4">
+            <img
+              src="../src/assets/logo.png"
+              alt="finite logo"
+              class="w-full h-full"
+            />
           </div>
-        </div>
 
-        <!-- Password confirmation -->
-        <div class="flex flex-col gap-1 my-2">
-          <label for="confirm-password" class="text-left text-sm">
-            Confirm Password
-          </label>
+          <!-- Create Account heading -->
+          <h1
+            id="create-accountHeading"
+            class="text-center text-black font-semibold text-lg my-1"
+          >
+            Create Your Account
+          </h1>
 
-          <div class="relative">
-            <input id="confirm-password" type="password" placeholder="Confirm Password"
-              class="w-full border border-primary outline-none rounded-lg px-3 py-1.5 text-sm" />
-            <!-- Visibility icon for toggling -->
-            <i id="toggle-confirm-password"
-              class="ph ph-eye absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-sm"></i>
+          <!-- Create Account description -->
+          <p
+            id="create-accountSlogan"
+            class="text-center font-normal text-sm mb-3"
+          >
+            Your Journey to a better wealth starts here.
+          </p>
+
+          <!-- User's full name -->
+          <div class="flex flex-col gap-1 my-2">
+            <label for="fullName" class="text-left text-sm">Full Name</label>
+            <input
+              id="fullName"
+              type="text"
+              class="outline-none border border-primary rounded-lg px-3 py-1.5 block w-full text-sm placeholder::text-black"
+              placeholder="Full Name"
+            />
           </div>
-        </div>
 
-        <!-- Sign Up Button -->
-        <button id="signup-button" type="submit"
-          class="cursor-pointer flex mx-auto max-w-1/2 px-4 py-2 bg-primary my-2 text-white font-semibold text-sm rounded-lg hover:bg-opacity-90 active:scale-95 transition-all duration-300 shadow-md hover:shadow-lg">
-          Sign Up
-        </button>
+          <!-- User's email -->
+          <div class="flex flex-col gap-1 my-2">
+            <label for="email" class="text-left text-sm">Email</label>
+            <input
+              id="email"
+              type="email"
+              class="outline-none border border-primary rounded-lg px-3 py-1.5 block w-full text-sm placeholder::text-black"
+              placeholder="Email Address"
+            />
+          </div>
 
-        <p class="text-center text-black font-normal text-xs">Or Continue With</p>
-        <!-- Container that holds the three other options -->
-        <div class="flex flex-row gap-2 mt-1 mb-1">
-          <!-- Google option -->
-          <button type="submit" id="google"
-            class="cursor-pointer py-1.5 w-full bg-[#D9D9D9] my-1 text-black font-semibold rounded-lg text-xs flex justify-center items-center gap-1">
-            <img src="../src/assets/icons/devicon_google.png" alt="Google" class="w-5 h-5">
-            Google
+          <!-- User's phone number -->
+          <div class="flex flex-col gap-1 my-2">
+            <label for="phone" class="text-left text-sm">Phone Number</label>
+            <input
+              id="phone"
+              type="tel"
+              class="outline-none border border-primary rounded-lg px-3 py-1.5 block w-full text-sm placeholder::text-black"
+              placeholder="Phone Number"
+            />
+          </div>
+
+          <!-- User's new password -->
+          <div class="flex flex-col gap-1 my-2">
+            <label for="signup-password" class="text-left text-sm"
+              >Password</label
+            >
+            <div class="relative">
+              <input
+                id="signup-password"
+                type="password"
+                placeholder="Password"
+                class="w-full border border-primary outline-none rounded-lg px-3 py-1.5 text-sm"
+              />
+              <!-- Visibility icon for toggling -->
+              <i
+                id="toggle-signup-password"
+                class="ph ph-eye absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-sm"
+              ></i>
+            </div>
+          </div>
+
+          <!-- Password confirmation -->
+          <div class="flex flex-col gap-1 my-2">
+            <label for="confirm-password" class="text-left text-sm">
+              Confirm Password
+            </label>
+
+            <div class="relative">
+              <input
+                id="confirm-password"
+                type="password"
+                placeholder="Confirm Password"
+                class="w-full border border-primary outline-none rounded-lg px-3 py-1.5 text-sm"
+              />
+              <!-- Visibility icon for toggling -->
+              <i
+                id="toggle-confirm-password"
+                class="ph ph-eye absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-sm"
+              ></i>
+            </div>
+          </div>
+
+          <!-- Sign Up Button -->
+          <button
+            id="signup-button"
+            type="submit"
+            class="cursor-pointer flex mx-auto max-w-1/2 px-4 py-2 bg-primary my-2 text-white font-semibold text-sm rounded-lg hover:bg-opacity-90 active:scale-95 transition-all duration-300 shadow-md hover:shadow-lg"
+          >
+            Sign Up
           </button>
 
-          <!-- Facebook option -->
-          <button type="submit" id="facebook"
-            class="cursor-pointer py-1.5 w-full my-1 text-white bg-[#0101AB] font-semibold rounded-lg text-xs flex justify-center items-center gap-1">
-            <img src="../src/assets/icons/fontisto_facebook.png" alt="facebook" class="w-5 h-5">
-            Facebook
-          </button>
+          <p class="text-center text-black font-normal text-xs">
+            Or Continue With
+          </p>
+          <!-- Container that holds the three other options -->
+          <div class="flex flex-row gap-2 mt-1 mb-1">
+            <!-- Google option -->
+            <button
+              type="submit"
+              id="google"
+              class="cursor-pointer py-1.5 w-full bg-[#D9D9D9] my-1 text-black font-semibold rounded-lg text-xs flex justify-center items-center gap-1"
+            >
+              <img
+                src="../src/assets/icons/devicon_google.png"
+                alt="Google"
+                class="w-5 h-5"
+              />
+              Google
+            </button>
 
-          <!-- Apple Option -->
-          <button type="submit" id="apple"
-            class="cursor-pointer py-1.5 w-full bg-black my-1 text-white font-semibold rounded-lg text-xs flex justify-center items-center gap-1">
-            <img src="../src/assets/icons/streamline-logos_apple-logo-solid.png" alt="Apple" class="w-5 h-5">
-            Apple
-          </button>
-        </div>
+            <!-- Facebook option -->
+            <button
+              type="submit"
+              id="facebook"
+              class="cursor-pointer py-1.5 w-full my-1 text-white bg-[#0101AB] font-semibold rounded-lg text-xs flex justify-center items-center gap-1"
+            >
+              <img
+                src="../src/assets/icons/fontisto_facebook.png"
+                alt="facebook"
+                class="w-5 h-5"
+              />
+              Facebook
+            </button>
 
-        <!-- Agreeing to privacy policy and signing up -->
-        <p id="terms-privacy" class="text-center text-black font-normal text-xs mt-2">
-          By clicking on the Sign Up button, you accept our
-          <a id="policy-link" href="#" class="text-black font-bold">Terms and Privacy Policy.</a>
-        </p>
-      </form>
-    </section>
-  </main>
-  <script src="../src/scripts/theme.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-  <script type="module" src="../src/scripts/auth.js"></script>
-</body>
+            <!-- Apple Option -->
+            <button
+              type="submit"
+              id="apple"
+              class="cursor-pointer py-1.5 w-full bg-black my-1 text-white font-semibold rounded-lg text-xs flex justify-center items-center gap-1"
+            >
+              <img
+                src="../src/assets/icons/streamline-logos_apple-logo-solid.png"
+                alt="Apple"
+                class="w-5 h-5"
+              />
+              Apple
+            </button>
+          </div>
 
+          <!-- Agreeing to privacy policy and signing up -->
+          <p
+            id="terms-privacy"
+            class="text-center text-black font-normal text-xs mt-2"
+          >
+            By clicking on the Sign Up button, you accept our
+            <a id="policy-link" href="#" class="text-black font-bold"
+              >Terms and Privacy Policy.</a
+            >
+          </p>
+        </form>
+      </section>
+    </main>
+    <script src="../src/scripts/theme.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+    ></script>
+    <script type="module" src="../src/scripts/auth.js"></script>
+  </body>
 </html>

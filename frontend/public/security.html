@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Phosphor Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css"
+    />
+
+    <!-- Google Fonts: Nunito + Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Toastify (notifications) -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+
+    <!-- Security stylesheet -->
+    <link rel="stylesheet" href="../src/styles/security.css" />
+
+    <title>Security Activity — Finlite</title>
+    <link rel="icon" href="../src/assets/logo.png" type="image/png" />
+
+    <script src="../src/scripts/theme.js"></script>
+  </head>
+  <body>
+    <!-- ══════════════ BACKDROP ══════════════ -->
+    <div class="nav__backdrop" id="backdrop" aria-hidden="true"></div>
+
+    <!-- ══════════════════════════════════════
+       NAV BAR
+  ══════════════════════════════════════ -->
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+      <!-- Brand -->
+      <a class="nav__brand" href="dashboard.html" aria-label="Finlite home">
+        <img
+          src="../src/assets/logo.png"
+          width="36px"
+          height="42px"
+          alt="Finlite Logo"
+          class="nav-bar__logo"
+        />
+        <h2 class="nav__brand-text">FINLITE</h2>
+      </a>
+
+      <!-- Desktop links -->
+      <ul class="nav__links" role="list">
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="transactions.html">Transactions</a></li>
+        <li><a href="settings.html" class="active">Settings</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="report.html">Report</a></li>
+      </ul>
+
+      <!-- Hamburger (mobile only) -->
+      <button
+        class="nav__hamburger"
+        id="hamburgerBtn"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="mobileMenu"
+      >
+        <span class="nav__hb"></span>
+        <span class="nav__hb"></span>
+        <span class="nav__hb"></span>
+      </button>
+    </nav>
+
+    <!-- Mobile slide-down menu -->
+    <div
+      class="nav__mobile"
+      id="mobileMenu"
+      role="dialog"
+      aria-label="Navigation menu"
+      aria-hidden="true"
+    >
+      <div class="nav__mobile-inner">
+        <a href="dashboard.html" class="nav__m-link">
+          <i class="ph ph-squares-four" aria-hidden="true"></i>
+          Dashboard
+        </a>
+        <a href="transactions.html" class="nav__m-link">
+          <i class="ph ph-arrows-left-right" aria-hidden="true"></i>
+          Transactions
+        </a>
+        <a href="settings.html" class="nav__m-link active">
+          <i class="ph ph-gear" aria-hidden="true"></i>
+          Settings
+          <span class="nav__m-badge">Active</span>
+        </a>
+        <a href="about.html" class="nav__m-link">
+          <i class="ph ph-info" aria-hidden="true"></i>
+          About Us
+        </a>
+        <a href="report.html" class="nav__m-link">
+          <i class="ph ph-chart-bar" aria-hidden="true"></i>
+          Report
+        </a>
+
+        <div class="nav__m-divider" role="separator"></div>
+
+        <!-- User row -->
+        <div class="nav__m-user">
+          <div class="nav__m-avatar" id="mobile-avatar" aria-hidden="true">
+            --
+          </div>
+          <div>
+            <p class="nav__m-name" id="mobile-user-name">Loading…</p>
+            <p class="nav__m-role">Business Owner</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /mobile-menu -->
+
+    <!-- PAGE -->
+    <main class="page">
+      <!-- Topbar -->
+      <div class="topbar">
+        <button class="topbar__back" id="back-btn" aria-label="Back">
+          <i class="ph ph-arrow-left"></i>
+        </button>
+        <h1 class="topbar__title">Security Activity</h1>
+      </div>
+
+      <!-- HERO -->
+      <div class="hero-card">
+        <div class="hero-status">
+          <div class="hero-status__icon">
+            <i class="ph ph-shield-check"></i>
+          </div>
+          <div>
+            <p class="hero-status__title">Account Secure</p>
+            <p class="hero-status__sub">No suspicious activity detected</p>
+          </div>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <p class="hero-stat__val" id="hero-device-count">1</p>
+            <p class="hero-stat__lbl">Active Devices</p>
+          </div>
+          <div class="hero-stat" id="hero-2fa-stat" style="opacity: 0.65">
+            <p class="hero-stat__val">2FA</p>
+            <p class="hero-stat__lbl" id="hero-2fa-lbl">Protection Off</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CURRENT SESSION -->
+      <div class="section-hdr">
+        <p class="section-hdr__title">Current Session</p>
+      </div>
+
+      <div class="session-card" id="current-session">
+        <div class="session-card__icon">
+          <i class="ph ph-device-mobile" id="cs-icon"></i>
+        </div>
+        <div class="session-card__body">
+          <p class="session-card__device" id="cs-device">Detecting…</p>
+          <div class="session-card__meta">
+            <span class="session-card__meta-row">
+              <i class="ph ph-desktop-tower"></i>
+              <span id="cs-os">…</span>
+            </span>
+            <span class="session-card__meta-row">
+              <i class="ph ph-map-pin"></i>
+              <span id="cs-location">…</span>
+            </span>
+            <span class="session-card__meta-row">
+              <i class="ph ph-clock"></i>
+              <span id="cs-active">Last active: Just now</span>
+            </span>
+          </div>
+        </div>
+        <span class="session-card__badge">Active Now</span>
+      </div>
+
+      <!-- RECENT LOGINS -->
+      <div class="section-hdr" id="recent-logins-section">
+        <p class="section-hdr__title">Recent Logins</p>
+        <a href="#" class="section-hdr__link">View All</a>
+      </div>
+
+      <div class="login-card" id="login-list">
+        <!-- Rendered by JS -->
+      </div>
+
+      <!-- SECURITY ALERTS -->
+      <div class="section-hdr" style="margin-top: 8px">
+        <p class="section-hdr__title">Security Alerts</p>
+      </div>
+      <div class="alerts-wrap" id="alerts-list"><!-- Rendered by JS --></div>
+
+      <!-- SECURITY ACTIONS -->
+      <div class="section-hdr">
+        <p class="section-hdr__title">Security Actions</p>
+      </div>
+
+      <div class="actions-card">
+        <button class="action-row" id="action-devices">
+          <div class="action-row__body">
+            <p class="action-row__title">Manage Devices</p>
+            <p class="action-row__sub">View and remove trusted devices</p>
+          </div>
+          <div class="action-row__right">
+            <i class="ph ph-caret-right action-row__caret"></i>
+          </div>
+        </button>
+
+        <button class="action-row" id="action-2fa">
+          <div class="action-row__body">
+            <p class="action-row__title">Two-Factor Authentication</p>
+            <p class="action-row__sub" id="twofa-sub">
+              Extra layer of protection
+            </p>
+          </div>
+          <div class="action-row__right">
+            <span class="status-badge status-badge--off" id="twofa-badge"
+              >Off</span
+            >
+            <i class="ph ph-caret-right action-row__caret"></i>
+          </div>
+        </button>
+
+        <button class="action-row" id="action-download">
+          <div class="action-row__body">
+            <p class="action-row__title">Download Login History</p>
+            <p class="action-row__sub">Export complete activity log</p>
+          </div>
+          <div class="action-row__right">
+            <i class="ph ph-caret-right action-row__caret"></i>
+          </div>
+        </button>
+      </div>
+
+      <!-- SIGN OUT ALL — matches mockup orange button -->
+      <button class="signout-btn" id="signout-all-btn">
+        Sign Out All Other Devices
+      </button>
+
+      <!-- CHANGE PASSWORD -->
+      <div class="section-hdr">
+        <p class="section-hdr__title">Change Password</p>
+      </div>
+
+      <div class="pw-card">
+        <form id="pw-form" autocomplete="off">
+          <div class="field">
+            <label class="field__label" for="pw-current"
+              >Current Password</label
+            >
+            <div class="field__wrap">
+              <i class="ph ph-lock-simple"></i>
+              <input
+                class="field__input"
+                id="pw-current"
+                type="password"
+                placeholder="Enter current password"
+              />
+              <button
+                type="button"
+                class="field__eye"
+                data-eye="pw-current"
+                aria-label="Toggle"
+              >
+                <i class="ph ph-eye"></i>
+              </button>
+            </div>
+          </div>
+          <div class="field">
+            <label class="field__label" for="pw-new">New Password</label>
+            <div class="field__wrap">
+              <i class="ph ph-lock-simple-open"></i>
+              <input
+                class="field__input"
+                id="pw-new"
+                type="password"
+                placeholder="Enter new password"
+              />
+              <button
+                type="button"
+                class="field__eye"
+                data-eye="pw-new"
+                aria-label="Toggle"
+              >
+                <i class="ph ph-eye"></i>
+              </button>
+            </div>
+          </div>
+          <div class="pw-strength">
+            <div class="pw-strength__track">
+              <div class="pw-strength__fill" id="pw-bar"></div>
+            </div>
+            <p class="pw-strength__label" id="pw-label"></p>
+          </div>
+          <div class="field">
+            <label class="field__label" for="pw-confirm"
+              >Confirm New Password</label
+            >
+            <div class="field__wrap">
+              <i class="ph ph-lock-simple"></i>
+              <input
+                class="field__input"
+                id="pw-confirm"
+                type="password"
+                placeholder="Repeat new password"
+              />
+              <button
+                type="button"
+                class="field__eye"
+                data-eye="pw-confirm"
+                aria-label="Toggle"
+              >
+                <i class="ph ph-eye"></i>
+              </button>
+            </div>
+          </div>
+          <button type="submit" class="btn-green" id="pw-save-btn">
+            Update Password
+          </button>
+        </form>
+      </div>
+
+      <!-- PRIVACY NOTE -->
+      <div class="privacy-note">
+        <i class="ph ph-lock-simple"></i>
+        <p class="privacy-note__txt">
+          Your data is encrypted at rest and in transit. Finlite never sells or
+          shares your personal information with third parties. You can export or
+          delete your data at any time.
+        </p>
+      </div>
+
+      <!-- DANGER ZONE -->
+      <div class="danger-zone">
+        <div class="danger-zone__hdr">
+          <i class="ph ph-warning"></i>
+          <span>Danger Zone</span>
+        </div>
+        <button class="danger-btn" id="action-delete">
+          <div class="danger-btn__icon"><i class="ph ph-trash"></i></div>
+          <div class="danger-btn__body">
+            <p class="danger-btn__title">Delete Account</p>
+            <p class="danger-btn__sub">
+              Permanently remove your account and all data
+            </p>
+          </div>
+          <i class="ph ph-caret-right danger-btn__caret"></i>
+        </button>
+      </div>
+    </main>
+
+    <!-- 2FA MODAL -->
+    <div id="twofa-modal">
+      <div class="modal-bd"></div>
+      <div class="modal-sheet">
+        <div class="modal-handle"></div>
+        <div class="modal-inner">
+          <p class="modal-title">Two-Factor Authentication</p>
+          <p class="modal-sub">
+            Choose how you'd like to receive your verification code.
+          </p>
+          <div class="twofa-opts">
+            <button class="twofa-opt sel" data-method="sms">
+              <div class="twofa-opt__icon">
+                <i class="ph ph-chat-circle-text"></i>
+              </div>
+              <div>
+                <p class="twofa-opt__title">SMS Code</p>
+                <p class="twofa-opt__sub">Receive a code via text message</p>
+              </div>
+              <i class="ph ph-check-circle twofa-opt__chk"></i>
+            </button>
+            <button class="twofa-opt" data-method="email">
+              <div class="twofa-opt__icon"><i class="ph ph-envelope"></i></div>
+              <div>
+                <p class="twofa-opt__title">Email Code</p>
+                <p class="twofa-opt__sub">Receive a code via email</p>
+              </div>
+              <i class="ph ph-check-circle twofa-opt__chk"></i>
+            </button>
+            <button class="twofa-opt" data-method="app">
+              <div class="twofa-opt__icon"><i class="ph ph-qr-code"></i></div>
+              <div>
+                <p class="twofa-opt__title">Authenticator App</p>
+                <p class="twofa-opt__sub">Google Authenticator, Authy, etc.</p>
+              </div>
+              <i class="ph ph-check-circle twofa-opt__chk"></i>
+            </button>
+          </div>
+          <div id="otp-section" style="display: none; margin-bottom: 20px">
+            <p
+              style="
+                color: var(--text-mid);
+                font-family: &quot;Poppins&quot;, sans-serif;
+                font-size: 12px;
+                font-weight: 600;
+                margin-bottom: 12px;
+                text-align: center;
+              "
+            >
+              Enter the 6-digit code sent to your device
+            </p>
+            <div class="otp-row">
+              <input
+                class="otp-box"
+                type="text"
+                maxlength="1"
+                inputmode="numeric"
+              />
+              <input
+                class="otp-box"
+                type="text"
+                maxlength="1"
+                inputmode="numeric"
+              />
+              <input
+                class="otp-box"
+                type="text"
+                maxlength="1"
+                inputmode="numeric"
+              />
+              <input
+                class="otp-box"
+                type="text"
+                maxlength="1"
+                inputmode="numeric"
+              />
+              <input
+                class="otp-box"
+                type="text"
+                maxlength="1"
+                inputmode="numeric"
+              />
+              <input
+                class="otp-box"
+                type="text"
+                maxlength="1"
+                inputmode="numeric"
+              />
+            </div>
+          </div>
+          <button class="btn-green" id="enable-btn" style="margin-bottom: 10px">
+            Enable 2FA
+          </button>
+          <button
+            class="btn-green"
+            id="twofa-cancel"
+            style="
+              background: var(--card);
+              color: var(--text-muted);
+              border: 1.5px solid var(--border);
+              box-shadow: none;
+            "
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="toast"></div>
+
+    <script type="module" src="../src/scripts/security.js"></script>
+  </body>
+</html>

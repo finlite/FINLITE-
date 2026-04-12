@@ -84,22 +84,16 @@ const showConfirmation = async ({ amount, service, transactionDate }) => {
   if (dateLog) dateLog.textContent = formatDate(transactionDate);
 
   try {
-    const token = getToken();
-    const response = await fetch(`${API_URL}/transactions`, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-    if (response.ok && totalSales) {
-      const rows = await response.json();
-      const today = new Date().toDateString();
-      const todayTotal = rows
-        .filter(
-          (t) =>
-            t.category === "expense" &&
-            new Date(t.transaction_date).toDateString() === today,
-        )
-        .reduce((sum, t) => sum + Number(t.amount || 0), 0);
-      totalSales.textContent = formatCurrency(todayTotal);
-    }
+    // Calculate total expenses today from localStorage
+    const existingTx = JSON.parse(localStorage.getItem("finlite_tx") || "[]");
+    const today = new Date().toDateString();
+    const todayTotal = existingTx
+      .filter(
+        (t) =>
+          t.category === "expense" && new Date(t.date).toDateString() === today,
+      )
+      .reduce((sum, t) => sum + Number(t.amount || 0), 0);
+    if (totalSales) totalSales.textContent = formatCurrency(todayTotal);
   } catch (error) {
     console.error("Failed to compute total expenses:", error);
   }
@@ -221,11 +215,6 @@ const saveExpense = async (event) => {
     }
 
     showToast("Expense saved successfully", "success");
-    await showConfirmation({
-      amount,
-      service: payload.service,
-      transactionDate,
-    });
   } catch (error) {
     console.error("Error saving expense:", error);
     showToast("Error saving expense. Please try again.", "error");
@@ -244,6 +233,13 @@ const saveExpense = async (event) => {
     existingTx.push(localTx);
     localStorage.setItem("finlite_tx", JSON.stringify(existingTx));
 
+    // Show confirmation modal after saving locally
+    await showConfirmation({
+      amount,
+      service: payload.service,
+      transactionDate,
+    });
+
     saveButton.disabled = false;
     saveButton.innerHTML = originalText;
   }
@@ -255,6 +251,13 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.href = "login.html";
     return;
   }
+
+  // Prevent form submission and handle save
+  expenseForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    saveExpense(event);
+  });
+
   wireQuickInputs();
   wireModalButtons();
   // Add click listener to save button since it's outside the form

@@ -260,3 +260,40 @@ exports.updatePreferences = async (req, res) => {
         res.status(500).json({ message: 'Error updating preferences' });
     }
 };
+
+exports.changePassword = async (req, res) => {
+    const { currentPassword, newPassword } = req.body;
+    if (!currentPassword || !newPassword) {
+        return res.status(400).json({ message: 'currentPassword and newPassword are required' });
+    }
+    if (newPassword.length < 8) {
+        return res.status(400).json({ message: 'New password must be at least 8 characters' });
+    }
+    try {
+        await ensureAppSchema();
+        const result = await db.query(
+            'SELECT user_id, password FROM users WHERE user_id = $1',
+            [req.user.user_id]
+        );
+        if (result.rows.length === 0) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+        const user = result.rows[0];
+        const match = await bcrypt.compare(currentPassword, user.password);
+        if (!match) {
+            return res.status(401).json({ message: 'Current password is incorrect' });
+        }
+        const hashedPassword = await bcrypt.hash(newPassword, 10);
+        await db.query(
+            'UPDATE users SET password = $1 WHERE user_id = $2',
+            [hashedPassword, req.user.user_id]
+        );
+        res.json({ message: 'Password changed successfully' });
+    } catch (err) {
+        console.error(err);
+        if (isDatabaseUnavailableError(err)) {
+            return res.status(503).json({ message: 'Database is currently unreachable. Please try again.' });
+        }
+        res.status(500).json({ message: 'Error changing password' });
+    }
+};

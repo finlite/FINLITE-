@@ -66,6 +66,23 @@ async function ensureAppSchema() {
           IF NOT EXISTS (
             SELECT 1
             FROM pg_trigger
+            WHERE tgname = 'users_set_updated_at'
+          ) THEN
+            CREATE TRIGGER users_set_updated_at
+            BEFORE UPDATE ON users
+            FOR EACH ROW
+            EXECUTE FUNCTION set_updated_at();
+          END IF;
+        END
+        $$;
+      `);
+
+      await db.query(`
+        DO $$
+        BEGIN
+          IF NOT EXISTS (
+            SELECT 1
+            FROM pg_trigger
             WHERE tgname = 'user_settings_set_updated_at'
           ) THEN
             CREATE TRIGGER user_settings_set_updated_at

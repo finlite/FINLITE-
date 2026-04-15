@@ -84,16 +84,22 @@ const showConfirmation = async ({ amount, service, transactionDate }) => {
   if (dateLog) dateLog.textContent = formatDate(transactionDate);
 
   try {
-    // Calculate total expenses today from localStorage
-    const existingTx = JSON.parse(localStorage.getItem("finlite_tx") || "[]");
-    const today = new Date().toDateString();
-    const todayTotal = existingTx
-      .filter(
-        (t) =>
-          t.category === "expense" && new Date(t.date).toDateString() === today,
-      )
-      .reduce((sum, t) => sum + Number(t.amount || 0), 0);
-    if (totalSales) totalSales.textContent = formatCurrency(todayTotal);
+    const token = getToken();
+    const response = await fetch(`${API_URL}/transactions`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    if (response.ok && totalSales) {
+      const rows = await response.json();
+      const today = new Date().toDateString();
+      const todayTotal = rows
+        .filter(
+          (t) =>
+            t.category === "expense" &&
+            new Date(t.transaction_date).toDateString() === today,
+        )
+        .reduce((sum, t) => sum + Number(t.amount || 0), 0);
+      totalSales.textContent = formatCurrency(todayTotal);
+    }
   } catch (error) {
     console.error("Failed to compute total expenses:", error);
   }

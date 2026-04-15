@@ -1,6 +1,6 @@
 'use strict';
 
-const API_URL = (window.FINLITE_API_URL || 'https://finlite-nizr.onrender.com/api').replace(/\/+$/, '');
+import { API_URL } from './config.js';
 
 const LANGS = {
     en: { name: 'English', native: 'English', flagKey: 'gb', region: 'west', date: 'DD/MM/YYYY', currency: '₦ (Nigerian Naira)', num: '1,234.56' },

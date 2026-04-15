@@ -1,5 +1,7 @@
 "use strict";
 
+import { API_URL } from './config.js';
+
 /* ════════════════════════════════════════════════
    FINLITE — Reports Page JavaScript
    report.js
@@ -79,10 +81,6 @@ setTimeout(syncMobileUser, 2000);
 /* ══════════════════════════════
    CONFIG & AUTH
 ══════════════════════════════ */
-const API_URL = window.apiUrl
-  ? window.apiUrl.replace(/\/+$/, "")
-  : "https://finlite-nizr.onrender.com/api";
-
 function getToken() {
   return localStorage.getItem("token");
 }

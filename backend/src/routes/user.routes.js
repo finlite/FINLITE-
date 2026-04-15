@@ -9,5 +9,6 @@ router.get('/profile', authenticateToken, userController.getProfile);
 router.put('/profile', authenticateToken, userController.updateProfile);
 router.get('/preferences', authenticateToken, userController.getPreferences);
 router.put('/preferences', authenticateToken, userController.updatePreferences);
+router.post('/change-password', authenticateToken, userController.changePassword);
 
 module.exports = router;

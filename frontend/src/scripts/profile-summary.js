@@ -1,16 +1,12 @@
 /**
  * FINLITE — profile-summary.js
- * Reads all data saved by profile-settings.js from
- * localStorage and renders the Business Profile Summary page.
- *
- * localStorage keys written by profile-settings:
- *   finlite_profile  → { name, email, phone, bizName, bizType,
- *                         address, regDate, avatar,
- *                         website, instagram, facebook }
- *   finlite_hours    → { monday:{open,close,enabled}, tuesday:…, … }
+ * Fetches profile & business data from the API (with localStorage fallback)
+ * and renders the Business Profile Summary page.
  */
 
 "use strict";
+
+import { API_URL } from "./config.js";
 
 /* ════════════════════════════════════════════════
    CONSTANTS
@@ -33,25 +29,99 @@ const DAY_LABELS = {
   saturday: "Saturday",
   sunday: "Sunday",
 };
-const STORAGE_PROFILE = "finlite_profile";
-const STORAGE_HOURS = "finlite_hours";
 
 /* ════════════════════════════════════════════════
-   LOAD DATA FROM localStorage
+   HELPERS
    ════════════════════════════════════════════════ */
-function loadProfile() {
-  try {
-    return JSON.parse(localStorage.getItem(STORAGE_PROFILE) || "{}");
-  } catch {
-    return {};
-  }
+const getToken = () => localStorage.getItem("token");
+const getUser  = () => { try { return JSON.parse(localStorage.getItem("user")); } catch { return null; } };
+
+function redirectToLogin() {
+  localStorage.removeItem("token");
+  localStorage.removeItem("user");
+  window.location.href = "login.html";
 }
 
-function loadHours() {
+/* ════════════════════════════════════════════════
+   LOAD DATA  (API first, then localStorage fallback)
+   ════════════════════════════════════════════════ */
+async function loadData() {
+  const token = getToken();
+
+  // Prepare fallback from localStorage
+  let localProfile = {};
+  let localHours = {};
+  try { localProfile = JSON.parse(localStorage.getItem("finlite_profile") || "{}") || {}; } catch (_) {}
+  try { localHours = JSON.parse(localStorage.getItem("finlite_hours") || "{}") || {}; } catch (_) {}
+
+  const localUser = getUser();
+
+  const profileFallback = {
+    bizName:    localProfile.bizName || "",
+    bizType:    localProfile.bizType || "",
+    avatar:     localProfile.avatar  || localUser?.photo_data_url || "",
+    phone:      localProfile.phone   || localUser?.phone    || "",
+    email:      localProfile.email   || localUser?.email    || "",
+    address:    localProfile.address || "",
+    website:    localProfile.website   || "",
+    instagram:  localProfile.instagram || "",
+    facebook:   localProfile.facebook  || "",
+    name:       localProfile.name || localUser?.full_name || "",
+  };
+
+  if (!token) {
+    return { profile: profileFallback, hours: localHours };
+  }
+
   try {
-    return JSON.parse(localStorage.getItem(STORAGE_HOURS) || "{}");
-  } catch {
-    return {};
+    const [profileRes, bizRes] = await Promise.allSettled([
+      fetch(`${API_URL}/users/profile`, { headers: { Authorization: `Bearer ${token}` } }),
+      fetch(`${API_URL}/business`,       { headers: { Authorization: `Bearer ${token}` } }),
+    ]);
+
+    let mergedProfile = { ...profileFallback };
+    let mergedHours   = { ...localHours };
+
+    if (profileRes.status === "fulfilled") {
+      if (profileRes.value.status === 401 || profileRes.value.status === 403) {
+        redirectToLogin();
+        return { profile: mergedProfile, hours: mergedHours };
+      }
+      if (profileRes.value.ok) {
+        const apiProfile = await profileRes.value.json();
+        localStorage.setItem("user", JSON.stringify(apiProfile));
+        mergedProfile.name   = apiProfile.full_name || mergedProfile.name;
+        mergedProfile.email  = apiProfile.email     || mergedProfile.email;
+        mergedProfile.phone  = apiProfile.phone     || mergedProfile.phone;
+        mergedProfile.avatar = apiProfile.photo_data_url || mergedProfile.avatar;
+      }
+    }
+
+    if (bizRes.status === "fulfilled" && bizRes.value.ok) {
+      const apiBiz = await bizRes.value.json();
+      mergedProfile.bizName   = apiBiz.business_name    || mergedProfile.bizName;
+      mergedProfile.bizType   = apiBiz.business_type    || mergedProfile.bizType;
+      mergedProfile.address   = apiBiz.address          || mergedProfile.address;
+
+      // Online presence
+      const presence = apiBiz.online_prescence || {};
+      mergedProfile.website   = presence.website   || mergedProfile.website;
+      mergedProfile.instagram = presence.instagram || mergedProfile.instagram;
+      mergedProfile.facebook  = presence.facebook  || mergedProfile.facebook;
+
+      // Hours — can be object or JSON string
+      let hours = apiBiz.open_hours || {};
+      if (typeof hours === "string") { try { hours = JSON.parse(hours); } catch (_) { hours = {}; } }
+      if (Object.keys(hours).length > 0) {
+        mergedHours = hours;
+        localStorage.setItem("finlite_hours", JSON.stringify(hours));
+      }
+    }
+
+    return { profile: mergedProfile, hours: mergedHours };
+  } catch (err) {
+    console.error("Error loading profile-summary data from API:", err);
+    return { profile: profileFallback, hours: localHours };
   }
 }
 
@@ -59,7 +129,6 @@ function loadHours() {
    TIME HELPERS
    ════════════════════════════════════════════════ */
 function fmt12(time24) {
-  /* Convert "09:00" → "9:00 AM", "18:00" → "6:00 PM" */
   if (!time24) return "";
   const [h, m] = time24.split(":").map(Number);
   const ampm = h >= 12 ? "PM" : "AM";
@@ -68,16 +137,15 @@ function fmt12(time24) {
 }
 
 function isOpenNow(hours) {
-  /* Check if any day that is open contains the current local time */
   const now = new Date();
-  const day = DAYS[now.getDay() === 0 ? 6 : now.getDay() - 1]; // Mon=0 … Sun=6
+  const day = DAYS[now.getDay() === 0 ? 6 : now.getDay() - 1];
   const info = hours[day];
   if (!info || !info.enabled || !info.open || !info.close) return false;
   const [oh, om] = info.open.split(":").map(Number);
   const [ch, cm] = info.close.split(":").map(Number);
-  const nowMins = now.getHours() * 60 + now.getMinutes();
+  const nowMins  = now.getHours() * 60 + now.getMinutes();
   const openMins = oh * 60 + om;
-  const closeMins = ch * 60 + cm;
+  const closeMins= ch * 60 + cm;
   return nowMins >= openMins && nowMins < closeMins;
 }
 
@@ -85,28 +153,21 @@ function isOpenNow(hours) {
    RENDER — HERO CARD
    ════════════════════════════════════════════════ */
 function renderHero(profile, hours) {
-  /* Business name */
   const nameEl = document.getElementById("hero-biz-name");
   if (nameEl) nameEl.textContent = profile.bizName || "Your Business";
 
-  /* Business type */
   const typeEl = document.getElementById("hero-biz-type");
   if (typeEl) typeEl.textContent = profile.bizType || "";
 
-  /* Avatar / logo image */
   if (profile.avatar) {
-    const img = document.getElementById("hero-logo-img");
+    const img  = document.getElementById("hero-logo-img");
     const icon = document.getElementById("hero-logo-icon");
-    if (img) {
-      img.src = profile.avatar;
-      img.style.display = "block";
-    }
+    if (img)  { img.src = profile.avatar; img.style.display = "block"; }
     if (icon) icon.style.display = "none";
   }
 
-  /* Open / Closed status pill */
-  const open = isOpenNow(hours);
-  const pill = document.getElementById("hero-status-pill");
+  const open  = isOpenNow(hours);
+  const pill  = document.getElementById("hero-status-pill");
   const pillI = document.getElementById("hero-status-icon");
   const pillT = document.getElementById("hero-status-text");
   if (pill) {
@@ -123,23 +184,19 @@ function renderHero(profile, hours) {
 }
 
 /* ════════════════════════════════════════════════
-   RENDER — BUSINESS HOURS CARD
+   RENDER — BUSINESS HOURS
    ════════════════════════════════════════════════ */
 function renderHours(hours) {
   const tbody = document.getElementById("hours-tbody");
   if (!tbody) return;
 
-  /* Open/Closed badge in card header */
-  const open = isOpenNow(hours);
-  const badge = document.getElementById("hours-badge");
-  const badgeDot = document.getElementById("hours-badge-dot");
-  const badgeText = document.getElementById("hours-badge-text");
-  if (badge) {
-    badge.className = `info-card__badge info-card__badge--${open ? "open" : "closed"}`;
-  }
-  if (badgeText) badgeText.textContent = open ? "Open" : "Closed";
-  if (badgeDot)
-    badgeDot.className = `info-card__badge-dot info-card__badge-dot--${open ? "open" : "closed"}`;
+  const open    = isOpenNow(hours);
+  const badge   = document.getElementById("hours-badge");
+  const badgeDot= document.getElementById("hours-badge-dot");
+  const badgeTxt= document.getElementById("hours-badge-text");
+  if (badge)    badge.className = `info-card__badge info-card__badge--${open ? "open" : "closed"}`;
+  if (badgeTxt) badgeTxt.textContent = open ? "Open" : "Closed";
+  if (badgeDot) badgeDot.className = `info-card__badge-dot info-card__badge-dot--${open ? "open" : "closed"}`;
 
   tbody.innerHTML = DAYS.map((day) => {
     const info = hours[day];
@@ -150,14 +207,12 @@ function renderHours(hours) {
         : null;
 
     return `
-            <div class="hours-row">
-                <span class="hours-row__day">${DAY_LABELS[day]}</span>
-                ${
-                  timeStr
-                    ? `<span class="hours-row__time">${timeStr}</span>`
-                    : `<span class="hours-row__closed">Closed</span>`
-                }
-            </div>`;
+      <div class="hours-row">
+        <span class="hours-row__day">${DAY_LABELS[day]}</span>
+        ${timeStr
+          ? `<span class="hours-row__time">${timeStr}</span>`
+          : `<span class="hours-row__closed">Closed</span>`}
+      </div>`;
   }).join("");
 }
 
@@ -169,9 +224,9 @@ function renderContact(profile) {
   if (!container) return;
 
   const items = [
-    { label: "Phone Number", icon: "ph-phone", value: profile.phone },
-    { label: "Email Address", icon: "ph-envelope", value: profile.email },
-    { label: "Business Address", icon: "ph-map-pin", value: profile.address },
+    { label: "Phone Number",    icon: "ph-phone",    value: profile.phone },
+    { label: "Email Address",   icon: "ph-envelope", value: profile.email },
+    { label: "Business Address",icon: "ph-map-pin",  value: profile.address },
   ];
 
   const hasAny = items.some((i) => i.value);
@@ -184,16 +239,13 @@ function renderContact(profile) {
     .filter((i) => i.value)
     .map(
       (i) => `
-            <div class="contact-item">
-                <div class="contact-item__icon">
-                    <i class="ph ${i.icon}"></i>
-                </div>
-                <div class="contact-item__body">
-                    <p class="contact-item__label">${i.label}</p>
-                    <p class="contact-item__value">${i.value}</p>
-                </div>
-            </div>
-        `,
+      <div class="contact-item">
+        <div class="contact-item__icon"><i class="ph ${i.icon}"></i></div>
+        <div class="contact-item__body">
+          <p class="contact-item__label">${i.label}</p>
+          <p class="contact-item__value">${i.value}</p>
+        </div>
+      </div>`
     )
     .join("");
 }
@@ -207,24 +259,16 @@ function renderPresence(profile) {
   if (!container) return;
 
   const items = [
-    { icon: "ph-globe", value: profile.website, href: profile.website },
+    { icon: "ph-globe",          value: profile.website,   href: profile.website },
     {
       icon: "ph-instagram-logo",
-      value: profile.instagram
-        ? "@" + profile.instagram.replace(/^@/, "")
-        : null,
-      href: profile.instagram
-        ? `https://instagram.com/${profile.instagram.replace(/^@/, "")}`
-        : null,
+      value: profile.instagram ? "@" + profile.instagram.replace(/^@/, "") : null,
+      href:  profile.instagram ? `https://instagram.com/${profile.instagram.replace(/^@/, "")}` : null,
     },
     {
       icon: "ph-facebook-logo",
-      value: profile.facebook
-        ? "/" + profile.facebook.replace(/^\//, "")
-        : null,
-      href: profile.facebook
-        ? `https://facebook.com/${profile.facebook.replace(/^\//, "")}`
-        : null,
+      value: profile.facebook  ? "/" + profile.facebook.replace(/^\//, "")  : null,
+      href:  profile.facebook  ? `https://facebook.com/${profile.facebook.replace(/^\//, "")}`  : null,
     },
   ].filter((i) => i.value);
 
@@ -237,13 +281,10 @@ function renderPresence(profile) {
   container.innerHTML = items
     .map(
       (i) => `
-        <a class="presence-item" href="${i.href || "#"}" target="_blank" rel="noopener">
-            <div class="presence-item__icon">
-                <i class="ph ${i.icon}"></i>
-            </div>
-            <span class="presence-item__url">${i.value}</span>
-        </a>
-    `,
+    <a class="presence-item" href="${i.href || "#"}" target="_blank" rel="noopener">
+      <div class="presence-item__icon"><i class="ph ${i.icon}"></i></div>
+      <span class="presence-item__url">${i.value}</span>
+    </a>`
     )
     .join("");
 }
@@ -254,27 +295,21 @@ function renderPresence(profile) {
 function syncMobileAvatar(profile) {
   const name = profile.name || "";
   const initials = name.trim()
-    ? name
-        .trim()
-        .split(/\s+/)
-        .slice(0, 2)
-        .map((p) => p[0])
-        .join("")
-        .toUpperCase()
+    ? name.trim().split(/\s+/).slice(0, 2).map((p) => p[0]).join("").toUpperCase()
     : "--";
-  const mobAvt = document.getElementById("mobile-avatar");
+  const mobAvt  = document.getElementById("mobile-avatar");
   const mobName = document.getElementById("mobile-user-name");
-  if (mobAvt && initials !== "--") mobAvt.textContent = initials;
-  if (mobName && name) mobName.textContent = name;
+  if (mobAvt  && initials !== "--") mobAvt.textContent  = initials;
+  if (mobName && name)              mobName.textContent = name;
 }
 
 /* ════════════════════════════════════════════════
-   NAV HAMBURGER (settings.js pattern exactly)
+   NAV HAMBURGER
    ════════════════════════════════════════════════ */
 function setupNav() {
   const hamburgerBtn = document.getElementById("hamburgerBtn");
-  const mobileMenu = document.getElementById("mobileMenu");
-  const backdrop = document.getElementById("backdrop");
+  const mobileMenu   = document.getElementById("mobileMenu");
+  const backdrop     = document.getElementById("backdrop");
   let menuOpen = false;
 
   function openMenu() {
@@ -298,22 +333,11 @@ function setupNav() {
     document.body.style.overflow = "";
   }
 
-  hamburgerBtn.addEventListener("click", (e) => {
-    e.stopPropagation();
-    menuOpen ? closeMenu() : openMenu();
-  });
+  hamburgerBtn.addEventListener("click", (e) => { e.stopPropagation(); menuOpen ? closeMenu() : openMenu(); });
   backdrop.addEventListener("click", closeMenu);
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && menuOpen) closeMenu();
-  });
-  mobileMenu
-    .querySelectorAll("a")
-    .forEach((link) =>
-      link.addEventListener("click", () => setTimeout(closeMenu, 120)),
-    );
-  window.addEventListener("resize", () => {
-    if (window.innerWidth >= 769 && menuOpen) closeMenu();
-  });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && menuOpen) closeMenu(); });
+  mobileMenu.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => setTimeout(closeMenu, 120)));
+  window.addEventListener("resize", () => { if (window.innerWidth >= 769 && menuOpen) closeMenu(); });
 }
 
 /* ════════════════════════════════════════════════
@@ -340,19 +364,15 @@ function restoreTheme() {
 /* ════════════════════════════════════════════════
    INIT
    ════════════════════════════════════════════════ */
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   restoreTheme();
   setupNav();
 
-  const profile = loadProfile();
-  const hours = loadHours();
+  const { profile, hours } = await loadData();
 
   renderHero(profile, hours);
   renderHours(hours);
   renderContact(profile);
   renderPresence(profile);
   syncMobileAvatar(profile);
-
-  /* Re-sync initials after any async updates */
-  setTimeout(() => syncMobileAvatar(loadProfile()), 600);
 });

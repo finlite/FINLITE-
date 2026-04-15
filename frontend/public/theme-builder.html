@@ -1,12 +1,20 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <!-- Phosphor Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/fill/style.css"/>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/fill/style.css"
+      crossorigin="anonymous"
+    />
 
     <!-- Google Fonts: Nunito + Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -17,195 +25,267 @@
     />
     <title>Theme Builder — Finlite</title>
     <link rel="icon" href="../src/assets/logo.png" type="image/png" />
-    <link rel="stylesheet" href="../src/styles/theme-builder.css">
-</head>
-<body>
+    <link rel="stylesheet" href="../src/styles/theme-builder.css" />
+  </head>
+  <body>
+    <!-- Backdrop -->
+    <div class="nav__backdrop" id="backdrop" aria-hidden="true"></div>
 
-<!-- Backdrop -->
-<div class="nav__backdrop" id="backdrop" aria-hidden="true"></div>
-
-<!-- NAV (Settings pattern) -->
-<nav class="nav" role="navigation" aria-label="Main navigation">
-    <a class="nav__brand" href="dashboard.html" aria-label="Finlite home">
+    <!-- NAV (Settings pattern) -->
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+      <a class="nav__brand" href="dashboard.html" aria-label="Finlite home">
         <div class="nav__logo">
-            <img src="../src/assets/logo.png" width="36" height="42" alt="Finlite Logo">
+          <img
+            src="../src/assets/logo.png"
+            width="36"
+            height="42"
+            alt="Finlite Logo"
+          />
         </div>
         <h2 class="nav__brand-text">FINLITE</h2>
-    </a>
-    <ul class="nav__links" role="list">
+      </a>
+      <ul class="nav__links" role="list">
         <li><a href="dashboard.html">Dashboard</a></li>
         <li><a href="transactions.html">Transactions</a></li>
         <li><a href="settings.html" class="active">Settings</a></li>
         <li><a href="about.html">About Us</a></li>
         <li><a href="report.html">Report</a></li>
-    </ul>
-    <button class="nav__hamburger" id="hamburgerBtn"
-            aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">
+      </ul>
+      <button
+        class="nav__hamburger"
+        id="hamburgerBtn"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="mobileMenu"
+      >
         <span class="nav__hb"></span>
         <span class="nav__hb"></span>
         <span class="nav__hb"></span>
-    </button>
-</nav>
+      </button>
+    </nav>
 
-<!-- Mobile menu -->
-<div class="nav__mobile" id="mobileMenu" role="dialog" aria-label="Navigation menu" aria-hidden="true">
-    <div class="nav__mobile-inner">
-        <a href="dashboard.html" class="nav__m-link"><i class="ph ph-squares-four"></i> Dashboard</a>
-        <a href="transactions.html" class="nav__m-link"><i class="ph ph-arrows-left-right"></i> Transactions</a>
-        <a href="settings.html" class="nav__m-link active"><i class="ph ph-gear"></i> Settings</a>
-        <a href="about.html" class="nav__m-link"><i class="ph ph-info"></i> About Us</a>
-        <a href="report.html" class="nav__m-link"><i class="ph ph-chart-bar"></i> Report</a>
+    <!-- Mobile menu -->
+    <div
+      class="nav__mobile"
+      id="mobileMenu"
+      role="dialog"
+      aria-label="Navigation menu"
+      aria-hidden="true"
+    >
+      <div class="nav__mobile-inner">
+        <a href="dashboard.html" class="nav__m-link"
+          ><i class="ph ph-squares-four"></i> Dashboard</a
+        >
+        <a href="transactions.html" class="nav__m-link"
+          ><i class="ph ph-arrows-left-right"></i> Transactions</a
+        >
+        <a href="settings.html" class="nav__m-link active"
+          ><i class="ph ph-gear"></i> Settings</a
+        >
+        <a href="about.html" class="nav__m-link"
+          ><i class="ph ph-info"></i> About Us</a
+        >
+        <a href="report.html" class="nav__m-link"
+          ><i class="ph ph-chart-bar"></i> Report</a
+        >
         <div class="nav__m-divider"></div>
         <div class="nav__m-user">
-            <div class="nav__m-avatar" id="mobile-avatar" aria-hidden="true">--</div>
-            <div>
-                <p class="nav__m-name" id="mobile-user-name">Loading…</p>
-                <p class="nav__m-role">Business Owner</p>
-            </div>
+          <div class="nav__m-avatar" id="mobile-avatar" aria-hidden="true">
+            --
+          </div>
+          <div>
+            <p class="nav__m-name" id="mobile-user-name">Loading…</p>
+            <p class="nav__m-role">Business Owner</p>
+          </div>
         </div>
+      </div>
     </div>
-</div>
 
-<!-- PAGE -->
-<div class="page">
-
-    <!-- TOPBAR -->
-    <div class="topbar">
-        <a href="settings.html" class="topbar__back" aria-label="Back to settings">
-            <i class="ph ph-arrow-left"></i>
+    <!-- PAGE -->
+    <div class="page">
+      <!-- TOPBAR -->
+      <div class="topbar">
+        <a
+          href="settings.html"
+          class="topbar__back"
+          aria-label="Back to settings"
+        >
+          <i class="ph ph-arrow-left"></i>
         </a>
         <h1 class="topbar__title">Theme Builder</h1>
-    </div>
+      </div>
 
-    <!-- ACTIVE THEME CARD -->
-    <div class="theme-card">
+      <!-- ACTIVE THEME CARD -->
+      <div class="theme-card">
         <div class="theme-card__preview" id="themePreviewIcon">
-            <i class="ph-fill ph-sun"></i>
+          <i class="ph-fill ph-sun"></i>
         </div>
         <div class="theme-card__info">
-            <p class="theme-card__label">Active Theme</p>
-            <p class="theme-card__name" id="themeActiveName">Light Mode</p>
+          <p class="theme-card__label">Active Theme</p>
+          <p class="theme-card__name" id="themeActiveName">Light Mode</p>
         </div>
-    </div>
+      </div>
 
-    <!-- THEME SELECTOR -->
-    <div class="theme-grid">
-
-        <button class="theme-btn" id="btn-light" onclick="selectTheme('light')" aria-pressed="true">
-            <div class="theme-btn__icon theme-btn__icon--light">
-                <i class="ph-fill ph-sun"></i>
-            </div>
-            <span class="theme-btn__label">Light</span>
-            <div class="theme-btn__check" id="check-light">
-                <i class="ph-fill ph-check-circle"></i>
-            </div>
+      <!-- THEME SELECTOR -->
+      <div class="theme-grid">
+        <button
+          class="theme-btn"
+          id="btn-light"
+          onclick="selectTheme('light')"
+          aria-pressed="true"
+        >
+          <div class="theme-btn__icon theme-btn__icon--light">
+            <i class="ph-fill ph-sun"></i>
+          </div>
+          <span class="theme-btn__label">Light</span>
+          <div class="theme-btn__check" id="check-light">
+            <i class="ph-fill ph-check-circle"></i>
+          </div>
         </button>
 
-        <button class="theme-btn" id="btn-dark" onclick="selectTheme('dark')" aria-pressed="false">
-            <div class="theme-btn__icon theme-btn__icon--dark">
-                <i class="ph-fill ph-moon"></i>
-            </div>
-            <span class="theme-btn__label">Dark</span>
-            <div class="theme-btn__check" id="check-dark">
-                <i class="ph-fill ph-check-circle"></i>
-            </div>
+        <button
+          class="theme-btn"
+          id="btn-dark"
+          onclick="selectTheme('dark')"
+          aria-pressed="false"
+        >
+          <div class="theme-btn__icon theme-btn__icon--dark">
+            <i class="ph-fill ph-moon"></i>
+          </div>
+          <span class="theme-btn__label">Dark</span>
+          <div class="theme-btn__check" id="check-dark">
+            <i class="ph-fill ph-check-circle"></i>
+          </div>
         </button>
 
-        <button class="theme-btn" id="btn-auto" onclick="selectTheme('auto')" aria-pressed="false">
-            <div class="theme-btn__icon theme-btn__icon--auto">
-                <i class="ph-fill ph-desktop"></i>
-            </div>
-            <span class="theme-btn__label">Auto</span>
-            <div class="theme-btn__check" id="check-auto">
-                <i class="ph-fill ph-check-circle"></i>
-            </div>
+        <button
+          class="theme-btn"
+          id="btn-auto"
+          onclick="selectTheme('auto')"
+          aria-pressed="false"
+        >
+          <div class="theme-btn__icon theme-btn__icon--auto">
+            <i class="ph-fill ph-desktop"></i>
+          </div>
+          <span class="theme-btn__label">Auto</span>
+          <div class="theme-btn__check" id="check-auto">
+            <i class="ph-fill ph-check-circle"></i>
+          </div>
         </button>
+      </div>
 
-    </div>
+      <!-- DISPLAY PREFERENCES -->
+      <p class="section-title">Display Preferences</p>
 
-    <!-- DISPLAY PREFERENCES -->
-    <p class="section-title">Display Preferences</p>
-
-    <div class="pref-card">
-
+      <div class="pref-card">
         <!-- Text Size -->
         <div class="pref-row">
-            <div class="pref-row__text">
-                <p class="pref-row__title">Text Size</p>
-                <p class="pref-row__sub" id="textSizeLabel">Medium (recommended)</p>
-            </div>
-            <a href="typography.html?action=cycle" class="pref-row__action">Change</a>
+          <div class="pref-row__text">
+            <p class="pref-row__title">Text Size</p>
+            <p class="pref-row__sub" id="textSizeLabel">Medium (recommended)</p>
+          </div>
+          <a href="typography.html?action=cycle" class="pref-row__action"
+            >Change</a
+          >
         </div>
         <div class="pref-divider"></div>
 
         <!-- High Contrast -->
         <div class="pref-row">
-            <div class="pref-row__text">
-                <p class="pref-row__title">High Contrast</p>
-                <p class="pref-row__sub">Enhance text visibility</p>
-            </div>
-            <label class="tog" aria-label="Toggle high contrast">
-                <input type="checkbox" id="pref-contrast" onchange="savePref('highContrast', this.checked); applyPrefs()">
-                <span class="tog__track"></span>
-                <span class="tog__thumb"></span>
-            </label>
+          <div class="pref-row__text">
+            <p class="pref-row__title">High Contrast</p>
+            <p class="pref-row__sub">Enhance text visibility</p>
+          </div>
+          <label class="tog" aria-label="Toggle high contrast">
+            <input
+              type="checkbox"
+              id="pref-contrast"
+              onchange="
+                savePref('highContrast', this.checked);
+                applyPrefs();
+              "
+            />
+            <span class="tog__track"></span>
+            <span class="tog__thumb"></span>
+          </label>
         </div>
         <div class="pref-divider"></div>
 
         <!-- Reduce Motion -->
         <div class="pref-row">
-            <div class="pref-row__text">
-                <p class="pref-row__title">Reduce Motion</p>
-                <p class="pref-row__sub">Minimize animations</p>
-            </div>
-            <label class="tog" aria-label="Toggle reduce motion">
-                <input type="checkbox" id="pref-motion" onchange="savePref('reduceMotion', this.checked); applyPrefs()">
-                <span class="tog__track"></span>
-                <span class="tog__thumb"></span>
-            </label>
+          <div class="pref-row__text">
+            <p class="pref-row__title">Reduce Motion</p>
+            <p class="pref-row__sub">Minimize animations</p>
+          </div>
+          <label class="tog" aria-label="Toggle reduce motion">
+            <input
+              type="checkbox"
+              id="pref-motion"
+              onchange="
+                savePref('reduceMotion', this.checked);
+                applyPrefs();
+              "
+            />
+            <span class="tog__track"></span>
+            <span class="tog__thumb"></span>
+          </label>
         </div>
         <div class="pref-divider"></div>
 
         <!-- Bold Currency -->
         <div class="pref-row">
-            <div class="pref-row__text">
-                <p class="pref-row__title">Bold Currency</p>
-                <p class="pref-row__sub">Make amounts stand out</p>
-            </div>
-            <label class="tog" aria-label="Toggle bold currency">
-                <input type="checkbox" id="pref-bold" onchange="savePref('boldCurrency', this.checked); applyPrefs()">
-                <span class="tog__track"></span>
-                <span class="tog__thumb"></span>
-            </label>
+          <div class="pref-row__text">
+            <p class="pref-row__title">Bold Currency</p>
+            <p class="pref-row__sub">Make amounts stand out</p>
+          </div>
+          <label class="tog" aria-label="Toggle bold currency">
+            <input
+              type="checkbox"
+              id="pref-bold"
+              onchange="
+                savePref('boldCurrency', this.checked);
+                applyPrefs();
+              "
+            />
+            <span class="tog__track"></span>
+            <span class="tog__thumb"></span>
+          </label>
         </div>
         <div class="pref-divider"></div>
 
         <!-- Reduce Transparency -->
         <div class="pref-row">
-            <div class="pref-row__text">
-                <p class="pref-row__title">Reduce Transparency</p>
-                <p class="pref-row__sub">Solid backgrounds</p>
-            </div>
-            <label class="tog" aria-label="Toggle reduce transparency">
-                <input type="checkbox" id="pref-transparency" onchange="savePref('reduceTransparency', this.checked); applyPrefs()">
-                <span class="tog__track"></span>
-                <span class="tog__thumb"></span>
-            </label>
+          <div class="pref-row__text">
+            <p class="pref-row__title">Reduce Transparency</p>
+            <p class="pref-row__sub">Solid backgrounds</p>
+          </div>
+          <label class="tog" aria-label="Toggle reduce transparency">
+            <input
+              type="checkbox"
+              id="pref-transparency"
+              onchange="
+                savePref('reduceTransparency', this.checked);
+                applyPrefs();
+              "
+            />
+            <span class="tog__track"></span>
+            <span class="tog__thumb"></span>
+          </label>
         </div>
+      </div>
 
-    </div>
-
-    <!-- SAVE BANNER + RESET -->
-    <div class="save-banner">
+      <!-- SAVE BANNER + RESET -->
+      <div class="save-banner">
         <p class="save-banner__note">
-            <i class="ph-fill ph-check-circle"></i>
-            Your customizations are saved automatically
+          <i class="ph-fill ph-check-circle"></i>
+          Your customizations are saved automatically
         </p>
-        <button class="save-banner__reset" onclick="resetAll()">Reset to Default</button>
+        <button class="save-banner__reset" onclick="resetAll()">
+          Reset to Default
+        </button>
+      </div>
     </div>
 
-</div>
-
-<script src="../src/scripts/theme-builder.js"></script>
-</body>
+    <script src="../src/scripts/theme-builder.js"></script>
+  </body>
 </html>
